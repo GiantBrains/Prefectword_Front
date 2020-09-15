@@ -1,0 +1,36 @@
+version: '2'
+services:
+  php:
+    image: yiisoftware/yii2-php:7.2-apache
+    volumes:
+      - ~/.composer-docker/cache:/root/.composer/cache:delegated
+      - ./:/app:delegated
+    container_name: doctorateessays-web
+    ports:
+      - '8060:80'
+    depends_on:
+      - db
+
+  db:
+    image: mysql
+    command: ["--default-authentication-plugin=mysql_native_password"]
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 1165
+      MYSQL_DATABASE: doctorateessays
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 1165
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    restart: always
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: 1165
+      UPLOAD_LIMIT: 3000000000
+    ports:
+      - "8000:80"
+    depends_on:
+      - db
