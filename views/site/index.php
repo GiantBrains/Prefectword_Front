@@ -629,13 +629,14 @@ $this->registerJs($myscript);
 
 
 <?php $this->endBlock(); ?>
-<div class="site-index1" style="background-image: url('images/slides/2.jpg');">
+<div class="site-index1" style="background-image: url('images/slides/5.jpg');opacity: 0.8">
     <div class="container" style="z-index: 100; color: white;">
         <?php Yii::$app->timezone->name ?>
         <div class="row superslide">
             <div class="col-md-6 col-xs-12"
-                 style="background-color: white; opacity: 0.8; border-radius: 10px; color: black">
-
+                 style="font-family: 'Open Sans', sans-serif; opacity: 0.8; color: #F1561F;background-color: whitesmoke;border-radius: 20px;">
+                <h1 style="font-size: 30px;font-weight: bolder">Get Reliable a service<br>Send your request immediately!</h1>
+                <center><a class="btn btn-lg" href="<?= Url::to(['/order/create']) ?>" style="background-color: #5FF11F ">Place your Order Now</a></center><br>
             </div>
             <div class="col-md-6">
                 <?php $form = ActiveForm::begin(['layout' => 'horizontal',
