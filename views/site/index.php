@@ -634,9 +634,9 @@ $this->registerJs($myscript);
         <?php Yii::$app->timezone->name ?>
         <div class="row superslide">
             <div class="col-md-6 col-xs-12"
-                 style="font-family: 'Open Sans', sans-serif; opacity: 0.8; color: #F1561F;background-color: whitesmoke;border-radius: 20px;">
+                 style="font-family: 'Open Sans', sans-serif; opacity: 0.8; color: black;background-color: #90F1C8;border-radius: 20px;">
                 <h1 style="font-size: 30px;font-weight: bolder">Get Reliable a service<br>Send your request immediately!</h1>
-                <center><a class="btn btn-lg" href="<?= Url::to(['/order/create']) ?>" style="background-color: #5FF11F ">Place your Order Now</a></center><br>
+                <center><a class="btn btn-lg" href="<?= Url::to(['/order/create']) ?>" style="background-color: #3D715B;color: black ">Place your Order Now</a></center><br>
             </div>
             <div class="col-md-6">
                 <?php $form = ActiveForm::begin(['layout' => 'horizontal',
