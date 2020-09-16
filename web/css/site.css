@@ -108,7 +108,7 @@ float: left;
     color: #a1a9b3;
 }
 
-.share-class{
+.share-class{svg
     list-style-type: none;
     display: inline-block;
     margin-left: 20px;
@@ -217,7 +217,7 @@ float: left;
 }
 
 .svg-back {
-    background: #5bc0de;
+    background: #3D715B;
     border-radius: 3px;
     border-color: #46b8da;
     text-align: center;
@@ -227,7 +227,7 @@ float: left;
 
 
 .testim{
-    background-image: url('../images/slides/testimonials.png');
+    background-color: whitesmoke;
     height: 500px;
 }
 
@@ -244,13 +244,13 @@ float: left;
     width: 1px;
     background-color: lightgrey;
     right: 0;
-    height: 60px;
+    height: 140px;
     top: 30px;
 }
 
 /* navbar */
 .navbar-default1 {
-    background-color: azure;
+    background-color: #FAFBFB;
     border-color: #E7E7E7;
 }
 /* Title */
@@ -323,7 +323,7 @@ float: left;
 
 /* navbar */
 .navbar-default2 {
-    background-color: white;
+    background-color: #90F1C8;
     border-color: #0f0f0f;
 }
 /* Title */

@@ -37,17 +37,17 @@ AppAsset::register($this);
         gtag('config', 'UA-115152658-1');
     </script>
     <!--Start of Tawk.to Script-->
-    <script type="text/javascript">
-        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-        (function(){
-            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-            s1.async=true;
-            s1.src='https://embed.tawk.to/5a9ae4dfd7591465c7083800/default';
-            s1.charset='UTF-8';
-            s1.setAttribute('crossorigin','*');
-            s0.parentNode.insertBefore(s1,s0);
-        })();
-    </script>
+<!--    <script type="text/javascript">-->
+<!--        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();-->
+<!--        (function(){-->
+<!--            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];-->
+<!--            s1.async=true;-->
+<!--            s1.src='https://embed.tawk.to/5a9ae4dfd7591465c7083800/default';-->
+<!--            s1.charset='UTF-8';-->
+<!--            s1.setAttribute('crossorigin','*');-->
+<!--            s0.parentNode.insertBefore(s1,s0);-->
+<!--        })();-->
+<!--    </script>-->
     <!--End of Tawk.to Script-->
 </head>
 <body>
@@ -113,8 +113,8 @@ AppAsset::register($this);
             ]).'
                 <li class="dropdown notifications-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-bell-o"></i>
-                        <span class="label label-warning notifications-icon-count">0</span>
+                        <i class="fa fa-bell-o text-success"></i>
+                        <span class="label label-success notifications-icon-count">0</span>
                     </a>
                     <ul class="dropdown-menu" style="width: auto; min-width: 250px; max-width: 320px">
                         <li class="header">You have <span class="notifications-header-count">0</span> notifications</li>
@@ -129,7 +129,7 @@ AppAsset::register($this);
         $menuItems[] = [
             'label' => $this->params['balance']?
                 '<a style="height: 55px; margin-top: -35px;" href="'.Yii::$app->request->baseUrl.'/wallet/index"> <img style="height: 35px;" 
-            src="'.Yii::$app->request->baseUrl.'/images/rating/wallet.png" >'.'<span style="color: black; font-size: 18px; margin-top: 10px"> $'.number_format(floatval($this->params['balance']),
+            src="'.Yii::$app->request->baseUrl.'/images/rating/wallet4.png" >'.'<span style="color: black; font-size: 18px; margin-top: 10px"> $'.number_format(floatval($this->params['balance']),
                     2, '.', ',').'</span>':'<a style="height: 55px; margin-top: -35px;" href="'.Yii::$app->request->baseUrl.'/wallet/index"> <img style="height: 35px;" 
             src="'.Yii::$app->request->baseUrl.'/images/rating/wallet.png"> <span style="color: black; font-size: 18px">$0.00</span>'.'</a>',
             'active' => $this->context->route == 'wallet/index'

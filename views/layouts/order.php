@@ -39,17 +39,17 @@ AppAsset::register($this);
         gtag('config', 'UA-115152658-1');
     </script>
     <!--Start of Tawk.to Script-->
-    <script type="text/javascript">
-        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-        (function(){
-            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-            s1.async=true;
-            s1.src='https://embed.tawk.to/5a9ae4dfd7591465c7083800/default';
-            s1.charset='UTF-8';
-            s1.setAttribute('crossorigin','*');
-            s0.parentNode.insertBefore(s1,s0);
-        })();
-    </script>
+<!--    <script type="text/javascript">-->
+<!--        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();-->
+<!--        (function(){-->
+<!--            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];-->
+<!--            s1.async=true;-->
+<!--            s1.src='https://embed.tawk.to/5a9ae4dfd7591465c7083800/default';-->
+<!--            s1.charset='UTF-8';-->
+<!--            s1.setAttribute('crossorigin','*');-->
+<!--            s0.parentNode.insertBefore(s1,s0);-->
+<!--        })();-->
+<!--    </script>-->
     <!--End of Tawk.to Script-->
 </head>
 <body>
@@ -184,16 +184,16 @@ AppAsset::register($this);
         <?= Alert::widget() ?>
     </div>
     <div class="mycontent">
-        <div class="row" style="margin-right: 0; margin-left: 0;">
+        <div class="row" style="margin-right: 0; margin-left: 0; color: #133111">
             <div class="col-md-3 col-sm-3 hidden-xs">
                 <div class="sidebar">
                     <?php
-                    $type = 'primary';
+                    $type = 'success';
                     $item = 'home';
                     echo SideNav::widget([
                         'type' => $type,
                         'encodeLabels' => false,
-                        'heading' => '<i class="fa fa-cog fa-spin" aria-hidden="true"></i> Order Operations',
+                        'heading' => '<i class="fa fa-cog fa-spin" aria-hidden="true"></i><strong style="color: #3D715B"> Order Operations</strong>',
                         'items' => [
                             //
                             //
@@ -206,29 +206,29 @@ AppAsset::register($this);
                             // (to determine the active status).
                             //
                             //
-                            ['label' => '<i class="fa fa-dashboard" aria-hidden="true"></i> Dashboard','active' => $this->context->route == 'order/index', 'url' => Yii::$app->request->baseUrl.'/order/index'],
-                            ['label' => '<i class="fa fa-plus " aria-hidden="true"></i> Place Order',  'active' => $this->context->route == 'order/create', 'url' => Yii::$app->request->baseUrl.'/order/create'],
-                            ['label' =>  $this->params['pending_count'] ? '<i class="fa fa-list " aria-hidden="true"></i> <span class="pull-right badge">'.$this->params['pending_count'].'</span> Pending':
-                                '<i class="fa fa-list " aria-hidden="true"></i> Pending', 'active' => $this->context->route == 'order/pending','url' => Yii::$app->request->baseUrl.'/order/pending'],
-                            ['label' => $this->params['available_count'] ? '<i class="fa fa-clock-o" aria-hidden="true"></i> <span class="pull-right badge">'.$this->params['available_count'].'</span> Waiting to be assigned':
-                                '<i class="fa fa-clock-o" aria-hidden="true"></i> Waiting to be assigned', 'active' => $this->context->route == 'order/available', 'url' => Yii::$app->request->baseUrl.'/order/available'],
-                            ['label' =>  $this->params['active_count'] ? '<i class="fa fa-spinner fa-spin" aria-hidden="true"></i> <span class="pull-right badge">'.$this->params['active_count'].'</span> In Progress':
-                                '<i class="fa fa-spinner fa-spin" aria-hidden="true"></i> In Progress', 'active' => $this->context->route == 'order/active', 'url' => Yii::$app->request->baseUrl.'/order/active'],
-                            ['label' =>  $this->params['cancel_count'] ? '<i class="fa fa-close" aria-hidden="true"></i> <span class="pull-right badge">'.$this->params['cancel_count'].'</span> Cancelled':
-                                '<i class="fa fa-close" aria-hidden="true"></i> Cancelled', 'active' => $this->context->route == 'order/cancelled', 'url' => Yii::$app->request->baseUrl.'/order/cancelled'],
-                            ['label' =>  $this->params['revision_count'] ? '<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> <span class="pull-right badge">'.$this->params['revision_count'].'</span> Revision':
-                                '<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Revision', 'active' => $this->context->route == 'order/revision','url' => Yii::$app->request->baseUrl.'/order/revision'],
+                            ['label' => '<i class="fa fa-dashboard text-success" aria-hidden="true"></i><strong style="color: #3D715B"> Dashboard</strong>','active' => $this->context->route == 'order/index', 'url' => Yii::$app->request->baseUrl.'/order/index'],
+                            ['label' => '<i class="fa fa-plus text-success" aria-hidden="true"></i><strong style="color: #3D715B"> Place Order</strong>',  'active' => $this->context->route == 'order/create', 'url' => Yii::$app->request->baseUrl.'/order/create'],
+                            ['label' =>  $this->params['pending_count'] ? '<i class="fa fa-list text-success" aria-hidden="true"></i> <span class="pull-right badge">'.$this->params['pending_count'].'</span><strong style="color: #3D715B"> Pending</strong>':
+                                '<i class="fa fa-list text-success" aria-hidden="true"></i><strong style="color: #3D715B"> Pending</strong>', 'active' => $this->context->route == 'order/pending','url' => Yii::$app->request->baseUrl.'/order/pending'],
+                            ['label' => $this->params['available_count'] ? '<i class="fa fa-clock-o" aria-hidden="true"></i> <span class="pull-right badge">'.$this->params['available_count'].'</span><strong style="color: #3D715B"> Waiting to be assigned</strong>':
+                                '<i class="fa fa-clock-o text-success" aria-hidden="true"></i><strong style="color: #3D715B"> Waiting to be assigned</strong>', 'active' => $this->context->route == 'order/available', 'url' => Yii::$app->request->baseUrl.'/order/available'],
+                            ['label' =>  $this->params['active_count'] ? '<i class="fa fa-spinner fa-spin text-success" aria-hidden="true"></i> <span class="pull-right badge">'.$this->params['active_count'].'</span><strong style="color: #3D715B"> In Progress</strong>':
+                                '<i class="fa fa-spinner fa-spin text-success" aria-hidden="true"></i><strong style="color: #3D715B"> In Progress</strong>', 'active' => $this->context->route == 'order/active', 'url' => Yii::$app->request->baseUrl.'/order/active'],
+                            ['label' =>  $this->params['cancel_count'] ? '<i class="fa fa-close text-success" aria-hidden="true"></i> <span class="pull-right badge">'.$this->params['cancel_count'].'</span><strong style="color: #3D715B"><strong style="color: #3D715B"> Cancelled</strong>':
+                                '<i class="fa fa-close text-success" aria-hidden="true"></i><strong style="color: #3D715B"> Cancelled</strong>', 'active' => $this->context->route == 'order/cancelled', 'url' => Yii::$app->request->baseUrl.'/order/cancelled'],
+                            ['label' =>  $this->params['revision_count'] ? '<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> <span class="pull-right badge">'.$this->params['revision_count'].'</span><strong style="color: #3D715B"> Revision</strong>':
+                                '<span class="glyphicon glyphicon-repeat text-success" aria-hidden="true"></span><strong style="color: #3D715B"> Revision</strong>', 'active' => $this->context->route == 'order/revision','url' => Yii::$app->request->baseUrl.'/order/revision'],
 //                            ['label' =>  $this->params['editing_count'] ? '<i class="fa fa-edit " aria-hidden="true"></i> <span class="pull-right badge">'.$this->params['editing_count'].'</span> Editing':
 //                                '<i class="fa fa-edit " aria-hidden="true"></i> Editing','active' => $this->context->route == 'order/editing', 'url' => Yii::$app->request->baseUrl.'/order/editing'],
-                            ['label' => $this->params['completed_count'] ? '<i class="fa fa-trophy " aria-hidden="true"></i> <span class="pull-right badge">'.$this->params['completed_count'].'</span> Completed':
-                                '<i class="fa fa-trophy " aria-hidden="true"></i> Completed', 'active' => $this->context->route == 'order/completed','url' => Yii::$app->request->baseUrl.'/order/completed'],
-                            ['label' => $this->params['approved_count'] ? '<i class="fa fa-thumbs-up" aria-hidden="true"></i> <span class="pull-right badge">'.$this->params['approved_count'].'</span> Approved':
-                                '<i class="fa fa-thumbs-up" aria-hidden="true"></i> Approved', 'active' => $this->context->route == 'order/approved','url' => Yii::$app->request->baseUrl.'/order/approved'],
-                            ['label' => $this->params['rejected_count'] ? '<i class="fa fa-thumbs-down " aria-hidden="true"></i> <span class="pull-right badge">'.$this->params['rejected_count'].'</span> Rejected':
-                                '<i class="fa fa-thumbs-down " aria-hidden="true"></i> Rejected', 'active' => $this->context->route == 'order/rejected', 'url' => Yii::$app->request->baseUrl.'/order/rejected'],
+                            ['label' => $this->params['completed_count'] ? '<i class="fa fa-trophy text-success" aria-hidden="true"></i> <span class="pull-right badge">'.$this->params['completed_count'].'</span><strong style="color: #3D715B"> Completed</strong>':
+                                '<i class="fa fa-trophy text-success" aria-hidden="true"></i><strong style="color: #3D715B"> Completed</strong>', 'active' => $this->context->route == 'order/completed','url' => Yii::$app->request->baseUrl.'/order/completed'],
+                            ['label' => $this->params['approved_count'] ? '<i class="fa fa-thumbs-up text-success" aria-hidden="true"></i> <span class="pull-right badge">'.$this->params['approved_count'].'</span><strong style="color: #3D715B"> Approved</strong>':
+                                '<i class="fa fa-thumbs-up text-success" aria-hidden="true"></i><strong style="color: #3D715B"> Approved</strong>', 'active' => $this->context->route == 'order/approved','url' => Yii::$app->request->baseUrl.'/order/approved'],
+                            ['label' => $this->params['rejected_count'] ? '<i class="fa fa-thumbs-down text-success" aria-hidden="true"></i> <span class="pull-right badge">'.$this->params['rejected_count'].'</span><strong style="color: #3D715B"> Rejected</strong>':
+                                '<i class="fa fa-thumbs-down text-success" aria-hidden="true"></i><strong style="color: #3D715B"> Rejected</strong>', 'active' => $this->context->route == 'order/rejected', 'url' => Yii::$app->request->baseUrl.'/order/rejected'],
 //                            ['label' => $this->params['disputed_count'] ? '<i class="fa fa-legal" aria-hidden="true"></i> <span class="pull-right badge">'.$this->params['disputed_count'].'</span> Disputed':
 //                                '<i class="fa fa-legal" aria-hidden="true"></i> Disputed', 'active' => $this->context->route == 'order/disputed', 'url' => Yii::$app->request->baseUrl.'/order/disputed'],
-                            ['label' => '<img src="'.Yii::$app->request->baseUrl.'/images/rating/settings.png" style="height: 24px; " > Settings', 'items' => [
+                            ['label' => '<img src="'.Yii::$app->request->baseUrl.'/images/rating/settings.png" style="height: 24px; " ><strong style="color: #3D715B"> Settings</strong>', 'items' => [
                                 ['label' => 'Profile', 'active' => $this->context->route == 'user-profile/create','url' => Yii::$app->request->baseUrl.'/user-profile/create'],
                                 ['label' => 'Account',  'active' => $this->context->route == 'site/account','url' => Yii::$app->request->baseUrl.'/site/account'],
                             ],

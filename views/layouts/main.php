@@ -39,17 +39,17 @@ AppAsset::register($this);
         gtag('config', 'UA-115152658-1');
     </script>
     <!--Start of Tawk.to Script-->
-    <script type="text/javascript">
-        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-        (function(){
-            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-            s1.async=true;
-            s1.src='https://embed.tawk.to/5a9ae4dfd7591465c7083800/default';
-            s1.charset='UTF-8';
-            s1.setAttribute('crossorigin','*');
-            s0.parentNode.insertBefore(s1,s0);
-        })();
-    </script>
+<!--    <script type="text/javascript">-->
+<!--        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();-->
+<!--        (function(){-->
+<!--            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];-->
+<!--            s1.async=true;-->
+<!--            s1.src='https://embed.tawk.to/5a9ae4dfd7591465c7083800/default';-->
+<!--            s1.charset='UTF-8';-->
+<!--            s1.setAttribute('crossorigin','*');-->
+<!--            s0.parentNode.insertBefore(s1,s0);-->
+<!--        })();-->
+<!--    </script>-->
     <!--End of Tawk.to Script-->
 </head>
 <body>
@@ -58,38 +58,18 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => Html::img('@web/images/logo.png', ['style'=>'display:inline-block; height:32px;', 'alt'=>Yii::$app->name]). ' <strong style="color: #5bc0de; font-size: 20px; border-color: #46b8da;">Doctorate</strong><strong style="color: midnightblue; font-size: 20px;">Essays</strong>',
+        'brandLabel' => Html::img('@web/images/logo.png', ['style'=>'display:inline-block; height:32px;', 'alt'=>Yii::$app->name]). ' <strong style="color: #90F1C8 ; font-size: 20px;">Verified</strong><strong style="color: #3D715B; font-size: 20px;">Proffessors</strong>',
         'brandUrl' => Yii::$app->request->baseUrl.'/',
         'options' => [
             'class' => 'navbar navbar-default1 navbar-fixed-top',
         ],
     ]);
-       $menuItem []= ['label' => 'How it Works', 'url' => ['/how_it_works'],
-         'active' => $this->context->route == 'site/how_it_works'
-        ];
-       $menuItem []=  ['label' => 'Services', 'url' => ['/services'],
-            'active' => $this->context->route == 'site/services'
-        ];
-        $menuItem []=  ['label' => 'About Us', 'url' => ['/about'],
-            'active' => $this->context->route == 'site/about',
-            'visible' => Yii::$app->user->isGuest
-        ];
-
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-left'],
-        'items' => $menuItem,
-         'encodeLabels' => false,
-    ]);
-
-     $menuItems []=  ['label' => '<i style="color: orange" class="fa fa-phone" aria-hidden="true"></i>: <span>+1-814-250-1019</span>'];
-     $menuItems []=  ['label' => '<i style="color: orange" class="fa fa-envelope" aria-hidden="true"></i>: <span>support@doctorateessays.com  
-     </span>'];
 
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Log In ' , 'url' => Yii::$app->request->baseUrl.'/site/login',
             'active' => $this->context->route == 'site/login',
         ];
-        $menuItems[] = '<a href="'.Yii::$app->request->baseUrl.'/site/signup"><button type="button" class="btn btn-sm btn-primary navbar-btn essay-font">Sign Up</button></a>';
+        $menuItems[] = '<a href="'.Yii::$app->request->baseUrl.'/site/signup"><button type="button" style="background-color:#90F1C8" class="btn btn-sm navbar-btn essay-font">Sign Up</button></a>';
     } else {
         $menuItems[] =
             ''.NotificationsWidget::widget([
@@ -133,6 +113,24 @@ AppAsset::register($this);
         'items' => $menuItems,
         'encodeLabels' => false,
     ]);
+
+    $menuItem []= ['label' => 'How it Works', 'url' => ['/how_it_works'],
+        'active' => $this->context->route == 'site/how_it_works'
+    ];
+    $menuItem []=  ['label' => 'Services', 'url' => ['/services'],
+        'active' => $this->context->route == 'site/services'
+    ];
+    $menuItem []=  ['label' => 'About Us', 'url' => ['/about'],
+        'active' => $this->context->route == 'site/about',
+        'visible' => Yii::$app->user->isGuest
+    ];
+
+    echo Nav::widget([
+        'options' => ['class' => 'navbar-nav navbar-right'],
+        'items' => $menuItem,
+        'encodeLabels' => false,
+    ]);
+
     NavBar::end();
     ?>
     <div style="margin-top: 60px">
