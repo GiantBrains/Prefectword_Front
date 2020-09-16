@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row">
         <div class="hidden-lg hidden-md hidden-sm col-xs-4">
             <?php  echo '<div class="dropdown">
-                              <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Menu
+                              <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">Menu
                               <span class="caret"></span></button>
                               <ul class="dropdown-menu">
                                 <li class="active"><a href="'.Yii::$app->request->baseUrl.'/order/index"><i class="fa fa-dashboard" aria-hidden="true"></i> Dashboard</a></li>
@@ -149,7 +149,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'width'=>'100px',
                 'format' => 'raw',
                 'value'=> function ($model, $key, $index, $column) {
-                    return   Html::a('Re-Submit', ['order/resubmit','oid'=>$model->ordernumber], ['class' => 'btn btn-primary']);
+                    return   Html::a('Re-Submit', ['order/resubmit','oid'=>$model->ordernumber], ['class' => 'btn btn-success']);
                 }
             ],
             //'sources_id',

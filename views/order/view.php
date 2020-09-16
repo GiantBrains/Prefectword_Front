@@ -108,7 +108,7 @@ $this->registerJs($datetime);
             $cancancel= $model->active == 1 || $model->available == 1;
             $cancelled = $model->paid == 0 && $model->cancelled == 0;
             if ($cancelled){
-                echo ''. Html::a('Update', ['update', 'oid' => $model->ordernumber], ['class' => 'btn btn-primary']).'&nbsp;';
+                echo ''. Html::a('Update', ['update', 'oid' => $model->ordernumber], ['class' => 'btn btn-success']).'&nbsp;';
             }else{
                 echo '';
             }
@@ -169,7 +169,7 @@ $this->registerJs($datetime);
                 $cancancel= $model->active == 1 || $model->available == 1;
                 $cancelled = $model->paid == 0 && $model->cancelled == 0;
                 if ($cancelled){
-                    echo ''. Html::a('Update', ['update', 'oid' => $model->ordernumber], ['class' => 'btn btn-primary']).'&nbsp;';
+                    echo ''. Html::a('Update', ['update', 'oid' => $model->ordernumber], ['class' => 'btn btn-success']).'&nbsp;';
                 }else{
                     echo '';
                 }
@@ -554,7 +554,7 @@ $this->registerJs($datetime);
                         </div>
 
                         <div class="form-group">
-                            <?= Html::submitButton( 'Send' , ['class' => 'btn btn-primary']) ?>
+                            <?= Html::submitButton( 'Send' , ['class' => 'btn btn-success']) ?>
                         </div>
 
                         <?php \kartik\form\ActiveForm::end(); ?>
