@@ -633,10 +633,14 @@ $this->registerJs($myscript);
     <div class="container" style="z-index: 100; color: white;">
         <?php Yii::$app->timezone->name ?>
         <div class="row superslide">
-            <div class="col-md-6 col-xs-12"
-                 style="font-family: 'Open Sans', sans-serif; opacity: 0.8; color: black;background-color: #90F1C8;border-radius: 20px;">
-                <h1 style="font-size: 30px;font-weight: bolder">Get Reliable a service<br>Send your request immediately!</h1>
-                <center><a class="btn btn-lg" href="<?= Url::to(['/order/create']) ?>" style="background-color: #3D715B;color: black ">Place your Order Now</a></center><br>
+            <div class="col-md-6 col-xs-12">
+                <div class="row" style="padding:10px;font-family: 'Open Sans', sans-serif; opacity: 0.8; color: black;background-color: #90F1C8;border-radius: 20px;">
+                    <h1 style="font-size: 30px;font-weight: bolder">Get Reliable a service<br>Send your request immediately!</h1>
+                </div><br>
+                <div class="row" style="padding:10px;font-family: 'Open Sans', sans-serif; opacity: 0.8; color: black;background-color: #90F1C8;border-radius: 20px;">
+                    <h1 style="font-size: 30px;font-weight: bolder">Each Essay Writer is High Quality</h1>
+                    <center><a class="btn btn-lg" href="<?= Url::to(['/order/create']) ?>" style="background-color: #3D715B;color: black ">Place your Order Now</a></center><br>
+                </div>
             </div>
             <div class="col-md-6">
                 <?php $form = ActiveForm::begin(['layout' => 'horizontal',
