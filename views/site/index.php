@@ -8,8 +8,8 @@ use dosamigos\ckeditor\CKEditor;
 
 /* @var $this yii\web\View */
 
-$this->title = 'Verified Proffessors - Online Academic Essay Writing Service. Get Cheap Homework Help from Professional and Reliable Essay Writers.';
-$description = "Verified Proffessors - Online Academic Essay Writing Service. Get Cheap Homework Help from Professional and Reliable Essay Writers";
+$this->title = 'Verified Professors - Online Academic Essay Writing Service. Get Cheap Homework Help from Professional and Reliable Essay Writers.';
+$description = "Verified Professors - Online Academic Essay Writing Service. Get Cheap Homework Help from Professional and Reliable Essay Writers";
 $title = $this->title;
 $this->registerMetaTag([
     'name' => 'description',
@@ -599,23 +599,25 @@ $this->registerJs($myscript);
 ?>
 
 <?php $this->beginBlock('block5'); ?>
-<meta property="og:site_name" content="Verified Proffessors">
+<meta property="og:site_name" content="Verified Professors">
 <meta property="og:type" content="Education">
 <meta property="og:title" content="<?= $title ?>">
 <meta property="og:description" content="<?= $description ?>">
 <meta property="og:image" content="https://www.doctorateessays.com/images/proccess/home_page.png">
-<meta property="og:url" content="https://www.verifiedproffessors.com">
+<meta property="og:url" content="https://www.verifiedprofessors.com">
 <meta property="og:locale" content="en_UK">
 <meta property="og:locale:alternate" content="en_US">
 <!-- Twitter -->
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:site" content="@verifiedproffessors"/>
+<meta name="twitter:site" content="@verifiedprofessors"/>
 <!--                <meta name="twitter:creator" content="@tonigitz" />-->
 <meta name="twitter:title" content="<?= $title ?>">
 <meta name="twitter:description" content="<?= $description ?>">
 <meta name="twitter:image" content="https://www.doctorateessays.com/images/proccess/home_page.png">
-<meta name="twitter:url" content="https://www.verifiedproffessors.com">
+<meta name="twitter:url" content="https://www.verifiedprofessors.com">
+<link href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Philosopher:ital@1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -629,551 +631,383 @@ $this->registerJs($myscript);
 
 
 <?php $this->endBlock(); ?>
-<div class="site-index1" style="background-image: url('images/slides/5.jpg');opacity: 0.8">
+<div class="site-index1" style="background-image: url('images/slides/7.jpg');">
     <div class="container" style="z-index: 100; color: white;">
         <?php Yii::$app->timezone->name ?>
         <div class="row superslide">
             <div class="col-md-6 col-xs-12">
-                <div class="row" style="padding:10px;font-family: 'Open Sans', sans-serif; opacity: 0.8; color: black;background-color: #90F1C8;border-radius: 20px;">
-                    <h1 style="font-size: 30px;font-weight: bolder">Get Reliable a service<br>Send your request immediately!</h1>
-                </div><br>
-                <div class="row" style="padding:10px;font-family: 'Open Sans', sans-serif; opacity: 0.8; color: black;background-color: #90F1C8;border-radius: 20px;">
-                    <h1 style="font-size: 30px;font-weight: bolder">Each Essay Writer is High Quality</h1>
-                    <center><a class="btn btn-lg" href="<?= Url::to(['/order/create']) ?>" style="background-color: #3D715B;color: black ">Place your Order Now</a></center><br>
+            </div>
+            <div class="col-md-6 col-xs-12 hidden-xs"
+                 style="background-color: white; opacity: 0.8; border-radius: 10px; color: black">
+                <div class="image-content">
+                    <h1 style="font-weight: bolder; font-family: 'Open Sans', sans-serif; ">Quality Academic
+                        Writing</h1>
+                    <h2 style="font-weight: bolder; font-family: 'Open Sans', sans-serif;">Service at an Affordable
+                        Price.</h2>
+                    <h4 style="font-family: 'Open Sans', sans-serif; font-size: 18px">Hire us, sit back and
+                        relax…….We’ll do it for you.</h4>
+                </div>
+                <div class="row hidden-xs" style="margin-top: 32px">
+                    <div class="col-md-2 hidden-xs">
+
+                    </div>
+                    <div class="col-md-4 col-xs-12">
+                        <?php
+                        if (Yii::$app->user->isGuest) {
+                            echo '<a class="btn btn-lg btn-success" href="' . Url::to(['/site/signup']) . '">Sign Up</a>';
+                        } else {
+                            echo '<a class="btn btn-lg btn-success" href="' . Url::to(['/order/index']) . '">Dashboard</a>';
+                        }
+                        ?>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <a class="btn btn-lg btn-info" href="<?= Url::to(['/order/create']) ?>">Order Now</a>
+                    </div>
+                </div>
+                <div class="hidden-xs" style="margin-top: 50px;">
+                    <h4 style="font-family: 'Open Sans', sans-serif; font-size: 18px">Get 100% <strong
+                                style="color: #5bc0de;">UNIQUE & QUALITY</strong> work delivered to you <strong
+                                style="color: #5bc0de;">ON TIME</strong>.</h4>
                 </div>
             </div>
-            <div class="col-md-6">
-                <?php $form = ActiveForm::begin(['layout' => 'horizontal',
-                    'action' => Url::to(['frontorder/details']),
-                    'fieldConfig' => [
-                        'template' => "{label}\n{beginWrapper}\n{input}\n{hint}\n{error}\n{endWrapper}",
-                        'horizontalCssClasses' => [
-                            'label' => 'col-sm-4',
-                            'wrapper' => 'col-sm-8',
-                            'error' => '',
-                            'hint' => '',
-                        ],
-                    ],
-                ]);
-                ?>
-                <div class="row">
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-                        <div class="col-md-12 col-xs-12"
-                             style="background-color: white; opacity: 0.8; color: black">
-                        <div class="hidden-xs">
-                            <h1 style="font-weight: bolder; font-family: 'Open Sans', sans-serif; ">Quality Academic
-                                Writing</h1>
-                            <h2 style="font-weight: bolder; font-family: 'Open Sans', sans-serif;">Service at an Affordable
-                                Price.</h2>
-                            <h4 style="font-family: 'Open Sans', sans-serif; font-size: 18px">Hire us, sit back and
-                                relax…….We’ll do it for you.</h4>
-                        </div>
-                        <div class="row hidden-xs" style="margin-top: 32px">
-                            <div class="col-md-2 hidden-xs">
-
-                            </div>
-                            <div class="col-md-4 col-xs-12">
-                                <?php
-                                if (Yii::$app->user->isGuest) {
-                                    echo '<a class="btn btn-lg" href="' . Url::to(['/site/signup']) . '" style="background-color: #90F1C8">Sign Up</a>';
-                                } else {
-                                    echo '<a class="btn btn-lg" href="' . Url::to(['/order/index']) . '" style="background-color: #90F1C8">Dashboard</a>';
-                                }
-                                ?>
-                            </div>
-                            <div class="col-sm-4 col-xs-12">
-                                <a class="btn btn-lg" href="<?= Url::to(['/order/create']) ?>" style="background-color: #90F1C8">Order Now</a>
-                            </div>
-                        </div>
-                        <div class="hidden-xs" style="margin-top: 50px;">
-                            <h4 style="font-family: 'Open Sans', sans-serif; font-size: 18px">Get 100% <strong
-                                        style="color: #3D715B;">UNIQUE & QUALITY</strong> work delivered to you <strong
-                                        style="color: #3D715B;">ON TIME</strong>.</h4>
-                        </div>
-                    </div>
-                    <div class="col-md-1 hidden-xs">
-
-                    </div>
+            <div class="col-md-6 col-xs-12 hidden-md hidden-lg hidden-sm"
+                 style="background-color: white; opacity: 0.8; border-radius: 5px; color: black">
+                <div class="image-content">
+                    <h2 style="font-weight: bolder; font-family: 'Open Sans', sans-serif;">Get the Service at an Affordable
+                        Price.</h2>
+                    <h4 style="font-family: 'Open Sans', sans-serif; font-size: 18px">Hire us, sit back and
+                        relax…….We’ll do it for you.</h4>
                 </div>
-                <?php ActiveForm::end(); ?>
             </div>
         </div>
     </div>
 </div>
-</div>
+<div class="container">
 <div class="site-index2">
-    <div class="body-container essay-font" style="background-color: white;">
-        <div class="container" style="background-color: white;">
+    <div class="body-container essay-font hidden-xs" style="background-color: white;">
             <div class="row" style="height: auto; margin-bottom: 20px;">
                 <h2 style="text-align: center; color: black;font-family: 'JetBrains Mono'">MAIN BENEFITS</h2>
                 <div class="col-md-3 col-sm-3 col-xs-12">
-                    <center><h2><i style="border-radius: 60px;box-shadow: 0px 0px 2px #888;padding: 0.5em 0.6em; color: #3D715B;" class="fa fa-check fa-2x" aria-hidden="true"></i></h2></center>
+                    <center><img width="130px" style="margin-top: 20px;border-radius: 30px"
+                                 src="<?= Yii::$app->request->baseUrl ?>/images/slides/registration.jpg"></center>
                     <ul style="list-style: none; color: black; font-size: 18px; text-align: center">
                         <li>
-                            <strong>No registration fees</strong>
+                            <strong style="font-family: 'JetBrains Mono'">No registration fees</strong>
                         </li>
                     </ul>
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-12">
-                    <center><h2><i style="border-radius: 60px;box-shadow: 0px 0px 2px #888;padding: 0.5em 0.6em; color: #3D715B;" class="fa fa-envelope fa-2x" aria-hidden="true"></i></h2></center>
+                    <center><img width="130px" style="margin-top: 10px;border-radius: 30px"
+                                 src="<?= Yii::$app->request->baseUrl ?>/images/slides/satsfaction.jpg"></center>
                     <ul style="list-style: none;color: black; font-size: 18px; text-align: center">
                         <li>
-                            <strong>Payments always on time</strong>
+                            <strong style="font-family: 'JetBrains Mono'">100% Satisfaction Guarantee</strong>
                         </li>
 
                     </ul>
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-12">
-                    <center><h2><i style="border-radius: 60px;box-shadow: 0px 0px 2px #888;padding: 0.5em 0.6em;color: #3D715B;" class="fa fa-file-pdf-o fa-2x" aria-hidden="true"></i></h2></center>
+                    <center><img width="115px" style="margin-top: 20px;border-radius: 30px"
+                                 src="<?= Yii::$app->request->baseUrl ?>/images/slides/sms.png"></center>
                     <ul style="list-style: none; color: black; font-size: 18px; text-align: center">
                         <li>
-                            <strong>Orders in the sphere of your interest</strong>
+                            <strong style="font-family: 'JetBrains Mono'">Free text/email<br> updates</strong>
                         </li>
                     </ul>
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-12">
-                    <center><h2><i style="border-radius: 60px;box-shadow: 0px 0px 2px #888;padding: 0.5em 0.6em;color: #3D715B;" class="fa fa-file-pdf-o fa-2x" aria-hidden="true"></i></h2></center>
+                    <center><img width="130px" style="border-radius: 30px"
+                                 src="<?= Yii::$app->request->baseUrl ?>/images/slides/customer.jpg"></center>
                     <ul style="list-style: none; color: black; font-size: 18px; text-align: center">
                         <li>
-                            <strong>24/7 available support team</strong>
+                            <strong style="font-family: 'JetBrains Mono'">24/7 available support team</strong>
                         </li>
                     </ul>
                 </div>
             </div>
             <div class="row" style="height: auto; margin-bottom: 20px; color: #46b8da;">
                 <div class="col-md-4 col-sm-4 col-xs-12">
-                    <center><h2><i style="border-radius: 60px;box-shadow: 0px 0px 2px #888;padding: 0.5em 0.6em; color: #3D715B;" class="fa fa-check fa-2x" aria-hidden="true"></i></h2></center>
+                    <center><img width="115px" style="border-radius: 30px"
+                                 src="<?= Yii::$app->request->baseUrl ?>/images/slides/pdf.png"></center>
                     <ul style="list-style: none;color: black; font-size: 18px; text-align: center">
                         <li>
-                            <strong>High wages</strong>
+                            <strong style="font-family: 'JetBrains Mono'">Free cover page</strong>
                         </li>
                     </ul>
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-12">
-                    <center><h2><i style="border-radius: 60px;box-shadow: 0px 0px 2px #888;padding: 0.5em 0.6em; color: #3D715B;" class="fa fa-envelope fa-2x" aria-hidden="true"></i></h2></center>
+                    <center><img width="120px" style="border-radius: 30px"
+                                 src="<?= Yii::$app->request->baseUrl ?>/images/slides/format.png"></center>
                     <ul style="list-style: none; color: black; font-size: 18px; text-align: center">
                         <li>
-                            <strong>Manage your time and workload yourself</strong>
+                            <strong style="font-family: 'JetBrains Mono'">Free revisions for <br>all orders</strong>
                         </li>
 
                     </ul>
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-12">
-                    <center><h2><i style="border-radius: 60px;box-shadow: 0px 0px 2px #888;padding: 0.5em 0.6em; color: #3D715B;" class="fa fa-file-pdf-o fa-2x" aria-hidden="true"></i></h2></center>
+                    <center><img width="130px" style="border-radius: 30px"
+                                 src="<?= Yii::$app->request->baseUrl ?>/images/slides/page.jpg"></center>
                     <ul style="list-style: none; color: black; none; font-size: 18px; text-align: center">
                         <li>
-                            <strong>Working from home</strong>
+                            <strong style="font-family: 'JetBrains Mono'">Free 1 page<br> summary</strong>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
-    <div class="body-container essay-font" style=" background-color: #f0f2f6; ">
-            <div class="row" style="height: auto; margin-bottom: 20px;margin-left: 70px">
-                <div class="row" style="margin-bottom: 20px;">
+</div>
+    <div class="site-index2">
+            <div class="row" style="height: auto; margin-bottom: 20px; background-color: #f0f2f6">
+                <div class="container">
                     <h2 class="essay-font" style="text-align: center;font-family: 'JetBrains Mono'">HOW IT WORKS</h2>
-                </div>
                 <center>
-                    <div class="col-md-2">
-                        <div style="height: 90px">
+                    <div class="col-md-3 col-sm-3 col-xs-12">
                             <div class="row">
                                 <div class="col-md-8 essay-font hidden-xs">
-                                    <img width="150px" style="margin-right: 20px;border-radius: 30px"
-                                         src="<?= Yii::$app->request->baseUrl ?>/images/perfomance/place-order.png">
-                                    <p style="vertical-align: middle">PLACE YOUR ORDER</p>
+                                    <button style="border-radius: 30px;font-family: 'Philosopher', sans-serif; background-color: #71D8EC" type="button" class="btn btn-lg essay-font">
+                                        PLACE ORDER
+                                    </button>
+                                    <p style="vertical-align: middle">Place your order</p>
                                 </div>
+                                <div class="hidden-md hidden-lg hidden-sm">
+                                <button style="border-radius: 30px;font-family: 'Philosopher', sans-serif; background-color: #71D8EC" type="button" class="btn btn-lg essay-font">
+                                    PLACE ORDER
+                                </button>
                                 <p class="hidden-md hidden-lg hidden-sm">PLACE YOUR ORDER</p>
+                                </div>
                                 <div class="col-md-4 col-sm-2 col-xs-12">
                                     <i style="line-height: 90px; vertical-align: middle;color: #1e7e34"
                                        class="fa fa-arrow-right fa-3x hidden-xs" aria-hidden="true"></i>
-                                    <i class="fa fa-arrow-down fa-3x hidden-md hidden-lg hidden-sm "
+                                    <i class="fa fa-arrow-down text-success fa-3x hidden-md hidden-lg hidden-sm "
                                        aria-hidden="true"></i>
                                 </div>
                             </div>
-                        </div>
                     </div>
                 </center>
                 <center>
-                    <div class="col-md-2 col-sm-2 col-xs-12">
+                    <div class="col-md-3 col-sm-3 col-xs-12">
                         <div class="row">
                             <div class="col-md-8 essay-font hidden-xs">
-                                <img width="150px" style="margin-right: 20px;border-radius: 30px"
-                                     src="<?= Yii::$app->request->baseUrl ?>/images/perfomance/preparation.png">
+                                <button style="border-radius: 30px; font-family: 'Philosopher', sans-serif; background-color: #71D8EC" type="button" class="btn btn-lg essay-font">
+                                    PREPARATION
+                                </button>
                                 <p style="vertical-align: middle">The writer prepares sources for your work</p>
                             </div>
+                            <div class="hidden-md hidden-lg hidden-sm">
+                            <button style="border-radius: 30px; font-family: 'Philosopher', sans-serif; background-color: #71D8EC" type="button" class="btn btn-lg essay-font">
+                                PREPARATION
+                            </button>
                             <p class="hidden-md hidden-lg hidden-sm">The writer prepares sources for your work</p>
+                            </div>
                             <div class="col-md-4 col-sm-2 col-xs-12">
                                 <i style="line-height: 90px; vertical-align: middle;color: #1e7e34"
                                    class="fa fa-arrow-right fa-3x hidden-xs" aria-hidden="true"></i>
-                                <i class="fa fa-arrow-down fa-3x hidden-md hidden-lg hidden-sm "
+                                <i class="fa fa-arrow-down fa-3x text-success hidden-md hidden-lg hidden-sm "
                                    aria-hidden="true"></i>
                             </div>
-                    </div>
+                        </div>
                 </center>
                 <center>
-                    <div class="col-md-2 col-sm-2 col-xs-12">
+                    <div class="col-md-3 col-sm-3 col-xs-12">
                         <div class="row">
                             <div class="col-md-8 essay-font hidden-xs">
-                                <img width="150px" style="margin-right: 20px;border-radius: 30px"
-                                     src="<?= Yii::$app->request->baseUrl ?>/images/perfomance/complete.jpg">
+                                <button style="border-radius: 30px;font-family: 'Philosopher', sans-serif;  background-color: #71D8EC" type="button" class="btn btn-lg essay-font">
+                                    COMPLETION
+                                </button>
                                 <p style="vertical-align: middle">The writer completes your paper</p>
                             </div>
+                            <div class="hidden-md hidden-lg hidden-sm">
+                            <button style="border-radius: 30px;font-family: 'Philosopher', sans-serif;  background-color: #71D8EC" type="button" class="btn btn-lg essay-font">
+                                COMPLETION
+                            </button>
                             <p class="hidden-md hidden-lg hidden-sm">The writer completes your paper</p>
+                            </div>
                             <div class="col-md-4 col-sm-2 col-xs-12">
                                 <i style="line-height: 90px; vertical-align: middle;color: #1e7e34"
                                    class="fa fa-arrow-right fa-3x hidden-xs" aria-hidden="true"></i>
-                                <i class="fa fa-arrow-down fa-3x hidden-md hidden-lg hidden-sm "
+                                <i class="fa fa-arrow-down fa-3x text-success hidden-md hidden-lg hidden-sm "
                                    aria-hidden="true"></i>
                             </div>
                         </div>
                     </div>
                 </center>
                 <center>
-                    <div class="col-md-2 col-sm-2 col-xs-12">
+                    <div class="col-md-3 col-sm-3 col-xs-12">
                         <div class="row">
                             <div class="col-md-8 essay-font hidden-xs">
-                                <img width="150px" style="margin-right: 20px;"
-                                     src="<?= Yii::$app->request->baseUrl ?>/images/perfomance/polished.png">
+                                <button style="border-radius: 30px; font-family: 'Philosopher', sans-serif; background-color: #71D8EC" type="button" class="btn btn-lg essay-font">
+                                    POLISHING
+                                </button>
                                 <p style="vertical-align: middle">The writer polishes your paper</p>
                             </div>
-                            <p class="hidden-md hidden-lg hidden-sm">The writer polishes your paper</p>
+                            <div class="hidden-md hidden-lg hidden-sm">
+                            <button style="border-radius: 30px; font-family: 'Philosopher', sans-serif; background-color: #71D8EC" type="button" class="btn btn-lg essay-font">
+                                POLISHING
+                            </button>
+                            <p>The writer polishes your paper</p>
+                            </div>
                             <div class="col-md-4 col-sm-2 col-xs-12">
-                                <i style="line-height: 90px; vertical-align: middle;color: #1e7e34"
-                                   class="fa fa-arrow-right fa-3x hidden-xs" aria-hidden="true"></i>
-                                <i class="fa fa-arrow-down fa-3x hidden-md hidden-lg hidden-sm "
+                                <i style="margin-bottom: 80px; vertical-align: middle;color: #1e7e34"
+                                class="fa fa-check-circle fa-5x hidden-xs" aria-hidden="true"></i></i>
+                                <i class="fa fa-arrow-down fa-3x text-success hidden-md hidden-lg hidden-sm "
                                    aria-hidden="true"></i>
+                                <h3 style="font-family: 'Philosopher', sans-serif" class="hidden-md hidden-lg hidden-sm">You Receive your Work</h3>
                             </div>
                         </div>
                     </div>
                 </center>
-                <center>
-                <div class="col-md-2 col-sm-2 col-xs-12">
-                    <div class="col-md-8 essay-font hidden-xs">
-                        <p style="vertical-align: middle"><strong><h4 style="font-family: 'Comfortaa', cursive;">YOU RECEIVE THE FINAL PAPER</h4></strong></p>
-                    </div>
-                    <p class="hidden-md hidden-lg hidden-sm">YOU RECEIVE THE FINAL PAPER</p>
-                    <div class="col-md-4 col-sm-2 col-xs-12">
-                        <i style="line-height: 90px; vertical-align: middle;color: #1e7e34"
-                           class="fa fa-arrow-right fa-3x hidden-xs" aria-hidden="true"></i>
-                        <i class="fa fa-arrow-down fa-3x hidden-md hidden-lg hidden-sm "
-                           aria-hidden="true"></i>
-                    </div>
-                </div>
-                </center>
-                <center>
-                <div class="col-md-2 col-sm-2 col-xs-12">
-                    <div class="col-md-8 essay-font hidden-xs">
-                        <p style="vertical-align: middle"><i style="line-height: 90px; vertical-align: middle;color: #1e7e34"
-                         class="fa fa-check-circle fa-5x hidden-xs" aria-hidden="true"></i></p>
-                    </div>
-                    <p class="hidden-md hidden-lg hidden-sm">Checked</p>
-                    <div class="col-md-4 col-sm-2 col-xs-12">
-                        <i class="fa fa-arrow-down fa-3x hidden-md hidden-lg hidden-sm "
-                           aria-hidden="true"></i>
-                    </div>
-                </div>
-                </center>
             </div>
-            <div class="row" style="margin-bottom: 20px">
-                <center><a href="<?= Url::to(['site/how_it_works']) ?>">
-                        <button style="border-radius: 30px;background-color: #90F1C8" type="button" class="btn btn-lg essay-font">Learn
-                            More
-                        </button>
-                    </a></center>
-
-            </div>
+        </div>
     </div>
+
     <div class="row" style="background-color: white; font-family: 'Open Sans', sans-serif;line-height: 2.0">
         <div class="container">
-        <div class="col-md-4 col-sm-4">
-            <h2><strong>Moneyback Guarantee</strong></h2>
-            <p>Are you searching for a website that will guarantee you good grades?
-                One of the best essay writing service provider is DoctorateEssays.
-                With a team of proficient writers from native English speaking countries,
-                we promise to deliver quality work to you on time. Our writers are available 24/7
-                to handle all your projects regardless of the deadline or the difficulty.
-                We write all papers from scratch and highly penalize any writer who tries to
-                deliver plagiarized writing to you. All revisions are free until you are 100%
-                satisfied with your paper.</p>
-            <center><img src="<?= Yii::$app->request->baseUrl ?>/images/page/money-back-guarantee2.png"
-                         width="222px"></center>
-            <center><a href="<?= Url::to(['site/guarantee']) ?>">
-                    <button style="border-radius: 30px; background-color: #90F1C8" type="button" class="btn btn-lg essay-font">
-                        Money back guarantee
-                    </button>
-                </a></center>
-        </div>
-        <div class="col-md-8 col-sm-4">
-            <center><h2><strong>Who we are</strong></h2></center>
-            <p>Verified Preffessors is a reliable partner for professional freelance writers who are looking for a trustworthy long-term cooperation. For those pursuing personal development, our company is also the right choice since we offer numerous interesting projects and opportunities for self-improvement. Besides, our support team members are always ready to help as they work 24/7.
-                If writing is what you like, you are welcome to give it a try with us!</p>
-            <center>
-                <svg class="recharts-surface" width="710" height="450" viewBox="0 0 510 250" version="1.1"><defs><clipPath id="recharts2-clip"><rect x="15" y="10" height="210" width="480"></rect></clipPath></defs><defs><linearGradient id="colorVP" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stop-color="#90F1C8" stop-opacity="0.8"></stop><stop offset="95%" stop-color="#90F1C8" stop-opacity="0"></stop></linearGradient></defs><g class="recharts-layer recharts-cartesian-axis recharts-xAxis xAxis">
-                        <line class="recharts-cartesian-axis-line" width="480" height="30" x="15" y="220" stroke="#666" fill="none" x1="15" y1="220" x2="495" y2="220"></line><g class="recharts-cartesian-axis-ticks"><g class="recharts-layer recharts-cartesian-axis-tick">
-                                <line class="recharts-cartesian-axis-tick-line" width="480" height="30" x="15" y="220" stroke="#000" fill="none" x1="15" y1="226" x2="15" y2="220"></line><text width="480" height="30" x="415" y="228" stroke="none" fill="#666" font-size="11px" class="recharts-text recharts-cartesian-axis-tick-value" text-anchor="middle"><tspan x="15" dy="0.71em">2014</tspan></text></g><g class="recharts-layer recharts-cartesian-axis-tick">
-                                <line class="recharts-cartesian-axis-tick-line" width="480" height="30" x="15" y="220" stroke="#000" fill="none" x1="63" y1="226" x2="63" y2="220"></line><text width="480" height="30" x="63" y="228" stroke="none" fill="#666" font-size="11px" class="recharts-text recharts-cartesian-axis-tick-value" text-anchor="middle"><tspan x="63" dy="0.71em">2015</tspan></text></g><g class="recharts-layer recharts-cartesian-axis-tick">
-                                <line class="recharts-cartesian-axis-tick-line" width="480" height="30" x="15" y="220" stroke="#666" fill="none" x1="111" y1="226" x2="111" y2="220"></line><text width="480" height="30" x="111" y="228" stroke="none" fill="#666" font-size="11px" class="recharts-text recharts-cartesian-axis-tick-value" text-anchor="middle"><tspan x="111" dy="0.71em">2016</tspan></text></g><g class="recharts-layer recharts-cartesian-axis-tick">
-                                <line class="recharts-cartesian-axis-tick-line" width="480" height="30" x="15" y="220" stroke="#666" fill="none" x1="159" y1="226" x2="159" y2="220"></line><text width="480" height="30" x="159" y="228" stroke="none" fill="#666" font-size="11px" class="recharts-text recharts-cartesian-axis-tick-value" text-anchor="middle"><tspan x="159" dy="0.71em">2017</tspan></text></g><g class="recharts-layer recharts-cartesian-axis-tick">
-                                <line class="recharts-cartesian-axis-tick-line" width="480" height="30" x="15" y="220" stroke="#666" fill="none" x1="207" y1="226" x2="207" y2="220"></line><text width="480" height="30" x="207" y="228" stroke="none" fill="#666" font-size="11px" class="recharts-text recharts-cartesian-axis-tick-value" text-anchor="middle"><tspan x="207" dy="0.71em">2018</tspan></text></g><g class="recharts-layer recharts-cartesian-axis-tick">
-                                <line class="recharts-cartesian-axis-tick-line" width="480" height="30" x="15" y="220" stroke="#666" fill="none" x1="255" y1="226" x2="255" y2="220"></line><text width="480" height="30" x="255" y="228" stroke="none" fill="#666" font-size="11px" class="recharts-text recharts-cartesian-axis-tick-value" text-anchor="middle"><tspan x="255" dy="0.71em">2019</tspan></text></g><g class="recharts-layer recharts-cartesian-axis-tick">
-                                <line class="recharts-cartesian-axis-tick-line" width="480" height="30" x="15" y="220" stroke="#666" fill="none" x1="303" y1="226" x2="303" y2="220"></line><text width="480" height="30" x="303" y="228" stroke="none" fill="#666" font-size="11px" class="recharts-text recharts-cartesian-axis-tick-value" text-anchor="middle"><tspan x="303" dy="0.71em">2020</tspan></text></g><g class="recharts-layer recharts-cartesian-axis-tick">
-                                <line class="recharts-cartesian-axis-tick-line" width="480" height="30" x="15" y="220" stroke="#666" fill="none" x1="351" y1="226" x2="351" y2="220"></line><text width="480" height="30" x="351" y="228" stroke="none" fill="#666" font-size="11px" class="recharts-text recharts-cartesian-axis-tick-value" text-anchor="middle"><tspan x="351" dy="0.71em">2014</tspan></text></g><g class="recharts-layer recharts-cartesian-axis-tick">
-                                <line class="recharts-cartesian-axis-tick-line" width="480" height="30" x="15" y="220" stroke="#666" fill="none" x1="399" y1="226" x2="399" y2="220"></line><text width="480" height="30" x="399" y="228" stroke="none" fill="#666" font-size="11px" class="recharts-text recharts-cartesian-axis-tick-value" text-anchor="middle"><tspan x="399" dy="0.71em">2015</tspan></text></g><g class="recharts-layer recharts-cartesian-axis-tick">
-                                <line class="recharts-cartesian-axis-tick-line" width="480" height="30" x="15" y="220" stroke="#666" fill="none" x1="447" y1="226" x2="447" y2="220"></line><text width="480" height="30" x="447" y="228" stroke="none" fill="#666" font-size="11px" class="recharts-text recharts-cartesian-axis-tick-value" text-anchor="middle"><tspan x="447" dy="0.71em">2016</tspan></text></g><g class="recharts-layer recharts-cartesian-axis-tick">
-                                <line class="recharts-cartesian-axis-tick-line" width="480" height="30" x="15" y="220" stroke="#666" fill="none" x1="495" y1="226" x2="495" y2="220"></line><text width="480" height="30" x="495" y="228" stroke="none" fill="#666" font-size="11px" class="recharts-text recharts-cartesian-axis-tick-value" text-anchor="middle"><tspan x="495" dy="0.71em">2017</tspan></text></g></g></g><g class="recharts-cartesian-grid"><g class="recharts-cartesian-grid-horizontal">
-                            <line stroke-dasharray="8 8" stroke="#ccc" fill="none" x="15" y="10" width="480" height="210" x1="15" y1="220" x2="495" y2="220"></line>
-                            <line stroke-dasharray="8 8" stroke="#ccc" fill="none" x="15" y="10" width="480" height="210" x1="15" y1="167.5" x2="495" y2="167.5"></line>
-                            <line stroke-dasharray="8 8" stroke="#ccc" fill="none" x="15" y="10" width="480" height="210" x1="15" y1="115" x2="495" y2="115"></line>
-                            <line stroke-dasharray="8 8" stroke="#ccc" fill="none" x="15" y="10" width="480" height="210" x1="15" y1="62.5" x2="495" y2="62.5"></line>
-                            <line stroke-dasharray="8 8" stroke="#ccc" fill="none" x="15" y="10" width="480" height="210" x1="15" y1="10" x2="495" y2="10"></line>
-                        </g></g><g class="recharts-layer recharts-area"><g class="recharts-layer">
-                            <path stroke="none" fill-opacity="1" fill="url(#colorUv)" width="480" height="210" class="recharts-curve recharts-area-area" d="M15,198.475L63,188.36875L111,134.95000000000002L159,148.07500000000002L207,143.21875L255,110.14375000000001L303,79.3L351,76.675L399,27.19375000000001L447,32.44375000000001L495,11.443749999999993L495,220L447,220L399,220L351,220L303,220L255,220L207,220L159,220L111,220L63,220L15,220Z"></path>
-                            <path stroke="#f29f22" fill-opacity="1" fill="none" width="480" height="210" class="recharts-curve recharts-area-curve" d="M15,198.475L63,188.36875L111,134.95000000000002L159,148.07500000000002L207,143.21875L255,110.14375000000001L303,79.3L351,76.675L399,27.19375000000001L447,32.44375000000001L495,11.443749999999993"></path></g><g class="recharts-layer recharts-area-dots">
-                            <circle r="4" stroke="#fff" fill-opacity="100" fill="#f29f22" width="480" height="210" stroke-width="1.5" class="recharts-dot recharts-area-dot" cx="15" cy="198.475"></circle>
-                            <circle r="4" stroke="#fff" fill-opacity="100" fill="#f29f22" width="480" height="210" stroke-width="1.5" class="recharts-dot recharts-area-dot" cx="63" cy="188.36875"></circle>
-                            <circle r="4" stroke="#fff" fill-opacity="100" fill="#f29f22" width="480" height="210" stroke-width="1.5" class="recharts-dot recharts-area-dot" cx="111" cy="134.95000000000002"></circle>
-                            <circle r="4" stroke="#fff" fill-opacity="100" fill="#f29f22" width="480" height="210" stroke-width="1.5" class="recharts-dot recharts-area-dot" cx="159" cy="148.07500000000002"></circle>
-                            <circle r="4" stroke="#fff" fill-opacity="100" fill="#f29f22" width="480" height="210" stroke-width="1.5" class="recharts-dot recharts-area-dot" cx="207" cy="143.21875"></circle>
-                            <circle r="4" stroke="#fff" fill-opacity="100" fill="#f29f22" width="480" height="210" stroke-width="1.5" class="recharts-dot recharts-area-dot" cx="255" cy="110.14375000000001"></circle>
-                            <circle r="4" stroke="#fff" fill-opacity="100" fill="#f29f22" width="480" height="210" stroke-width="1.5" class="recharts-dot recharts-area-dot" cx="303" cy="79.3"></circle>
-                            <circle r="4" stroke="#fff" fill-opacity="100" fill="#f29f22" width="480" height="210" stroke-width="1.5" class="recharts-dot recharts-area-dot" cx="351" cy="76.675"></circle>
-                            <circle r="4" stroke="#fff" fill-opacity="100" fill="#f29f22" width="480" height="210" stroke-width="1.5" class="recharts-dot recharts-area-dot" cx="399" cy="27.19375000000001"></circle>
-                            <circle r="4" stroke="#fff" fill-opacity="100" fill="#f29f22" width="480" height="210" stroke-width="1.5" class="recharts-dot recharts-area-dot" cx="447" cy="32.44375000000001"></circle>
-                            <circle r="4" stroke="#fff" fill-opacity="100" fill="#f29f22" width="480" height="210" stroke-width="1.5" class="recharts-dot recharts-area-dot" cx="495" cy="11.443749999999993"></circle>
-                        </g></g></svg></center>
-        </div>
+            <div class="col-md-4 col-sm-4">
+                <h2 style="font-family: 'JetBrains Mono'"><strong>Moneyback Guarantee</strong></h2>
+                <p>Are you searching for a website that will guarantee you good grades?
+                    One of the best essay writing service provider is DoctorateEssays.
+                    With a team of proficient writers from native English speaking countries,
+                    we promise to deliver quality work to you on time. Our writers are available 24/7
+                    to handle all your projects regardless of the deadline or the difficulty.
+                    We write all papers from scratch and highly penalize any writer who tries to
+                    deliver plagiarized writing to you. All revisions are free until you are 100%
+                    satisfied with your paper.</p>
+                <center><img src="<?= Yii::$app->request->baseUrl ?>/images/page/money-back-guarantee2.png"
+                             width="222px"></center>
+                <center><a href="<?= Url::to(['site/guarantee']) ?>">
+                        <button style="color: white; border-radius: 30px; background-color: #1695a4" type="button" class="btn btn-lg essay-font">
+                            Money back guarantee
+                        </button>
+                    </a></center>
+                <br>
+            </div>
+            <div class="col-md-8 col-sm-4">
+                <center><h2 style="font-family: 'JetBrains Mono';font-weight: bolder">Who we are</h2></center>
+                <p>Verified Prefessors is a reliable partner for professional freelance writers who are looking for a trustworthy long-term cooperation. For those pursuing personal development, our company is also the right choice since we offer numerous interesting projects and opportunities for self-improvement. Besides, our support team members are always ready to help as they work 24/7.
+                    If writing is what you like, you are welcome to give it a try with us!<br>
+                    Verified Prefessors is a reliable partner for professional freelance writers who are looking for a trustworthy long-term cooperation. For those pursuing personal development, our company is also the right choice since we offer numerous interesting projects and opportunities for self-improvement. Besides, our support team members are always ready to help as they work 24/7.
+                    If writing is what you like, you are welcome to give it a try with us!</p>
+                <center><h1 style="color: #1695a4">24/7 Customer Support</h1><br>
+                    <h1 style="font-family: 'Ranchers', cursive; font-size: 100px; color: #3D715B">98.9%</h1>
+                    <p>More than 98% of customers were satisfied with the work of our customer support. We respond to any issue as fast as possible – your happiness is our aim.</p>
+                </center>
+
+                <h1
+            </div>
         </div>
     </div>
-</div>
+
 <div class="body-container essay-font" style="background-color: #3D715B">
     <div class="container">
-        <div class="row" style="height: auto; color: #69D9F4">
+        <div class="row" style="height: auto; color: #69D9F4;margin-top: 10px">
             <div class="col-md-3 col-sm-3 col-xs-12 numbers-items">
-                <center><img src="<?= Yii::$app->request->baseUrl ?>/images/perfomance/1.png"></center>
+                <center><img width="80px" style="border-radius: 60px" src="<?= Yii::$app->request->baseUrl ?>/images/slides/approved.png"></center>
                 <h1 class="numbers-with-commas"
-                    style="font-size: 60px; font-weight: 900; text-align: center"><?= number_format(floatval($allorders), 0, '.', ',') ?></h1>
-                <h5 style="text-align: center">COMPLETED ORDERS</h5>
+                    style="color:white; font-size: 60px; font-weight: 900; text-align: center"><?= number_format(floatval($allorders), 0, '.', ',') ?></h1>
+                <h5 style="color:white; text-align: center">COMPLETED ORDERS</h5>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-12 numbers-items">
-                <center><img src="<?= Yii::$app->request->baseUrl ?>/images/perfomance/2.png"></center>
-                <h1 class="numbers-with-commas" style="font-size: 60px; font-weight: 900; text-align: center">52</h1>
-                <h5 style="text-align: center">SATISFIED CLIENTS</h5>
+                <center><img width="80px" style="border-radius: 60px" src="<?= Yii::$app->request->baseUrl ?>/images/slides/satisfied.png"></center>
+                <h1 class="numbers-with-commas" style="color:white; font-size: 60px; font-weight: 900; text-align: center">52</h1>
+                <h5 style="color:white; text-align: center">SATISFIED CLIENTS</h5>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-12 numbers-items">
-                <center><img src="<?= Yii::$app->request->baseUrl ?>/images/perfomance/3.png"></center>
-                <h1 style="font-size: 60px; font-weight: 900; text-align: center">97.64<sup>%</sup></h1>
-                <h5 style="text-align: center;">POSITIVE FEEDBACKS</h5>
+                <center><img width="80px" style="border-radius: 60px" src="<?= Yii::$app->request->baseUrl ?>/images/slides/tick.png"></center>
+                <h1 style="color:white; font-size: 60px; font-weight: 900; text-align: center">97.64<sup>%</sup></h1>
+                <h5 style="color:white; text-align: center;">POSITIVE FEEDBACKS</h5>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-12 numbers-items">
-                <center><img src="<?= Yii::$app->request->baseUrl ?>/images/perfomance/4.png"></center>
-                <h1 class="numbers-with-commas" style="font-size: 60px; font-weight: 900; text-align: center">8</h1>
-                <h5 style="text-align: center">SUPPORT REPRESENTATIVES</h5>
+                <center><img width="80px" style="border-radius: 60px" src="<?= Yii::$app->request->baseUrl ?>/images/slides/rep.jpg"></center>
+                <h1 class="numbers-with-commas" style="color:white; font-size: 60px; font-weight: 900; text-align: center">8</h1>
+                <h5 style="color:white; text-align: center">SUPPORT REPRESENTATIVES</h5>
             </div>
         </div>
     </div>
 </div>
-    <div class="body-container testim essay-font hidden-xs">
-        <div class="container">
-            <div class="row" style="height: auto; margin-top: 20px; margin-bottom: 20px;">
-                <h1 style="text-align: center; font-weight: 900; color:#000000;font-family: 'Comfortaa', cursive;">TESTIMONIALS</h1>
-                <div class="row">
-                    <div class="col-md-6 col-md-offset-3" style="height: 220px; margin-top: 30px; border-radius: 10px">
-                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="8000">
-                            <!-- Indicators -->
-                            <ol class="carousel-indicators" style="color: #2e6da4">
-                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                            </ol>
 
-                            <!-- Wrapper for slides -->
-                            <div class="carousel-inner" style="padding: 0 5px 0 5px;" role="listbox">
-                                <div class="item active"
-                                     style="height: 220px; background-color: white; padding: 15px; border-radius: 15px">
-                                    <p class="choose-body" style="font-size: 20px; font-style: italic"><strong>"</strong>These
-                                        guys have been saving me big time.
-                                        Third time placing an order with them and they delivered quality work as always.
-                                        Thanks guys. Highly recommend!!<strong>"</strong></p>
-                                    <p style="font-style: italic; font-size: 24px; font-weight: bold; text-align: center">
-                                        Jay</p>
-                                    <div class="carousel-caption">
-                                    </div>
-                                </div>
-                                <div class="item"
-                                     style="height: 220px; background-color: white; padding: 15px; border-radius: 15px">
-                                    <p class="choose-body" style="font-size: 20px; font-style: italic"><strong>"</strong>You
-                                        never disappoint.
-                                        You did an AMAZING work within a very short time.
-                                        It looked so easy for you.
-                                        Will definitely keep using your services.<strong>"</strong></p>
-                                    <p style="font-style: italic; font-size: 24px; font-weight: bold; text-align: center">
-                                        Steve002</p>
-                                    <div class="carousel-caption">
-                                    </div>
-                                </div>
-                                <div class="item"
-                                     style="height: 220px; background-color: white; padding: 15px; border-radius: 15px">
-                                    <p class="choose-body" style="font-size: 20px; font-style: italic"><strong>"</strong>Doctorate
-                                        essays are very cheap as
-                                        compared those other sites I have visited.
-                                        The quality of work is high.
-                                        I recommend this site.<strong>"</strong></p>
-                                    <p style="font-style: italic; font-size: 24px; font-weight: bold; text-align: center">
-                                        Myrah</p>
-                                    <div class="carousel-caption">
-                                    </div>
-                                </div>
-                                <div class="item"
-                                     style="height: 220px; background-color: white; padding: 15px; border-radius: 15px">
-                                    <p style="font-size: 20px; font-style: italic"><strong>"</strong>Checked my paper for
-                                        plagiarism and it was 100% unique.
-                                        I’m expecting a passing grade from what I see on the paper.
-                                        I love it!!!!. Thank you so much<strong>"</strong></p>
-                                    <p style="font-style: italic; font-size: 24px; font-weight: bold; text-align: center">
-                                        Aggie</p>
-                                    <div class="carousel-caption">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="row" style="margin-bottom: 20px;">
+    <div class="container">
+    <div class="row essay-font" style="margin-bottom: 20px; text-align: center">
+        <h1>WHY CHOOSE US</h1>
     </div>
-
-    <div class="row" style="height: auto; margin-bottom: 20px;">
-        <div class="container">
-        <div class="row essay-font" style="margin-bottom: 20px; text-align: center">
-            <h1>WHY CHOOSE US</h1>
-        </div>
-        <div class="col-md-4">
-            <div class="col-md-11">
-                <div class="row block-reason">
-                    <div class="col-md-3  col-sm-3 col-xs-3 svg-back">
-                        <i class="fa fa-graduation-cap fa-3x"
-                           style="color: white; line-height: 60px; vertical-align: middle"
-                           aria-hidden="true"></i>
-                    </div>
-                    <div class="col-md-9 col-sm-9 col-xs-9">
-                        <p style="font-size: 20px;">More than 10 years <span
-                                    style="font-weight: 900">Experience</span></p>
-                    </div>
+    <div class="col-md-4">
+        <div class="col-md-11">
+            <div class="row block-reason">
+                <div class="col-md-3  col-sm-3 col-xs-3 svg-back">
+                    <i class="fa fa-graduation-cap fa-3x"
+                       style="color: white; line-height: 60px; vertical-align: middle"
+                       aria-hidden="true"></i>
                 </div>
-                <div class="row block-reason">
-                    <div class=" col-md-3 col-sm-3 col-xs-3 svg-back">
-                        <i class="fa fa-check-circle fa-3x"
-                           style="color: white; line-height: 60px; vertical-align: middle"
-                           aria-hidden="true"></i>
-                    </div>
-                    <div class="col-md-9 col-sm-9 col-xs-9">
-                        <p style="font-size: 20px;">100 percent <b style="font-weight: 900">Original</b> <span>Paper</span>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="col-md-11">
-                <div class="row block-reason">
-                    <div class=" col-md-3 col-sm-3 col-xs-3 svg-back">
-                        <i class="fa fa-clock-o fa-3x"
-                           style="color: white; line-height: 60px; vertical-align: middle"
-                           aria-hidden="true"></i>
-                    </div>
-                    <div class="col-md-9 col-sm-9 col-xs-9">
-                        <p style="font-size: 20px;">Delivers on <b style="font-weight: 900">Urgent</b> <span>Orders</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="row block-reason">
-                    <div class=" col-md-3 col-sm-3 col-xs-3 svg-back">
-                        <i class="fa fa-th-list fa-3x"
-                           style="color: white; line-height: 60px; vertical-align: middle"
-                           aria-hidden="true"></i>
-                    </div>
-                    <div class="col-md-9 col-sm-9 col-xs-9">
-                        <p style="font-size: 20px;">All writing <b style="font-weight: 900">Subjects</b> <span>Offered</span>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="col-md-11">
-                <div class="row block-reason">
-                    <div class="col-md-3 col-sm-3 col-xs-3 svg-back">
-                        <i class="fa fa-percent fa-3x"
-                           style="color: white; line-height: 60px; vertical-align: middle"
-                           aria-hidden="true"></i>
-                    </div>
-                    <div class="col-md-9 col-sm-9 col-xs-9" 0
-                    <p style="font-size: 20px;">Amazing <b style="font-weight: 900">Discounts</b>
-                        <span>offered</span></p>
+                <div class="col-md-9 col-sm-9 col-xs-9">
+                    <p style="font-size: 20px;">More than 10 years <span
+                                style="font-weight: 900">Experience</span></p>
                 </div>
             </div>
             <div class="row block-reason">
-                <div class="col-md-3 col-sm-3 col-xs-3 svg-back">
-                    <i class="fa fa-certificate fa-3x"
-                       style="color: white; line-height: 60px; vertical-align: middle" aria-hidden="true"></i>
+                <div class=" col-md-3 col-sm-3 col-xs-3 svg-back">
+                    <i class="fa fa-check-circle fa-3x"
+                       style="color: white; line-height: 60px; vertical-align: middle"
+                       aria-hidden="true"></i>
                 </div>
                 <div class="col-md-9 col-sm-9 col-xs-9">
-                    <p style="font-size: 20px;">Amazing <b style="font-weight: 900">Features</b> <span>for every order</span>
+                    <p style="font-size: 20px;">100 percent <b style="font-weight: 900">Original</b> <span>Paper</span>
                     </p>
                 </div>
             </div>
         </div>
     </div>
-    </div>
-<div class="body-container hidden-xs" style="background-color: whitesmoke;">
-    <div class="container" style="background-color: whitesmoke;">
-        <div class="row" style="height: auto; margin-bottom: 20px">
-            <div class="row" style="margin-bottom: 20px;">
-                <h1 class="essay-font" style="text-align: center">Looking for a writer who can deliver a high quality
-                    paper?</h1>
-                <h4 class="essay-font" style="text-align: center">Our writers are well experienced to handle the
-                    following projects and more:</h4>
+    <div class="col-md-4">
+        <div class="col-md-11">
+            <div class="row block-reason">
+                <div class=" col-md-3 col-sm-3 col-xs-3 svg-back">
+                    <i class="fa fa-clock-o fa-3x"
+                       style="color: white; line-height: 60px; vertical-align: middle"
+                       aria-hidden="true"></i>
+                </div>
+                <div class="col-md-9 col-sm-9 col-xs-9">
+                    <p style="font-size: 20px;">Delivers on <b style="font-weight: 900">Urgent</b> <span>Orders</span>
+                    </p>
+                </div>
             </div>
-            <div class="col-md-3" style="text-align: center">
-                <p class="essay-font">Custom Essay</p>
-                <p class="essay-font">Case Study</p>
-                <p class="essay-font">Business Plan</p>
-                <p class="essay-font">Research Paper</p>
-                <p class="essay-font">Admission Essay</p>
-                <p class="essay-font">Literature Review</p>
-            </div>
-            <div class="col-md-3" style="text-align: center">
-                <p class="essay-font">Coursework</p>
-                <p class="essay-font">Term Paper</p>
-                <p class="essay-font">Research Proposal</p>
-                <p class="essay-font">Presentation or Speech</p>
-                <p class="essay-font">Annotated Bibliography</p>
-                <p class="essay-font">Multiple Choice Questions</p>
-            </div>
-            <div class="col-md-3" style="text-align: center">
-                <p class="essay-font">Article Review</p>
-                <p class="essay-font">Creative Writing</p>
-                <p class="essay-font">Reflective Writing</p>
-                <p class="essay-font">Thesis / Dissertation</p>
-                <p>Book / Movie Review</p>
-                <p class="essay-font">Critical Thinking / Review</p>
-            </div>
-            <div class="col-md-3 essay-font" style="text-align: center">
-                <p>Report</p>
-                <p>Lab Report</p>
-                <p>Math Problem</p>
-                <p>Capstone Project</p>
-                <p>Statistical Project</p>
-                <p>Editing and proofreading</p>
-            </div>
-            <div class="row" style="margin-top: 20px;">
-                <center><a data-toggle="modal" data-target="#orderModal">
-                        <button style="border-radius: 30px; background-color: #90F1C8" type="button" class="btn btn-lg essay-font">
-                            Order Now
-                        </button>
-                    </a></center>
+            <div class="row block-reason">
+                <div class=" col-md-3 col-sm-3 col-xs-3 svg-back">
+                    <i class="fa fa-th-list fa-3x"
+                       style="color: white; line-height: 60px; vertical-align: middle"
+                       aria-hidden="true"></i>
+                </div>
+                <div class="col-md-9 col-sm-9 col-xs-9">
+                    <p style="font-size: 20px;">All writing <b style="font-weight: 900">Subjects</b> <span>Offered</span>
+                    </p>
+                </div>
             </div>
         </div>
     </div>
+    <div class="col-md-4">
+        <div class="col-md-11">
+            <div class="row block-reason">
+                <div class="col-md-3 col-sm-3 col-xs-3 svg-back">
+                    <i class="fa fa-percent fa-3x"
+                       style="color: white; line-height: 60px; vertical-align: middle"
+                       aria-hidden="true"></i>
+                </div>
+                <div class="col-md-9 col-sm-9 col-xs-9" 0
+                <p style="font-size: 20px;">Amazing <b style="font-weight: 900">Discounts</b>
+                    <span>offered</span></p>
+            </div>
+        </div>
+        <div class="row block-reason">
+            <div class="col-md-3 col-sm-3 col-xs-3 svg-back">
+                <i class="fa fa-certificate fa-3x"
+                   style="color: white; line-height: 60px; vertical-align: middle" aria-hidden="true"></i>
+            </div>
+            <div class="col-md-9 col-sm-9 col-xs-9">
+                <p style="font-size: 20px;">Amazing <b style="font-weight: 900">Features</b> <span>for every order</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    </div>
 </div>
+
