@@ -682,111 +682,109 @@ $this->registerJs($myscript);
         </div>
     </div>
 </div>
-    <div class="site-index2">
-            <div class="row" style="height: auto; margin-bottom: 20px; background-color: #f0f2f6">
-                <div class="container">
-                    <h2 class="essay-font" style="text-align: center;font-family: 'JetBrains Mono'">HOW IT WORKS</h2>
-                <center>
-                    <div class="col-md-3 col-sm-3 col-xs-12">
-                            <div class="row">
-                                <div class="col-md-8 essay-font hidden-xs">
-                                    <button style="border-radius: 30px;font-family: 'Philosopher', sans-serif; background-color: #71D8EC" type="button" class="btn btn-lg essay-font">
-                                        PLACE ORDER
-                                    </button>
-                                    <p style="vertical-align: middle">Place your order</p>
-                                </div>
-                                <div class="hidden-md hidden-lg hidden-sm">
-                                <button style="border-radius: 30px;font-family: 'Philosopher', sans-serif; background-color: #4DD1F4" type="button" class="btn btn-lg essay-font">
-                                    PLACE ORDER
-                                </button>
-                                <p class="hidden-md hidden-lg hidden-sm">PLACE YOUR ORDER</p>
-                                </div>
-                                <div class="col-md-4 col-sm-2 col-xs-12">
-                                    <i style="line-height: 90px; vertical-align: middle;color: #1e7e34"
-                                       class="fa fa-arrow-right fa-3x hidden-xs" aria-hidden="true"></i>
-                                    <i class="fa fa-arrow-down text-success fa-3x hidden-md hidden-lg hidden-sm "
-                                       aria-hidden="true"></i>
-                                </div>
-                            </div>
-                    </div>
-                </center>
-                <center>
-                    <div class="col-md-3 col-sm-3 col-xs-12">
-                        <div class="row">
-                            <div class="col-md-8 essay-font hidden-xs">
-                                <button style="border-radius: 30px; font-family: 'Philosopher', sans-serif; background-color: #71D8EC" type="button" class="btn btn-lg essay-font">
-                                    PREPARATION
-                                </button>
-                                <p style="vertical-align: middle">The writer prepares sources for your work</p>
-                            </div>
-                            <div class="hidden-md hidden-lg hidden-sm">
-                            <button style="border-radius: 30px; font-family: 'Philosopher', sans-serif; background-color: #71D8EC" type="button" class="btn btn-lg essay-font">
-                                PREPARATION
+<div class="body-container essay-font" style="height: auto; margin-bottom: 20px; background-color: #f0f2f6">
+        <div class="container">
+            <h2 class="essay-font" style="text-align: center;font-family: 'JetBrains Mono'">HOW IT WORKS</h2>
+        <center>
+            <div class="col-md-3 col-sm-3 col-xs-12">
+                    <div class="row">
+                        <div class="col-md-8 essay-font hidden-xs">
+                            <button style="border-radius: 30px;font-family: 'Philosopher', sans-serif; background-color: #71D8EC" type="button" class="btn btn-lg essay-font">
+                                PLACE ORDER
                             </button>
-                            <p class="hidden-md hidden-lg hidden-sm">The writer prepares sources for your work</p>
-                            </div>
-                            <div class="col-md-4 col-sm-2 col-xs-12">
-                                <i style="line-height: 90px; vertical-align: middle;color: #1e7e34"
-                                   class="fa fa-arrow-right fa-3x hidden-xs" aria-hidden="true"></i>
-                                <i class="fa fa-arrow-down fa-3x text-success hidden-md hidden-lg hidden-sm "
-                                   aria-hidden="true"></i>
-                            </div>
+                            <p style="vertical-align: middle">Place your order</p>
                         </div>
-                </center>
-                <center>
-                    <div class="col-md-3 col-sm-3 col-xs-12">
-                        <div class="row">
-                            <div class="col-md-8 essay-font hidden-xs">
-                                <button style="border-radius: 30px;font-family: 'Philosopher', sans-serif;  background-color: #71D8EC" type="button" class="btn btn-lg essay-font">
-                                    COMPLETION
-                                </button>
-                                <p style="vertical-align: middle">The writer completes your paper</p>
-                            </div>
-                            <div class="hidden-md hidden-lg hidden-sm">
-                            <button style="border-radius: 30px;font-family: 'Philosopher', sans-serif;  background-color: #71D8EC" type="button" class="btn btn-lg essay-font">
-                                COMPLETION
-                            </button>
-                            <p class="hidden-md hidden-lg hidden-sm">The writer completes your paper</p>
-                            </div>
-                            <div class="col-md-4 col-sm-2 col-xs-12">
-                                <i style="line-height: 90px; vertical-align: middle;color: #1e7e34"
-                                   class="fa fa-arrow-right fa-3x hidden-xs" aria-hidden="true"></i>
-                                <i class="fa fa-arrow-down fa-3x text-success hidden-md hidden-lg hidden-sm "
-                                   aria-hidden="true"></i>
-                            </div>
+                        <div class="hidden-md hidden-lg hidden-sm">
+                        <button style="border-radius: 30px;font-family: 'Philosopher', sans-serif; background-color: #4DD1F4" type="button" class="btn btn-lg essay-font">
+                            PLACE ORDER
+                        </button>
+                        <p class="hidden-md hidden-lg hidden-sm">PLACE YOUR ORDER</p>
+                        </div>
+                        <div class="col-md-4 col-sm-2 col-xs-12">
+                            <i style="line-height: 90px; vertical-align: middle;color: #1e7e34"
+                               class="fa fa-arrow-right fa-3x hidden-xs" aria-hidden="true"></i>
+                            <i class="fa fa-arrow-down text-success fa-3x hidden-md hidden-lg hidden-sm "
+                               aria-hidden="true"></i>
                         </div>
                     </div>
-                </center>
-                <center>
-                    <div class="col-md-3 col-sm-3 col-xs-12">
-                        <div class="row">
-                            <div class="col-md-8 essay-font hidden-xs">
-                                <button style="border-radius: 30px; font-family: 'Philosopher', sans-serif; background-color: #71D8EC" type="button" class="btn btn-lg essay-font">
-                                    POLISHING
-                                </button>
-                                <p style="vertical-align: middle">The writer polishes your paper</p>
-                            </div>
-                            <div class="hidden-md hidden-lg hidden-sm">
-                            <button style="border-radius: 30px; font-family: 'Philosopher', sans-serif; background-color: #71D8EC" type="button" class="btn btn-lg essay-font">
-                                POLISHING
-                            </button>
-                            <p>The writer polishes your paper</p>
-                            </div>
-                            <div class="col-md-4 col-sm-2 col-xs-12">
-                                <i style="margin-bottom: 80px; vertical-align: middle;color: #1e7e34"
-                                class="fa fa-check-circle fa-5x hidden-xs" aria-hidden="true"></i></i>
-                                <i class="fa fa-arrow-down fa-3x text-success hidden-md hidden-lg hidden-sm "
-                                   aria-hidden="true"></i>
-                                <h3 style="font-family: 'Philosopher', sans-serif" class="hidden-md hidden-lg hidden-sm">You Receive your Work</h3>
-                            </div>
-                        </div>
-                    </div>
-                </center>
             </div>
-        </div>
+        </center>
+        <center>
+            <div class="col-md-3 col-sm-3 col-xs-12">
+                <div class="row">
+                    <div class="col-md-8 essay-font hidden-xs">
+                        <button style="border-radius: 30px; font-family: 'Philosopher', sans-serif; background-color: #71D8EC" type="button" class="btn btn-lg essay-font">
+                            PREPARATION
+                        </button>
+                        <p style="vertical-align: middle">The writer prepares sources for your work</p>
+                    </div>
+                    <div class="hidden-md hidden-lg hidden-sm">
+                    <button style="border-radius: 30px; font-family: 'Philosopher', sans-serif; background-color: #71D8EC" type="button" class="btn btn-lg essay-font">
+                        PREPARATION
+                    </button>
+                    <p class="hidden-md hidden-lg hidden-sm">The writer prepares sources for your work</p>
+                    </div>
+                    <div class="col-md-4 col-sm-2 col-xs-12">
+                        <i style="line-height: 90px; vertical-align: middle;color: #1e7e34"
+                           class="fa fa-arrow-right fa-3x hidden-xs" aria-hidden="true"></i>
+                        <i class="fa fa-arrow-down fa-3x text-success hidden-md hidden-lg hidden-sm "
+                           aria-hidden="true"></i>
+                    </div>
+                </div>
+        </center>
+        <center>
+            <div class="col-md-3 col-sm-3 col-xs-12">
+                <div class="row">
+                    <div class="col-md-8 essay-font hidden-xs">
+                        <button style="border-radius: 30px;font-family: 'Philosopher', sans-serif;  background-color: #71D8EC" type="button" class="btn btn-lg essay-font">
+                            COMPLETION
+                        </button>
+                        <p style="vertical-align: middle">The writer completes your paper</p>
+                    </div>
+                    <div class="hidden-md hidden-lg hidden-sm">
+                    <button style="border-radius: 30px;font-family: 'Philosopher', sans-serif;  background-color: #71D8EC" type="button" class="btn btn-lg essay-font">
+                        COMPLETION
+                    </button>
+                    <p class="hidden-md hidden-lg hidden-sm">The writer completes your paper</p>
+                    </div>
+                    <div class="col-md-4 col-sm-2 col-xs-12">
+                        <i style="line-height: 90px; vertical-align: middle;color: #1e7e34"
+                           class="fa fa-arrow-right fa-3x hidden-xs" aria-hidden="true"></i>
+                        <i class="fa fa-arrow-down fa-3x text-success hidden-md hidden-lg hidden-sm "
+                           aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+        </center>
+        <center>
+            <div class="col-md-3 col-sm-3 col-xs-12">
+                <div class="row">
+                    <div class="col-md-8 essay-font hidden-xs">
+                        <button style="border-radius: 30px; font-family: 'Philosopher', sans-serif; background-color: #71D8EC" type="button" class="btn btn-lg essay-font">
+                            POLISHING
+                        </button>
+                        <p style="vertical-align: middle">The writer polishes your paper</p>
+                    </div>
+                    <div class="hidden-md hidden-lg hidden-sm">
+                    <button style="border-radius: 30px; font-family: 'Philosopher', sans-serif; background-color: #71D8EC" type="button" class="btn btn-lg essay-font">
+                        POLISHING
+                    </button>
+                    <p>The writer polishes your paper</p>
+                    </div>
+                    <div class="col-md-4 col-sm-2 col-xs-12">
+                        <i style="margin-bottom: 80px; vertical-align: middle;color: #1e7e34"
+                        class="fa fa-check-circle fa-5x hidden-xs" aria-hidden="true"></i></i>
+                        <i class="fa fa-arrow-down fa-3x text-success hidden-md hidden-lg hidden-sm "
+                           aria-hidden="true"></i>
+                        <h3 style="font-family: 'Philosopher', sans-serif" class="hidden-md hidden-lg hidden-sm">You Receive your Work</h3>
+                    </div>
+                </div>
+            </div>
+        </center>
     </div>
+</div>
 
-    <div class="row" style="background-color: white; font-family: 'Open Sans', sans-serif;line-height: 2.0">
+<div class="body-container essay-font" style="background-color: white; font-family: 'Open Sans', sans-serif;line-height: 2.0">
         <div class="container">
             <div class="col-md-4 col-sm-4">
                 <h2 style="font-family: 'JetBrains Mono'"><strong>Moneyback Guarantee</strong></h2>
@@ -851,9 +849,7 @@ $this->registerJs($myscript);
     </div>
 </div>
 
-
-    <div class="site-index2">
-        <div class="body-container essay-font hidden-xs" style="background-color: whitesmoke;">
+<div class="body-container essay-font hidden-xs" style="background-color: whitesmoke;">
             <div class="container">
             <div class="row" style="height: auto; margin-bottom: 20px;">
                 <h2 style="text-align: center; color: black;font-family: 'JetBrains Mono'">WHY CHOOSE US</h2>
