@@ -682,82 +682,6 @@ $this->registerJs($myscript);
         </div>
     </div>
 </div>
-<div class="container">
-<div class="site-index2">
-    <div class="body-container essay-font hidden-xs" style="background-color: white;">
-            <div class="row" style="height: auto; margin-bottom: 20px;">
-                <h2 style="text-align: center; color: black;font-family: 'JetBrains Mono'">MAIN BENEFITS</h2>
-                <div class="col-md-3 col-sm-3 col-xs-12">
-                    <center><img width="130px" style="margin-top: 20px;border-radius: 30px"
-                                 src="<?= Yii::$app->request->baseUrl ?>/images/slides/registration.jpg"></center>
-                    <ul style="list-style: none; color: black; font-size: 18px; text-align: center">
-                        <li>
-                            <strong style="font-family: 'JetBrains Mono'">No registration fees</strong>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-3 col-sm-3 col-xs-12">
-                    <center><img width="130px" style="margin-top: 10px;border-radius: 30px"
-                                 src="<?= Yii::$app->request->baseUrl ?>/images/slides/satsfaction.jpg"></center>
-                    <ul style="list-style: none;color: black; font-size: 18px; text-align: center">
-                        <li>
-                            <strong style="font-family: 'JetBrains Mono'">100% Satisfaction Guarantee</strong>
-                        </li>
-
-                    </ul>
-                </div>
-                <div class="col-md-3 col-sm-3 col-xs-12">
-                    <center><img width="115px" style="margin-top: 20px;border-radius: 30px"
-                                 src="<?= Yii::$app->request->baseUrl ?>/images/slides/sms.png"></center>
-                    <ul style="list-style: none; color: black; font-size: 18px; text-align: center">
-                        <li>
-                            <strong style="font-family: 'JetBrains Mono'">Free text/email<br> updates</strong>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-3 col-sm-3 col-xs-12">
-                    <center><img width="130px" style="border-radius: 30px"
-                                 src="<?= Yii::$app->request->baseUrl ?>/images/slides/customer.jpg"></center>
-                    <ul style="list-style: none; color: black; font-size: 18px; text-align: center">
-                        <li>
-                            <strong style="font-family: 'JetBrains Mono'">24/7 available support team</strong>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="row" style="height: auto; margin-bottom: 20px; color: #46b8da;">
-                <div class="col-md-4 col-sm-4 col-xs-12">
-                    <center><img width="115px" style="border-radius: 30px"
-                                 src="<?= Yii::$app->request->baseUrl ?>/images/slides/pdf.png"></center>
-                    <ul style="list-style: none;color: black; font-size: 18px; text-align: center">
-                        <li>
-                            <strong style="font-family: 'JetBrains Mono'">Free cover page</strong>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-4 col-sm-4 col-xs-12">
-                    <center><img width="120px" style="border-radius: 30px"
-                                 src="<?= Yii::$app->request->baseUrl ?>/images/slides/format.png"></center>
-                    <ul style="list-style: none; color: black; font-size: 18px; text-align: center">
-                        <li>
-                            <strong style="font-family: 'JetBrains Mono'">Free revisions for <br>all orders</strong>
-                        </li>
-
-                    </ul>
-                </div>
-                <div class="col-md-4 col-sm-4 col-xs-12">
-                    <center><img width="130px" style="border-radius: 30px"
-                                 src="<?= Yii::$app->request->baseUrl ?>/images/slides/page.jpg"></center>
-                    <ul style="list-style: none; color: black; none; font-size: 18px; text-align: center">
-                        <li>
-                            <strong style="font-family: 'JetBrains Mono'">Free 1 page<br> summary</strong>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
     <div class="site-index2">
             <div class="row" style="height: auto; margin-bottom: 20px; background-color: #f0f2f6">
                 <div class="container">
@@ -772,7 +696,7 @@ $this->registerJs($myscript);
                                     <p style="vertical-align: middle">Place your order</p>
                                 </div>
                                 <div class="hidden-md hidden-lg hidden-sm">
-                                <button style="border-radius: 30px;font-family: 'Philosopher', sans-serif; background-color: #71D8EC" type="button" class="btn btn-lg essay-font">
+                                <button style="border-radius: 30px;font-family: 'Philosopher', sans-serif; background-color: #4DD1F4" type="button" class="btn btn-lg essay-font">
                                     PLACE ORDER
                                 </button>
                                 <p class="hidden-md hidden-lg hidden-sm">PLACE YOUR ORDER</p>
@@ -909,12 +833,12 @@ $this->registerJs($myscript);
                 <h5 style="color:white; text-align: center">COMPLETED ORDERS</h5>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-12 numbers-items">
-                <center><img width="80px" style="border-radius: 60px" src="<?= Yii::$app->request->baseUrl ?>/images/slides/satisfied.png"></center>
+                <center><img width="80px" style="border-radius: 60px" src="<?= Yii::$app->request->baseUrl ?>/images/slides/tick.png"></center>
                 <h1 class="numbers-with-commas" style="color:white; font-size: 60px; font-weight: 900; text-align: center">52</h1>
                 <h5 style="color:white; text-align: center">SATISFIED CLIENTS</h5>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-12 numbers-items">
-                <center><img width="80px" style="border-radius: 60px" src="<?= Yii::$app->request->baseUrl ?>/images/slides/tick.png"></center>
+                <center><img width="80px" style="border-radius: 60px" src="<?= Yii::$app->request->baseUrl ?>/images/slides/satisfied.png"></center>
                 <h1 style="color:white; font-size: 60px; font-weight: 900; text-align: center">97.64<sup>%</sup></h1>
                 <h5 style="color:white; text-align: center;">POSITIVE FEEDBACKS</h5>
             </div>
@@ -927,87 +851,105 @@ $this->registerJs($myscript);
     </div>
 </div>
 
-<div class="row" style="margin-bottom: 20px;">
-    <div class="container">
-    <div class="row essay-font" style="margin-bottom: 20px; text-align: center">
-        <h1>WHY CHOOSE US</h1>
-    </div>
-    <div class="col-md-4">
-        <div class="col-md-11">
-            <div class="row block-reason">
-                <div class="col-md-3  col-sm-3 col-xs-3 svg-back">
-                    <i class="fa fa-graduation-cap fa-3x"
-                       style="color: white; line-height: 60px; vertical-align: middle"
-                       aria-hidden="true"></i>
+
+    <div class="site-index2">
+        <div class="body-container essay-font hidden-xs" style="background-color: whitesmoke;">
+            <div class="container">
+            <div class="row" style="height: auto; margin-bottom: 20px;">
+                <h2 style="text-align: center; color: black;font-family: 'JetBrains Mono'">WHY CHOOSE US</h2>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="col-md-2 col-sm-4 col-xs-12">
+                        <img width="70px" style="margin-left:20px; border-radius: 30px; margin-top:10px;"
+                             src="<?= Yii::$app->request->baseUrl ?>/images/slides/sms.png">
+                    </div>
+                    <div class="col-md-10 col-sm-10 col-xs-12">
+                        <ul style="list-style: none; color: black;">
+                            <li>
+                                <h4 style="color: #4DD1F4; font-weight: bolder">QUALITY</h4>
+                                <p>You get an original and high-quality paper based on extensive research.
+                                    The completed work will be correctly formatted, referenced and tailored to your level of study.</p>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="col-md-9 col-sm-9 col-xs-9">
-                    <p style="font-size: 20px;">More than 10 years <span
-                                style="font-weight: 900">Experience</span></p>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="col-md-2 col-sm-4 col-xs-12">
+                    <center><img width="65px" style="margin-left:20px; border-radius: 30px; margin-top:10px;"
+                                 src="<?= Yii::$app->request->baseUrl ?>/images/slides/format.png"></center>
+                    </div>
+                    <div class="col-md-10 col-sm-10 col-xs-12">
+                        <ul style="list-style: none;color: black;">
+                        <li>
+                            <h4 style="color: #4DD1F4; font-weight: bolder">ON-TIME DELIVERY</h4>
+                            <p>We strive to deliver quality custom written papers before the deadline.
+                                That's why you don't have to worry about missing the deadline for submitting your assignment.</p>
+                        </li>
+                    </ul>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="col-md-2 col-sm-4 col-xs-12">
+                    <center><img width="80px" style="margin-left:20px; border-radius: 30px; margin-top:10px;"
+                                 src="<?= Yii::$app->request->baseUrl ?>/images/slides/confidential.jpg"></center>
+                    </div>
+                    <div class="col-md-10 col-sm-10 col-xs-12">
+                        <ul style="list-style: none; color: black;">
+                        <li>
+                            <h4 style="color: #4DD1F4; font-weight: bolder">CONFIDENTIALITY</h4>
+                            <p>We value your privacy. We do not disclose your personal information to any third party without your consent.
+                                Your payment data is also safely handled as you process the payment through a secured and verified payment processor.</p>
+                        </li>
+                    </ul>
+                    </div>
                 </div>
             </div>
-            <div class="row block-reason">
-                <div class=" col-md-3 col-sm-3 col-xs-3 svg-back">
-                    <i class="fa fa-check-circle fa-3x"
-                       style="color: white; line-height: 60px; vertical-align: middle"
-                       aria-hidden="true"></i>
+            <div class="row" style="height: auto; margin-bottom: 20px; color: #46b8da;">
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="col-md-2 col-sm-4 col-xs-12">
+                    <center><img width="65px" style="margin-left:20px; border-radius: 60px; margin-top:10px;"
+                                 src="<?= Yii::$app->request->baseUrl ?>/images/slides/pdf.png"></center>
+                    </div>
+                    <div class="col-md-10 col-sm-10 col-xs-12">
+                        <ul style="list-style: none;color: black;">
+                        <li>
+                            <h4 style="color: #4DD1F4; font-weight: bolder">24/7 SUPPORT</h4>
+                            <p>From answering simple questions to solving any possible issues, we're always here to help you in chat and on the phone.
+                                We've got you covered at any time, day or night.</p>
+                        </li>
+                    </ul>
+                    </div>
                 </div>
-                <div class="col-md-9 col-sm-9 col-xs-9">
-                    <p style="font-size: 20px;">100 percent <b style="font-weight: 900">Original</b> <span>Paper</span>
-                    </p>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="col-md-2 col-sm-4 col-xs-12">
+                    <center><img width="68px" style="margin-left:20px; border-radius: 30px; margin-top:10px;"
+                                 src="<?= Yii::$app->request->baseUrl ?>/images/slides/original.png"></center>
+                    </div>
+                    <div class="col-md-10 col-sm-10 col-xs-12">
+                        <ul style="list-style: none; color: black;">
+                        <li>
+                            <h4 style="color: #4DD1F4; font-weight: bolder">ORIGINALITY</h4>
+                            <p>Every single order we deliver is written from scratch according to your instructions.
+                                We have zero tolerance for plagiarism, so all completed papers are unique and checked for plagiarism using a leading plagiarism detector.</p>
+                        </li>
+                    </ul>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="col-md-2 col-sm-4 col-xs-12">
+                    <center><img width="70px" style="color:cadetblue; margin-left:20px; border-radius: 30px; margin-top:10px;"
+                                 src="<?= Yii::$app->request->baseUrl ?>/images/slides/revision.png"></center>
+                    </div>
+                    <div class="col-md-10 col-sm-10 col-xs-12">
+                        <ul style="list-style: none; color: black; none;">
+                        <li>
+                            <h4 style="color: #4DD1F4; font-weight: bolder">FREE REVISIONS</h4>
+                            <p>You can ask to revise your paper as many times as you need until you're completely satisfied with the result.
+                                Provide notes about what needs to be changed, and we'll change it right away.</p>
+                        </li>
+                    </ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="col-md-4">
-        <div class="col-md-11">
-            <div class="row block-reason">
-                <div class=" col-md-3 col-sm-3 col-xs-3 svg-back">
-                    <i class="fa fa-clock-o fa-3x"
-                       style="color: white; line-height: 60px; vertical-align: middle"
-                       aria-hidden="true"></i>
-                </div>
-                <div class="col-md-9 col-sm-9 col-xs-9">
-                    <p style="font-size: 20px;">Delivers on <b style="font-weight: 900">Urgent</b> <span>Orders</span>
-                    </p>
-                </div>
-            </div>
-            <div class="row block-reason">
-                <div class=" col-md-3 col-sm-3 col-xs-3 svg-back">
-                    <i class="fa fa-th-list fa-3x"
-                       style="color: white; line-height: 60px; vertical-align: middle"
-                       aria-hidden="true"></i>
-                </div>
-                <div class="col-md-9 col-sm-9 col-xs-9">
-                    <p style="font-size: 20px;">All writing <b style="font-weight: 900">Subjects</b> <span>Offered</span>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="col-md-11">
-            <div class="row block-reason">
-                <div class="col-md-3 col-sm-3 col-xs-3 svg-back">
-                    <i class="fa fa-percent fa-3x"
-                       style="color: white; line-height: 60px; vertical-align: middle"
-                       aria-hidden="true"></i>
-                </div>
-                <div class="col-md-9 col-sm-9 col-xs-9" 0
-                <p style="font-size: 20px;">Amazing <b style="font-weight: 900">Discounts</b>
-                    <span>offered</span></p>
-            </div>
-        </div>
-        <div class="row block-reason">
-            <div class="col-md-3 col-sm-3 col-xs-3 svg-back">
-                <i class="fa fa-certificate fa-3x"
-                   style="color: white; line-height: 60px; vertical-align: middle" aria-hidden="true"></i>
-            </div>
-            <div class="col-md-9 col-sm-9 col-xs-9">
-                <p style="font-size: 20px;">Amazing <b style="font-weight: 900">Features</b> <span>for every order</span>
-                </p>
-            </div>
-        </div>
-    </div>
     </div>
 </div>
-
