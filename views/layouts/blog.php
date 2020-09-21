@@ -172,19 +172,19 @@ AppAsset::register($this);
             <div class="col-md-4">
                 <ul class="articles footer-link essay-font">
                     <li><a style="text-decoration: none; font-size: 15px;" href="<?= Yii::$app->request->baseUrl?>/">Home</a></li>
-                    <li><a style="text-decoration: none; font-size: 15px;" href="<?= Yii::$app->request->baseUrl?>/how_it_works">How it works</a></li>
-                    <br>
                     <li><a style="text-decoration: none; font-size: 15px;" href="<?= Yii::$app->request->baseUrl?>/site/faq">FAQ</a></li>
+                    <br>
+                    <li><a style="text-decoration: none; font-size: 15px;" href="<?= Yii::$app->request->baseUrl?>/how_it_works">How it works</a></li>
                     <li><a style="text-decoration: none; font-size: 15px;" href="<?= Yii::$app->request->baseUrl?>/site/terms_and_conditions">Terms and Conditions</a></li>
                 </ul>
             </div>
             <div class="col-md-4">
                 <ul class="articles footer-link essay-font">
-                    <li><a style="text-decoration: none; font-size: 15px;" href="<?= Yii::$app->request->baseUrl?>/site/article/custom-writing">About Us</a></li>
-                    <li><a style="text-decoration: none; font-size: 15px;" href="<?= Yii::$app->request->baseUrl?>/site/article/urgent-essay-writing">Money Back Guarantee</a></li>
+                    <li><a style="text-decoration: none; font-size: 15px;" href="<?= Yii::$app->request->baseUrl?>/site/about">About Us</a></li>
+                    <li><a style="text-decoration: none; font-size: 15px;" href="<?= Yii::$app->request->baseUrl?>/order">Order Now</a></li>
                     <br>
                     <li><a style="text-decoration: none; font-size: 15px;" href="<?= Yii::$app->request->baseUrl?>/site/privacy_policy">Privacy Policy</a></li>
-                    <li><a style="text-decoration: none; font-size: 15px;" href="<?= Yii::$app->request->baseUrl?>/site/article/paper-revision">Confidentiality Policy</a></li>
+                    <li><a style="text-decoration: none; font-size: 15px;" href="<?= Yii::$app->request->baseUrl?>/site/guarantee">Money Back Guarantee</a></li>
                   </ul>
             </div>
         </div>

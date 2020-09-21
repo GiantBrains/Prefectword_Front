@@ -136,7 +136,7 @@ AppAsset::register($this);
     <div style="margin-top: 60px">
         <?= Alert::widget() ?>
     </div>
-    <div style="margin-top: -10px">
+    <div  class="login-image" style="margin-top: -10px;">
         <?= $content ?>
     </div>
 </div>
