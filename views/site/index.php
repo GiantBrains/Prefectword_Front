@@ -640,10 +640,8 @@ $this->registerJs($myscript);
             <div class="col-md-6 col-xs-12 hidden-xs"
                  style="background-color: white; opacity: 0.8; border-radius: 10px; color: black">
                 <div class="image-content">
-                    <h1 style="font-weight: bolder; font-family: 'Open Sans', sans-serif; ">Quality Academic
-                        Writing</h1>
-                    <h2 style="font-weight: bolder; font-family: 'Open Sans', sans-serif;">Service at an Affordable
-                        Price.</h2>
+                    <h1 style="font-weight: bolder; font-family: 'Open Sans', sans-serif; ">Get High-quality Paper</h1>
+                    <h2 style="font-weight: bolder; font-family: 'Open Sans', sans-serif;">At an Affordable Price.</h2>
                     <h4 style="font-family: 'Open Sans', sans-serif; font-size: 18px">Hire us, sit back and
                         relax…….We’ll do it for you.</h4>
                 </div>
@@ -788,14 +786,12 @@ $this->registerJs($myscript);
         <div class="container">
             <div class="col-md-4 col-sm-4">
                 <h2 style="font-family: 'JetBrains Mono'"><strong>Moneyback Guarantee</strong></h2>
-                <p>Are you searching for a website that will guarantee you good grades?
-                    One of the best essay writing service provider is DoctorateEssays.
-                    With a team of proficient writers from native English speaking countries,
-                    we promise to deliver quality work to you on time. Our writers are available 24/7
-                    to handle all your projects regardless of the deadline or the difficulty.
-                    We write all papers from scratch and highly penalize any writer who tries to
-                    deliver plagiarized writing to you. All revisions are free until you are 100%
-                    satisfied with your paper.</p>
+                <p>We are a company that values our image and credibility.
+                    Excellent customer experience and satisfaction are our primary goal and we work hard to achieve it.
+                    We refund back your money in case you are not satisfied with the service offered.
+
+                    We allow you to reserve the payment for your writer until you receive the paper and confirm that it meets your expectations.
+                    You are free to cancel your order and still get back your money. Please remember to read our Terms and Conditions.</p>
                 <center><img src="<?= Yii::$app->request->baseUrl ?>/images/page/money-back-guarantee2.png"
                              width="222px"></center>
                 <center><a href="<?= Url::to(['site/guarantee']) ?>">
@@ -807,13 +803,21 @@ $this->registerJs($myscript);
             </div>
             <div class="col-md-8 col-sm-4">
                 <center><h2 style="font-family: 'JetBrains Mono';font-weight: bolder">Who we are</h2></center>
-                <p>Verified Prefessors is a reliable partner for professional freelance writers who are looking for a trustworthy long-term cooperation. For those pursuing personal development, our company is also the right choice since we offer numerous interesting projects and opportunities for self-improvement. Besides, our support team members are always ready to help as they work 24/7.
-                    If writing is what you like, you are welcome to give it a try with us!<br>
-                    Verified Prefessors is a reliable partner for professional freelance writers who are looking for a trustworthy long-term cooperation. For those pursuing personal development, our company is also the right choice since we offer numerous interesting projects and opportunities for self-improvement. Besides, our support team members are always ready to help as they work 24/7.
-                    If writing is what you like, you are welcome to give it a try with us!</p>
-                <center><h1 style="color: #1695a4">24/7 Customer Support</h1><br>
+                <p>Verified Professors is a reliable partner for professional freelance writers with experience in
+                    students papers to provide high quality papers for our clients. We have an open reviews section
+                    where our customers give us feedback on their experience with us. It is easy to judge yourself
+                    from the reviews how satisfied our clients are with the service. You do not have to spend
+                    sleepless nights thinking of how you will improve your grade. Let us do it essay for you while
+                    you do other duties.
+                </p>
+                <center><h1 style="color: #1695a4;font-family: 'Ranchers', cursive;">24/7 Customer Support</h1><br>
+                    <p>With a team of experienced writers from native English speaking countries, we promise to
+                        deliver quality work to you on time. Our writers highly qualified and available 24/7 to
+                        handle projects regardless of the deadline or the difficulty. We guarantee 0% plagiarism
+                        in all papers, ensure all papers are written from scratch and penalize any writer who tries
+                        to deliver plagiarized writing to you. All revisions are free until you are 100% satisfied
+                        with your paper.</p>
                     <h1 style="font-family: 'Ranchers', cursive; font-size: 100px; color: #3D715B">98.9%</h1>
-                    <p>More than 98% of customers were satisfied with the work of our customer support. We respond to any issue as fast as possible – your happiness is our aim.</p>
                 </center>
 
                 <h1

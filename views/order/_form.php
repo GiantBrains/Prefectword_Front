@@ -932,7 +932,7 @@ $this->registerJs($calculate);
                         <div class="input-group">
                             <input id="coupon-code" type="text" class="form-control" placeholder="Enter Promo code...">
                             <span class="input-group-btn">
-                                <button style="background-color: #75F36D" class="btn" id="coupon-btn" type="button">Apply Code</button>
+                                <button class="btn btn-primary" id="coupon-btn" type="button">Apply Code</button>
                                     </span>
                         </div>
                         <p id="coupon-status"></p>
