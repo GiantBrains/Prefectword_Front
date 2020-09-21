@@ -710,7 +710,7 @@ a.desc:after {
 
 .login-image {
     /* The image used */
-    background-image: url("/images/background.jpg");
+    background-image: url("images/background.jpg");
 
     /* Full height */
     height: 100%;
