@@ -173,8 +173,8 @@ AppAsset::register($this);
             <hr>
             <div class="col-md-2" style="margin-bottom: 20px">
                 <div style="border: solid; border-radius: 10px; border-top: none; border-width: thin; height: 275px; border-color: darkgrey">
-                    <div style="border: solid; border-left: none; border-right: none; border-top-left-radius: 10px; background-color: #D1F2EB ; border-top-right-radius: 10px; border-width: thin; height: 40px; border-color: darkgrey">
-                        <h4 style="line-height: 20px; vertical-align: middle; margin-left: 20px">Balance</h4>
+                    <div style="border: solid; border-left: none; border-right: none; border-top-left-radius: 10px; background-color: #3D715B; border-top-right-radius: 10px; border-width: thin; height: 40px; border-color: darkgrey">
+                        <h4 style="color:white; line-height: 20px; vertical-align: middle; margin-left: 20px">Balance</h4>
                     </div>
                     <div style=" border-bottom: solid;  height: 100px; border-width: thin;">
                         <h2 style="line-height: 70px; margin-left: 20px; vertical-align: middle; color: midnightblue"><?php if ($this->params['balance']){
