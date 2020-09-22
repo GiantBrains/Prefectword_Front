@@ -11,7 +11,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Orders', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
     <div class="myorder">
-        <h2>Place Order</h2>
+        <h2 style="color: #3D715B">Place Order</h2>
         <hr>
         <?= $this->render('_form', [
             'model' => $model,

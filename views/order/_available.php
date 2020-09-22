@@ -20,7 +20,7 @@ use yii\helpers\Html;
     <?= $form->field($model, 'global', [
         'addon' => [
             'append' => [
-                'content' => Html::submitButton('Search', ['class'=>'btn btn-success']),
+                'content' => Html::submitButton('Search', ['class'=>'btn btn-info']),
                 'asButton' => true
             ]
         ]

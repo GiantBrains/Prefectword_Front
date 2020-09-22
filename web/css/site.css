@@ -299,7 +299,7 @@ float: left;
 
 /* navbar */
 .navbar-default2 {
-    background-color: #9FF5C6;
+    background-color: #D1F2EB ;
     border-color: #0f0f0f;
 }
 /* Title */
@@ -312,7 +312,7 @@ float: left;
 }
 /* Link */
 .navbar-default2 .navbar-nav > li > a {
-    color: #777;
+    color: black;
     font-family: 'Open Sans', sans-serif;
 }
 .navbar-default2 .navbar-nav > li > a:hover,
@@ -707,16 +707,14 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
-
-.login-image {
-    /* The image used */
-    background-image: url("images/background.jpg");
-
-    /* Full height */
+.imgbox {
+    display: grid;
     height: 100%;
+}
+.login-image {
+    /* Full height */
+    max-width: 100%;
+    max-height: 100vh;
+    margin: auto;
 
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
 }

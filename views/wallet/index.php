@@ -39,10 +39,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="col-md-4">
                     <form action="<?= Yii::$app->request->baseUrl?>/wallet/deposit">
                     <div class="input-group">
-                        <span class="input-group-addon">$</span>
+                        <span style="background-color: #D1F2EB" class="input-group-addon">$</span>
                         <input type="text" required name="amount" class="form-control" value="" placeholder="Enter amount...">
-                        <span class="input-group-btn" style="background-color: darkgrey">
-                         <input  class="btn btn-default form-control" style="color: midnightblue; font-weight: 900;" type="submit" value="PayPal">
+                        <span class="input-group-btn">
+                         <input  class="btn btn-default form-control" style="color: midnightblue;background-color: #D1F2EB; font-weight: 900;" type="submit" value="PayPal">
                         </span>
                     </div><!-- /input-group -->
                     </form>

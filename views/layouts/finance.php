@@ -78,7 +78,7 @@ AppAsset::register($this);
             ],
             '<li role="separator" class="divider"></li>',
             [
-                'label' => '<img src="'.Yii::$app->request->baseUrl.'/images/rating/profile1.png" style="height: 16px; " > &nbsp;<span>Account</span>',
+                'label' => '<img src="'.Yii::$app->request->baseUrl.'/images/user.png" style="height: 16px; " > &nbsp;<span>Account</span>',
                 'url' => Yii::$app->request->baseUrl.'/site/account',
                 'active' => $this->context->route == 'site/account'
             ],
@@ -114,7 +114,7 @@ AppAsset::register($this);
                 <li class="dropdown notifications-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-bell-o text-success"></i>
-                        <span class="label label-success notifications-icon-count">0</span>
+                        <span class="label label-info notifications-icon-count">0</span>
                     </a>
                     <ul class="dropdown-menu" style="width: auto; min-width: 250px; max-width: 320px">
                         <li class="header">You have <span class="notifications-header-count">0</span> notifications</li>
@@ -135,7 +135,7 @@ AppAsset::register($this);
             'active' => $this->context->route == 'wallet/index'
         ];
         $menuItems[] = [
-            'label' => '<img src="'.Yii::$app->request->baseUrl.'/images/rating/profile1.png" style="height: 35px; margin-top: -5px; margin-bottom: -10px" >',
+            'label' => '<img src="'.Yii::$app->request->baseUrl.'/images/user.png" style="height: 35px; margin-top: -5px; margin-bottom: -10px" >',
             'items' => [
                 [
                     'label' => '<i class="fa fa-user fa-2x" aria-hidden="true"></i> &nbsp; <span style="font-size: 20px">Profile</span>',
@@ -173,7 +173,7 @@ AppAsset::register($this);
             <hr>
             <div class="col-md-2" style="margin-bottom: 20px">
                 <div style="border: solid; border-radius: 10px; border-top: none; border-width: thin; height: 275px; border-color: darkgrey">
-                    <div style="border: solid; border-left: none; border-right: none; border-top-left-radius: 10px; background-color: #f5f5f5; border-top-right-radius: 10px; border-width: thin; height: 40px; border-color: darkgrey">
+                    <div style="border: solid; border-left: none; border-right: none; border-top-left-radius: 10px; background-color: #D1F2EB ; border-top-right-radius: 10px; border-width: thin; height: 40px; border-color: darkgrey">
                         <h4 style="line-height: 20px; vertical-align: middle; margin-left: 20px">Balance</h4>
                     </div>
                     <div style=" border-bottom: solid;  height: 100px; border-width: thin;">
@@ -184,10 +184,10 @@ AppAsset::register($this);
                             }?></h2>
                     </div>
                     <div class="wrapper row">
-                        <a style="display: block; margin-top: 15px" href="<?= Yii::$app->request->baseUrl?>/wallet/index"><button style="width: 120px" class="btn btn-md btn-default <?=$this->params['deposit'] ?>"><span class="glyphicon glyphicon-import" style="font-size: 20px" aria-hidden="true"></span> &nbsp; Deposit</button></a>
+                        <a style="display: block; margin-top: 15px" href="<?= Yii::$app->request->baseUrl?>/wallet/index"><button style="width: 120px" class="btn btn-md btn-info <?=$this->params['deposit'] ?>"><span class="glyphicon glyphicon-import" style="font-size: 20px" aria-hidden="true"></span> &nbsp; Deposit</button></a>
                     </div>
                     <div class="wrapper row">
-                        <a style="display: block; margin-top: 15px" href="<?= Yii::$app->request->baseUrl?>/wallet/withdraw"><button style="width: 120px" class="btn btn-md btn-default <?=$this->params['withdraw'] ?>"><span class="glyphicon glyphicon-export" style="font-size: 20px" aria-hidden="true"></span> &nbsp; Withdraw</button></a>
+                        <a style="display: block; margin-top: 15px" href="<?= Yii::$app->request->baseUrl?>/wallet/withdraw"><button style="width: 120px" class="btn btn-md btn-info <?=$this->params['withdraw'] ?>"><span class="glyphicon glyphicon-export" style="font-size: 20px" aria-hidden="true"></span> &nbsp; Withdraw</button></a>
                     </div>
                 </div>
             </div>

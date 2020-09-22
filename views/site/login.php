@@ -5,7 +5,8 @@ use yii\bootstrap\ActiveForm;
 
 $this->title = 'Login';
 ?>
-<div class="body-container essay-font">
+<div class="imgbox">
+<div class="body-container essay-font" style="background-image: url('/images/slides/7.jpg');">
 <div class="container">
     <div class="site-login" style="margin-top: 20px">
         <div class="row">
@@ -39,11 +40,12 @@ $this->title = 'Login';
                         'popupMode' => false,
                     ]) ?>
                 </div>
-                <div class="col-sm-4 col-sm-offset-4 col-xs-12" style="color:#999; margin-top: 20px; margin-bottom: 60px">
+                <div class="col-sm-4 col-sm-offset-4 col-xs-12" style="color:#999; margin-top: 20px;>
                     If you forgot your password you can <?= Html::a('reset it', ['site/request-password-reset'], ['class'=>'btn btn-warning']) ?>.
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 </div>

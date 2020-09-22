@@ -875,7 +875,7 @@ $this->registerJs($calculate);
     <h4 style="font-size: 25px; text-align: center" class="essay-font">Price: <input class="tcost" style="border: none; width: 100px; font-size: 25px" type="text" id="min-amount" value="$0.00" readonly="readonly"></h4>
     </div>
 </div>
-<div class="row" style="padding-right: 15px; padding-top: 15px; border-radius: 10px; padding-left: 15px; background-color: #90F1C8;">
+<div class="row" style="padding-right: 15px; padding-top: 15px; border-radius: 10px; padding-left: 15px; background-color: #D1F2EB;">
     <div class="order-form">
         <?php $form = ActiveForm::begin();
         $session = Yii::$app->session;
@@ -932,7 +932,7 @@ $this->registerJs($calculate);
                         <div class="input-group">
                             <input id="coupon-code" type="text" class="form-control" placeholder="Enter Promo code...">
                             <span class="input-group-btn">
-                                <button class="btn btn-primary" id="coupon-btn" type="button">Apply Code</button>
+                                <button class="btn btn-info" id="coupon-btn" type="button">Apply Code</button>
                                     </span>
                         </div>
                         <p id="coupon-status"></p>
@@ -991,7 +991,7 @@ $this->registerJs($calculate);
             </div>
         </div>
         <div class="form-group">
-            <?= Html::submitButton('Place Order', ['class' => 'btn btn-success']) ?>
+            <?= Html::submitButton('Place Order', ['class' => 'btn btn-info']) ?>
         </div>
 
         <?php ActiveForm::end(); ?>

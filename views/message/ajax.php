@@ -41,7 +41,7 @@ $this->registerJs($messages);
         <h1 id="thename"></h1>
         <form action="<?php Yii::$app->request->baseUrl?>/message/test">
             <input id="fname" name="firstname" value="" >
-            <input id="send-message" class="btn btn-primary" type="submit" value="Submit">
+            <input id="send-message" class="btn btn-info" type="submit" value="Submit">
         </form>
     </div>
 </div>
