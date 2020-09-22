@@ -153,7 +153,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'width'=>'100px',
                 'format' => 'raw',
                 'value'=> function ($model, $key, $index, $column) {
-                    return   Html::a('Reserve', ['/order/reserve','oid'=>$model->ordernumber], ['class' => 'btn btn-primary']);
+                    return   Html::a('Reserve', ['/order/reserve','oid'=>$model->ordernumber], ['class' => 'btn btn-info']);
                 }
             ],
             //'sources_id',

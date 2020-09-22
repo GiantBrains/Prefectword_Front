@@ -27,7 +27,9 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="wallet-index">
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
     <div class="row" style="height: auto; min-height: 200px; border: solid; border-color: darkgrey; padding-top: 10px; border-width: thin;">
-        <div class="col-md-4" style="margin-top: 20px;">
+        <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top: 20px;overflow-x:auto;">
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-12"
                 <form action="<?= Yii::$app->request->baseUrl?>/wallet/withdraw-request">
                     <div class="input-group">
                         <span class="input-group-addon">$</span>
@@ -38,13 +40,14 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div><!-- /input-group -->
                 </form>
             </div>
-        <div class="col-md-8 col-sm-8 col-xs-12" style="margin-top: 20px;overflow-x:auto;">
+            <br><br><br>
+            <div class="col-md-8 col-sm-8 col-xs-12">
             <div class="table-responsive">
             <table class="table" id="transactions">
                 <tr>
-                    <th>Amount</th>
-                    <th>Date</th>
-                    <th>Status</th>
+                    <th style="background-color: #3D715B">Amount</th>
+                    <th style="background-color: #3D715B ">Date</th>
+                    <th style="background-color: #3D715B ">Status</th>
                 </tr>
                 <?php
                 foreach($withdraws as $withdraw){
@@ -55,6 +58,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 ?>
             </table>
             </div>
+            </div>
+        </div>
         </div><!-- /.row -->
     </div>
 </div>

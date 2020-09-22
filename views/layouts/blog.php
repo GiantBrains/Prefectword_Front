@@ -68,7 +68,8 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => Html::img('@web/images/logo.png', ['style'=>'display:inline-block; height:32px;', 'alt'=>Yii::$app->name]). ' <strong style="color: #90F1C8 ; font-size: 20px;">Verified</strong><strong style="color: #3D715B; font-size: 20px;">Proffessors</strong>',
+        'brandLabel' => Html::img('@web/images/logo.png', ['style'=>'display:inline-block; height:32px;', 'alt'=>Yii::$app->name]). ' <strong style="color: #71D8EC; font-size: 20px;">Verified</strong><strong style="color: #3D715B; font-size: 20px;">Professors</strong>',
+//        'brandLabel' => Html::img('@web/images/logo.png', ['style'=>'display:inline-block; height:32px;', 'alt'=>Yii::$app->name]). ' <strong style="color: #F5C34F ; font-size: 20px;">Verified</strong><strong style="color: #A2110A; font-size: 20px;">Professors</strong>',
         'brandUrl' => Yii::$app->request->baseUrl.'/',
         'options' => [
             'class' => 'navbar navbar-default1 navbar-fixed-top',
@@ -116,7 +117,7 @@ AppAsset::register($this);
         ];
 
         $menuItems[] = '<a data-method="post" href="'.Yii::$app->request->baseUrl.'/site/logout">
-<button type="button" class="btn btn-sm btn-danger navbar-btn essay-font">Logout ('.Yii::$app->user->identity->username.')</button></a>';
+<button type="button" class="btn btn-sm btn-info navbar-btn essay-font">Logout ('.Yii::$app->user->identity->username.')</button></a>';
     }
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
@@ -154,108 +155,45 @@ AppAsset::register($this);
 
 <footer class="footer" style="background-color: #242a35; height: auto">
     <div class="container" style="height: auto">
-        <div id="navigation" style=" height: 20px; margin-bottom: 30px">
-            <ul class="pull-left footer-link essay-font" style="font-size: 13px; color: #a1a9b3">
-                <div class="hidden-xs">
-                    <li><a href="<?= Yii::$app->request->baseUrl?>/site/terms_and_conditions">&nbsp; Terms & Conditions &nbsp;</a></li>
-                    <li><a href="<?= Yii::$app->request->baseUrl?>/site/faq">&nbsp; FAQ &nbsp;</a></li>
-                    <li><a href="<?= Yii::$app->request->baseUrl?>/site/reviews">&nbsp; Reviews &nbsp;</a></li>
-                    <li><a href="<?= Yii::$app->request->baseUrl?>/site/contact">&nbsp; Contact Us &nbsp;</a></li>
-                    <li><a href="<?= Yii::$app->request->baseUrl?>/site/privacy_policy">Privacy Policy</a></li>
-                </div>
-                <div class="hidden-lg hidden-md hidden-sm col-xs-12" style="text-align: center">
-                    <li><a href="<?= Yii::$app->request->baseUrl?>/site/terms_and_conditions">&nbsp; Terms & Conditions &nbsp;</a></li>
-                    <li><a href="<?= Yii::$app->request->baseUrl?>/site/faq">&nbsp; FAQ &nbsp;</a></li>
-                    <li><a href="<?= Yii::$app->request->baseUrl?>/site/reviews">&nbsp; Reviews &nbsp;</a></li>
-                </div>
-                <div class="hidden-lg hidden-md hidden-sm col-xs-12" style="text-align: center">
-                    <li><a href="<?= Yii::$app->request->baseUrl?>/site/contact">&nbsp; Contact Us &nbsp;</a></li>
-                    <li><a class="f-link essay-font" style="font-size: 13px;"  href="<?= Yii::$app->request->baseUrl?>/site/privacy_policy">Privacy Policy</a></li>
-                </div>
-            </ul>
-
-            <ul class="pull-right hidden-xs">
-                <li><img src="<?= Yii::$app->request->baseUrl?>/images/payment/visa.png"  width="40px" height="13px"  data-rjs="<?= Yii::$app->request->baseUrl?>/images/payment/visa.png" alt="Visa" class="pm visa"></li>
-                <li><img src="<?= Yii::$app->request->baseUrl?>/images/payment/amex.png" width="57px" height="19px" data-rjs="<?= Yii::$app->request->baseUrl?>/images/payment/amex.png" alt="American Express" class="pm ae"></li>
-                <li><img src="<?= Yii::$app->request->baseUrl?>/images/payment/mastercard.png" width="45px" height="27px" data-rjs="<?= Yii::$app->request->baseUrl?>/images/payment/mastercard.png" alt="MasterCard" class="pm mc"></li>
-                <li><img src="<?= Yii::$app->request->baseUrl?>/images/payment/paypal.png" width="60px" height="17px" data-rjs="<?= Yii::$app->request->baseUrl?>/images/payment/paypal.png" alt="PayPal" class="pm paypal"></li>
-                <!-- Begin ScanVerify Seal Code -->
-                <li><a target=_blank href="https://scanverify.com/siteverify.php?ref=stp&site=doctorateessays.com">
-                        <img src='https://scanverify.com/seal/seal.php?site=https://www.google.com/recaptcha/api/siteverify' height="40px" border=0 ALT='ScanVerify.com Trust Seal' ></a></li>
-                <!-- End ScanVerify Seal Code -->
-            </ul>
-            <ul class="pull-right hidden-lg hidden-md hidden-sm col-xs-12" style="text-align: center" >
-                <li><img src="<?= Yii::$app->request->baseUrl?>/images/payment/visa.png"  width="40px" height="13px"  data-rjs="<?= Yii::$app->request->baseUrl?>/images/payment/visa.png" alt="Visa" class="pm visa"></li>
-                <li><img src="<?= Yii::$app->request->baseUrl?>/images/payment/amex.png" width="57px" height="19px" data-rjs="<?= Yii::$app->request->baseUrl?>/images/payment/amex.png" alt="American Express" class="pm ae"></li>
-                <li><img src="<?= Yii::$app->request->baseUrl?>/images/payment/mastercard.png" width="45px" height="27px" data-rjs="<?= Yii::$app->request->baseUrl?>/images/payment/mastercard.png" alt="MasterCard" class="pm mc"></li>
-                <li><img src="<?= Yii::$app->request->baseUrl?>/images/payment/paypal.png" width="60px" height="17px" data-rjs="<?= Yii::$app->request->baseUrl?>/images/payment/paypal.png" alt="PayPal" class="pm paypal"></li>
-            </ul>
-        </div><!-- navigation -->
         <div class="row hidden-xs">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <ul class="articles footer-link essay-font">
-                    <li><a href="<?= Yii::$app->request->baseUrl?>/site/article/part-time-students">Part time students</a></li>
-                    <li><a href="<?= Yii::$app->request->baseUrl?>/site/article/extra-credit-paper">Extra credit paper </a></li>
-                    <li><a href="<?= Yii::$app->request->baseUrl?>/site/article/plagiarism-free-work">Plagiarism free work</a></li>
+                    <li><a style="text-decoration: none; font-size: 20px;" <i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;support@verifiedprofessors.com</a></li>
                     <br>
-                    <li><a href="<?= Yii::$app->request->baseUrl?>/site/article/pass-college-assignments">Pass college assignments</a></li>
-                    <li><a href="<?= Yii::$app->request->baseUrl?>/site/article/online-assignments-help">Online assignments help </a></li>
-                    <li><a href="<?= Yii::$app->request->baseUrl?>/site/article/urgent-homework-help">Urgent homework help </a></li>
-                    <br>
-                    <li><a href="<?= Yii::$app->request->baseUrl?>/site/article/avoid-failing">Avoid failing </a></li>
-                    <li><a href="<?= Yii::$app->request->baseUrl?>/site/article/pass-your-assignments">Pass your assignments </a></li>
-                    <li><a href="<?= Yii::$app->request->baseUrl?>/site/article/statement-of-purpose-writing">Statement of Purpose writing </a></li>
+                    <li><a style="text-decoration: none; font-size: 20px;" <i class="fa fa-phone fa-2x" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;0741790736</a></li>
+                </ul><br>
+                <ul id="navigation" class="text-center hidden-xs">
+                    <li><img src="<?= Yii::$app->request->baseUrl?>/images/payment/visa.png"  width="40px" height="13px"  data-rjs="<?= Yii::$app->request->baseUrl?>/images/payment/visa.png" alt="Visa" class="pm visa"></li>
+                    <li><img src="<?= Yii::$app->request->baseUrl?>/images/payment/amex.png" width="57px" height="19px" data-rjs="<?= Yii::$app->request->baseUrl?>/images/payment/amex.png" alt="American Express" class="pm ae"></li>
+                    <li><img src="<?= Yii::$app->request->baseUrl?>/images/payment/mastercard.png" width="45px" height="27px" data-rjs="<?= Yii::$app->request->baseUrl?>/images/payment/mastercard.png" alt="MasterCard" class="pm mc"></li>
+                    <li><img src="<?= Yii::$app->request->baseUrl?>/images/payment/paypal.png" width="60px" height="17px" data-rjs="<?= Yii::$app->request->baseUrl?>/images/payment/paypal.png" alt="PayPal" class="pm paypal"></li>
                 </ul>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <ul class="articles footer-link essay-font">
-                    <li><a href="<?= Yii::$app->request->baseUrl?>/site/article/write-my-paper">Write my paper</a></li>
-                    <li><a href="<?= Yii::$app->request->baseUrl?>/site/article/take-online-class">Take online class</a></li>
-                    <li><a href="<?= Yii::$app->request->baseUrl?>/site/article/improve-my-grades">Improve my grades</a></li>
+                    <li><a style="text-decoration: none; font-size: 15px;" href="<?= Yii::$app->request->baseUrl?>/">Home</a></li>
+                    <li><a style="text-decoration: none; font-size: 15px;" href="<?= Yii::$app->request->baseUrl?>/site/faq">FAQ</a></li>
                     <br>
-                    <li><a href="<?= Yii::$app->request->baseUrl?>/site/article/buy-online-essay">Buy online essay</a></li>
-                    <li><a href="<?= Yii::$app->request->baseUrl?>/site/article/proofreading-and-editing">Proofreading and Editing</a></li>
-                    <li><a href="<?= Yii::$app->request->baseUrl?>/site/article/assignment-solutions-for-you">assignment solutions for you</a></li>
-                    <br>
-                    <li><a href="<?= Yii::$app->request->baseUrl?>/site/article/group-projects"> Group projects </a></li>
-                    <li><a href="<?= Yii::$app->request->baseUrl?>/site/article/final-project-help">Final project help </a></li>
-                    <li><a href="<?= Yii::$app->request->baseUrl?>/site/article/pay-for-paper">Pay for paper </a></li>
+                    <li><a style="text-decoration: none; font-size: 15px;" href="<?= Yii::$app->request->baseUrl?>/how_it_works">How it works</a></li>
+                    <li><a style="text-decoration: none; font-size: 15px;" href="<?= Yii::$app->request->baseUrl?>/site/terms_and_conditions">Terms and Conditions</a></li>
                 </ul>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <ul class="articles footer-link essay-font">
-                    <li><a href="<?= Yii::$app->request->baseUrl?>/site/article/online-tutors">Online Tutors</a></li>
-                    <li><a href="<?= Yii::$app->request->baseUrl?>/site/article/maths-statistics-help">Maths & Statistics help</a></li>
-                    <li><a href="<?= Yii::$app->request->baseUrl?>/site/article/dissertation-or-thesis-writing">Dissertation or Thesis writing</a></li>
+                    <li><a style="text-decoration: none; font-size: 15px;" href="<?= Yii::$app->request->baseUrl?>/site/about">About Us</a></li>
+                    <li><a style="text-decoration: none; font-size: 15px;" href="<?= Yii::$app->request->baseUrl?>/order">Order Now</a></li>
                     <br>
-                    <li><a href="<?= Yii::$app->request->baseUrl?>/site/article/best-online-tutors">Best online tutors</a></li>
-                    <li><a href="<?= Yii::$app->request->baseUrl?>/site/article/do-my-homework">Do my homework</a></li>
-                    <li><a href="<?= Yii::$app->request->baseUrl?>/site/article/essay-writing-online">Essay writing online</a></li>
-                    <br>
-                    <li><a href="<?= Yii::$app->request->baseUrl?>/site/article/quick-paper-writing"> Quick paper writing</a></li>
-                    <li><a href="<?= Yii::$app->request->baseUrl?>/site/article/paraphrasing-and-rewriting">Paraphrasing and rewriting </a></li>
-                </ul>
-            </div>
-            <div class="col-md-3">
-                <ul class="articles footer-link essay-font">
-                    <li><a href="<?= Yii::$app->request->baseUrl?>/site/article/custom-writing">Custom writing</a></li>
-                    <li><a href="<?= Yii::$app->request->baseUrl?>/site/article/write-my-paper-cheap">Write my paper cheap</a></li>
-                    <li><a href="<?= Yii::$app->request->baseUrl?>/site/article/urgent-essay-writing">Urgent essay writing</a></li>
-                    <br>
-                    <li><a href="<?= Yii::$app->request->baseUrl?>/site/article/english-essays">English essays</a></li>
-                    <li><a href="<?= Yii::$app->request->baseUrl?>/site/article/plagiarism-report">Plagiarism report </a></li>
-                    <li><a href="<?= Yii::$app->request->baseUrl?>/site/article/paper-revision">Paper revision</a></li>
-                    <br>
-                    <li><a href="<?= Yii::$app->request->baseUrl?>/site/article/buy-assignments"> Buy assignments</a></li>
-                    <li><a href="<?= Yii::$app->request->baseUrl?>/site/article/buy-personal-statement">Buy personal statement </a></li>
-                </ul>
+                    <li><a style="text-decoration: none; font-size: 15px;" href="<?= Yii::$app->request->baseUrl?>/site/privacy_policy">Privacy Policy</a></li>
+                    <li><a style="text-decoration: none; font-size: 15px;" href="<?= Yii::$app->request->baseUrl?>/site/guarantee">Money Back Guarantee</a></li>
+                  </ul>
             </div>
         </div>
     </div>
+    <br><br>
     <center>
     <span style="color: #a1a9b3;" class="rating-desc" itemscope="" itemtype="http://schema.org/Product">
-     <span style="display: none" itemprop="name">Doctorate Essays</span>
-     <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating"> Rated <span itemprop="ratingValue"><?= number_format(floatval($this->params['avgrating']), 1, '.', ',')?></span> / 5 based on <span itemprop="reviewCount"><?= number_format(floatval(11238+$this->params['count']), 0, '.', ',')?></span> Reviews. | <a style="color: #a1a9b3;" class="ratings" href="https://www.doctorateessays.com/site/reviews">All Reviews</a> </span>
+     <span style="display: none" itemprop="name">Verified Profesors</span>
+     <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating"> Rated <span itemprop="ratingValue"><?= number_format(floatval($this->params['avgrating']), 1, '.', ',')?></span> / 5 based on <span itemprop="reviewCount"><?= number_format(floatval(11238+$this->params['count']), 0, '.', ',')?></span> Reviews. | <a style="color: #a1a9b3;" class="ratings" href="https://www.verifiedprofessors.com/site/reviews">All Reviews</a> </span>
     </span>
     </center>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>

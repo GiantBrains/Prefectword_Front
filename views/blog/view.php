@@ -14,7 +14,7 @@ $this->registerMetaTag([
 
 $this->registerMetaTag([
     'name' => 'keywords',
-    'content' => 'Essay Writing, Quality Essays, Academic Writing, Doctorate Essays, Best Essay Writers '.$this->title.', Essay Writers'
+    'content' => 'Essay Writing, Quality Essays, Academic Writing, Verified Professors, Best Essay Writers '.$this->title.', Essay Writers'
 ]);
 
 $this->params['breadcrumbs'][] = ['label' => 'Blogs', 'url' => ['index']];

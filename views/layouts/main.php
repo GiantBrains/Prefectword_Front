@@ -58,7 +58,7 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => Html::img('@web/images/logo.png', ['style'=>'display:inline-block; height:32px;', 'alt'=>Yii::$app->name]). ' <strong style="color: #90F1C8 ; font-size: 20px;">Verified</strong><strong style="color: #3D715B; font-size: 20px;">Proffessors</strong>',
+        'brandLabel' => Html::img('@web/images/logo.png', ['style'=>'display:inline-block; height:32px;', 'alt'=>Yii::$app->name]). ' <strong style="color: #1695a4  ; font-size: 20px;">Verified</strong><strong style="color: #3D715B; font-size: 20px;">Professors</strong>',
         'brandUrl' => Yii::$app->request->baseUrl.'/',
         'options' => [
             'class' => 'navbar navbar-default1 navbar-fixed-top',
@@ -136,7 +136,7 @@ AppAsset::register($this);
     <div style="margin-top: 60px">
         <?= Alert::widget() ?>
     </div>
-    <div style="margin-top: -10px">
+    <div style="margin-top: -10px;">
         <?= $content ?>
     </div>
 </div>

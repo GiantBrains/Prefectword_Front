@@ -80,7 +80,7 @@ AppAsset::register($this);
             ],
             '<li role="separator" class="divider"></li>',
             [
-                'label' => '<img src="'.Yii::$app->request->baseUrl.'/images/rating/profile1.png" style="height: 16px; " > &nbsp;<span>Account</span>',
+                'label' => '<img src="'.Yii::$app->request->baseUrl.'/images/user.png" style="height: 16px; " > &nbsp;<span>Account</span>',
                 'url' => Yii::$app->request->baseUrl.'/site/account',
                 'active' => $this->context->route == 'site/account'
             ],
@@ -116,7 +116,7 @@ AppAsset::register($this);
                 <li class="dropdown notifications-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-bell-o"></i>
-                        <span class="label label-warning notifications-icon-count">0</span>
+                        <span class="label label-info notifications-icon-count">0</span>
                     </a>
                     <ul class="dropdown-menu" style="width: auto; min-width: 250px; max-width: 320px">
                         <li class="header">You have <span class="notifications-header-count">0</span> notifications</li>
@@ -151,7 +151,7 @@ AppAsset::register($this);
             'active' => $this->context->route == 'wallet/index'
                 ];
         $menuItems[] = [
-           'label' => '<img src="'.Yii::$app->request->baseUrl.'/images/rating/profile1.png" style="height: 35px; margin-top: -5px; margin-bottom: -10px" >',
+           'label' => '<img src="'.Yii::$app->request->baseUrl.'/images/user.png" style="height: 35px; margin-top: -5px; margin-bottom: -10px" >',
             'items' => [
                 [
                     'label' => '<i class="fa fa-user fa-2x" aria-hidden="true"></i> &nbsp; <span style="font-size: 20px">Profile</span>',
@@ -188,7 +188,7 @@ AppAsset::register($this);
             <div class="col-md-3 col-sm-3 hidden-xs">
                 <div class="sidebar">
                     <?php
-                    $type = 'success';
+                    $type = 'info';
                     $item = 'home';
                     echo SideNav::widget([
                         'type' => $type,

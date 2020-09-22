@@ -16,12 +16,13 @@ $this->registerMetaTag([
     'content' => 'Urgent questions, Essay help, Please help'
 ]);
 ?>
-<div class="container" style="background-color:#f5f5f5; border-color: #ddd;">
+
+<div class="container" style="background-color:white; border-color: #ddd;">
     <h1 class="text-primary" ><?= \yii\helpers\Html::encode($this->title) ?></h1>
     <div class="col-md-8">
         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
             <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingOne">
+                <div class="panel-heading" role="tab" id="headingOne" >
                     <h4 class="panel-title">
                         <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                             1. How long does it take to complete my assignment?

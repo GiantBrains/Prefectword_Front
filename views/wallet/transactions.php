@@ -31,10 +31,10 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="table-responsive">
                 <table class="table" id="transactions">
                     <tr>
-                        <th>Description</th>
-                        <th>Deposit</th>
-                        <th>Withdrawals</th>
-                        <th>Date</th>
+                        <th style="background-color: #3D715B">Description</th>
+                        <th style="background-color: #3D715B">Deposit</th>
+                        <th style="background-color: #3D715B">Withdrawals</th>
+                        <th style="background-color: #3D715B">Date</th>
                     </tr>
                     <?php
                     foreach($paypals as $paypal){

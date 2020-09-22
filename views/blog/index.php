@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <p>
             <?php
             if (Yii::$app->user->can('admin')){
-                echo ''.Html::a('Create Blog', ['create'], ['class' => 'btn btn-success']).'';
+                echo ''.Html::a('Create Blog', ['create'], ['class' => 'btn btn-info']).'';
             }
             ?>
         </p>
