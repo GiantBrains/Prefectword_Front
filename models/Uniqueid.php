@@ -9,6 +9,7 @@ use Yii;
  *
  * @property integer $id
  * @property integer $orderid
+ * @property integer $uuid
  */
 class Uniqueid extends \yii\db\ActiveRecord
 {
@@ -27,7 +28,7 @@ class Uniqueid extends \yii\db\ActiveRecord
     {
         return [
             [['orderid'], 'required'],
-            [['orderid'], 'integer'],
+            [['orderid', 'uuid'], 'integer'],
         ];
     }
 
@@ -39,6 +40,7 @@ class Uniqueid extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'orderid' => 'Orderid',
+            'uuid' => 'UUID',
         ];
     }
 

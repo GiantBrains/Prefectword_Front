@@ -21,6 +21,7 @@ use PayPal\Auth\OAuthTokenCredential;
 use PayPal\Rest\ApiContext;
 use app\models\File;
 use app\models\Uniqueid;
+use yii\base\Exception;
 use yii\helpers\FileHelper;
 use yii\helpers\Json;
 use yii\helpers\Url;
@@ -84,14 +85,14 @@ class OrderController extends Controller
         ];
     }
 
-
     /**
      * Lists all Order models.
      * @return mixed
      */
     public function actionIndex()
     {
-        Order::getLogoNameBalance();
+        Order::getLogoName();
+        Order::getBalance();
         Order::getOrdersCount();
         $searchModel = new OrderSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -104,7 +105,8 @@ class OrderController extends Controller
 
     public function actionPending()
     {
-        Order::getLogoNameBalance();
+        Order::getLogoName();
+        Order::getBalance();
         Order::getOrdersCount();
         $searchModel = new OrderSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -119,7 +121,8 @@ class OrderController extends Controller
 
     public function actionAvailable()
     {
-        Order::getLogoNameBalance();
+        Order::getLogoName();
+        Order::getBalance();
         Order::getOrdersCount();
         $searchModel = new OrderSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -134,7 +137,8 @@ class OrderController extends Controller
 
     public function actionActive()
     {
-        Order::getLogoNameBalance();
+        Order::getLogoName();
+        Order::getBalance();
         Order::getOrdersCount();
         $searchModel = new OrderSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -149,7 +153,8 @@ class OrderController extends Controller
 
     public function actionCancelled()
     {
-        Order::getLogoNameBalance();
+        Order::getLogoName();
+        Order::getBalance();
         Order::getOrdersCount();
         $searchModel = new OrderSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -163,9 +168,8 @@ class OrderController extends Controller
 
     public function actionRevision()
     {
-        Yii::$app->view->params['logo'] = User::getSiteLogo();
-        Yii::$app->view->params['name'] = User::getSiteName();
-        Order::getLogoNameBalance();
+        Order::getLogoName();
+        Order::getBalance();
         Order::getOrdersCount();
         $searchModel = new OrderSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -179,7 +183,8 @@ class OrderController extends Controller
 
     public function actionEditing()
     {
-        Order::getLogoNameBalance();
+        Order::getLogoName();
+        Order::getBalance();
         Order::getOrdersCount();
         $searchModel = new OrderSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -193,7 +198,8 @@ class OrderController extends Controller
 
     public function actionCompleted()
     {
-        Order::getLogoNameBalance();
+        Order::getLogoName();
+        Order::getBalance();
         Order::getOrdersCount();
         $searchModel = new OrderSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -207,7 +213,8 @@ class OrderController extends Controller
 
     public function actionApproved()
     {
-        Order::getLogoNameBalance();
+        Order::getLogoName();
+        Order::getBalance();
         Order::getOrdersCount();
         $searchModel = new OrderSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -221,7 +228,8 @@ class OrderController extends Controller
 
     public function actionRejected()
     {
-        Order::getLogoNameBalance();
+        Order::getLogoName();
+        Order::getBalance();
         Order::getOrdersCount();
         $searchModel = new OrderSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -235,7 +243,8 @@ class OrderController extends Controller
 
     public function actionDisputed()
     {
-        Order::getLogoNameBalance();
+        Order::getLogoName();
+        Order::getBalance();
         Order::getOrdersCount();
         $searchModel = new OrderSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -249,15 +258,9 @@ class OrderController extends Controller
 
     public function actionSendMessage()
     {
-        Yii::$app->view->params['logo'] = User::getSiteLogo();
-        Yii::$app->view->params['name'] = User::getSiteName();
+        Order::getLogoName();
         Order::getOrdersCount();
-        $command1 = Yii::$app->db->createCommand('SELECT SUM(deposit) FROM wallet WHERE customer_id =' . Yii::$app->user->id . '');
-        $command2 = Yii::$app->db->createCommand('SELECT SUM(withdraw) FROM wallet WHERE customer_id =' . Yii::$app->user->id . '');
-        $totaldeposit = $command1->queryScalar();
-        $totalwithdrawal = $command2->queryScalar();
-        $balance = $totaldeposit - $totalwithdrawal;
-        Yii::$app->view->params['balance'] = $balance;
+        Order::getBalance();
         $model = new Message();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -271,18 +274,12 @@ class OrderController extends Controller
 
     public function actionReserve($oid)
     {
-        Yii::$app->view->params['logo'] = User::getSiteLogo();
-        Yii::$app->view->params['name'] = User::getSiteName();
+        Order::getLogoName();
         $model = Order::find()->where(['ordernumber' => $oid])->one();
         if (Yii::$app->user->id == $model->created_by) {
             //deduct payment
-            $command1 = Yii::$app->db->createCommand('SELECT SUM(deposit) FROM wallet WHERE customer_id =' . Yii::$app->user->id . '');
-            $command2 = Yii::$app->db->createCommand('SELECT SUM(withdraw) FROM wallet WHERE customer_id =' . Yii::$app->user->id . '');
-            $totaldeposit = $command1->queryScalar();
-            $totalwithdrawal = $command2->queryScalar();
-            $balance = $totaldeposit - $totalwithdrawal;
-            Yii::$app->view->params['balance'] = $balance;
-            if ($model->amount > $balance) {
+            Order::getBalance();
+            if ($model->amount > Order::getBalance()) {
                 Yii::$app->session->setFlash('balance', 'The balance in your wallet is less than the amount you want to pay. Please reload your wallet.');
                 return $this->redirect(['view', 'oid' => $oid]);
             } else {
@@ -307,8 +304,7 @@ class OrderController extends Controller
 
     public function actionMessages($oid)
     {
-        Yii::$app->view->params['logo'] = User::getSiteLogo();
-        Yii::$app->view->params['name'] = User::getSiteName();
+        Order::getLogoName();
         $message = new Message();
         $order_messages = Message::find()->where(['order_number' => $oid])->orderBy('id ASC')->all();
         $supaorder = Order::find()->where(['ordernumber' => $oid])->one();
@@ -337,32 +333,8 @@ class OrderController extends Controller
 
                 return $this->redirect(['messages', 'oid' => $oid]);
             }
-            $cancel_count = Order::find()->where(['cancelled' => 1])->andFilterWhere(['created_by' => Yii::$app->user->id])->count();
-            Yii::$app->view->params['cancel_count'] = $cancel_count;
-            $available_count = Order::find()->where(['available' => 1])->andWhere(['cancelled' => 0])->andFilterWhere(['created_by' => Yii::$app->user->id])->count();
-            Yii::$app->view->params['available_count'] = $available_count;
-            $pending_count = Order::find()->where(['paid' => 0])->andWhere(['cancelled' => 0])->andFilterWhere(['created_by' => Yii::$app->user->id])->count();
-            Yii::$app->view->params['pending_count'] = $pending_count;
-            $active_count = Order::find()->where(['active' => 1])->andWhere(['cancelled' => 0])->andFilterWhere(['created_by' => Yii::$app->user->id])->count();
-            Yii::$app->view->params['active_count'] = $active_count;
-            $revision_count = Order::find()->where(['revision' => 1])->andFilterWhere(['created_by' => Yii::$app->user->id])->count();
-            Yii::$app->view->params['revision_count'] = $revision_count;
-            $editing_count = Order::find()->where(['editing' => 1])->andFilterWhere(['created_by' => Yii::$app->user->id])->count();
-            Yii::$app->view->params['editing_count'] = $editing_count;
-            $completed_count = Order::find()->where(['completed' => 1])->andFilterWhere(['created_by' => Yii::$app->user->id])->count();
-            Yii::$app->view->params['completed_count'] = $completed_count;
-            $approved_count = Order::find()->where(['approved' => 1])->andFilterWhere(['created_by' => Yii::$app->user->id])->count();
-            Yii::$app->view->params['approved_count'] = $approved_count;
-            $rejected_count = Order::find()->where(['rejected' => 1])->andFilterWhere(['created_by' => Yii::$app->user->id])->count();
-            Yii::$app->view->params['rejected_count'] = $rejected_count;
-            $disputed_count = Order::find()->where(['disputed' => 1])->andFilterWhere(['created_by' => Yii::$app->user->id])->count();
-            Yii::$app->view->params['disputed_count'] = $disputed_count;
-            $command1 = Yii::$app->db->createCommand('SELECT SUM(deposit) FROM wallet WHERE customer_id =' . Yii::$app->user->id . '');
-            $command2 = Yii::$app->db->createCommand('SELECT SUM(withdraw) FROM wallet WHERE customer_id =' . Yii::$app->user->id . '');
-            $totaldeposit = $command1->queryScalar();
-            $totalwithdrawal = $command2->queryScalar();
-            $balance = $totaldeposit - $totalwithdrawal;
-            Yii::$app->view->params['balance'] = $balance;
+            Order::getOrdersCount();
+            Order::getBalance();
             $model = $this->findModelByNumber($oid);
             $messages = Message::find()->where(['order_number' => $oid])->one();
             $searchModel = new MessageSearch();
@@ -417,38 +389,13 @@ class OrderController extends Controller
      */
     public function actionView($oid)
     {
-        Yii::$app->view->params['logo'] = User::getSiteLogo();
-        Yii::$app->view->params['name'] = User::getSiteName();
-        $cancel_count = Order::find()->where(['cancelled' => 1])->andFilterWhere(['created_by' => Yii::$app->user->id])->count();
-        Yii::$app->view->params['cancel_count'] = $cancel_count;
-        $available_count = Order::find()->where(['available' => 1])->andWhere(['cancelled' => 0])->andFilterWhere(['created_by' => Yii::$app->user->id])->count();
-        Yii::$app->view->params['available_count'] = $available_count;
+        Order::getLogoName();
+        Order::getOrdersCount();
         $model = $this->findModelByNumber($oid);
-        $pending_count = Order::find()->where(['paid' => 0])->andWhere(['cancelled' => 0])->andFilterWhere(['created_by' => Yii::$app->user->id])->count();
-        Yii::$app->view->params['pending_count'] = $pending_count;
-        $active_count = Order::find()->where(['active' => 1])->andWhere(['cancelled' => 0])->andFilterWhere(['created_by' => Yii::$app->user->id])->count();
-        Yii::$app->view->params['active_count'] = $active_count;
-        $revision_count = Order::find()->where(['revision' => 1])->andFilterWhere(['created_by' => Yii::$app->user->id])->count();
-        Yii::$app->view->params['revision_count'] = $revision_count;
-        $editing_count = Order::find()->where(['editing' => 1])->andFilterWhere(['created_by' => Yii::$app->user->id])->count();
-        Yii::$app->view->params['editing_count'] = $editing_count;
-        $completed_count = Order::find()->where(['completed' => 1])->andFilterWhere(['created_by' => Yii::$app->user->id])->count();
-        Yii::$app->view->params['completed_count'] = $completed_count;
-        $approved_count = Order::find()->where(['approved' => 1])->andFilterWhere(['created_by' => Yii::$app->user->id])->count();
-        Yii::$app->view->params['approved_count'] = $approved_count;
-        $rejected_count = Order::find()->where(['rejected' => 1])->andFilterWhere(['created_by' => Yii::$app->user->id])->count();
-        Yii::$app->view->params['rejected_count'] = $rejected_count;
-        $disputed_count = Order::find()->where(['disputed' => 1])->andFilterWhere(['created_by' => Yii::$app->user->id])->count();
-        Yii::$app->view->params['disputed_count'] = $disputed_count;
         $this->layout = 'order';
         if (Yii::$app->user->id == $model->created_by) {
-            $command1 = Yii::$app->db->createCommand('SELECT SUM(deposit) FROM wallet WHERE customer_id =' . Yii::$app->user->id . '');
-            $command2 = Yii::$app->db->createCommand('SELECT SUM(withdraw) FROM wallet WHERE customer_id =' . Yii::$app->user->id . '');
-            $totaldeposit = $command1->queryScalar();
-            $totalwithdrawal = $command2->queryScalar();
+            Order::getBalance();
             $cancel = new Cancel();
-            $balance = $totaldeposit - $totalwithdrawal;
-            Yii::$app->view->params['balance'] = $balance;
             return $this->render('view', [
                 'model' => $model,
                 'cancel' => $cancel
@@ -466,15 +413,9 @@ class OrderController extends Controller
      */
     public function actionCreate()
     {
-        Yii::$app->view->params['logo'] = User::getSiteLogo();
-        Yii::$app->view->params['name'] = User::getSiteName();
+        Order::getLogoName();
         Order::getOrdersCount();
-        $command1 = Yii::$app->db->createCommand('SELECT SUM(deposit) FROM wallet WHERE customer_id =' . Yii::$app->user->id . '');
-        $command2 = Yii::$app->db->createCommand('SELECT SUM(withdraw) FROM wallet WHERE customer_id =' . Yii::$app->user->id . '');
-        $totaldeposit = $command1->queryScalar();
-        $totalwithdrawal = $command2->queryScalar();
-        $balance = $totaldeposit - $totalwithdrawal;
-        Yii::$app->view->params['balance'] = $balance;
+        Order::getBalance();
         $session = Yii::$app->session;
         $model = new Order();
         if ($model->load(Yii::$app->request->post())) {
@@ -560,15 +501,9 @@ class OrderController extends Controller
 
     public function actionDownloadReview($oid)
     {
-        Yii::$app->view->params['logo'] = User::getSiteLogo();
-        Yii::$app->view->params['name'] = User::getSiteName();
+        Order::getLogoName();
         Order::getOrdersCount();
-        $command1 = Yii::$app->db->createCommand('SELECT SUM(deposit) FROM wallet WHERE customer_id =' . Yii::$app->user->id . '');
-        $command2 = Yii::$app->db->createCommand('SELECT SUM(withdraw) FROM wallet WHERE customer_id =' . Yii::$app->user->id . '');
-        $totaldeposit = $command1->queryScalar();
-        $totalwithdrawal = $command2->queryScalar();
-        $balance = $totaldeposit - $totalwithdrawal;
-        Yii::$app->view->params['balance'] = $balance;
+        Order::getBalance();
         $rating = new Rating();
         $model = Order::find()->where(['ordernumber' => $oid])->one();
         if (Yii::$app->user->id == $model->created_by) {
@@ -597,8 +532,7 @@ class OrderController extends Controller
 
     public function actionOrderRevision($oid)
     {
-        Yii::$app->view->params['logo'] = User::getSiteLogo();
-        Yii::$app->view->params['name'] = User::getSiteName();
+        Order::getLogoName();
         $model = new Revision();
         $order = Order::find()->where(['ordernumber' => $oid])->one();
         if (Yii::$app->user->id == $order->created_by) {
@@ -626,8 +560,7 @@ class OrderController extends Controller
 
     public function actionApproverun($oid)
     {
-        Yii::$app->view->params['logo'] = User::getSiteLogo();
-        Yii::$app->view->params['name'] = User::getSiteName();
+        Order::getLogoName();
         $order = Order::find()->where(['ordernumber' => $oid])->one();
         if (Yii::$app->user->id == $order->created_by) {
             if ($order->approved == 0) {
@@ -645,8 +578,7 @@ class OrderController extends Controller
 
     public function actionRating($oid)
     {
-        Yii::$app->view->params['logo'] = User::getSiteLogo();
-        Yii::$app->view->params['name'] = User::getSiteName();
+        Order::getLogoName();
         $rating = new Rating();
         $order = Order::find()->where(['ordernumber' => $oid])->one();
         if (Yii::$app->user->id == $order->created_by) {
@@ -680,8 +612,7 @@ class OrderController extends Controller
 
     public function actionOrderReject($oid)
     {
-        Yii::$app->view->params['logo'] = User::getSiteLogo();
-        Yii::$app->view->params['name'] = User::getSiteName();
+        Order::getLogoName();
         $order = Order::find()->where(['ordernumber' => $oid])->one();
         if (Yii::$app->user->id == $order->created_by) {
             $reject = new Reject();
@@ -714,15 +645,9 @@ class OrderController extends Controller
 
     public function actionAttached($oid)
     {
-        Yii::$app->view->params['logo'] = User::getSiteLogo();
-        Yii::$app->view->params['name'] = User::getSiteName();
+        Order::getLogoName();
         Order::getOrdersCount();
-        $command1 = Yii::$app->db->createCommand('SELECT SUM(deposit) FROM wallet WHERE customer_id =' . Yii::$app->user->id . '');
-        $command2 = Yii::$app->db->createCommand('SELECT SUM(withdraw) FROM wallet WHERE customer_id =' . Yii::$app->user->id . '');
-        $totaldeposit = $command1->queryScalar();
-        $totalwithdrawal = $command2->queryScalar();
-        $balance = $totaldeposit - $totalwithdrawal;
-        Yii::$app->view->params['balance'] = $balance;
+        Order::getBalance();
         $model = Order::find()->where(['ordernumber' => $oid])->one();
         if (Yii::$app->user->id == $model->created_by) {
             $file = new File();
@@ -808,7 +733,10 @@ class OrderController extends Controller
             $imageFile = UploadedFile::getInstance($model, 'attached');
             $directory = Yii::getAlias('@app/web/images/order') . DIRECTORY_SEPARATOR;
             if (!is_dir($directory)) {
-                FileHelper::createDirectory($directory);
+                try {
+                    FileHelper::createDirectory($directory);
+                } catch (Exception $e) {
+                }
             }
             if ($imageFile) {
                 $uid = $imageFile->baseName . '-' . $user . '-' . $order->id;
@@ -844,8 +772,7 @@ class OrderController extends Controller
 
     public function actionFileView($id)
     {
-        Yii::$app->view->params['logo'] = User::getSiteLogo();
-        Yii::$app->view->params['name'] = User::getSiteName();
+        Order::getLogoName();
         $models = File::find()->where(['order_id' => $id])->all();
         return $this->render('file-view', [
             'models' => $models
@@ -885,15 +812,9 @@ class OrderController extends Controller
      */
     public function actionUpdate($oid)
     {
-        Yii::$app->view->params['logo'] = User::getSiteLogo();
-        Yii::$app->view->params['name'] = User::getSiteName();
+        Order::getLogoName();
         Order::getOrdersCount();
-        $command1 = Yii::$app->db->createCommand('SELECT SUM(deposit) FROM wallet WHERE customer_id =' . Yii::$app->user->id . '');
-        $command2 = Yii::$app->db->createCommand('SELECT SUM(withdraw) FROM wallet WHERE customer_id =' . Yii::$app->user->id . '');
-        $totaldeposit = $command1->queryScalar();
-        $totalwithdrawal = $command2->queryScalar();
-        $balance = $totaldeposit - $totalwithdrawal;
-        Yii::$app->view->params['balance'] = $balance;
+        Order::getBalance();
         $model = $this->findModelByNumber($oid);
         if (Yii::$app->user->id == $model->created_by) {
             if ($model->load(Yii::$app->request->post())) {
@@ -1013,15 +934,9 @@ class OrderController extends Controller
 
     public function actionRevisionView($oid)
     {
-        Yii::$app->view->params['logo'] = User::getSiteLogo();
-        Yii::$app->view->params['name'] = User::getSiteName();
+        Order::getLogoName();
         Order::getOrdersCount();
-        $command1 = Yii::$app->db->createCommand('SELECT SUM(deposit) FROM wallet WHERE customer_id =' . Yii::$app->user->id . '');
-        $command2 = Yii::$app->db->createCommand('SELECT SUM(withdraw) FROM wallet WHERE customer_id =' . Yii::$app->user->id . '');
-        $totaldeposit = $command1->queryScalar();
-        $totalwithdrawal = $command2->queryScalar();
-        $balance = $totaldeposit - $totalwithdrawal;
-        Yii::$app->view->params['balance'] = $balance;
+        Order::getBalance();
         $model = $this->findModelByNumber($oid);
         if (Yii::$app->user->id == $model->created_by) {
             return $this->render('revision-view', [
