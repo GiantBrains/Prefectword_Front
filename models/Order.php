@@ -72,11 +72,11 @@ class Order extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['service_id', 'cancelled', 'ordernumber', 'created_by', 'written_by', 'edited_by',  'type_id', 'urgency_id', 'spacing_id', 'pages_id', 'level_id', 'subject_id', 'style_id', 'sources_id', 'language_id', 'pagesummary', 'plagreport', 'initialdraft', 'qualitycheck', 'topwriter'], 'integer'],
-            [['topic', 'instructions','spacing_id', 'pages_id','service_id','type_id', 'urgency_id', 'level_id', 'subject_id', 'style_id', 'sources_id',], 'required'],
+            [['service_id', 'cancelled', 'ordernumber', 'created_by', 'written_by', 'edited_by', 'type_id', 'urgency_id', 'spacing_id', 'pages_id', 'level_id', 'subject_id', 'style_id', 'sources_id', 'language_id', 'pagesummary', 'plagreport', 'initialdraft', 'qualitycheck', 'topwriter'], 'integer'],
+            [['topic', 'instructions', 'spacing_id', 'pages_id', 'service_id', 'type_id', 'urgency_id', 'level_id', 'subject_id', 'style_id', 'sources_id',], 'required'],
             [['instructions'], 'string'],
             [['created_at'], 'safe'],
-            [['active','paid', 'completed','disputed','approved','rejected', 'editing','revision', 'available', 'confirmed', ],'boolean'],
+            [['active', 'paid', 'completed', 'disputed', 'approved', 'rejected', 'editing', 'revision', 'available', 'confirmed',], 'boolean'],
             [['topic'], 'string', 'max' => 60],
             [['phone'], 'string', 'max' => 255],
             [['amount'], 'number'],
@@ -270,10 +270,14 @@ class Order extends \yii\db\ActiveRecord
         return new OrderQuery(get_called_class());
     }
 
-    public static function getLogoNameBalance()
+    public static function getLogoName()
     {
         Yii::$app->view->params['logo'] = User::getSiteLogo();
         Yii::$app->view->params['name'] = User::getSiteName();
+    }
+
+    public static function getBalance()
+    {
         $command1 = Yii::$app->db->createCommand('SELECT SUM(deposit) FROM wallet WHERE customer_id =' . Yii::$app->user->id . '');
         $command2 = Yii::$app->db->createCommand('SELECT SUM(withdraw) FROM wallet WHERE customer_id =' . Yii::$app->user->id . '');
         $totaldeposit = $command1->queryScalar();
@@ -281,7 +285,7 @@ class Order extends \yii\db\ActiveRecord
         $balance = $totaldeposit - $totalwithdrawal;
         Yii::$app->view->params['balance'] = $balance;
     }
-    
+
     public static function getOrdersCount()
     {
         $cancel_count = Order::find()->where(['cancelled' => 1])->andFilterWhere(['created_by' => Yii::$app->user->id])->count();

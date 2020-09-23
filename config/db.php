@@ -2,9 +2,9 @@
 
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=doctorateessays',
-    'username' => 'root',
-    'password' => '1165',
+    'dsn' => 'mysql:host=localhost;dbname=' . env('DB_NAME'),
+    'username' => env('DB_USER'),
+    'password' => env('DB_PASSWORD'),
     'charset' => 'utf8',
     'attributes' => [PDO::ATTR_CASE => PDO::CASE_LOWER],
     // Schema cache options (for production environment)
@@ -12,4 +12,3 @@ return [
     //'schemaCacheDuration' => 60,
     //'schemaCache' => 'cache',
 ];
-

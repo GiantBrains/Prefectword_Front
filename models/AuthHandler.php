@@ -3,6 +3,7 @@ namespace app\models;
 
 use Yii;
 use yii\authclient\ClientInterface;
+use yii\base\Exception;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 
@@ -24,9 +25,18 @@ class AuthHandler
     public function handle()
     {
         $attributes = $this->setData();
-        $email = ArrayHelper::getValue($attributes, 'email');
-        $id = ArrayHelper::getValue($attributes, 'id');
-        $nickname = ArrayHelper::getValue($attributes, 'username');
+        try {
+            $email = ArrayHelper::getValue($attributes, 'email');
+        } catch (\Exception $e) {
+        }
+        try {
+            $id = ArrayHelper::getValue($attributes, 'id');
+        } catch (\Exception $e) {
+        }
+        try {
+            $nickname = ArrayHelper::getValue($attributes, 'username');
+        } catch (\Exception $e) {
+        }
         /* @var Auth $auth */
         $myuser = User::findOne(['email'=> $email]);
 
@@ -59,7 +69,10 @@ class AuthHandler
                 }
             }else {
                 //register new user
-                $password = Yii::$app->security->generateRandomString(6);
+                try {
+                    $password = Yii::$app->security->generateRandomString(6);
+                } catch (Exception $e) {
+                }
                 $user = new User();
                 $user->username = $nickname;
                 $user->email = $email;
@@ -77,13 +90,19 @@ class AuthHandler
                         'source_id' => (string)$id,
                     ]);
                     if ($auth->save()) {
-                        $transaction->commit();
+                        try {
+                            $transaction->commit();
+                        } catch (\yii\db\Exception $e) {
+                        }
                         $assignment = User::getUserAssignment($user->id);
                         if (!empty($assignment)){
                             // the following three lines were added:
                             $auth = \Yii::$app->authManager;
                             $clientRole = $auth->getRole('client');
-                            $auth->assign($clientRole, $user->getId());
+                            try {
+                                $auth->assign($clientRole, $user->getId());
+                            } catch (\Exception $e) {
+                            }
                         }
                         Yii::$app->user->login($user, Yii::$app->params['user.rememberMeDuration']);
                         return Yii::$app->response->redirect(Url::to(['order/index']));
@@ -144,7 +163,10 @@ class AuthHandler
     private function updateUserInfo(User $user)
     {
         $attributes = $this->setData();
-        $username = ArrayHelper::getValue($attributes, 'username');
+        try {
+            $username = ArrayHelper::getValue($attributes, 'username');
+        } catch (\Exception $e) {
+        }
         if ($user->username == null && $username) {
             $user->username = $username;
             $user->save();
@@ -155,26 +177,56 @@ class AuthHandler
     public function setData()
     {
         $attributes = $this->client->getUserAttributes();
+        $uniqueID = Uniqueid::findOne(1);
+        $uuid = $uniqueID->uuid + 2;
         $data = [];
-        if ($this->client->getId()== 'facebook'){
-            $data['email']= ArrayHelper::getValue($attributes, 'email');
-            $data['id']= ArrayHelper::getValue($attributes, 'id');
-            $data['username']= ArrayHelper::getValue($attributes, 'name');;
+        if ($this->client->getId() == 'facebook') {
+            try {
+                $data['email'] = ArrayHelper::getValue($attributes, 'email');
+            } catch (\Exception $e) {
+            }
+            try {
+                $data['id'] = ArrayHelper::getValue($attributes, 'id');
+            } catch (\Exception $e) {
+            }
+            $uuid = $uniqueID->uuid + 2;
+            try {
+                $data['username'] = strtolower(ArrayHelper::getValue($attributes, 'name')) . $uuid;
+            } catch (\Exception $e) {
+            }
 
-        } elseif ($this->client->getId()== 'twitter'){
-            $data['email']= ArrayHelper::getValue($attributes, 'email');
-            $data['id']= ArrayHelper::getValue($attributes, 'id');
-            $data['first_name']= ArrayHelper::getValue($attributes, 'first_name');
-            $data['last_name']= ArrayHelper::getValue($attributes, 'last_name');
-            $data['username']= $data['first_name'];
+        } elseif ($this->client->getId() == 'twitter') {
+            try {
+                $data['email'] = ArrayHelper::getValue($attributes, 'email');
+            } catch (\Exception $e) {
+            }
+            try {
+                $data['id'] = ArrayHelper::getValue($attributes, 'id');
+            } catch (\Exception $e) {
+            }
+            try {
+                $data['first_name'] = ArrayHelper::getValue($attributes, 'first_name');
+            } catch (\Exception $e) {
+            }
+            try {
+                $data['last_name'] = ArrayHelper::getValue($attributes, 'last_name');
+            } catch (\Exception $e) {
+            }
+            $data['username'] = strtolower($data['first_name']) . $uuid;
 
-        }elseif ($this->client->getId() == 'google'){
-            $data['email'] = $attributes['emails'][0]['value'];
-            $data['id']= ArrayHelper::getValue($attributes, 'id');
-            $data['last_name'] = !empty($attributes['name']['familyName']) ? $attributes['name']['familyName'] : null;
-            $data['first_name'] = !empty($attributes['name']['givenName']) ? $attributes['name']['givenName'] : null;
-            $data['username']= $data['first_name'];
+        } elseif ($this->client->getId() == 'google') {
+            $data['email'] = $attributes['email'];
+            try {
+                $data['id'] = ArrayHelper::getValue($attributes, 'id');
+            } catch (\Exception $e) {
+            }
+            $data['last_name'] = !empty($attributes['family_name']) ? $attributes['family_name'] : null;
+            $data['first_name'] = !empty($attributes['given_name']) ? $attributes['given_name'] : null;
+            $data['username'] = strtolower($data['first_name']) . $uuid;
         }
+
+        $uniqueID->uuid = $uuid;
+        $uniqueID->save();
 
         return $data;
     }
