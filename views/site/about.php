@@ -22,8 +22,9 @@ $this->registerMetaTag([
 ]);
 ?>
 <div class="container" style="background-color: #fff">
-    <h1 class="text-primary" style="text-align: center;"><?= Html::encode($this->title) ?></h1>
+    <h1 class="text-success" style="text-align: center;"><?= Html::encode($this->title) ?></h1>
     <div class="site-about">
+        <div class="col-md-8 col-md-offset-2">
     <p>Verified Professors is a reliable partner for professional freelance writers with experience in
         students papers to provide high quality papers for our clients. We have an open reviews section
         where our customers give us feedback on their experience with us. It is easy to judge yourself
@@ -31,12 +32,12 @@ $this->registerMetaTag([
         nights thinking of how you will improve your grade. Let us do it essay for you while you do other
         duties.
     </p>
-    <p><strong class="text-primary">Vision</strong></p>
+    <p><strong class="text-success">Vision</strong></p>
     <p>To be the one site that gives clients 100% value for money by offering the best essay writing services across the globe.</p>
-    <p><strong class="text-primary">Mission</strong></p>
+    <p><strong class="text-success">Mission</strong></p>
     <p>Our mission is to make sure that students have enough time to participate in other school activities by offering to help
       them complete their tasks on time while at the same time maintaining high-quality work that will improve their grades.</p>
-    <p><strong class="text-primary">Our Core Values</strong></p>
+    <p><strong class="text-success">Our Core Values</strong></p>
     <p>We are a team that is devoted and guided by the following five core values.</p>
     <ol>
         <li>Quality Work</li>
@@ -45,5 +46,6 @@ $this->registerMetaTag([
         <li>Zero Grammar Errors</li>
         <li>Professional Customer Support</li>
     </ol>
+        </div>
 </div>
 </div>

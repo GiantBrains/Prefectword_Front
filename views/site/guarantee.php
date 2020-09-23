@@ -17,9 +17,9 @@ $this->registerMetaTag([
 ]);
 ?>
 <div class="container">
-    <h1 class="text-primary" ><?= \yii\helpers\Html::encode($this->title) ?></h1>
-    <div class="row">
-    <div class="col-md-8">
+    <div class="row site-about">
+        <div class="col-md-8 col-md-offset-2">
+            <h1 class="text-success" ><?= \yii\helpers\Html::encode($this->title) ?></h1><br>
         <p>Are you afraid that you might lose money by paying for an essay that does not meet your expectations?
         You do not need to worry anymore. We have made sure to take care of this in our Money Back Guarantee policy.
         We are a legitimate company offering the best essay writing service to more than 1 million students from across the globe.
@@ -31,6 +31,6 @@ $this->registerMetaTag([
             satisfied with the service offered. We allow you to reserve the payment for your writer until you
             receive the paper and confirm that it meets your expectations. You are free to cancel your order
             and still get back your money. Please remember to read our Terms and Conditions.</p>
-    </div>
+        </div>
     </div>
 </div>

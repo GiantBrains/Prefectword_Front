@@ -25,7 +25,7 @@ use yii\widgets\ActiveForm;
             'showUpload' => true,
             'hideThumbnailContent'=>'true',
              'browseLabel' => 'Browse Files',
-            'browseClass' => 'btn btn-success',
+            'browseClass' => 'btn btn-info',
             'uploadClass' => 'btn btn-info',
             'removeClass' => 'btn btn-danger',
             'removeIcon' => '<i class="glyphicon glyphicon-trash"></i> ',

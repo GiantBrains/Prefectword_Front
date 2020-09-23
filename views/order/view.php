@@ -108,7 +108,7 @@ $this->registerJs($datetime);
             $cancancel= $model->active == 1 || $model->available == 1;
             $cancelled = $model->paid == 0 && $model->cancelled == 0;
             if ($cancelled){
-                echo ''. Html::a('Update', ['update', 'oid' => $model->ordernumber], ['class' => 'btn btn-success']).'&nbsp;';
+                echo ''. Html::a('Update', ['update', 'oid' => $model->ordernumber], ['class' => 'btn btn-info']).'&nbsp;';
             }else{
                 echo '';
             }
@@ -126,7 +126,7 @@ $this->registerJs($datetime);
             <?php
             if ($cancelled){
                 echo ' <!-- Button trigger modal -->
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#reserveModal">
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#reserveModal">
                Reserve Payment
             </button>';
             }else{
@@ -169,7 +169,7 @@ $this->registerJs($datetime);
                 $cancancel= $model->active == 1 || $model->available == 1;
                 $cancelled = $model->paid == 0 && $model->cancelled == 0;
                 if ($cancelled){
-                    echo ''. Html::a('Update', ['update', 'oid' => $model->ordernumber], ['class' => 'btn btn-success']).'&nbsp;';
+                    echo ''. Html::a('Update', ['update', 'oid' => $model->ordernumber], ['class' => 'btn btn-info']).'&nbsp;';
                 }else{
                     echo '';
                 }
@@ -177,7 +177,7 @@ $this->registerJs($datetime);
                 <?php
                 if ($cancelled || $cancancel){
                     echo ' <!-- Button trigger modal -->
-            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#cancelModal"> &nbsp;
+            <button type="button" class="btn button-cancel" data-toggle="modal" data-target="#cancelModal"> &nbsp;
                Cancel
             </button> &nbsp;';
                 }else{
@@ -187,7 +187,7 @@ $this->registerJs($datetime);
                 <?php
                 if ($cancelled){
                     echo ' <!-- Button trigger modal -->
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#reserveModal">
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#reserveModal">
                Reserve Payment
             </button>';
                 }else{
@@ -513,10 +513,10 @@ $this->registerJs($datetime);
                 <div class="row" style="padding: 10px">
                     <p>Choose one of the options to reserve the payment for the order.</p>
                     <div class="col-md-6 col-sm-6 col-xs-12" style="margin-top: 10px;">
-                        <?= Html::a('Reserve from your Wallet', ['reserve', 'oid' => $model->ordernumber], ['class' => 'btn btn-success']) ?>
+                        <?= Html::a('Reserve from your Wallet', ['reserve', 'oid' => $model->ordernumber], ['class' => 'btn btn-info']) ?>
                     </div>
                     <div class="col-md-6 col-sm-6 col-xs-12" style="margin-top: 10px;">
-                        <?= Html::a('Reserve with Paypal', ['wallet/reserve', 'oid' => $model->ordernumber, 'amount'=>$model->amount], ['class' => 'btn btn-info']) ?>
+                        <?= Html::a('Reserve with Paypal', ['wallet/reserve', 'oid' => $model->ordernumber, 'amount'=>$model->amount], ['class' => 'btn with-paypal']) ?>
                     </div>
                 </div>
             </div>
@@ -554,7 +554,7 @@ $this->registerJs($datetime);
                         </div>
 
                         <div class="form-group">
-                            <?= Html::submitButton( 'Send' , ['class' => 'btn btn-success']) ?>
+                            <?= Html::submitButton( 'Send' , ['class' => 'btn btn-info']) ?>
                         </div>
 
                         <?php \kartik\form\ActiveForm::end(); ?>

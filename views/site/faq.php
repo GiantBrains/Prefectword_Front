@@ -5,7 +5,7 @@
  * Date: 3/6/18
  * Time: 2:26 PM
  */
-$this->title = 'Frequently Asked Questions';
+$this->title = 'Frequently Asked Questions(FAQs)';
 $this->registerMetaTag([
     'name' => 'description',
     'content' => 'Got very urgent questions regarding assignment or essay help? Read our FAQ for quick answers. We also have agents available 24/7.'
@@ -18,25 +18,25 @@ $this->registerMetaTag([
 ?>
 
 <div class="container" style="background-color:white; border-color: #ddd;">
-    <h1 class="text-primary" ><?= \yii\helpers\Html::encode($this->title) ?></h1>
-    <div class="col-md-8">
+    <div class="col-md-8 col-md-offset-2">
+    <h1 class="text-success" ><?= \yii\helpers\Html::encode($this->title) ?></h1>
         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
             <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingOne" >
+                <div class="panel-heading" role="tab" id="headingOne" style="min-height: 60px" >
                     <h4 class="panel-title">
                         <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                             1. How long does it take to complete my assignment?
                         </a>
                     </h4>
                 </div>
-                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                <div style="min-height: 60px" id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                     <div class="panel-body">
                         We work with the deadline you provide. However, we make sure that we deliver the work on time so that you have enough time to review it.
                     </div>
                 </div>
             </div>
             <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingTwo">
+                <div style="min-height: 60px"  class="panel-heading" role="tab" id="headingTwo">
                     <h4 class="panel-title">
                         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                             2. How do I place an order?
@@ -50,7 +50,7 @@ $this->registerMetaTag([
                 </div>
             </div>
             <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingThree">
+                <div style="min-height: 60px" class="panel-heading" role="tab" id="headingThree">
                     <h4 class="panel-title">
                         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                             3. Can I get updates on my order?
@@ -64,7 +64,7 @@ $this->registerMetaTag([
                 </div>
             </div>
             <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingFour">
+                <div style="min-height: 60px" class="panel-heading" role="tab" id="headingFour">
                     <h4 class="panel-title">
                         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
                             4. What if the writer did not follow instructions?
@@ -79,7 +79,7 @@ $this->registerMetaTag([
             </div>
 
             <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingFive">
+                <div style="min-height: 60px" class="panel-heading" role="tab" id="headingFive">
                     <h4 class="panel-title">
                         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseThree">
                             5. When can I contact you?
@@ -94,7 +94,7 @@ $this->registerMetaTag([
             </div>
 
             <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingSix">
+                <div style="min-height: 60px" class="panel-heading" role="tab" id="headingSix">
                     <h4 class="panel-title">
                         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseThree">
                             6. Can I withdraw my money back to my PayPal account?
@@ -109,7 +109,7 @@ $this->registerMetaTag([
             </div>
 
             <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingSeven">
+                <div style="min-height: 60px" class="panel-heading" role="tab" id="headingSeven">
                     <h4 class="panel-title">
                         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseThree">
                             7. Do you provide a plagiarism reports for your papers?
@@ -124,7 +124,7 @@ $this->registerMetaTag([
             </div>
 
             <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingEight">
+                <div style="min-height: 60px" class="panel-heading" role="tab" id="headingEight">
                     <h4 class="panel-title">
                         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseEight" aria-expanded="false" aria-controls="collapseThree">
                             8. What if a writer did my paper and I failed the paper?
