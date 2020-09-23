@@ -738,4 +738,3 @@ $this->registerJs($myscript);
         </div>
     </div>
 </div>
-
