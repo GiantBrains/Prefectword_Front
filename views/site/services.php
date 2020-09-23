@@ -17,9 +17,9 @@ $this->registerMetaTag([
 ]);
 ?>
 <div class="container">
-    <div class="col-md-10">
-        <h1 class="text-primary" style="text-align: center" ><?= \yii\helpers\Html::encode($this->title) ?></h1>
-        <div style="font-size: 16px">
+    <div class="col-md-8 col-md-offset-2">
+        <h1 class="text-success" style="text-align: center" ><?= \yii\helpers\Html::encode($this->title) ?></h1>
+        <div class="site-about">
             <p>Are you running out of time? Do you feel the task is too tough for you to handle?
                 Are your hands all full that you can't get the time to handle your class assignment at the same time?
                 We are here for you.
@@ -50,8 +50,6 @@ $this->registerMetaTag([
                 <li>Statistical projects</li>
             </ol>
             Try us today, and we promise quality work. Get the maximum value for your money with
-
-            <a href="<?= Yii::$app->request->baseUrl?>/site/services">doctorateessays.com</a>
         </div>
     </div>
 </div>
