@@ -101,23 +101,23 @@ $config = [
             'clients' => [
                 'google' => [
                     'class' => 'dektrium\user\clients\Google',
-                    'clientId' => '183152462676-orn6ppk0idl1k773175f081je941t6ej.apps.googleusercontent.com',
-                    'clientSecret' => 'gH-rVtD5vrnEaIUfYtdSxFVi',
-                    'returnUrl' => 'https://doctorateessays.com/site/auth?authclient=google'
+                    'clientId' => '711908005593-p1k7t6ui5ret3fc1gvecie9vdc0keklu.apps.googleusercontent.com',
+                    'clientSecret' => 'RRqo8l0UrWvUWgoWVmKegqsW',
+                    'returnUrl' => 'https://verifiedprofessors.com/site/auth?authclient=google'
                 ],
-//                'twitter' => [
-//                    'class'          => 'dektrium\user\clients\Twitter',
-//                        'attributeParams' => [
-//                            'include_email' => 'true'
-//                        ],
-//                    'consumerKey'    => 'CONSUMER_KEY',
-//                    'consumerSecret' => 'CONSUMER_SECRET',
-//                ],
+                'twitter' => [
+                    'class' => 'dektrium\user\clients\Twitter',
+                    'attributeParams' => [
+                        'include_email' => 'true'
+                    ],
+                    'consumerKey' => 'CONSUMER_KEY',
+                    'consumerSecret' => 'CONSUMER_SECRET',
+                ],
 
                 'facebook' => [
                     'class' => 'dektrium\user\clients\Facebook',
-                    'clientId' => '527091417732221',
-                    'clientSecret' => 'be5954547e69102c03d81ba6f465f7e5',
+                    'clientId' => '717300522465738',
+                    'clientSecret' => 'f6fca32825d053e3aa5fa23613d66ed9',
                 ],
             ],
         ],
