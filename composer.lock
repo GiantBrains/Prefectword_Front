@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c34eedab87135ee640ad0aa405473100",
+    "content-hash": "89d8eba683e4c56b5b1b94d749d6a0b0",
     "packages": [
         {
             "name": "2amigos/yii2-ckeditor-widget",
@@ -3097,78 +3097,6 @@
             "time": "2020-08-20T13:22:28+00:00"
         },
         {
-            "name": "lysenkobv/maxmind-geolite2-database",
-            "version": "1.0.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/lysenkobv/maxmind-geolite2-database.git",
-                "reference": "4561306d2b2989463e6f1df71a56c58ad2a3d3ab"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/lysenkobv/maxmind-geolite2-database/zipball/4561306d2b2989463e6f1df71a56c58ad2a3d3ab",
-                "reference": "4561306d2b2989463e6f1df71a56c58ad2a3d3ab",
-                "shasum": ""
-            },
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "keywords": [
-                "maxmind"
-            ],
-            "time": "2019-09-26T12:28:12+00:00"
-        },
-        {
-            "name": "lysenkobv/yii2-geoip",
-            "version": "1.0.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/lysenkobv/yii2-geoip.git",
-                "reference": "fd1074b8f7629d7e4fc9254131b0bda226f34b18"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/lysenkobv/yii2-geoip/zipball/fd1074b8f7629d7e4fc9254131b0bda226f34b18",
-                "reference": "fd1074b8f7629d7e4fc9254131b0bda226f34b18",
-                "shasum": ""
-            },
-            "require": {
-                "lysenkobv/maxmind-geolite2-database": "*",
-                "maxmind-db/reader": "~1.0",
-                "php": ">=5.4.0",
-                "yiisoft/yii2": ">=2.0.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.4"
-            },
-            "type": "yii2-extension",
-            "autoload": {
-                "psr-4": {
-                    "lysenkobv\\GeoIP\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Bohdan Lysenko",
-                    "email": "lysenkobv@gmail.com"
-                }
-            ],
-            "description": "Yii 2 GeoIP extension. Returns country, city, lat, lng of current or specified IP (uses MaxMind's GeoIP2 databases)",
-            "keywords": [
-                "geoip",
-                "geolocation",
-                "maxmind",
-                "yii2"
-            ],
-            "time": "2017-04-25T12:38:25+00:00"
-        },
-        {
             "name": "machour/yii2-notifications",
             "version": "1.0.0",
             "source": {
@@ -3216,66 +3144,6 @@
                 "yii"
             ],
             "time": "2017-08-31T12:47:23+00:00"
-        },
-        {
-            "name": "maxmind-db/reader",
-            "version": "v1.7.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/maxmind/MaxMind-DB-Reader-php.git",
-                "reference": "942553da239f12051275f9c666538b5dd09e2908"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/maxmind/MaxMind-DB-Reader-php/zipball/942553da239f12051275f9c666538b5dd09e2908",
-                "reference": "942553da239f12051275f9c666538b5dd09e2908",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2"
-            },
-            "conflict": {
-                "ext-maxminddb": "<1.7.0,>=2.0.0"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "2.*",
-                "php-coveralls/php-coveralls": "^2.1",
-                "phpunit/phpcov": ">=6.0.0",
-                "phpunit/phpunit": ">=8.0.0,<10.0.0",
-                "squizlabs/php_codesniffer": "3.*"
-            },
-            "suggest": {
-                "ext-bcmath": "bcmath or gmp is required for decoding larger integers with the pure PHP decoder",
-                "ext-gmp": "bcmath or gmp is required for decoding larger integers with the pure PHP decoder",
-                "ext-maxminddb": "A C-based database decoder that provides significantly faster lookups"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "MaxMind\\Db\\": "src/MaxMind/Db"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "Gregory J. Oschwald",
-                    "email": "goschwald@maxmind.com",
-                    "homepage": "https://www.maxmind.com/"
-                }
-            ],
-            "description": "MaxMind DB Reader API",
-            "homepage": "https://github.com/maxmind/MaxMind-DB-Reader-php",
-            "keywords": [
-                "database",
-                "geoip",
-                "geoip2",
-                "geolocation",
-                "maxmind"
-            ],
-            "time": "2020-08-07T22:10:05+00:00"
         },
         {
             "name": "mpdf/mpdf",
