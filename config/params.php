@@ -9,8 +9,8 @@ return [
     'cancelUrl' => "https://verifiedprofessors.com/wallet/cancel?success=false",
     'successUrl2' => "https://verifiedprofessors.com/wallet/pay",
     'cancelUrl2' => "https://verifiedprofessors.com/wallet/order-cancel?success=false",
-    'clientId' => 'AT0QPjgVKzCt_rzljEqogW_eU09tbfkbOWK9MEzqQ3IWLt-3Jh_9adYmji2rCZjyc75f4yJaC03Atxrq',
-    'clientSecret' => 'EB_Mp3qwaOdPozi0Yh-1PaHOghFAinROcnh8LJHWugku_4lWsmU1r9emkyv4Y7uTY-roSFwct4Gpypuv',
+    'clientId' => 'AXsD6Dp6T6VRzTKTlKQKeSdYGlCcPCzeVXCqe_9EQ1UVKq1CMFVyXsbv7o-G-wFLKP7cDfZTtk75aIdj',
+    'clientSecret' => 'ELMrNIOYQ2Or0YIC9i6kdOLDhPgrSba_R2q0RVmqc6l4XjKA5eYLLV3C1_OxCE6Cxbjfdo6Gyggyib9k',
     'mode' => 'sandbox',
     'couponcode' => 'PHDESSAYS',
     'couponamt' => 0.9,
@@ -22,6 +22,6 @@ return [
     'user.rememberMeDuration' => 3600,
     '1' => 'https://verifiedprofessors.com',
     '2' => 'https://verifiedprofessors.com',
-    'recaptcha_api_key' => '6LcXFfEUAAAAACyYLjoG52fn9q1EwdrXfdW7KQNc',
-    'recaptcha_api_secret' => '6LcXFfEUAAAAAAJutrdOinyu-dvHxrdp3n25e6H1'
+    'recaptcha_api_key' => '6LfluM8ZAAAAAAkNa-hkj4Nt9O6yD9T5zqBs0Sc-',
+    'recaptcha_api_secret' => '6LfluM8ZAAAAAH_4A49Ak3Hrt0vAsgocAvhQuz6P'
 ];

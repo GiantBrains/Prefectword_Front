@@ -105,14 +105,14 @@ $config = [
                     'clientSecret' => 'RRqo8l0UrWvUWgoWVmKegqsW',
                     'returnUrl' => 'https://verifiedprofessors.com/site/auth?authclient=google'
                 ],
-                'twitter' => [
-                    'class' => 'dektrium\user\clients\Twitter',
-                    'attributeParams' => [
-                        'include_email' => 'true'
-                    ],
-                    'consumerKey' => 'CONSUMER_KEY',
-                    'consumerSecret' => 'CONSUMER_SECRET',
-                ],
+//                'twitter' => [
+//                    'class' => 'dektrium\user\clients\Twitter',
+//                    'attributeParams' => [
+//                        'include_email' => 'true'
+//                    ],
+//                    'consumerKey' => 'CONSUMER_KEY',
+//                    'consumerSecret' => 'CONSUMER_SECRET',
+//                ],
 
                 'facebook' => [
                     'class' => 'dektrium\user\clients\Facebook',
