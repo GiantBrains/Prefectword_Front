@@ -663,9 +663,9 @@ $this->registerJs($myscript);
                     </div>
                 </div>
                 <div class="hidden-xs" style="margin-top: 50px;">
-                    <h4 style="font-family: 'Open Sans', sans-serif; font-size: 18px">Get 100% <strong
-                                style="color: #5bc0de;">UNIQUE & QUALITY</strong> work delivered to you <strong
-                                style="color: #5bc0de;">ON TIME</strong>.</h4>
+                    <h4 style="font-family: 'Open Sans', sans-serif; font-size: 18px">Need Help <strong
+                                style="color: #5bc0de;"> CONTACT US AT ANY TIME ON </strong>+1254790736<strong
+                    </h4>
                 </div>
             </div>
             <div class="col-md-6 col-xs-12 hidden-md hidden-lg hidden-sm"
