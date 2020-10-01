@@ -36,7 +36,6 @@
     "kartik-v/yii2-mpdf": "*",
     "kartik-v/yii2-widget-datetimepicker": "*",
     "paypal/rest-api-sdk-php": "*",
-    "lysenkobv/yii2-geoip": "~1.0",
     "kartik-v/yii2-ipinfo": "@dev",
     "machour/yii2-notifications": "*",
     "kartik-v/yii2-widget-rating": "*",

@@ -25,27 +25,31 @@ $this->registerMetaTag([
     <h1 class="text-success" style="text-align: center;"><?= Html::encode($this->title) ?></h1>
     <div class="site-about">
         <div class="col-md-8 col-md-offset-2">
-    <p>Verified Professors is a reliable partner for professional freelance writers with experience in
-        students papers to provide high quality papers for our clients. We have an open reviews section
-        where our customers give us feedback on their experience with us. It is easy to judge yourself
-        from the reviews how satisfied our clients are with the service. You do not have to spend sleepless
-        nights thinking of how you will improve your grade. Let us do it essay for you while you do other
-        duties.
-    </p>
-    <p><strong class="text-success">Vision</strong></p>
-    <p>To be the one site that gives clients 100% value for money by offering the best essay writing services across the globe.</p>
-    <p><strong class="text-success">Mission</strong></p>
-    <p>Our mission is to make sure that students have enough time to participate in other school activities by offering to help
-      them complete their tasks on time while at the same time maintaining high-quality work that will improve their grades.</p>
-    <p><strong class="text-success">Our Core Values</strong></p>
-    <p>We are a team that is devoted and guided by the following five core values.</p>
-    <ol>
-        <li>Quality Work</li>
-        <li>100% Uniqueness</li>
-        <li>Timely Delivery</li>
-        <li>Zero Grammar Errors</li>
-        <li>Professional Customer Support</li>
-    </ol>
+            <p>Verified Professors is a reliable partner for experienced freelance writers in
+                academic papers who provide high quality papers for our students. We have an open reviews section
+                where our clients rate and give feedback on the service and their experience with us. It is easy to
+                judge for yourself
+                how satisfied our clients are. You can also contact us in case you have queries about our service and
+                writers. You do not have to spend sleepless
+                nights thinking about you can manage your job and classes. We can help you with that.
+            </p>
+            <p><strong class="text-success">Vision</strong></p>
+            <p>To be a leading professional essay writing provider with 100% value for money.</p>
+            <p><strong class="text-success">Mission</strong></p>
+            <p>Our mission is to make sure that students have enough time to participate in other things by offering to
+                help
+                them complete their tasks on time while at the same time maintaining high-quality work that will improve
+                their grades.</p>
+            <p><strong class="text-success">Our Core Values</strong></p>
+            <p>We are a team that is devoted and guided by the following five core values.</p>
+            <ol>
+                <li>Quality Work</li>
+                <li>100% Uniqueness</li>
+                <li>Native English</li>
+                <li>Timely Delivery</li>
+                <li>Zero Grammatical Errors</li>
+                <li>Professional Customer Support</li>
+            </ol>
         </div>
-</div>
+    </div>
 </div>
