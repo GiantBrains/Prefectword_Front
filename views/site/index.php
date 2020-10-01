@@ -654,7 +654,7 @@ $this->registerJs($myscript);
                         if (Yii::$app->user->isGuest) {
                             echo '<a class="btn btn-lg btn-info" href="' . Url::to(['/site/signup']) . '">Sign Up</a>';
                         } else {
-                            echo '<a class="btn btn-lg btn-success" href="' . Url::to(['/order/index']) . '">Dashboard</a>';
+                            echo '<a class="btn btn-lg btn-info" href="' . Url::to(['/order/index']) . '">Dashboard</a>';
                         }
                         ?>
                     </div>
