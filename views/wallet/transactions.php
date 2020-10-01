@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="wallet-index">
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
     <div class="row" style="height: auto; min-height: 200px; border: solid; border-color: darkgrey; padding-top: 10px; border-width: thin;">
-        <div class="col-md-10 col-sm-10 col-xs-12" style="overflow-x:auto;">
+        <div class="col-md-8 col-sm-8 col-xs-12" style="overflow-x:auto;">
             <div class="table-responsive">
                 <table class="table" id="transactions">
                     <tr>
