@@ -640,9 +640,9 @@ $this->registerJs($myscript);
             <div class="col-md-6 col-xs-12 hidden-xs"
                  style="background-color: white; opacity: 0.8; border-radius: 10px; color: black">
                 <div class="image-content">
-                    <h1 style="font-weight: bolder; font-family: 'Open Sans', sans-serif; ">Get High-quality Paper</h1>
-                    <h2 style="font-weight: bolder; font-family: 'Open Sans', sans-serif;">At an Affordable Price.</h2>
-                    <h4 style="font-family: 'Open Sans', sans-serif; font-size: 18px">Hire us, sit back and
+                    <h1 style="font-size: 50px; font-family: 'JetBrains Mono'">Get High-quality Paper</h1>
+                    <h2 style="font-size: 40px; font-family: 'JetBrains Mono'">At an Affordable Price.</h2>
+                    <h4 style="font-size: 25px; font-family: 'JetBrains Mono'">Hire us, sit back and
                         relax…….We’ll do it for you.</h4>
                 </div>
                 <div class="row hidden-xs" style="margin-top: 32px">
@@ -652,20 +652,26 @@ $this->registerJs($myscript);
                     <div class="col-md-4 col-xs-12">
                         <?php
                         if (Yii::$app->user->isGuest) {
-                            echo '<a class="btn btn-lg btn-success" href="' . Url::to(['/site/signup']) . '">Sign Up</a>';
+                            echo '<a class="btn btn-lg btn-info" href="' . Url::to(['/site/signup']) . '">Sign Up</a>';
                         } else {
                             echo '<a class="btn btn-lg btn-success" href="' . Url::to(['/order/index']) . '">Dashboard</a>';
                         }
                         ?>
                     </div>
                     <div class="col-sm-4 col-xs-12">
-                        <a class="btn btn-lg btn-info" href="<?= Url::to(['/order/create']) ?>">Order Now</a>
+                        <a class="btn btn-lg btn-success" href="<?= Url::to(['/order/create']) ?>">Order Now</a>
                     </div>
                 </div>
-                <div class="hidden-xs" style="margin-top: 50px;">
-                    <h4 style="font-family: 'Open Sans', sans-serif; font-size: 18px">Need Help
-                        <strong style="color: #5bc0de;"> &nbsp; &nbsp;CONTACT US AT ANY TIME ON </strong> &nbsp; &nbsp;+1254790736
+                <div class="hidden-xs" style="margin-top: 20px;">
+                    <center>
+                    <h4 style="font-family: 'Open Sans', sans-serif; font-size: 18px">
+                        <strong style="color: #3D715B;">&nbsp;GET 24/7 SUPPORT ON:</strong>
+                        <br><img src="<?= Yii::$app->request->baseUrl ?>/images/phone.png"
+                             width="30px">&nbsp;&nbsp;+125054790736 &nbsp;
+                        <img src="<?= Yii::$app->request->baseUrl ?>/images/mail.png"
+                             width="30px">&nbsp;&nbsp;&nbsp;support@verifiedprofessors.com
                     </h4>
+                    </center>
                 </div>
             </div>
             <div class="col-md-6 col-xs-12 hidden-md hidden-lg hidden-sm"

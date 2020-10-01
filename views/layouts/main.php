@@ -165,13 +165,9 @@ AppAsset::register($this);
 
             <ul class="pull-right hidden-xs">
                 <li><img src="<?= Yii::$app->request->baseUrl?>/images/payment/visa.png"  width="40px" height="13px"  data-rjs="<?= Yii::$app->request->baseUrl?>/images/payment/visa.png" alt="Visa" class="pm visa"></li>
-                <li><img src="<?= Yii::$app->request->baseUrl?>/images/payment/amex.png" width="57px" height="19px" data-rjs="<?= Yii::$app->request->baseUrl?>/images/payment/amex.png" alt="American Express" class="pm ae"></li>
+                <li><img src="<?= Yii::$app->request->baseUrl?>/images/payment/maestro.png" width="57px" height="19px" data-rjs="<?= Yii::$app->request->baseUrl?>/images/payment/amex.png" alt="American Express" class="pm ae"></li>
                 <li><img src="<?= Yii::$app->request->baseUrl?>/images/payment/mastercard.png" width="45px" height="27px" data-rjs="<?= Yii::$app->request->baseUrl?>/images/payment/mastercard.png" alt="MasterCard" class="pm mc"></li>
                 <li><img src="<?= Yii::$app->request->baseUrl?>/images/payment/paypal.png" width="60px" height="17px" data-rjs="<?= Yii::$app->request->baseUrl?>/images/payment/paypal.png" alt="PayPal" class="pm paypal"></li>
-                <!-- Begin ScanVerify Seal Code -->
-                <li><a target=_blank href="https://scanverify.com/siteverify.php?ref=stp&site=doctorateessays.com">
-                        <img src='https://scanverify.com/seal/seal.php?site=https://www.google.com/recaptcha/api/siteverify' height="40px" border=0 ALT='ScanVerify.com Trust Seal' ></a></li>
-                <!-- End ScanVerify Seal Code -->
             </ul>
             <ul class="pull-right hidden-lg hidden-md hidden-sm col-xs-12" style="text-align: center" >
                 <li><img src="<?= Yii::$app->request->baseUrl?>/images/payment/visa.png"  width="40px" height="13px"  data-rjs="<?= Yii::$app->request->baseUrl?>/images/payment/visa.png" alt="Visa" class="pm visa"></li>
