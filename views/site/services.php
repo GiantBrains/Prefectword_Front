@@ -18,38 +18,42 @@ $this->registerMetaTag([
 ?>
 <div class="container">
     <div class="col-md-8 col-md-offset-2">
-        <h1 class="text-success" style="text-align: center" ><?= \yii\helpers\Html::encode($this->title) ?></h1>
+        <h1 class="text-success" style="text-align: center"><?= \yii\helpers\Html::encode($this->title) ?></h1>
         <div class="site-about">
-            <p>Are you running out of time? Do you feel the task is too tough for you to handle?
-                Are your hands all full that you can't get the time to handle your class assignment at the same time?
+            <p>Whether you are running out of time, you feel the task is too complicated for you to handle or
+                your schedule is full that you can't get the time to handle your class assignment.
                 We are here for you.
-                We handle all kind of papers across all fields of study. Our professional freelance writers have a vast experience that will guarantee quality work.
-                We also promise to deliver the work on time regardless of how tight the deadline might be.
-                Whenever you come to us like "Someone, please help me complete my assignment,
-                I'm running out of time and Ideas," we promise to hear your call and come to your help.</p>
-            <p>Our professional writers hold PhDs in various fields and depending on the level of writing you need, we will do exactly that.
+                We handle all kind of papers across all fields of study. Our experienced freelance writers have a
+                vast experience in writing masters and doctorate level papers that guarantee quality work.
+                We deliver the work timely regardless of how tight the deadline might be.
+                Whenever you come to us like looking for a service in writing your assignment, we assign you the best
+                writer.
+                We also allow you to recommend a preferred writer to handle your paper.</p>
+            <p>Our professional writers hold PhDs in various fields and depending on the level of writing you need,
+                we recommend your paper to a writer who can handle the paper requirements.
                 We offer essay help services to students across the globe, and our custom essays have helped more than
                 one million students to achieve their academic goals.</p>
-            <p>Some students come to us like “I need someone to write my project/research proposal, essay, lab report, admission essay, etc.
-                Can someone please write it for me?” We always are there for such students.
-                We receive referrals from students who have seen a significant improvement in their grades as a result of using our services.
-                The sweeter part about all this is that the services are at a low price as compared to other websites that try to offer the same services.</p>
-            <strong>Our services include but not limited to the following:</strong>
+            <p>We strive to deliver the best quality for each student using our service.</p>
+            <p>We receive referrals from students who have seen a significant improvement in their grades as a result of
+                using our services.
+                The best part about all this is that the services are at a low price as compared to other websites that
+                try to offer the same services.</p>
+            <strong>Our services include but not limited to the following types of papers:</strong>
             <ol>
-                <li>Term Paper Writing</li>
-                <li>Essay Writing Service</li>
-                <li>Research Paper writing</li>
-                <li>Lab report writing</li>
-                <li>Admission essay writing</li>
-                <li>Custom Essay Writing</li>
-                <li>Dissertation writing service</li>
-                <li>Personal statement writing</li>
+                <li>Term Papers</li>
+                <li>Essays</li>
+                <li>Research Papers</li>
+                <li>Lab reports</li>
+                <li>Admission essays</li>
+                <li>Custom Essays</li>
+                <li>Dissertations</li>
+                <li>Personal statement</li>
                 <li>Book Reviews and Reports</li>
-                <li>Business Plan writing</li>
-                <li>Editing and Proofreading services</li>
+                <li>Business Plan</li>
+                <li>Editing and Proofreading</li>
                 <li>Statistical projects</li>
             </ol>
-            Try us today, and we promise quality work. Get the maximum value for your money with
+            Try us today, and we promise quality work. Get the maximum value for your money with verified professors.
         </div>
     </div>
 </div>
