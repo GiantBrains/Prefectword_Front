@@ -175,7 +175,7 @@ AppAsset::register($this);
                 <li><img src="<?= Yii::$app->request->baseUrl ?>/images/payment/visa.png" width="50px" height="50px"
                          data-rjs="<?= Yii::$app->request->baseUrl ?>/images/payment/visa.png" alt="Visa"
                          class="pm visa"></li>
-                <li><img src="<?= Yii::$app->request->baseUrl ?>/images/payment/maestro.png" width="50px" height="50px"
+                <li><img src="<?= Yii::$app->request->baseUrl ?>/images/payment/pay/american-express.png" width="50px" height="50px"
                          data-rjs="<?= Yii::$app->request->baseUrl ?>/images/payment/amex.png" alt="American Express"
                          class="pm ae"></li>
                 <li><img src="<?= Yii::$app->request->baseUrl ?>/images/payment/mastercard.png" width="50px"
