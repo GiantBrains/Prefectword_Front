@@ -170,13 +170,20 @@ AppAsset::register($this);
                     <br>
                     <li><a style="text-decoration: none; font-size: 20px;" <i class="fa fa-phone fa-3x" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;+125054790736</a></li>
                 </ul>
-                <ul id="navigation" class="text-center">
+                <ul id="navigation" class="text-center hidden-xs">
+                    <li style="margin-left: -45px"><img src="<?= Yii::$app->request->baseUrl?>/images/payment/pay/visa.png"  width="50px" height="50px"  data-rjs="<?= Yii::$app->request->baseUrl?>/images/payment/visa.png" alt="Visa" class="pm visa"></li>
+                    <li style="margin-left: 10px"><img src="<?= Yii::$app->request->baseUrl?>/images/payment/paypal.png" width="50px" height="50px" data-rjs="<?= Yii::$app->request->baseUrl?>/images/payment/paypal.png" alt="PayPal" class="pm paypal"></li>
+                    <li style="margin-left: 10px"><img src="<?= Yii::$app->request->baseUrl?>/images/payment/pay/american-express.png" width="50px" height="50px" data-rjs="<?= Yii::$app->request->baseUrl?>/images/payment/american-express.png" alt="MasterCard" class="pm mc"></li>
+                    <li style="margin-left: 10px"><img src="<?= Yii::$app->request->baseUrl?>/images/payment/mastercard.png" width="50px" height="50px" data-rjs="<?= Yii::$app->request->baseUrl?>/images/payment/mastercard.png" alt="MasterCard" class="pm mc"></li>
+                </ul>
+                <ul id="navigation" class="text-center hidden-sm hidden-md hidden-lg">
                     <li><img src="<?= Yii::$app->request->baseUrl?>/images/payment/pay/visa.png"  width="70px" height="70px"  data-rjs="<?= Yii::$app->request->baseUrl?>/images/payment/visa.png" alt="Visa" class="pm visa"></li>
                     <li style="margin-left: 10px"><img src="<?= Yii::$app->request->baseUrl?>/images/payment/paypal.png" width="70px" height="70px" data-rjs="<?= Yii::$app->request->baseUrl?>/images/payment/paypal.png" alt="PayPal" class="pm paypal"></li>
                     <li style="margin-left: 10px"><img src="<?= Yii::$app->request->baseUrl?>/images/payment/pay/american-express.png" width="70px" height="70px" data-rjs="<?= Yii::$app->request->baseUrl?>/images/payment/american-express.png" alt="MasterCard" class="pm mc"></li>
                     <li style="margin-left: 10px"><img src="<?= Yii::$app->request->baseUrl?>/images/payment/mastercard.png" width="70px" height="70px" data-rjs="<?= Yii::$app->request->baseUrl?>/images/payment/mastercard.png" alt="MasterCard" class="pm mc"></li>
                 </ul>
             </div>
+            <center>
             <div class="col-md-4 hidden-xs">
                 <ul class="articles footer-link essay-font">
                     <li><a style="text-decoration: none; font-size: 15px;" href="<?= Yii::$app->request->baseUrl ?>/">Home</a>
@@ -204,6 +211,7 @@ AppAsset::register($this);
                            href="<?= Yii::$app->request->baseUrl ?>/site/guarantee">Money Back Guarantee</a></li>
                 </ul>
             </div>
+            </center>
         </div>
     </div>
     <br><br>
