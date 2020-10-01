@@ -38,28 +38,29 @@ AppAsset::register($this);
 
         gtag('config', 'UA-115152658-1');
     </script>
+    <script type="text/javascript">
+        var conn = new WebSocket('ws://localhost:8080');
+        conn.onmessage = function(e) {
+            console.log('Response:' + e.data);
+        };
+        conn.onopen = function(e) {
+            console.log("Connection established!");
+            console.log('Hey!');
+            conn.send('Hey!');
+        };
+        </script>
     <!--Start of Tawk.to Script-->
-<!--    <script type="text/javascript">-->
-<!--        var conn = new WebSocket('ws://localhost:8080');-->
-<!--        conn.onmessage = function(e) {-->
-<!--            console.log('Response:' + e.data);-->
-<!--        };-->
-<!--        conn.onopen = function(e) {-->
-<!--            console.log("Connection established!");-->
-<!--            console.log('Hey!');-->
-<!--            conn.send('Hey!');-->
-<!--        };-->
-<!---->
-<!--        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();-->
-<!--        (function(){-->
-<!--            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];-->
-<!--            s1.async=true;-->
-<!--            s1.src='https://embed.tawk.to/5a9ae4dfd7591465c7083800/default';-->
-<!--            s1.charset='UTF-8';-->
-<!--            s1.setAttribute('crossorigin','*');-->
-<!--            s0.parentNode.insertBefore(s1,s0);-->
-<!--        })();-->
-<!--    </script>-->
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true;
+            s1.src='https://embed.tawk.to/5f6cbb5bf0e7167d001375c3/default';
+            s1.charset='UTF-8';
+            s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
     <!--End of Tawk.to Script-->
 </head>
 <body>
