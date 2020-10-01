@@ -181,21 +181,21 @@ AppAsset::register($this);
                 <li><img src="<?= Yii::$app->request->baseUrl ?>/images/payment/mastercard.png" width="50px"
                          height="50px" data-rjs="<?= Yii::$app->request->baseUrl ?>/images/payment/mastercard.png"
                          alt="MasterCard" class="pm mc"></li>
-                <li><img src="<?= Yii::$app->request->baseUrl ?>/images/payment/paypal.png" width="60px" height="60px"
+                <li><img src="<?= Yii::$app->request->baseUrl ?>/images/payment/paypal.png" width="50px" height="60px"
                          data-rjs="<?= Yii::$app->request->baseUrl ?>/images/payment/paypal.png" alt="PayPal"
                          class="pm paypal"></li>
             </ul>
             <ul class="pull-right hidden-lg hidden-md hidden-sm col-xs-12" style="text-align: center">
-                <li><img src="<?= Yii::$app->request->baseUrl ?>/images/payment/visa.png" width="60px" height="50px"
+                <li><img src="<?= Yii::$app->request->baseUrl ?>/images/payment/visa.png" width="70px" height="70px"
                          data-rjs="<?= Yii::$app->request->baseUrl ?>/images/payment/visa.png" alt="Visa"
                          class="pm visa"></li>
-                <li><img src="<?= Yii::$app->request->baseUrl ?>/images/payment/pay/american-express.png" width="60px" height="50px"
+                <li><img src="<?= Yii::$app->request->baseUrl ?>/images/payment/pay/american-express.png" width="70px" height="70px"
                          data-rjs="<?= Yii::$app->request->baseUrl ?>/images/payment/amex.png" alt="American Express"
                          class="pm ae"></li>
-                <li><img src="<?= Yii::$app->request->baseUrl ?>/images/payment/mastercard.png" width="60px"
-                         height="50px" data-rjs="<?= Yii::$app->request->baseUrl ?>/images/payment/mastercard.png"
+                <li><img src="<?= Yii::$app->request->baseUrl ?>/images/payment/mastercard.png" width="70px"
+                         height="70px" data-rjs="<?= Yii::$app->request->baseUrl ?>/images/payment/mastercard.png"
                          alt="MasterCard" class="pm mc"></li>
-                <li><img src="<?= Yii::$app->request->baseUrl ?>/images/payment/paypal.png" width="60px" height="50px"
+                <li><img src="<?= Yii::$app->request->baseUrl ?>/images/payment/paypal.png" width="70px" height="70px"
                          data-rjs="<?= Yii::$app->request->baseUrl ?>/images/payment/paypal.png" alt="PayPal"
                          class="pm paypal"></li>
             </ul>
