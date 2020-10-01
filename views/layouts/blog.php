@@ -155,21 +155,21 @@ AppAsset::register($this);
 
 <footer class="footer" style="background-color: #242a35; height: auto">
     <div class="container" style="height: auto">
-        <div class="row hidden-xs">
+        <div class="row">
             <div class="col-md-4">
                 <ul class="articles footer-link essay-font">
                     <li><a style="text-decoration: none; font-size: 20px;" <i class="fa fa-envelope-o fa-3x" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;support@verifiedprofessors.com</a></li>
                     <br>
                     <li><a style="text-decoration: none; font-size: 20px;" <i class="fa fa-phone fa-3x" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;+125054790736</a></li>
                 </ul><br>
-                <ul id="navigation" class="text-center hidden-xs">
+                <ul id="navigation" class="text-center">
                     <li><img src="<?= Yii::$app->request->baseUrl?>/images/payment/pay/visa.png"  width="70px" height="70px"  data-rjs="<?= Yii::$app->request->baseUrl?>/images/payment/visa.png" alt="Visa" class="pm visa"></li>
                     <li style="margin-left: 10px"><img src="<?= Yii::$app->request->baseUrl?>/images/payment/paypal.png" width="80px" height="80px" data-rjs="<?= Yii::$app->request->baseUrl?>/images/payment/paypal.png" alt="PayPal" class="pm paypal"></li>
                     <li style="margin-left: 10px"><img src="<?= Yii::$app->request->baseUrl?>/images/payment/pay/american-express.png" width="70px" height="70px" data-rjs="<?= Yii::$app->request->baseUrl?>/images/payment/american-express.png" alt="MasterCard" class="pm mc"></li>
                     <li style="margin-left: 10px"><img src="<?= Yii::$app->request->baseUrl?>/images/payment/mastercard.png" width="70px" height="70px" data-rjs="<?= Yii::$app->request->baseUrl?>/images/payment/mastercard.png" alt="MasterCard" class="pm mc"></li>
                 </ul>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 hidden-xs">
                 <ul class="articles footer-link essay-font">
                     <li><a style="text-decoration: none; font-size: 15px;" href="<?= Yii::$app->request->baseUrl?>/">Home</a></li>
                     <li><a style="text-decoration: none; font-size: 15px;" href="<?= Yii::$app->request->baseUrl?>/site/faq">FAQ</a></li>
@@ -178,7 +178,7 @@ AppAsset::register($this);
                     <li><a style="text-decoration: none; font-size: 15px;" href="<?= Yii::$app->request->baseUrl?>/site/terms_and_conditions">Terms and Conditions</a></li>
                 </ul>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 hidden-xs">
                 <ul class="articles footer-link essay-font">
                     <li><a style="text-decoration: none; font-size: 15px;" href="<?= Yii::$app->request->baseUrl?>/site/about">About Us</a></li>
                     <li><a style="text-decoration: none; font-size: 15px;" href="<?= Yii::$app->request->baseUrl?>/order">Order Now</a></li>

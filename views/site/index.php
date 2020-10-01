@@ -677,10 +677,20 @@ $this->registerJs($myscript);
             <div class="col-md-6 col-xs-12 hidden-md hidden-lg hidden-sm"
                  style="background-color: white; opacity: 0.8; border-radius: 5px; color: black">
                 <div class="image-content">
-                    <h2 style="font-weight: bolder; font-family: 'Open Sans', sans-serif;">Get the Service at an Affordable
+                    <h2 style="font-size:30px; font-family: 'Philosopher', sans-serif;">Get the Service at an Affordable
                         Price.</h2>
-                    <h4 style="font-family: 'Open Sans', sans-serif; font-size: 18px">Hire us, sit back and
-                        relax…….We’ll do it for you.</h4>
+                    <h4 style="font-family: 'Philosopher', sans-serif; font-size: 18px">Hire us, sit back and
+                        relax…….We’ll do it for you.</h4><br>
+                        <h4 style="font-family: 'Open Sans', sans-serif; font-size: 18px">
+                            <center>
+                                <strong style="color: black;">&nbsp;GET 24/7 SUPPORT ON:</strong>
+                            </center>
+                            <img src="<?= Yii::$app->request->baseUrl ?>/images/mail.png"
+                                             width="30px">&nbsp;&nbsp;&nbsp;support@verifiedp.com<br>
+                            <img src="<?= Yii::$app->request->baseUrl ?>/images/phone.png"
+                                 width="30px">&nbsp;&nbsp;&nbsp;+125054790736
+                        </h4>
+
                 </div>
             </div>
         </div>
