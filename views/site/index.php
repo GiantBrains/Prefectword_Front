@@ -655,7 +655,7 @@ $this->registerJs($myscript);
         <?php Yii::$app->timezone->name ?>
         <div class="row superslide">
             <div class="col-md-6 col-xs-12 hidden-xs"
-                 style="background-color:white; opacity: 0.7; border-radius:10px; border-bottom-right-radius: 200px; color: black">
+                 style="background-color:white; opacity: 0.8; border-radius:10px; border-bottom-right-radius: 200px; color: black">
                 <div class="image-content" style="margin-bottom:20px; ">
                     <h1 style="font-size: 40px; font-weight:bolder;">Get High-quality Paper</h1>
                     <h2 style="font-size: 40px; font-weight:bolder;">At an Affordable Price.</h2>
@@ -697,7 +697,7 @@ $this->registerJs($myscript);
 
                         </div>
                         <div class="col-md-7 col-sm-7 col-xs-12"
-                             style="background-color: white; opacity: 0.7; border-radius: 10px; color:black">
+                             style="background-color: white; opacity: 0.8; border-radius: 10px; color:black">
                             <h3><strong>Calculate the Price</strong></h3>
                             <?= $form->field($fmodel, 'service_id', [
                                 'template' => '<div style="font-family: \'Open Sans\', sans-serif; ">{label}</div> <div style=" padding: 0 5px 0 5px;" class="row"><div class="col-sm-7" style="font-family: \'Open Sans\', sans-serif;" >{input}{error}{hint}</div></div>'
@@ -914,7 +914,7 @@ $this->registerJs($myscript);
                      style="background-color: white; margin-left: 20px; opacity: 0.8; border-radius: 10px; color: black">
                     <center>
                     <img src="<?= Yii::$app->request->baseUrl ?>/images/img2" width="60px" style="margin-top: 20px; border-radius: 50px">
-                    <h3>Tutor Steve Darron</h3>
+                    <h3>Tutor Meghan Jones</h3>
                     <p>Professional Academic Writer</p>
                     <img src="<?= Yii::$app->request->baseUrl ?>/images/rating.png" width="100px" style="margin-top: -10px">
                     <hr>
@@ -927,7 +927,7 @@ $this->registerJs($myscript);
                 <div class="col-sm-3 col-xs-12" style="background-color: white;margin-left: 20px; opacity: 0.8; border-radius: 10px; color: black">
                     <center>
                     <img src="<?= Yii::$app->request->baseUrl ?>/images/img3" width="60px" style="margin-top: 20px; border-radius: 50px">
-                    <h3>Tutor Meghan Jones</h3>
+                    <h3>Tutor Steve Darron</h3>
                     <p>Professional Academic Writer</p>
                     <img src="<?= Yii::$app->request->baseUrl ?>/images/rating.png" width="100px" style="margin-top: -10px">
                     <hr>
