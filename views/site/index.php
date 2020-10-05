@@ -890,7 +890,7 @@ $this->registerJs($myscript);
 
 <div class="body-container essay-font" style="background-color: #f0f2f6;">
         <div class="container" style="z-index: 100;">
-            <div class="row" style="margin-top: 20px;margin-bottom: 20px;">
+            <div class="row" style="margin-top: 20px;margin-bottom: 30px;">
                 <center>
                     <h1><strong>Professional Essay Writers Team</strong></h1>
                 <p class="col-sm-6 col-sm-offset-3">At Verified Professors, we employ a large team of skilled writers. Their rating is based on previous
