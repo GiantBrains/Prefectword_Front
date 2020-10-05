@@ -86,7 +86,7 @@ AppAsset::register($this);
         $menuItems[] = ['label' => 'Log In ', 'url' => Yii::$app->request->baseUrl . '/site/login',
             'active' => $this->context->route == 'site/login',
         ];
-        $menuItems[] = '<a href="' . Yii::$app->request->baseUrl . '/site/signup"><button type="button" style="background-color:#90F1C8" class="btn btn-sm navbar-btn essay-font">Sign Up</button></a>';
+        $menuItems[] = '<a href="' . Yii::$app->request->baseUrl . '/site/signup"><button type="button" class="btn btn-info btn-sm navbar-btn essay-font">Sign Up</button></a>';
     } else {
         $menuItems[] =
             '' . NotificationsWidget::widget([
@@ -130,7 +130,8 @@ AppAsset::register($this);
         'items' => $menuItems,
         'encodeLabels' => false,
     ]);
-
+    $menuItem [] = ['label' => '<a style="margin-top: -30px"><img src="' . Yii::$app->request->baseUrl . '/images/mail.png" width="25px"> &nbsp;support@verifiedprofessors.com</a>'];
+    $menuItem [] = ['label' => '<a style="margin-top: -30px"><img width="25px" src="' . Yii::$app->request->baseUrl . '/images/united-kingdom.png"> &nbsp;+447393152742</a>'];
     $menuItem [] = ['label' => 'How it Works', 'url' => ['/how_it_works'],
         'active' => $this->context->route == 'site/how_it_works'
     ];
@@ -141,6 +142,7 @@ AppAsset::register($this);
         'active' => $this->context->route == 'site/about',
         'visible' => Yii::$app->user->isGuest
     ];
+
 
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
@@ -168,11 +170,11 @@ AppAsset::register($this);
                                                                               aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;support@verifiedprofessors.com</a>
                     </li>
                     <br>
-                    <li><a style="text-decoration: none; font-size: 20px;" <i class="fa fa-phone fa-3x" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;+125054790736</a></li>
+                    <li><a style="text-decoration: none; font-size: 20px;" <i class="fa fa-phone fa-3x" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;+447393152742</a></li>
                 </ul>
                 <ul id="navigation" class="text-center hidden-xs">
                     <li style="margin-left: -45px"><img src="<?= Yii::$app->request->baseUrl?>/images/payment/pay/visa.png"  width="50px" height="50px"  data-rjs="<?= Yii::$app->request->baseUrl?>/images/payment/visa.png" alt="Visa" class="pm visa"></li>
-                    <li style="margin-left: 10px"><img src="<?= Yii::$app->request->baseUrl?>/images/payment/paypal.png" width="50px" height="50px" data-rjs="<?= Yii::$app->request->baseUrl?>/images/payment/paypal.png" alt="PayPal" class="pm paypal"></li>
+                    <li style="margin-left: 10px"><img src="<?= Yii::$app->request->baseUrl?>/images/payment/paypal.png" width="70px" height="80px" data-rjs="<?= Yii::$app->request->baseUrl?>/images/payment/paypal.png" alt="PayPal" class="pm paypal"></li>
                     <li style="margin-left: 10px"><img src="<?= Yii::$app->request->baseUrl?>/images/payment/pay/american-express.png" width="50px" height="50px" data-rjs="<?= Yii::$app->request->baseUrl?>/images/payment/american-express.png" alt="MasterCard" class="pm mc"></li>
                     <li style="margin-left: 10px"><img src="<?= Yii::$app->request->baseUrl?>/images/payment/mastercard.png" width="50px" height="50px" data-rjs="<?= Yii::$app->request->baseUrl?>/images/payment/mastercard.png" alt="MasterCard" class="pm mc"></li>
                 </ul>
