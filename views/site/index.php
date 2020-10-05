@@ -641,7 +641,7 @@ $this->registerJs($myscript);
         <?php Yii::$app->timezone->name ?>
         <div class="row superslide">
             <div class="col-md-6 col-xs-12 hidden-xs"
-                 style="background-color:white; opacity: 0.8; border-radius:10px; border-bottom-right-radius: 200px; color: black">
+                 style="background-color:white; opacity: 0.7; border-radius:10px; border-bottom-right-radius: 200px; color: black">
                 <div class="image-content" style="margin-bottom:20px; ">
                     <h1 style="font-size: 40px; font-weight:bolder;">Get High-quality Paper</h1>
                     <h2 style="font-size: 40px; font-weight:bolder;">At an Affordable Price.</h2>
@@ -649,11 +649,18 @@ $this->registerJs($myscript);
                         relax…….We’ll do it for you.</h4>
                     <h3>Our professional
                         Essay Writing Service is ready to help you out! Get a plagiarism-free
-                        paper starting at 8$ per page.
+                        paper starting at $8 per page.
                     </h3><br>
-                    <button  class="btn btn-info btn-lg essay-font" style="color: white; type="button">
+                    <div class="row">
+                    <div class="col-md-6 col-xs-12">
+                        <button  class="btn btn-info btn-lg essay-font" style="color: white">
                         Order Now
-                    </button>
+                        </button>
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                        <h3 style="color:#1695a4; margin-left: -40px; margin-top: -5px"><strong>100% Plagiarism-Free Essays.</strong></h3>
+                    </div>
+                    </div>
                 </div>
             </div>
             <div class="col-md-6 col-xs-12">
@@ -703,14 +710,13 @@ $this->registerJs($myscript);
                             ])->label('Level')->dropDownList(\app\models\Level::getLevels(), [
                                 'options' => [1 => ['Selected' => 'selected'], 'prompt' => '...select Level....', 'id' => 'level-id']]) ?>
                             <div class="form-group" style="margin-left: 40px">
-                                <h3 style="margin-top: -10px;" class="essay-font">Price:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="tcost"
+                                <h3 style="margin-top: -10px;" class="essay-font">Price:&nbsp;&nbsp;&nbsp;&nbsp;<img src="<?= Yii::$app->request->baseUrl ?>/images/fire.png"
+                                                                                                                     width="30px"><input class="tcost"
                                                                                                        style="border: none; width: 100px"
                                                                                                        type="text"
                                                                                                        id="min-amount"
                                                                                                        value="$8.00"
                                                                                                        readonly="readonly">
-                                    <img src="<?= Yii::$app->request->baseUrl ?>/images/fire.png"
-                                         width="30px" style="margin-left: -40px ">
                                 </h3>
                             </div>
                             <div class="form-group" style="margin-left: 10px; margin-right: 10px">

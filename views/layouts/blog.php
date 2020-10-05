@@ -86,7 +86,7 @@ AppAsset::register($this);
         $menuItems[] = ['label' => 'Log In ', 'url' => Yii::$app->request->baseUrl . '/site/login',
             'active' => $this->context->route == 'site/login',
         ];
-        $menuItems[] = '<a href="' . Yii::$app->request->baseUrl . '/site/signup"><button type="button" style="background-color:#90F1C8" class="btn btn-sm navbar-btn essay-font">Sign Up</button></a>';
+        $menuItems[] = '<a href="' . Yii::$app->request->baseUrl . '/site/signup"><button type="button" class="btn btn-info btn-sm navbar-btn essay-font">Sign Up</button></a>';
     } else {
         $menuItems[] =
             '' . NotificationsWidget::widget([
