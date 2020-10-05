@@ -594,6 +594,20 @@ $myscript = <<< JS
                 $('#min-amount').val('$'+(myservice*mytype*myurgency*mypages*mylevel).toFixed(2));
         });
     });
+
+    $(".home-slider").slick({
+        dots: true,
+        infinite: true,
+        speed: 1000,
+        fade: true,
+        cssEase: 'linear',
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        prevArrow: false,
+        nextArrow: false
+    });
 JS;
 $this->registerJs($myscript);
 ?>
@@ -954,7 +968,6 @@ $this->registerJs($myscript);
     </div>
 </div>
 
-
 <div class="body-container essay-font hidden-xs" style="background-color: whitesmoke;">
             <div class="container">
             <div class="row" style="height: auto; margin-bottom: 20px;">
@@ -1054,4 +1067,56 @@ $this->registerJs($myscript);
             </div>
         </div>
     </div>
+
+<div class="body-container essay-font" style="background-color: #CCE4F7;">
+    <div class="container">
+<div class="home-slider">
+    <div class="slide1" style="min-height: 400px">
+        <h1 style="text-align: center">What our customers say</h1>
+        <div class="col-sm-6 col-sm-offset-3 col-xs-12">
+            <div style="border-radius:10px; background-color: rgba(255,255,255,.8); padding: 20px 20px 20px 40px; margin-top: 30px;">
+                <center>
+                    <h3><strong>Order# 120636</strong></h3><br>
+                    <p style="font-size: large">"These guys have been saving me big time.
+                        Third time placing an order with them and they delivered quality work as always. Thanks guys.
+                        Highly recommend!!"</p>
+                    <h4><strong>Completed: 2 hours and 20 minutes ago</strong></h4>
+                </center>
+            </div>
+        </div>
+    </div>
+    <div class="slide2" style="background-color: #CCE4F7; min-height: 400px">
+        <h1 style="text-align: center">What our customers say</h1>
+        <div class="col-sm-6 col-sm-offset-3 col-xs-12">
+            <div style="border-radius:10px; background-color:rgba(255,255,255,.8); padding: 20px 20px 20px 40px; margin-top: 30px;">
+                <center>
+                    <h3><strong>Order# 120636</strong></h3><br>
+                    <p style="font-size: large">
+                    "You never disappoint. You did an AMAZING work within a very short time. It looked so easy for you.
+                    Will definitely keep using your services."
+                    </p>
+                    <h4><strong>Completed: 2 hours and 20 minutes ago</strong></h4>
+                </center>
+            </div>
+        </div>
+    </div>
+    <div class="slide3" style="background-color: #CCE4F7; min-height: 400px">
+        <h1 style="text-align: center">What our customers say</h1>
+        <div class="col-sm-6 col-sm-offset-3 col-xs-12">
+            <div style="border-radius:10px; background: rgba(255,255,255,.8); padding: 20px 20px 20px 40px; margin-top: 30px;">
+                <center>
+                    <h3><strong>Order# 120636</strong></h3><br>
+                    <p style="font-size: large">At Verified Professors we are very cheap
+                        as compared those other sites I have visited. The quality of work is high.
+                        I recommend this site."
+                    </p>
+                    <h4><strong>Completed: 2 hours and 20 minutes ago</strong></h4>
+                </center>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
 </div>
