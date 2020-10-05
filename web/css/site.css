@@ -582,7 +582,7 @@ a.desc:after {
     content: "\e156";
 }
 .superslide{
-    margin-top: 90px;
+    margin-top: 50px;
     margin-bottom: 90px;
 }
 
@@ -717,4 +717,19 @@ a.desc:after {
 .imgbox {
     display: grid;
     height: 100%;
+}
+.writters {
+    line-height: 120%;
+    text-align: center;
+}
+
+.writters-items:not(:last-child):after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 1px;
+    background-color: lightgrey;
+    right: 0;
+    height: 50px;
+    margin-top: -50px;
 }
