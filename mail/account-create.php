@@ -7,7 +7,7 @@
  */
 ?>
 
-<h2>Welcome to DoctorateEssays.com!</h2>
+<h2>Welcome to VerifiedProfessors.com!</h2>
 
 <p style="text-transform: capitalize">Dear <?= $user->username ?>,</p>
 
