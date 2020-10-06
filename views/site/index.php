@@ -650,7 +650,11 @@ $this->registerJs($myscript);
 
 
 <?php $this->endBlock(); ?>
+<<<<<<< HEAD
 <div class="site-index1" style="background-image: url('images/backgr.jpg');">
+=======
+<div class="site-index1" style="background: url('images/edited-cover-photo2.jpg');">
+>>>>>>> adfbf4ea7c96e36a75ba334014505ebecf7228e9
     <div class="container" style="z-index: 100; color: white;">
         <?php Yii::$app->timezone->name ?>
         <div class="row superslide">
