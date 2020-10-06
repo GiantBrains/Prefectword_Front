@@ -76,8 +76,8 @@ $config = [
             'class' => 'himiklab\yii2\recaptcha\ReCaptchaConfig',
             'siteKeyV2' => '6LfluM8ZAAAAAAkNa-hkj4Nt9O6yD9T5zqBs0Sc-',
             'secretV2' => '6LfluM8ZAAAAAH_4A49Ak3Hrt0vAsgocAvhQuz6P',
-            'siteKeyV3' => '6LeiCPEUAAAAAGAvG74ythZmevXYMkFbAOvChqwS',
-            'secretV3' => '6LeiCPEUAAAAANkk3qNzijJdWgiqONtRGe-6xPgh',
+            'siteKeyV3' => '6LfluM8ZAAAAAAkNa-hkj4Nt9O6yD9T5zqBs0Sc-',
+            'secretV3' => '6LfluM8ZAAAAAH_4A49Ak3Hrt0vAsgocAvhQuz6P',
         ],
         // other default components here..
         'jwt' => [
