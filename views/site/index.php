@@ -750,7 +750,7 @@ $this->registerJs($myscript);
             <div class="col-md-3 col-sm-3 col-xs-12">
                     <div class="row">
                         <div class="col-md-8 essay-font hidden-xs">
-                            <button style="border-radius: 30px;font-family: 'Open Sans', sans-serif; background-color: #71D8EC" type="button" class="btn btn-lg essay-font">
+                            <button style="border-radius: 30px;font-weight: bolder; font-family: 'Open Sans', sans-serif; background-color: #71D8EC" type="button" class="btn btn-lg essay-font">
                                 PLACE ORDER
                             </button>
                             <p style="vertical-align: middle">Place your order</p>
@@ -774,7 +774,7 @@ $this->registerJs($myscript);
             <div class="col-md-3 col-sm-3 col-xs-12">
                 <div class="row">
                     <div class="col-md-8 essay-font hidden-xs">
-                        <button style="border-radius: 30px; font-family: 'Open Sans', sans-serif; background-color: #71D8EC" type="button" class="btn btn-lg essay-font">
+                        <button style="border-radius: 30px; font-weight: bolder; font-family: 'Open Sans', sans-serif; background-color: #71D8EC" type="button" class="btn btn-lg essay-font">
                             PREPARATION
                         </button>
                         <p style="vertical-align: middle">The writer prepares sources for your work</p>
@@ -797,7 +797,7 @@ $this->registerJs($myscript);
             <div class="col-md-3 col-sm-3 col-xs-12">
                 <div class="row">
                     <div class="col-md-8 essay-font hidden-xs">
-                        <button style="border-radius: 30px;font-family: 'Open Sans', sans-serif;  background-color: #71D8EC" type="button" class="btn btn-lg essay-font">
+                        <button style="border-radius: 30px;font-weight: bolder; font-family: 'Open Sans', sans-serif;  background-color: #71D8EC" type="button" class="btn btn-lg essay-font">
                             COMPLETION
                         </button>
                         <p style="vertical-align: middle">The writer completes your paper</p>
@@ -821,7 +821,7 @@ $this->registerJs($myscript);
             <div class="col-md-3 col-sm-3 col-xs-12">
                 <div class="row">
                     <div class="col-md-8 essay-font hidden-xs">
-                        <button style="border-radius: 30px; font-family: 'Open Sans', sans-serif; background-color: #71D8EC" type="button" class="btn btn-lg essay-font">
+                        <button style="border-radius: 30px; font-weight: bolder; font-family: 'Open Sans', sans-serif; background-color: #71D8EC" type="button" class="btn btn-lg essay-font">
                             POLISHING
                         </button>
                         <p style="vertical-align: middle">The writer polishes your paper</p>
