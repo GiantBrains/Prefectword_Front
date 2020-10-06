@@ -650,7 +650,7 @@ $this->registerJs($myscript);
 
 
 <?php $this->endBlock(); ?>
-<div class="site-index1" style="background-image: url('images/cover.jpg');">
+<div class="site-index1" style="background-image: url('images/backgr.jpg');">
     <div class="container" style="z-index: 100; color: white;">
         <?php Yii::$app->timezone->name ?>
         <div class="row superslide">
@@ -900,7 +900,7 @@ $this->registerJs($myscript);
                 <div class="col-sm-3 col-xs-12"
                      style="background-color: white; margin-left: 130px; opacity: 0.8; border-radius: 10px; color: black">
                     <center>
-                    <img src="<?= Yii::$app->request->baseUrl ?>/images/img1" width="60px" style="margin-top: 20px; border-radius: 50px">
+                    <img src="<?= Yii::$app->request->baseUrl ?>/images/olivia.jpg" width="50px" style="margin-top: 20px; border-radius: 50px">
                     <h3>Tutor Olivia Fendi</h3>
                     <p>Professional Academic Writer</p>
                     <img src="<?= Yii::$app->request->baseUrl ?>/images/rating.png" width="100px" style="margin-top: -10px">
