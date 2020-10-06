@@ -83,8 +83,8 @@ class SignupForm extends Model
             $clientRole = $auth->getRole('client');
             $auth->assign($clientRole, $user->getId());
 
-            Yii::$app->managerMailer->htmlLayout = "layouts/order";
-            Yii::$app->managerMailer->compose('account-create', [
+            Yii::$app->mailer->htmlLayout = "layouts/order";
+            Yii::$app->mailer->compose('account-create', [
                 'user'=> $user
             ])->setFrom([Yii::$app->params['noreplyEmail'] => Yii::$app->name . ' Accounts Manager'])
                 ->setTo($user->email)
