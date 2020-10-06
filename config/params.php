@@ -2,7 +2,7 @@
 
 return [
     'adminEmail' => 'admin@verifiedprofessors.com',
-    'managerEmail' => 'manager@verifiedprofessors.com',
+    'noreplyEmail' => 'no-reply@verifiedprofessors.com',
     'supportEssay' => 'Verified Professors Support',
     'supportEmail' => 'support@verifiedprofessors.com',
     'successUrl' => "https://verifiedprofessors.com/wallet/paypal",

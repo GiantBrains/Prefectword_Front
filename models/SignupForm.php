@@ -86,9 +86,9 @@ class SignupForm extends Model
             Yii::$app->managerMailer->htmlLayout = "layouts/order";
             Yii::$app->managerMailer->compose('account-create', [
                 'user'=> $user
-            ])->setFrom([Yii::$app->params['managerEmail'] => Yii::$app->name . ' Accounts Manager'])
+            ])->setFrom([Yii::$app->params['noreplyEmail'] => Yii::$app->name . ' Accounts Manager'])
                 ->setTo($user->email)
-                ->setSubject('Welcome to DoctorateEssays.com!')
+                ->setSubject('Welcome to VerifiedProfessors.com!')
                 ->send();
 
             return $user;
