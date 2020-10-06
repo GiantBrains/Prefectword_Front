@@ -11,7 +11,7 @@ return [
     'cancelUrl2' => "https://verifiedprofessors.com/wallet/order-cancel?success=false",
     'clientId' => 'AXsD6Dp6T6VRzTKTlKQKeSdYGlCcPCzeVXCqe_9EQ1UVKq1CMFVyXsbv7o-G-wFLKP7cDfZTtk75aIdj',
     'clientSecret' => 'ELMrNIOYQ2Or0YIC9i6kdOLDhPgrSba_R2q0RVmqc6l4XjKA5eYLLV3C1_OxCE6Cxbjfdo6Gyggyib9k',
-    'mode' => 'sandbox',
+    'mode' => 'live',
     'couponcode' => 'PHDESSAYS',
     'couponamt' => 0.9,
     'code2' => 'ESSAY25',
