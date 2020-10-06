@@ -74,8 +74,8 @@ $config = [
 
         'reCaptcha' => [
             'class' => 'himiklab\yii2\recaptcha\ReCaptchaConfig',
-            'siteKeyV2' => '6LcXFfEUAAAAACyYLjoG52fn9q1EwdrXfdW7KQNc',
-            'secretV2' => '6LcXFfEUAAAAAAJutrdOinyu-dvHxrdp3n25e6H1',
+            'siteKeyV2' => '6LfluM8ZAAAAAAkNa-hkj4Nt9O6yD9T5zqBs0Sc-',
+            'secretV2' => '6LfluM8ZAAAAAH_4A49Ak3Hrt0vAsgocAvhQuz6P',
             'siteKeyV3' => '6LeiCPEUAAAAAGAvG74ythZmevXYMkFbAOvChqwS',
             'secretV3' => '6LeiCPEUAAAAANkk3qNzijJdWgiqONtRGe-6xPgh',
         ],
