@@ -60,7 +60,6 @@ $config = [
             'class' => '\kartik\grid\Module',
             // your other grid module settings
         ],
-
     ],
 
     'components' => [
@@ -69,13 +68,12 @@ $config = [
             // Next up, we set the public parameters of the class
             'client_id' => 'AW4z_bz5wVOaWIz62BcmhfFSoZhtzZKqA9BZ5f3vi8hk0LItK-bYR8_L7W4r57Twt12acRTjn5HweHoL',
             'client_secret' => 'EBxC6yWLDE79TIcWZ_4GLmRt6EOaD1f_zu7OTsWP0GVjTaaPBIr1g_nJbDf7X3z_jige7o3K5W7D6Rp6',
-
         ],
 
         'reCaptcha' => [
             'class' => 'himiklab\yii2\recaptcha\ReCaptchaConfig',
-            'siteKeyV2' => '6LfluM8ZAAAAAAkNa-hkj4Nt9O6yD9T5zqBs0Sc-',
-            'secretV2' => '6LfluM8ZAAAAAH_4A49Ak3Hrt0vAsgocAvhQuz6P',
+            'siteKeyV2' => '6LfTUNQZAAAAAAWHZyo7NJZSoCgbTuOAjvEVOUz4',
+            'secretV2' => '6LfTUNQZAAAAANcFmM2_ZRj3_LSFcOzDN8A_tBJi',
             'siteKeyV3' => '6LfluM8ZAAAAAAkNa-hkj4Nt9O6yD9T5zqBs0Sc-',
             'secretV3' => '6LfluM8ZAAAAAH_4A49Ak3Hrt0vAsgocAvhQuz6P',
         ],
