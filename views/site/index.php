@@ -951,7 +951,7 @@ $this->registerJs($myscript);
             </div>
             <div class="col-md-3 col-sm-3 col-xs-12 numbers-items">
                 <center><img width="80px" style="border-radius: 60px" src="<?= Yii::$app->request->baseUrl ?>/images/slides/tick.png"></center>
-                <h1 class="numbers-with-commas" style="color:white; font-size: 60px; font-weight: 900; text-align: center">457</h1>
+                <h1 class="numbers-with-commas" style="color:white; font-size: 60px; font-weight: 900; text-align: center"><?= number_format(floatval($clientCount), 0, '.', ',') ?></h1>
                 <h5 style="color:white; text-align: center">SATISFIED CLIENTS</h5>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-12 numbers-items">
