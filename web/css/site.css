@@ -729,6 +729,7 @@ a.desc:after {
 .writters {
     line-height: 120%;
     text-align: center;
+    margin-top: -13px;
 }
 
 .writters-items:not(:last-child):after {
@@ -738,6 +739,6 @@ a.desc:after {
     width: 1px;
     background-color: lightgrey;
     right: 0;
-    height: 50px;
-    margin-top: -50px;
+    height: 40px;
+    margin-top: -40px;
 }
