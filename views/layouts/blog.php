@@ -166,11 +166,11 @@ AppAsset::register($this);
         <div class="row">
             <div class="col-md-4">
                 <ul class="articles footer-link essay-font">
-                    <li><a style="text-decoration: none; font-size: 20px;" <i class="fa fa-envelope-o fa-3x"
+                    <li><a style="text-decoration: none; font-size: 20px; font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;" <i class="fa fa-envelope-o fa-3x"
                                                                               aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;support@verifiedprofessors.com</a>
                     </li>
                     <br>
-                    <li><a style="text-decoration: none; font-size: 20px;" <i class="fa fa-phone fa-3x" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;+447393152742</a></li>
+                    <li><a style="text-decoration: none; font-size: 20px; font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;" <i class="fa fa-phone fa-3x" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;+447393152742</a></li>
                 </ul>
                 <ul id="navigation" class="text-center hidden-xs">
                     <li style="margin-left: -45px"><img src="<?= Yii::$app->request->baseUrl?>/images/payment/pay/visa.png"  width="50px" height="50px"  data-rjs="<?= Yii::$app->request->baseUrl?>/images/payment/visa.png" alt="Visa" class="pm visa"></li>

@@ -1,6 +1,13 @@
 html,
 body {
     height: 100%;
+    font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;;
+}
+p {
+    font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+h1, h2, h3,h4, h5,h6 {
+    font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
 }
 
 .wrap {
@@ -18,7 +25,7 @@ body {
     background-color: #3D715B;
 }
 .essay-font{
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
 }
 .myslider{
     z-index: -1;
@@ -42,7 +49,7 @@ body {
     background-color: darkgray;
 }
 
-.stat-nav li{
+.stat-nav li {
 float: left;
  display: inline-block;
 }
@@ -91,7 +98,7 @@ float: left;
     color: #a1a9b3;
 }
 
-.share-class{svg
+.share-class{
     list-style-type: none;
     display: inline-block;
     margin-left: 20px;
@@ -104,7 +111,7 @@ float: left;
 
 
 #revisions {
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
 }
@@ -247,7 +254,7 @@ float: left;
 /* Link */
 .navbar-default1 .navbar-nav > li > a {
     color: #777;
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
 }
 .navbar-default1 .navbar-nav > li > a:hover,
 .navbar-default1 .navbar-nav > li > a:focus {
@@ -295,7 +302,7 @@ float: left;
 @media (max-width: 767px) {
     .navbar-default1 .navbar-nav .open .dropdown-menu > li > a {
         color: #777;
-        font-family: 'Open Sans', sans-serif;
+        font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     }
     .navbar-default1 .navbar-nav .open .dropdown-menu > li > a:hover,
     .navbar-default1 .navbar-nav .open .dropdown-menu > li > a:focus {
@@ -320,7 +327,7 @@ float: left;
 /* Link */
 .navbar-default2 .navbar-nav > li > a {
     color: black;
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
 }
 .navbar-default2 .navbar-nav > li > a:hover,
 .navbar-default2 .navbar-nav > li > a:focus {
@@ -376,7 +383,7 @@ ul#w3 .dropdown-menu >li{
 @media (max-width: 767px) {
     .navbar-default2 .navbar-nav .open .dropdown-menu > li > a {
         color: #777;
-        font-family: 'Open Sans', sans-serif;
+        font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     }
     .navbar-default2 .navbar-nav .open .dropdown-menu > li > a:hover,
     .navbar-default2 .navbar-nav .open .dropdown-menu > li > a:focus {
@@ -650,7 +657,7 @@ a.desc:after {
     margin: 50px 0;
     border-left: 2px solid rgba(140, 171, 202, 0.5);
     color: #7B7B7B;
-    font-family: Lato, SansSerif, "Open Sans";
+    font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     font-size: 16px;
     font-weight: 300;
     width: 100%;
