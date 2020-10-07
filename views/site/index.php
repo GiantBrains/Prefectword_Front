@@ -756,7 +756,7 @@ $this->registerJs($myscript);
                             <p style="vertical-align: middle">Place your order</p>
                         </div>
                         <div class="hidden-md hidden-lg hidden-sm">
-                        <button style="border-radius: 30px; background-color: #4DD1F4; font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;" type="button" class="btn btn-lg essay-font">
+                        <button style="border-radius: 30px; background-color: #71D8EC; font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;" type="button" class="btn btn-lg essay-font">
                             PLACE ORDER
                         </button>
                         <p class="hidden-md hidden-lg hidden-sm">PLACE YOUR ORDER</p>
@@ -837,7 +837,7 @@ $this->registerJs($myscript);
                         class="fa fa-check-circle fa-5x hidden-xs" aria-hidden="true"></i></i>
                         <i class="fa fa-arrow-down fa-3x text-success hidden-md hidden-lg hidden-sm "
                            aria-hidden="true"></i>
-                        <h3 style="font-family: 'Philosopher', sans-serif" class="hidden-md hidden-lg hidden-sm">You Receive your Work</h3>
+                        <h3 class="hidden-md hidden-lg hidden-sm">You Receive your Work</h3>
                     </div>
                 </div>
             </div>
