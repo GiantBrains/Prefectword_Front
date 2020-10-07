@@ -111,8 +111,10 @@ class SiteController extends Controller
         $signup = new SignupForm();
         $model = new Order();
         $fmodel = new Frontorder();
+        $ratingCount = Rating::find()->count();
         $timezone = Yii::$app->timezone->name;
         $allorders = Uniqueid::findOne(1);
+        $clients = $allorders->userid + $ratingCount;
         $ratings = Rating::find()->orderBy('id DESC')->limit(5)->all();
         $command1 = Yii::$app->db->createCommand('SELECT SUM(value) FROM rating');
         $totalrating = $command1->queryScalar();
@@ -124,6 +126,7 @@ class SiteController extends Controller
             'fmodel' => $fmodel,
             'model' => $model,
             'signup' => $signup,
+            'clientCount' => $clients,
             'ratings' => $ratings,
             'allorders' => $allorders->orderid,
             'timezone' => $timezone,
