@@ -750,13 +750,13 @@ $this->registerJs($myscript);
             <div class="col-md-3 col-sm-3 col-xs-12">
                     <div class="row">
                         <div class="col-md-8 essay-font hidden-xs">
-                            <button style="border-radius: 30px;font-weight: bolder; font-family: 'Open Sans', sans-serif; background-color: #71D8EC" type="button" class="btn btn-lg essay-font">
+                            <button style="border-radius: 30px;font-weight: bolder;  background-color: #71D8EC; font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;" type="button" class="btn btn-lg essay-font">
                                 PLACE ORDER
                             </button>
                             <p style="vertical-align: middle">Place your order</p>
                         </div>
                         <div class="hidden-md hidden-lg hidden-sm">
-                        <button style="border-radius: 30px;font-family: 'Open Sans', sans-serif; background-color: #4DD1F4" type="button" class="btn btn-lg essay-font">
+                        <button style="border-radius: 30px; background-color: #4DD1F4; font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;" type="button" class="btn btn-lg essay-font">
                             PLACE ORDER
                         </button>
                         <p class="hidden-md hidden-lg hidden-sm">PLACE YOUR ORDER</p>
@@ -774,13 +774,13 @@ $this->registerJs($myscript);
             <div class="col-md-3 col-sm-3 col-xs-12">
                 <div class="row">
                     <div class="col-md-8 essay-font hidden-xs">
-                        <button style="border-radius: 30px; font-weight: bolder; font-family: 'Open Sans', sans-serif; background-color: #71D8EC" type="button" class="btn btn-lg essay-font">
+                        <button style="border-radius: 30px; font-weight: bolder; background-color: #71D8EC; font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;" type="button" class="btn btn-lg essay-font">
                             PREPARATION
                         </button>
                         <p style="vertical-align: middle">The writer prepares sources for your work</p>
                     </div>
                     <div class="hidden-md hidden-lg hidden-sm">
-                    <button style="border-radius: 30px; font-family: 'Open Sans', sans-serif; background-color: #71D8EC" type="button" class="btn btn-lg essay-font">
+                    <button style="border-radius: 30px; background-color: #71D8EC; font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;" type="button" class="btn btn-lg essay-font">
                         PREPARATION
                     </button>
                     <p class="hidden-md hidden-lg hidden-sm">The writer prepares sources for your work</p>
@@ -797,13 +797,13 @@ $this->registerJs($myscript);
             <div class="col-md-3 col-sm-3 col-xs-12">
                 <div class="row">
                     <div class="col-md-8 essay-font hidden-xs">
-                        <button style="border-radius: 30px;font-weight: bolder; font-family: 'Open Sans', sans-serif;  background-color: #71D8EC" type="button" class="btn btn-lg essay-font">
+                        <button style="border-radius: 30px;font-weight: bolder; background-color: #71D8EC; font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;" type="button" class="btn btn-lg essay-font">
                             COMPLETION
                         </button>
                         <p style="vertical-align: middle">The writer completes your paper</p>
                     </div>
                     <div class="hidden-md hidden-lg hidden-sm">
-                    <button style="border-radius: 30px;font-family: 'Philosopher', sans-serif;  background-color: #71D8EC" type="button" class="btn btn-lg essay-font">
+                    <button style="border-radius: 30px; background-color: #71D8EC; background-color: #71D8EC; font-family: 'Philosopher', sans-serif;" type="button" class="btn btn-lg essay-font">
                         COMPLETION
                     </button>
                     <p class="hidden-md hidden-lg hidden-sm">The writer completes your paper</p>
@@ -821,13 +821,13 @@ $this->registerJs($myscript);
             <div class="col-md-3 col-sm-3 col-xs-12">
                 <div class="row">
                     <div class="col-md-8 essay-font hidden-xs">
-                        <button style="border-radius: 30px; font-weight: bolder; font-family: 'Open Sans', sans-serif; background-color: #71D8EC" type="button" class="btn btn-lg essay-font">
+                        <button style="border-radius: 30px; font-weight: bolder; background-color: #71D8EC; font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;" type="button" class="btn btn-lg essay-font">
                             POLISHING
                         </button>
                         <p style="vertical-align: middle">The writer polishes your paper</p>
                     </div>
                     <div class="hidden-md hidden-lg hidden-sm">
-                    <button style="border-radius: 30px; font-family: 'Open Sans', sans-serif; background-color: #71D8EC" type="button" class="btn btn-lg essay-font">
+                    <button style="border-radius: 30px; background-color: #71D8EC; font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;" type="button" class="btn btn-lg essay-font">
                         POLISHING
                     </button>
                     <p>The writer polishes your paper</p>
@@ -845,7 +845,7 @@ $this->registerJs($myscript);
     </div>
 </div>
 
-<div class="body-container essay-font" style="background-color: white; font-family: 'Open Sans', sans-serif;line-height: 2.0">
+<div class="body-container essay-font" style="background-color: white; font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;line-height: 2.0">
         <div class="container">
             <div class="col-md-4 col-sm-4">
                 <h2><strong>Moneyback Guarantee</strong></h2>
@@ -888,7 +888,7 @@ $this->registerJs($myscript);
         </div>
     </div>
 
-<div class="body-container essay-font" style="background-color: #f0f2f6;">
+<div class="body-container essay-font hidden-xs" style="background-color: #f0f2f6;">
         <div class="container" style="z-index: 100;">
             <div class="row" style="margin-top: 20px;margin-bottom: 30px;">
                 <center>
@@ -971,7 +971,7 @@ $this->registerJs($myscript);
 <div class="body-container essay-font hidden-xs" style="background-color: whitesmoke;">
             <div class="container">
             <div class="row" style="height: auto; margin-bottom: 20px;">
-                <h2 style="font-weight:bolder; text-align: center; color: black;font-family: 'Open Sans', sans-serif;">WHY CHOOSE US</h2>
+                <h2 style="font-weight:bolder; text-align: center; color: black;font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;">WHY CHOOSE US</h2>
                 <div class="col-md-4 col-sm-4 col-xs-12">
                     <div class="col-md-2 col-sm-4 col-xs-12">
                         <img width="70px" style="margin-left:20px; border-radius: 30px; margin-top:10px;"
