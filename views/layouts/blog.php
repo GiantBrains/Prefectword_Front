@@ -92,7 +92,7 @@ AppAsset::register($this);
             '' . NotificationsWidget::widget([
                 'theme' => NotificationsWidget::THEME_GROWL,
                 'clientOptions' => [
-                    'location' => 'br',div
+                    'location' => 'br'
                 ],
                 'counters' => [
                     '.notifications-header-count',
