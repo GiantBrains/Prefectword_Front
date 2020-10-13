@@ -888,57 +888,78 @@ $this->registerJs($myscript);
         </div>
     </div>
 
-<div class="body-container essay-font hidden-xs" style="background-color: #f0f2f6;">
+    <div class="body-container essay-font hidden-xs" style="background-color: whitesmoke;padding-bottom: 20px; padding-top: 20px;">
+        <center>
+            <h1><strong>Professional Essay Writers Team</strong></h1>
+            <p class="col-sm-6 col-sm-offset-3">At Verified Professors, we employ a large team of skilled writers. Their rating is based on previous
+                customer reviews and rates.
+                Before you hire a writer, you can familiarize yourself with his track record in detail.
+            </p>
+        </center>
         <div class="container" style="z-index: 100;">
-            <div class="row" style="margin-top: 20px;margin-bottom: 30px;">
-                <center>
-                    <h1><strong>Professional Essay Writers Team</strong></h1>
-                <p class="col-sm-6 col-sm-offset-3">At Verified Professors, we employ a large team of skilled writers. Their rating is based on previous
-                    customer reviews and rates.
-                    Before you hire a writer, you can familiarize yourself with his track record in detail.</p>
-                </center>
-                <div class="col-sm-3 col-xs-12"
-                     style="background-color: white; margin-left: 130px; opacity: 0.8; border-radius: 10px; color: black">
+                <div class="col-sm-3">
+                <div style="background-color: white; opacity: 0.8; border-radius: 10px; color: black; padding-bottom: 20px">
                     <center>
                     <img src="<?= Yii::$app->request->baseUrl ?>/images/olivia.jpg" width="50px" style="margin-top: 20px; border-radius: 50px">
                     <h3>Tutor Olivia Fendi</h3>
-                    <p>Professional Academic Writer</p>
+                    <p>Professional Academic Writer.</p>
                     <img src="<?= Yii::$app->request->baseUrl ?>/images/rating.png" width="100px" style="margin-top: -10px">
                     <hr>
-                        <div class="col-sm-4 writters writters-items">5724<br>ORDERS</div>
+                        <div class="col-sm-4 writters writters-items">720<br>ORDERS</div>
                         <div class="col-sm-4 writters writters-items">100%<br>SUCCESS</div>
                         <div class="col-sm-4 writters">5.0<br>RATING</div>
                     </center>
                 </div>
-                <div class="col-sm-3 col-xs-12"
-                     style="background-color: white; margin-left: 20px; opacity: 0.8; border-radius: 10px; color: black">
-                    <center>
-                    <img src="<?= Yii::$app->request->baseUrl ?>/images/img2" width="60px" style="margin-top: 20px; border-radius: 50px">
-                    <h3>Tutor Meghan Jones</h3>
-                    <p>Professional Academic Writer</p>
-                    <img src="<?= Yii::$app->request->baseUrl ?>/images/rating.png" width="100px" style="margin-top: -10px">
-                    <hr>
-                        <div class="col-sm-4 writters writters-items">5724<br>ORDERS</div>
-                        <div class="col-sm-4 writters writters-items">100%<br>SUCCESS</div>
-                        <div class="col-sm-4 writters ">5.0<br>RATING</div>
-                        <br>
-                    </center>
                 </div>
-                <div class="col-sm-3 col-xs-12" style="background-color: white;margin-left: 20px; opacity: 0.8; border-radius: 10px; color: black">
-                    <center>
-                    <img src="<?= Yii::$app->request->baseUrl ?>/images/img3" width="60px" style="margin-top: 20px; border-radius: 50px">
-                    <h3>Tutor Steve Darron</h3>
-                    <p>Professional Academic Writer</p>
-                    <img src="<?= Yii::$app->request->baseUrl ?>/images/rating.png" width="100px" style="margin-top: -10px">
-                    <hr>
-                        <div class="col-sm-4 writters writters-items">5724<br>ORDERS</div>
-                        <div class="col-sm-4 writters writters-items">100%<br>SUCCESS</div>
-                        <div class="col-sm-4 writters">5.0<br>RATING</div>
-                    </center>
+
+                <div class="col-sm-3">
+                    <div style="background-color: white; opacity: 0.8; padding-bottom: 20px; border-radius: 10px; color: black">
+                        <center>
+                            <img src="<?= Yii::$app->request->baseUrl ?>/images/img2" width="50px" style="margin-top: 20px; border-radius: 50px">
+                            <h3>Tutor Meghan Jones</h3>
+                            <p>Astute, honest and hardworking writer.</p>
+                            <img src="<?= Yii::$app->request->baseUrl ?>/images/rating.png" width="100px" style="margin-top: -10px">
+                            <hr>
+                            <div class="col-sm-4 writters writters-items">622<br>ORDERS</div>
+                            <div class="col-sm-4 writters writters-items">100%<br>SUCCESS</div>
+                            <div class="col-sm-4 writters">5.0<br>RATING</div>
+                        </center>
+                    </div>
                 </div>
-            </div>
+
+                <div class="col-sm-3">
+                    <div style="background-color: white; opacity: 0.8;padding-bottom: 20px; border-radius: 10px; color: black">
+                        <center>
+                            <img src="<?= Yii::$app->request->baseUrl ?>/images/img3" width="50px" style="margin-top: 20px; border-radius: 50px">
+                            <h3>Tutor Steve Darron</h3>
+                            <p>I provide quality work guaranteed to give you an exemplary grade.</p>
+                            <img src="<?= Yii::$app->request->baseUrl ?>/images/rating.png" width="100px" style="margin-top: -10px">
+                            <hr>
+                            <div class="col-sm-4 writters writters-items">418<br>ORDERS</div>
+                            <div class="col-sm-4 writters writters-items">100%<br>SUCCESS</div>
+                            <div class="col-sm-4 writters">5.0<br>RATING</div>
+                        </center>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div style="background-color: white; opacity: 0.8; border-radius: 10px;padding-bottom: 20px; color: black">
+                        <center>
+                            <img src="<?= Yii::$app->request->baseUrl ?>/images/img4" width="50px" style="margin-top: 20px; border-radius: 50px">
+                            <h3>Prof. Raymond M.</h3>
+                            <p>A client-oriented professional academic and research writer.</p>
+                            <img src="<?= Yii::$app->request->baseUrl ?>/images/rating.png" width="100px" style="margin-top: -10px">
+                            <hr>
+                            <div class="col-sm-4 writters writters-items">630<br>ORDERS</div>
+                            <div class="col-sm-4 writters writters-items">100%<br>SUCCESS</div>
+                            <div class="col-sm-4 writters">5.0<br>RATING</div>
+                        </center>
+                    </div>
+                </div>
     </div>
 </div>
+
+
 
 <div class="body-container essay-font" style="background-color: #3D715B">
     <div class="container">
@@ -1072,45 +1093,55 @@ $this->registerJs($myscript);
     <div class="container">
 <div class="home-slider">
     <div class="slide1" style="min-height: 400px">
-        <h1 style="text-align: center">What our customers say</h1>
+        <h1 style="text-align: center;font-weight: bolder">What our customers say</h1>
+        <h4 style="text-align: center;font-weight: bolder; color: black">Avg rating for all
+                    reviews: <?= number_format(floatval($avgrating), 1, '.', ',') ?> / 5</h4>
         <div class="col-sm-6 col-sm-offset-3 col-xs-12">
             <div style="border-radius:10px; background-color: rgba(255,255,255,.8); padding: 20px 20px 20px 40px; margin-top: 30px;">
                 <center>
-                    <h3><strong>Order# 120636</strong></h3><br>
+                    <h3><strong>Order# 14636</strong></h3><br>
+                    <img src="<?= Yii::$app->request->baseUrl ?>/images/rating.png" width="100px" style="margin-bottom: 10px">
                     <p style="font-size: large">"These guys have been saving me big time.
                         Third time placing an order with them and they delivered quality work as always. Thanks guys.
                         Highly recommend!!"</p>
-                    <h4><strong>Completed: 2 hours and 20 minutes ago</strong></h4>
+                    <h4><strong>Completed: 20 minutes ago</strong></h4>
                 </center>
             </div>
         </div>
     </div>
     <div class="slide2" style="background-color: #CCE4F7; min-height: 400px">
-        <h1 style="text-align: center">What our customers say</h1>
+        <h1 style="text-align: center;font-weight: bolder">What our customers say</h1>
+        <h4 style="text-align: center; color: black; font-weight: bolder">Avg rating for all
+                    reviews: <?= number_format(floatval($avgrating), 1, '.', ',') ?> / 5</h4>
         <div class="col-sm-6 col-sm-offset-3 col-xs-12">
             <div style="border-radius:10px; background-color:rgba(255,255,255,.8); padding: 20px 20px 20px 40px; margin-top: 30px;">
                 <center>
-                    <h3><strong>Order# 120636</strong></h3><br>
+                    <h3><strong>Order# 14637</strong></h3><br>
+                    <img src="<?= Yii::$app->request->baseUrl ?>/images/rating1.png" width="100px" style="margin-bottom: 10px">
                     <p style="font-size: large">
                     "You never disappoint. You did an AMAZING work within a very short time. It looked so easy for you.
                     Will definitely keep using your services."
                     </p>
-                    <h4><strong>Completed: 2 hours and 20 minutes ago</strong></h4>
+                    <h4><strong>Completed: 2 hours and 30 minutes ago</strong></h4>
                 </center>
             </div>
         </div>
     </div>
     <div class="slide3" style="background-color: #CCE4F7; min-height: 400px">
-        <h1 style="text-align: center">What our customers say</h1>
+        <h1 style="text-align: center;font-weight: bolder">What our customers say</h1>
+        <h4 style="text-align: center; font-weight: bolder; color: black">Avg rating for all
+                    reviews: <?= number_format(floatval($avgrating), 1, '.', ',') ?> / 5</h4>
         <div class="col-sm-6 col-sm-offset-3 col-xs-12">
             <div style="border-radius:10px; background: rgba(255,255,255,.8); padding: 20px 20px 20px 40px; margin-top: 30px;">
                 <center>
-                    <h3><strong>Order# 120636</strong></h3><br>
+                    <h3><strong>Order# 14638</strong></h3><br>
+                    <img src="<?= Yii::$app->request->baseUrl ?>/images/rating.png" width="100px" style="margin-bottom: 10px">
                     <p style="font-size: large">At Verified Professors we are very cheap
                         as compared those other sites I have visited. The quality of work is high.
                         I recommend this site."
                     </p>
-                    <h4><strong>Completed: 2 hours and 20 minutes ago</strong></h4>
+            
+                    <h4><strong>Completed: 3 hours and 18 minutes ago</strong></h4>
                 </center>
             </div>
         </div>
