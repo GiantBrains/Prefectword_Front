@@ -905,7 +905,7 @@ $this->registerJs($myscript);
                     <p>Professional Academic Writer.</p>
                     <img src="<?= Yii::$app->request->baseUrl ?>/images/rating.png" width="100px" style="margin-top: -10px">
                     <hr>
-                        <div class="col-sm-4 writters writters-items">5724<br>ORDERS</div>
+                        <div class="col-sm-4 writters writters-items">720<br>ORDERS</div>
                         <div class="col-sm-4 writters writters-items">100%<br>SUCCESS</div>
                         <div class="col-sm-4 writters">5.0<br>RATING</div>
                     </center>
@@ -920,7 +920,7 @@ $this->registerJs($myscript);
                             <p>Astute, honest and hardworking writer.</p>
                             <img src="<?= Yii::$app->request->baseUrl ?>/images/rating.png" width="100px" style="margin-top: -10px">
                             <hr>
-                            <div class="col-sm-4 writters writters-items">5724<br>ORDERS</div>
+                            <div class="col-sm-4 writters writters-items">622<br>ORDERS</div>
                             <div class="col-sm-4 writters writters-items">100%<br>SUCCESS</div>
                             <div class="col-sm-4 writters">5.0<br>RATING</div>
                         </center>
@@ -935,7 +935,7 @@ $this->registerJs($myscript);
                             <p>I provide quality work guaranteed to give you an exemplary grade.</p>
                             <img src="<?= Yii::$app->request->baseUrl ?>/images/rating.png" width="100px" style="margin-top: -10px">
                             <hr>
-                            <div class="col-sm-4 writters writters-items">5724<br>ORDERS</div>
+                            <div class="col-sm-4 writters writters-items">418<br>ORDERS</div>
                             <div class="col-sm-4 writters writters-items">100%<br>SUCCESS</div>
                             <div class="col-sm-4 writters">5.0<br>RATING</div>
                         </center>
@@ -950,7 +950,7 @@ $this->registerJs($myscript);
                             <p>A client-oriented professional academic and research writer.</p>
                             <img src="<?= Yii::$app->request->baseUrl ?>/images/rating.png" width="100px" style="margin-top: -10px">
                             <hr>
-                            <div class="col-sm-4 writters writters-items">5724<br>ORDERS</div>
+                            <div class="col-sm-4 writters writters-items">630<br>ORDERS</div>
                             <div class="col-sm-4 writters writters-items">100%<br>SUCCESS</div>
                             <div class="col-sm-4 writters">5.0<br>RATING</div>
                         </center>
