@@ -963,7 +963,7 @@ class OrderController extends Controller
             //            ]));
             $file->dowload_date = $dowtime;
             $file->save();
-            Yii::setAlias('@adminsource', 'https://admin.doctorateessays.com');
+            Yii::setAlias('@adminsource', env('ADMIN_SITE'));
 
             $path = Url::to('@adminsource') . '/images/uploads/' . $file_name . '-' . $file_date . '.' . $file_extension;
 
