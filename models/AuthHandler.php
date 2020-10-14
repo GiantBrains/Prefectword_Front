@@ -95,7 +95,7 @@ class AuthHandler
                         } catch (\yii\db\Exception $e) {
                         }
                         $assignment = User::getUserAssignment($user->id);
-                        if (!empty($assignment)){
+                        if (empty($assignment)){
                             // the following three lines were added:
                             $auth = \Yii::$app->authManager;
                             $clientRole = $auth->getRole('client');
