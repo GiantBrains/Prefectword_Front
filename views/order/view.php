@@ -126,7 +126,7 @@ $this->registerJs($datetime);
             <?php
             if ($cancelled){
                 echo ' <!-- Button trigger modal -->
-            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#reserveModal">
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#reserveModal">
                Reserve Payment
             </button>';
             }else{
@@ -177,7 +177,7 @@ $this->registerJs($datetime);
                 <?php
                 if ($cancelled || $cancancel){
                     echo ' <!-- Button trigger modal -->
-            <button type="button" class="btn button-cancel" data-toggle="modal" data-target="#cancelModal"> &nbsp;
+            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#cancelModal"> &nbsp;
                Cancel
             </button> &nbsp;';
                 }else{
@@ -187,7 +187,7 @@ $this->registerJs($datetime);
                 <?php
                 if ($cancelled){
                     echo ' <!-- Button trigger modal -->
-            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#reserveModal">
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#reserveModal">
                Reserve Payment
             </button>';
                 }else{
