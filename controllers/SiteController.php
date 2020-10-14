@@ -119,6 +119,7 @@ class SiteController extends Controller
         $command1 = Yii::$app->db->createCommand('SELECT SUM(value) FROM rating');
         $totalrating = $command1->queryScalar();
         $count = Rating::find()->count();
+        $count == 0 ? $count = 1: $count;
         Yii::$app->view->params['count'] = $count;
         $avgrating = $totalrating / $count;
         Yii::$app->view->params['avgrating'] = $avgrating;
