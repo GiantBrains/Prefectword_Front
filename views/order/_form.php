@@ -991,7 +991,7 @@ $this->registerJs($calculate);
             </div>
         </div>
         <div class="form-group">
-            <?= Html::submitButton('Place Order', ['class' => 'btn btn-info']) ?>
+            <?= Html::submitButton('Next <i class="fa fa-arrow-right" aria-hidden="true"></i>', ['class' => 'btn btn-info']) ?>
         </div>
 
         <?php ActiveForm::end(); ?>
