@@ -457,7 +457,10 @@ class OrderController extends Controller
             $dt2 = new \DateTime("@$seconds");
             $hrsanddays = $dt1->diff($dt2)->format('+%a day +%h hour');
             //get the time from the db in UTC and convert it client timezone
-            $startTime = new \DateTime('' . $model->created_at . '', new \DateTimeZone('UTC'));
+            try {
+                $startTime = new \DateTime('' . $model->created_at . '', new \DateTimeZone('UTC'));
+            } catch (\Exception $e) {
+            }
             $startTime->setTimezone(new \DateTimeZone(Yii::$app->timezone->name));
             $ptime = $startTime->format("Y-m-d H:i:s");
             // calculate the future deadline and display it
