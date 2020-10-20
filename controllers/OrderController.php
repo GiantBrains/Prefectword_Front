@@ -315,7 +315,7 @@ class OrderController extends Controller
                 $message->order_number = $oid;
                 $message->sender_id = Yii::$app->user->id;
                 if ($supaorder->written_by == null) {
-                    $message->receiver_id = 919;
+                    $message->receiver_id = 1;
                 } else {
                     $message->receiver_id = $supaorder->written_by;
                 }
@@ -478,7 +478,7 @@ class OrderController extends Controller
             unset($session['pages_id']);
             unset($session['level_id']);
             //            Notification::success(Notification::KEY_NEW_ORDER, 1, $model->id);
-            Notification::success(Notification::KEY_NEW_ORDER, 919, $model->id);
+            Notification::success(Notification::KEY_NEW_ORDER, 1, $model->id);
             $notifys = \app\models\Notification::find()->where(['key_id' => $model->id, 'seen' => 0])->all();
             foreach ($notifys as $notify) {
                 $notify->order_number = $model->ordernumber;
