@@ -315,7 +315,7 @@ class OrderController extends Controller
                 $message->order_number = $oid;
                 $message->sender_id = Yii::$app->user->id;
                 if ($supaorder->written_by == null) {
-                    $message->receiver_id = 7;
+                    $message->receiver_id = 1;
                 } else {
                     $message->receiver_id = $supaorder->written_by;
                 }
@@ -457,7 +457,10 @@ class OrderController extends Controller
             $dt2 = new \DateTime("@$seconds");
             $hrsanddays = $dt1->diff($dt2)->format('+%a day +%h hour');
             //get the time from the db in UTC and convert it client timezone
-            $startTime = new \DateTime('' . $model->created_at . '', new \DateTimeZone('UTC'));
+            try {
+                $startTime = new \DateTime('' . $model->created_at . '', new \DateTimeZone('UTC'));
+            } catch (\Exception $e) {
+            }
             $startTime->setTimezone(new \DateTimeZone(Yii::$app->timezone->name));
             $ptime = $startTime->format("Y-m-d H:i:s");
             // calculate the future deadline and display it
@@ -475,7 +478,7 @@ class OrderController extends Controller
             unset($session['pages_id']);
             unset($session['level_id']);
             //            Notification::success(Notification::KEY_NEW_ORDER, 1, $model->id);
-            Notification::success(Notification::KEY_NEW_ORDER, 7, $model->id);
+            Notification::success(Notification::KEY_NEW_ORDER, 1, $model->id);
             $notifys = \app\models\Notification::find()->where(['key_id' => $model->id, 'seen' => 0])->all();
             foreach ($notifys as $notify) {
                 $notify->order_number = $model->ordernumber;
