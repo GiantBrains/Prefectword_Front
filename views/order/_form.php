@@ -991,6 +991,7 @@ $this->registerJs($calculate);
             </div>
         </div>
         <div class="form-group">
+            <p>In the next page prepare the file or files to be uploaded.</p>
             <?= Html::submitButton('Next <i class="fa fa-arrow-right" aria-hidden="true"></i>', ['class' => 'btn btn-info']) ?>
         </div>
 
