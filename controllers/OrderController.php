@@ -719,7 +719,7 @@ class OrderController extends Controller
                 $sfile->attached = $file->baseName; //Save file names in database- '**' is for separating images
                 $sfile->save();
             }
-            return $this->redirect(['order/view', 'oid' => $order->ordernumber]);
+            return $this->redirect(['order/attached', 'oid' => $order->ordernumber]);
         } else {
             Yii::$app->session->setFlash('danger', 'You do not have the permission to perform this function');
             return $this->redirect(['index']);
