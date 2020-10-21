@@ -33,6 +33,7 @@ use yii\filters\VerbFilter;
 class WalletController extends Controller
 {
     public $layout = 'finance';
+
     /**
      * @inheritdoc
      */
@@ -41,10 +42,10 @@ class WalletController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['create', 'index', 'view', 'update','deposit', 'paypal','transactions','withdraw' ],
+                'only' => ['create', 'index', 'view', 'update', 'deposit', 'paypal', 'transactions', 'withdraw'],
                 'rules' => [
                     [
-                        'actions' => ['create', 'index', 'view', 'update','deposit', 'paypal','transactions','withdraw'],
+                        'actions' => ['create', 'index', 'view', 'update', 'deposit', 'paypal', 'transactions', 'withdraw'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -68,28 +69,28 @@ class WalletController extends Controller
         Yii::$app->view->params['logo'] = User::getSiteLogo();
         Yii::$app->view->params['name'] = User::getSiteName();
         $deposit = 'active';
-        Yii::$app->view->params['deposit']=$deposit;
+        Yii::$app->view->params['deposit'] = $deposit;
         $withdraw = 'not';
-        Yii::$app->view->params['withdraw']=$withdraw;
+        Yii::$app->view->params['withdraw'] = $withdraw;
         $active1 = 'active';
-        Yii::$app->view->params['active']=$active1;
+        Yii::$app->view->params['active'] = $active1;
         $active2 = 'not';
-        Yii::$app->view->params['active']=$active2;
+        Yii::$app->view->params['active'] = $active2;
         $active3 = 'not';
-        Yii::$app->view->params['active']=$active3;
-        $model = Wallet::find()->Where(['customer_id'=>Yii::$app->user->id])->all();
-        $command1 = Yii::$app->db->createCommand('SELECT SUM(deposit) FROM wallet WHERE customer_id ='.Yii::$app->user->id.'');
-        $command2 = Yii::$app->db->createCommand('SELECT SUM(withdraw) FROM wallet WHERE customer_id ='.Yii::$app->user->id.'');
+        Yii::$app->view->params['active'] = $active3;
+        $model = Wallet::find()->Where(['customer_id' => Yii::$app->user->id])->all();
+        $command1 = Yii::$app->db->createCommand('SELECT SUM(deposit) FROM wallet WHERE customer_id =' . Yii::$app->user->id . '');
+        $command2 = Yii::$app->db->createCommand('SELECT SUM(withdraw) FROM wallet WHERE customer_id =' . Yii::$app->user->id . '');
         $totaldeposit = $command1->queryScalar();
         $totalwithdrawal = $command2->queryScalar();
-        $balance = $totaldeposit-$totalwithdrawal;
+        $balance = $totaldeposit - $totalwithdrawal;
         Yii::$app->view->params['balance'] = $balance;
         return $this->render('index', [
-           'model'=>$model,
-            'balance'=>$balance,
-            'active1'=>$active1,
-            'active2'=>$active2,
-            'active3'=>$active3,
+            'model' => $model,
+            'balance' => $balance,
+            'active1' => $active1,
+            'active2' => $active2,
+            'active3' => $active3,
         ]);
     }
 
@@ -97,34 +98,34 @@ class WalletController extends Controller
     {
         Yii::$app->view->params['logo'] = User::getSiteLogo();
         Yii::$app->view->params['name'] = User::getSiteName();
-        if (is_numeric($amount)){
-            $command1 = Yii::$app->db->createCommand('SELECT SUM(deposit) FROM wallet WHERE customer_id ='.Yii::$app->user->id.'');
-            $command2 = Yii::$app->db->createCommand('SELECT SUM(withdraw) FROM wallet WHERE customer_id ='.Yii::$app->user->id.'');
+        if (is_numeric($amount)) {
+            $command1 = Yii::$app->db->createCommand('SELECT SUM(deposit) FROM wallet WHERE customer_id =' . Yii::$app->user->id . '');
+            $command2 = Yii::$app->db->createCommand('SELECT SUM(withdraw) FROM wallet WHERE customer_id =' . Yii::$app->user->id . '');
             $totaldeposit = $command1->queryScalar();
             $totalwithdrawal = $command2->queryScalar();
-            $balance = $totaldeposit-$totalwithdrawal;
-            if ($balance > 0 && $balance>= $amount){
+            $balance = $totaldeposit - $totalwithdrawal;
+            if ($balance > 0 && $balance >= $amount) {
 
                 // send the request
                 $withdraw = new Withdraw();
                 $withdraw->user_id = Yii::$app->user->id;
                 $withdraw->status = 0;
                 $withdraw->uniqueid = date('His');
-                $withdraw->amount =  $amount;
+                $withdraw->amount = $amount;
                 $withdraw->save();
 
                 Notification::warning(Notification::KEY_WITHDRAWAL_REQUEST, 7, $withdraw->id);
-                $notify = \app\models\Notification::find()->where(['key_id'=> $withdraw->id])->andWhere(['seen'=>0])->one();
+                $notify = \app\models\Notification::find()->where(['key_id' => $withdraw->id])->andWhere(['seen' => 0])->one();
                 $notify->order_number = $withdraw->user_id;
                 $notify->save();
 
-                Yii::$app->session->setFlash('success','The withdrawal request has been sent and will be approved within 2 days. Thank you');
+                Yii::$app->session->setFlash('success', 'The withdrawal request has been sent and will be approved within 2 days. Thank you');
                 return $this->redirect(['wallet/withdraw']);
-            }else{
+            } else {
                 Yii::$app->session->setFlash('danger', 'The amount you entered is invalid. Your balance may be zero or the balance is less than amount requested');
                 return $this->redirect(['withdraw']);
             }
-        }else {
+        } else {
             Yii::$app->session->setFlash('danger', 'The amount you entered is  invalid. The amount must be numeric.');
             return $this->redirect(['withdraw']);
         }
@@ -141,27 +142,28 @@ class WalletController extends Controller
             'model' => $this->findModel($id),
         ]);
     }
+
     public function actionTransactions()
     {
         Yii::$app->view->params['logo'] = User::getSiteLogo();
         Yii::$app->view->params['name'] = User::getSiteName();
-        $command1 = Yii::$app->db->createCommand('SELECT SUM(deposit) FROM wallet WHERE customer_id ='.Yii::$app->user->id.'');
-        $command2 = Yii::$app->db->createCommand('SELECT SUM(withdraw) FROM wallet WHERE customer_id ='.Yii::$app->user->id.'');
+        $command1 = Yii::$app->db->createCommand('SELECT SUM(deposit) FROM wallet WHERE customer_id =' . Yii::$app->user->id . '');
+        $command2 = Yii::$app->db->createCommand('SELECT SUM(withdraw) FROM wallet WHERE customer_id =' . Yii::$app->user->id . '');
         $totaldeposit = $command1->queryScalar();
         $totalwithdrawal = $command2->queryScalar();
-        $balance = $totaldeposit-$totalwithdrawal;
+        $balance = $totaldeposit - $totalwithdrawal;
         Yii::$app->view->params['balance'] = $balance;
         $deposit = 'not';
-        Yii::$app->view->params['deposit']=$deposit;
+        Yii::$app->view->params['deposit'] = $deposit;
         $withdraw = 'not';
-        Yii::$app->view->params['withdraw']=$withdraw;
+        Yii::$app->view->params['withdraw'] = $withdraw;
         $active1 = 'not';
-        Yii::$app->view->params['active1']=$active1;
+        Yii::$app->view->params['active1'] = $active1;
         $active2 = 'active';
-        Yii::$app->view->params['active2']=$active2;
+        Yii::$app->view->params['active2'] = $active2;
         $active3 = 'not';
-        Yii::$app->view->params['active2']=$active3;
-        $wallet = Wallet::find()->where(['customer_id'=>Yii::$app->user->id])->orderBy('id DESC');
+        Yii::$app->view->params['active2'] = $active3;
+        $wallet = Wallet::find()->where(['customer_id' => Yii::$app->user->id])->orderBy('id DESC');
         // get the total number of articles (but do not fetch the article data yet)
         $count = $wallet->count();
         // create a pagination object with the total count
@@ -171,44 +173,46 @@ class WalletController extends Controller
         $articles = $wallet->offset($pagination->offset)
             ->limit($pagination->limit)
             ->all();
-        return $this->render('transactions',[
-            'paypals'=>$articles,
-            'totaldeposit'=>$totaldeposit,
-            'totalwithdrawal'=>$totalwithdrawal,
-            'pagination'=>$pagination,
-            'active1'=>$active1,
-            'active2'=>$active2,
-            'active3'=>$active3,
-            ]);
+        return $this->render('transactions', [
+            'paypals' => $articles,
+            'totaldeposit' => $totaldeposit,
+            'totalwithdrawal' => $totalwithdrawal,
+            'pagination' => $pagination,
+            'active1' => $active1,
+            'active2' => $active2,
+            'active3' => $active3,
+        ]);
     }
+
     public function actionWithdraw()
     {
         Yii::$app->view->params['logo'] = User::getSiteLogo();
         Yii::$app->view->params['name'] = User::getSiteName();
-        $command1 = Yii::$app->db->createCommand('SELECT SUM(deposit) FROM wallet WHERE customer_id ='.Yii::$app->user->id.'');
-        $command2 = Yii::$app->db->createCommand('SELECT SUM(withdraw) FROM wallet WHERE customer_id ='.Yii::$app->user->id.'');
+        $command1 = Yii::$app->db->createCommand('SELECT SUM(deposit) FROM wallet WHERE customer_id =' . Yii::$app->user->id . '');
+        $command2 = Yii::$app->db->createCommand('SELECT SUM(withdraw) FROM wallet WHERE customer_id =' . Yii::$app->user->id . '');
         $totaldeposit = $command1->queryScalar();
         $totalwithdrawal = $command2->queryScalar();
-        $balance = $totaldeposit-$totalwithdrawal;
+        $balance = $totaldeposit - $totalwithdrawal;
         Yii::$app->view->params['balance'] = $balance;
         $deposit = 'not';
-        Yii::$app->view->params['deposit']=$deposit;
+        Yii::$app->view->params['deposit'] = $deposit;
         $withdraw = 'active';
-        Yii::$app->view->params['withdraw']=$withdraw;
+        Yii::$app->view->params['withdraw'] = $withdraw;
         $active1 = 'not';
-        Yii::$app->view->params['active1']=$active1;
+        Yii::$app->view->params['active1'] = $active1;
         $active2 = 'not';
-        Yii::$app->view->params['active2']=$active2;
+        Yii::$app->view->params['active2'] = $active2;
         $active3 = 'active';
-        Yii::$app->view->params['active2']=$active3;
-        $withdraw_trasc = Withdraw::find()->Where(['user_id'=>Yii::$app->user->id])->orderBy('id DESC')->all();
-        return $this->render('withdraw',[
-            'active1'=>$active1,
-            'withdraws'=>$withdraw_trasc,
-            'active2'=>$active2,
-            'active3'=>$active3,
+        Yii::$app->view->params['active2'] = $active3;
+        $withdraw_trasc = Withdraw::find()->Where(['user_id' => Yii::$app->user->id])->orderBy('id DESC')->all();
+        return $this->render('withdraw', [
+            'active1' => $active1,
+            'withdraws' => $withdraw_trasc,
+            'active2' => $active2,
+            'active3' => $active3,
         ]);
     }
+
     /**
      * Creates a new Wallet model.
      * If creation is successful, the browser will be redirected to the 'view' page.
@@ -226,13 +230,14 @@ class WalletController extends Controller
             ]);
         }
     }
+
     public function actionDeposit($amount)
     {
-        if (is_numeric($amount)){
+        if (is_numeric($amount)) {
             // process paypal transaction
             $session = Yii::$app->session;
             $session->open();
-            $session['user_id']= Yii::$app->user->getId();
+            $session['user_id'] = Yii::$app->user->getId();
             $apiContext = $this->apiContext();
 
             //set payer
@@ -242,7 +247,7 @@ class WalletController extends Controller
             // (Optional) Lets you specify item wise
             // information
             $item = new Item();
-            $item->setName('Client #'.Yii::$app->user->id)
+            $item->setName('Client #' . Yii::$app->user->id)
                 ->setCurrency('USD')
                 ->setQuantity(1)
                 ->setPrice($amount);
@@ -260,10 +265,10 @@ class WalletController extends Controller
             $transaction = new \PayPal\Api\Transaction();
             $transaction->setAmount($amnt);
             $transaction->setItemList($itemList);
-            $transaction->setDescription('Deposit for client #'.Yii::$app->user->id);
+            $transaction->setDescription('Deposit for client #' . Yii::$app->user->id);
 
             $redirectUrls = new RedirectUrls();
-            $redirectUrls->setReturnUrl(Yii::$app->params['successUrl']."?success=true")
+            $redirectUrls->setReturnUrl(Yii::$app->params['successUrl'] . "?success=true")
                 ->setCancelUrl(Yii::$app->params['cancelUrl']);
 
             // ### Payment
@@ -295,9 +300,9 @@ class WalletController extends Controller
                 $connection->createCommand()->insert('paypal', [
                     'user_id' => $session['user_id'],
                     'payment_id' => $payment->getId(),
-                    'amount_paid'=>($amount),
-                    'hash'=>$hash,
-                    'complete'=>0
+                    'amount_paid' => ($amount),
+                    'hash' => $hash,
+                    'complete' => 0
                 ])->execute();
 
 
@@ -307,7 +312,7 @@ class WalletController extends Controller
             $approvalUrl = $payment->getApprovalLink();
 
             return $this->redirect($approvalUrl);
-        }else {
+        } else {
             Yii::$app->session->setFlash('invalidAmt', 'The amount you entered is  invalid. The amount must be numeric.');
             return $this->redirect(['index']);
         }
@@ -317,11 +322,11 @@ class WalletController extends Controller
     {
         $request = Yii::$app->request;
         $session = Yii::$app->session;
-        if($request->get('success')== true && Yii::$app->user->id == $session['user_id']){
+        if ($request->get('success') == true && Yii::$app->user->id == $session['user_id']) {
             $payerid = $request->get('PayerID');
             $paymentId = $request->get('paymentId');
 
-            $paypal = Paypal::find()->where(['hash'=> $session['paypal_hash']])->one();
+            $paypal = Paypal::find()->where(['hash' => $session['paypal_hash']])->one();
 
             if ($paypal->payment_id == $paymentId) {
                 $apiContext = $this->apiContext();
@@ -332,7 +337,7 @@ class WalletController extends Controller
                 try {
                     $payment->execute($execute, $apiContext);
                     //Update the payment status
-                    $customer = Paypal::find()->where(['payment_id'=>$paypal->payment_id])->one();
+                    $customer = Paypal::find()->where(['payment_id' => $paypal->payment_id])->one();
                     $customer->complete = 1;
                     $customer->save();
                     //send confirmation email
@@ -341,7 +346,7 @@ class WalletController extends Controller
                     Yii::$app->supportMailer->htmlLayout = "layouts/order";
                     Yii::$app->supportMailer->compose('wallet-deposit', [
                         'deposit' => $customer->amount_paid,
-                        'user'=> $user
+                        'user' => $user
                     ])->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' support'])
                         ->setTo($user->email)
                         ->setSubject('Payment Completed')
@@ -352,8 +357,11 @@ class WalletController extends Controller
                     $wallet->customer_id = Yii::$app->user->id;
                     $wallet->narrative = 'Deposit via Paypal';
                     $wallet->save();
+
                     //unset the hash
                     unset($session['paypal_hash']);
+                    unset($session['user_id']);
+
                     //set flash
                     Yii::$app->session->setFlash('success', "Payment Successful, Your wallet balance has been updated. Thank you");
                     $session->close();
@@ -363,10 +371,10 @@ class WalletController extends Controller
                     $this->refresh();
                     echo $e->getData();
                 }
-            }else{
+            } else {
                 echo 'Errorneous transaction';
             }
-        }else{
+        } else {
             Yii::$app->session->setFlash('danger', 'The deposit was not successful.');
             return $this->redirect(['index']);
         }
@@ -381,21 +389,21 @@ class WalletController extends Controller
 
     public function beforeAction($action)
     {
-        if (in_array($action->id, ['paypal','cancel','pay','order-canel'])) {
+        if (in_array($action->id, ['paypal', 'cancel', 'pay', 'order-canel'])) {
 
             $this->enableCsrfValidation = false;
-     }
+        }
         return parent::beforeAction($action);
     }
 
     public function actionReserve($oid, $amount)
     {
-        if (is_numeric($amount)){
+        if (is_numeric($amount)) {
             // process paypal transaction
             $session = Yii::$app->session;
             $session->open();
-            $session['oid']= $oid;
-            $session['user_id2']= Yii::$app->user->getId();
+            $session['oid'] = $oid;
+            $session['user_id2'] = Yii::$app->user->getId();
             $apiContext = $this->apiContext();
 
             //set payer
@@ -405,7 +413,7 @@ class WalletController extends Controller
             // (Optional) Lets you specify item wise
             // information
             $item = new Item();
-            $item->setName('order #'.$oid)
+            $item->setName('order #' . $oid)
                 ->setCurrency('USD')
                 ->setQuantity(1)
                 ->setPrice($amount);
@@ -423,10 +431,10 @@ class WalletController extends Controller
             $transaction = new \PayPal\Api\Transaction();
             $transaction->setAmount($amnt);
             $transaction->setItemList($itemList);
-            $transaction->setDescription('Reserve for order #'.$oid);
+            $transaction->setDescription('Reserve for order #' . $oid);
 
             $redirectUrls = new RedirectUrls();
-            $redirectUrls->setReturnUrl(Yii::$app->params['successUrl2']."?success=true")
+            $redirectUrls->setReturnUrl(Yii::$app->params['successUrl2'] . "?success=true")
                 ->setCancelUrl(Yii::$app->params['cancelUrl2']);
 
             // ### Payment
@@ -458,9 +466,10 @@ class WalletController extends Controller
                 $connection->createCommand()->insert('paypal', [
                     'user_id' => $session['user_id2'],
                     'payment_id' => $payment->getId(),
-                    'amount_paid'=>($amount),
-                    'hash'=>$session['paypal_hash2'],
-                    'complete'=>0
+                    'amount_paid' => ($amount),
+                    'order_number' => $oid,
+                    'hash' => $session['paypal_hash2'],
+                    'complete' => 0
                 ])->execute();
 
 
@@ -470,7 +479,7 @@ class WalletController extends Controller
             $approvalUrl = $payment->getApprovalLink();
 
             return $this->redirect($approvalUrl);
-        }else {
+        } else {
             Yii::$app->session->setFlash('invalidAmt', 'The amount you entered is  invalid. The amount must be numeric.');
             return $this->redirect(['index']);
         }
@@ -480,11 +489,11 @@ class WalletController extends Controller
     {
         $request = Yii::$app->request;
         $session = Yii::$app->session;
-        if($request->get('success')== true && Yii::$app->user->id == $session['user_id2']){
+        if ($request->get('success') == true && Yii::$app->user->id == $session['user_id2']) {
             $payerid = $request->get('PayerID');
             $paymentId = $request->get('paymentId');
 
-            $paypal2 = Paypal::find()->where(['hash'=> $session['paypal_hash2']])->one();
+            $paypal2 = Paypal::find()->where(['hash' => $session['paypal_hash2']])->one();
 
             if ($paypal2->payment_id == $paymentId) {
                 $apiContext = $this->apiContext();
@@ -495,8 +504,9 @@ class WalletController extends Controller
                 try {
                     $payment->execute($execute, $apiContext);
                     //Update the payment status
-                    $customer = Paypal::find()->where(['payment_id'=>$paypal2->payment_id])->one();
+                    $customer = Paypal::find()->where(['payment_id' => $paypal2->payment_id])->one();
                     $customer->complete = 1;
+                    $customer->order_number = $session['oid'];
                     $customer->save();
                     //send confirmation email
                     $user_id = Yii::$app->user->id;
@@ -504,32 +514,34 @@ class WalletController extends Controller
                     Yii::$app->supportMailer->htmlLayout = "layouts/order";
                     Yii::$app->supportMailer->compose('wallet-deposit', [
                         'deposit' => $customer->amount_paid,
-                        'ordernumber'=>$session['oid'],
-                        'user'=> $user
+                        'ordernumber' => $session['oid'],
+                        'user' => $user
                     ])->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' support'])
                         ->setTo($user->email)
                         ->setSubject('Payment Completed')
                         ->send();
                     //mark the ordr as paid
-                    $model = Order::find()->where(['ordernumber'=>$session['oid']])->one();
+                    $model = Order::find()->where(['ordernumber' => $session['oid']])->one();
                     $model->paid = 1;
                     $model->available = 1;
                     $model->save();
                     //unset the hash
-                    unset($session['paypal_hash']);
-                    Yii::$app->session->setFlash('reserved','The payment has been reserved. 
+                    unset($session['oid']);
+                    unset($session['paypal_hash2']);
+                    unset($session['user_id2']);
+                    Yii::$app->session->setFlash('reserved', 'The payment has been reserved. 
                      Your order will be submitted within the deadline and you will have the chance to review the order before releasing the funds.');
                     $session->close();
-                    return $this->redirect(['order/view','oid'=>$session['oid']]);
+                    return $this->redirect(['order/view', 'oid' => $session['oid']]);
 
                 } catch (PayPalConnectionException $e) {
                     $this->refresh();
                     echo $e->getData();
                 }
-            }else{
+            } else {
                 echo 'Errorneous transaction';
             }
-        }else{
+        } else {
             Yii::$app->session->setFlash('danger', 'The deposit was not successful.');
             return $this->redirect(['index']);
         }
@@ -540,8 +552,9 @@ class WalletController extends Controller
     {
         $session = Yii::$app->session;
         Yii::$app->session->setFlash('notpaid', 'The deposit was not successful.');
-        return $this->redirect(['order/view','oid'=>$session['oid']]);
+        return $this->redirect(['order/view', 'oid' => $session['oid']]);
     }
+
     /**
      * Updates an existing Wallet model.
      * If update is successful, the browser will be redirected to the 'view' page.
@@ -560,6 +573,7 @@ class WalletController extends Controller
             ]);
         }
     }
+
     /**
      * Deletes an existing Wallet model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
@@ -574,7 +588,7 @@ class WalletController extends Controller
     }
 
 
-    public function  apiContext()
+    public function apiContext()
     {
         // After Step 1
         $apiContext = new ApiContext(
@@ -583,17 +597,17 @@ class WalletController extends Controller
                 Yii::$app->params['clientSecret']      // ClientSecret
             )
         );
-            $apiContext->setConfig(
-                array(
-            'mode' => Yii::$app->params['mode'],
-                    'http.ConnectionTimeOut'  => 30,
-                    'http.Retry'              => 1,
-                    'log.FileName'              => Yii::getAlias('@app/runtime/logs/paypal.log'),
-                    'log.LogLevel'=>        'FINE',
-                    'validation.level'=>    'log',
-          )
-    );
-        return  $apiContext;
+        $apiContext->setConfig(
+            array(
+                'mode' => Yii::$app->params['mode'],
+                'http.ConnectionTimeOut' => 30,
+                'http.Retry' => 1,
+                'log.FileName' => Yii::getAlias('@app/runtime/logs/paypal.log'),
+                'log.LogLevel' => 'FINE',
+                'validation.level' => 'log',
+            )
+        );
+        return $apiContext;
     }
 
     /**
