@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "89d8eba683e4c56b5b1b94d749d6a0b0",
+    "content-hash": "94b041cc049eabd065c7e082e44de60f",
     "packages": [
         {
             "name": "2amigos/yii2-ckeditor-widget",
@@ -373,7 +373,7 @@
             "version": "v3.4.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/twbs/bootstrap.git",
+                "url": "git@github.com:twbs/bootstrap.git",
                 "reference": "68b0d231a13201eb14acd3dc84e51543d16e5f7e"
             },
             "dist": {
@@ -394,7 +394,7 @@
             "version": "3.3.11",
             "source": {
                 "type": "git",
-                "url": "https://github.com/RobinHerbots/Inputmask.git",
+                "url": "git@github.com:RobinHerbots/Inputmask.git",
                 "reference": "5e670ad62f50c738388d4dcec78d2888505ad77b"
             },
             "dist": {
@@ -433,7 +433,7 @@
             "version": "1.12.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/components/jqueryui.git",
+                "url": "git@github.com:components/jqueryui.git",
                 "reference": "44ecf3794cc56b65954cc19737234a3119d036cc"
             },
             "dist": {
@@ -3097,6 +3097,59 @@
             "time": "2020-08-20T13:22:28+00:00"
         },
         {
+            "name": "linslin/yii2-curl",
+            "version": "1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/linslin/Yii2-Curl.git",
+                "reference": "38f2c28efb4c200b7ad1c2decb262806bb6b5cea"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/linslin/Yii2-Curl/zipball/38f2c28efb4c200b7ad1c2decb262806bb6b5cea",
+                "reference": "38f2c28efb4c200b7ad1c2decb262806bb6b5cea",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "yidas/yii2-bower-asset": "^2.0.13.1",
+                "yiisoft/yii2": "^2.0.0"
+            },
+            "require-dev": {
+                "codeception/base": "^2.2.3",
+                "codeception/specify": "~0.4.3",
+                "codeception/verify": "~0.3.1",
+                "codeclimate/php-test-reporter": "dev-master",
+                "guzzlehttp/guzzle": ">=4.1.4 <7.0",
+                "mcustiel/phiremock-codeception-extension": "1.2.4"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "linslin\\yii2\\curl\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nils Gajsek",
+                    "email": "info@linslin.org"
+                }
+            ],
+            "description": "Easy and nice cURL extension with RESTful support for Yii2",
+            "keywords": [
+                " curl",
+                "extension",
+                "restful",
+                "yii2"
+            ],
+            "time": "2020-05-03T11:44:34+00:00"
+        },
+        {
             "name": "machour/yii2-notifications",
             "version": "1.0.0",
             "source": {
@@ -5120,6 +5173,47 @@
             ],
             "description": "reCAPTCHA v3 Yii2 Integration",
             "time": "2019-03-10T03:21:46+00:00"
+        },
+        {
+            "name": "yidas/yii2-bower-asset",
+            "version": "2.0.13.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yidas/yii2-bower-asset.git",
+                "reference": "056dd55087e0b945c01c91c99eb346ef6e28a42e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yidas/yii2-bower-asset/zipball/056dd55087e0b945c01c91c99eb346ef6e28a42e",
+                "reference": "056dd55087e0b945c01c91c99eb346ef6e28a42e",
+                "shasum": ""
+            },
+            "provide": {
+                "bower-asset/bootstrap": "*",
+                "bower-asset/inputmask": "*",
+                "bower-asset/jquery": "*",
+                "bower-asset/punycode": "*",
+                "bower-asset/typeahead.js": "*",
+                "bower-asset/yii2-pjax": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "yidas\\yii2BowerAsset\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Bower Assets for Yii 2 app provided via Composer repository",
+            "keywords": [
+                "bower",
+                "bower asset",
+                "framework",
+                "yii2"
+            ],
+            "time": "2019-09-19T11:33:03+00:00"
         },
         {
             "name": "yii2mod/yii2-timezone",

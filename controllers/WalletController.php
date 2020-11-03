@@ -42,10 +42,10 @@ class WalletController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['create', 'index', 'view', 'update', 'deposit', 'paypal', 'transactions', 'withdraw'],
+                'only' => ['create', 'index', 'view', 'update', 'deposit', 'paypal', 'transactions', 'withdraw', 'card-payment', 'card-callback'],
                 'rules' => [
                     [
-                        'actions' => ['create', 'index', 'view', 'update', 'deposit', 'paypal', 'transactions', 'withdraw'],
+                        'actions' => ['create', 'index', 'view', 'update', 'deposit', 'paypal', 'transactions', 'withdraw', 'card-payment', 'card-callback'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -316,6 +316,56 @@ class WalletController extends Controller
             Yii::$app->session->setFlash('invalidAmt', 'The amount you entered is  invalid. The amount must be numeric.');
             return $this->redirect(['index']);
         }
+    }
+
+    public function actionCardPayment($amount)
+    {
+        if (is_numeric($amount)) {
+            // process card payment transaction
+            $session = Yii::$app->session;
+            $session->open();
+            $session['user_id'] = Yii::$app->user->getId();
+
+            //Init curl
+            $curl = new curl\Curl();
+            //post http://example.com/
+            $response = $curl->setRawPostData(
+                CURLOPT_POSTFIELDS,
+                http_build_query(array(
+                        '<?xml version="1.0" encoding="utf-8"?>
+                    <API3G>
+                        <CompanyToken>9F416C11-127B-4DE2-AC7F-D5710E4C5E0A</CompanyToken>
+                        <Request>createToken</Request>
+                        <Transaction>
+                        <PaymentAmount>'.$amount.'</PaymentAmount>
+                        <PaymentCurrency>USD</PaymentCurrency>
+                        <CompanyRef>client#'.$session['user_id'].'</CompanyRef>
+                        <RedirectURL>https://verifiedprofessors.com/wallet/card-callback</RedirectURL>
+                        <BackURL>https://verifiedprofessors.com/wallet/index </BackURL>
+                        <CompanyRefUnique>Deposit from Card Payment</CompanyRefUnique>
+                        <PTL>5</PTL>
+                        </Transaction>
+                        <Services>
+                          <Service>
+                            <ServiceType>3854</ServiceType>
+                            <ServiceDescription>Test Product</ServiceDescription>
+                            <ServiceDate>2013/12/20 19:00</ServiceDate>
+                          </Service>
+                        </Services>
+                    </API3G>'
+                    )
+                ))->setHeaders([
+                'Content-Type' => 'application/xml',
+            ])
+                ->post(env('TOKEN_URL'));
+            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+            return print_r($response);
+        }
+    }
+
+    public function actionCardCallback(){
+        Yii::$app->session->setFlash('success', 'Payment was successful');
+        return $this->redirect(['/wallet/index']);
     }
 
     public function actionPaypal()
