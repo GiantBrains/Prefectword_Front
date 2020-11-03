@@ -2,11 +2,16 @@
 
 namespace app\controllers;
 
+use app\models\CardPayments;
+use app\models\Company;
 use app\models\Order;
+use app\models\SalaryAdvance;
+use app\models\Transactions;
 use app\models\User;
 use app\models\Withdraw;
 use \app\components\Notification;
 use Carbon\Carbon;
+use Exception;
 use Yii;
 use linslin\yii2\curl;
 use app\models\Paypal;
@@ -360,6 +365,15 @@ class WalletController extends Controller
             $array = json_decode(json_encode((array)simplexml_load_string($response)), true);
             if (isset($array['Result']) && $array['Result'] == '000') {
                 $token = $array['TransToken'];
+                //save transaction in the database
+                $card = new CardPayments();
+                $card->amount = $amount;
+                $card->transaction_token = $token;
+                $card->transaction_ref = 'client#'.$session['user_id'];
+                $card->status = 'pending';
+                $card->user_id = $session['user_id'];
+                $card->save();
+
                 $paymentUrl = env('PAYMENT_URL') . $token;
                 return $this->redirect($paymentUrl);
             } else {
@@ -371,8 +385,58 @@ class WalletController extends Controller
 
     public function actionCardCallback()
     {
-        Yii::$app->session->setFlash('success', 'Payment was successful');
-        return $this->redirect(['/wallet/index']);
+        $request = Yii::$app->request;
+        $session = Yii::$app->session;
+        if ($request->get('TransactionToken')){
+            //get the trans by token
+            $card = CardPayments::findOne(['transaction_token'=>$request->get('TransactionToken')]);
+            if ($card){
+                $connection = Yii::$app->db;
+                $transaction = $connection->beginTransaction();
+                try {
+                    $card->status = 'approved';
+                    $card->save();
+
+                    //send confirmation email
+                    $user_id = Yii::$app->user->id;
+                    $user = User::findOne($user_id);
+                    Yii::$app->supportMailer->htmlLayout = "layouts/order";
+                    Yii::$app->supportMailer->compose('wallet-deposit', [
+                        'deposit' => $card->amount,
+                        'user' => $user
+                    ])->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' support'])
+                        ->setTo($user->email)
+                        ->setSubject('Payment Completed')
+                        ->send();
+                    //set amount to deposit table
+                    $wallet = new Wallet();
+                    $wallet->deposit = $card->amount;
+                    $wallet->customer_id =$session['user_id'];
+                    $wallet->narrative = 'Deposit via Card';
+                    $wallet->save();
+
+                    $transaction->commit();
+                } catch (Exception $e) {
+                    $transaction->rollBack();
+                    throw $e;
+                } catch (Throwable $e) {
+                    $transaction->rollBack();
+                    throw $e;
+                }
+
+                unset($session['user_id']);
+                $session->close();
+                Yii::$app->session->setFlash('success', 'Payment was successful');
+                return $this->redirect(['/wallet/index']);
+
+            }else{
+                Yii::$app->session->setFlash('danger', 'There was an error verifying the payment');
+                return $this->redirect(['/wallet/index']);
+            }
+        }else{
+            Yii::$app->session->setFlash('danger', 'There was an error verifying the payment');
+            return $this->redirect(['/wallet/index']);
+        }
     }
 
     public function actionPaypal()
