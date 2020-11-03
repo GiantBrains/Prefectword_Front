@@ -343,7 +343,7 @@ class WalletController extends Controller
                                     <Transaction>
                                     <PaymentAmount>' . $amount . '</PaymentAmount>
                                     <PaymentCurrency>KES</PaymentCurrency>
-                                    <CompanyRef>client_' . $session['user_id'] . '</CompanyRef>
+                                    <CompanyRef>client#' . $session['user_id'] . '</CompanyRef>
                                     <RedirectURL>https://verifiedprofessors.com/wallet/card-callback</RedirectURL>
                                     <BackURL>https://verifiedprofessors.com/wallet/index</BackURL>
                                     <CompanyRefUnique>0</CompanyRefUnique>
@@ -367,7 +367,7 @@ class WalletController extends Controller
                 $card = new CardPayments();
                 $card->amount = $amount;
                 $card->transaction_token = $token;
-                $card->transaction_ref = 'client_' . $session['user_id'];
+                $card->transaction_ref = 'client#' . $session['user_id'];
                 $card->status = 'pending';
                 $card->user_id = $session['user_id'];
                 $card->save();
