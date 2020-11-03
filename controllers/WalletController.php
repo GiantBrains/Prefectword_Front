@@ -429,11 +429,11 @@ class WalletController extends Controller
                 return $this->redirect(['/wallet/index']);
 
             }else{
-                Yii::$app->session->setFlash('danger', 'There was an error verifying the payment');
+                Yii::$app->session->setFlash('danger', 'There was an error verifying the payment. no card payment found');
                 return $this->redirect(['/wallet/index']);
             }
         }else{
-            Yii::$app->session->setFlash('danger', 'There was an error verifying the payment');
+            Yii::$app->session->setFlash('danger', 'There was an error verifying the payment. token not received');
             return $this->redirect(['/wallet/index']);
         }
     }
