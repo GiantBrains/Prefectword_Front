@@ -392,7 +392,7 @@ class WalletController extends Controller
         if ($request['TransID']) {
             $card = CardPayments::findOne(['transaction_token' => $request['TransID']]);
             if ($card) {
-                if ($request['CompanyRef'] == $card->transaction_ref) {
+                if ($request['PnrID'] == $card->transaction_ref) {
                     //get the trans by token
                     $connection = Yii::$app->db;
                     $transaction = $connection->beginTransaction();
