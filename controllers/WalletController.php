@@ -400,18 +400,6 @@ class WalletController extends Controller
                         $card->status = 'approved';
                         $card->save();
 
-                        //send confirmation email
-                        $user_id = Yii::$app->user->id;
-                        $user = User::findOne($user_id);
-                        Yii::$app->supportMailer->htmlLayout = "layouts/order";
-                        Yii::$app->supportMailer->compose('wallet-deposit', [
-                            'deposit' => $card->amount,
-                            'user' => $user
-                        ])->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' support'])
-                            ->setTo($user->email)
-                            ->setSubject('Payment Completed')
-                            ->send();
-
                         //set amount to deposit table
                         $wallet = new Wallet();
                         $wallet->deposit = $card->amount;
@@ -424,6 +412,18 @@ class WalletController extends Controller
                         $transaction->rollBack();
                         throw new $e;
                     }
+
+                    //send confirmation email
+                    $user_id = Yii::$app->user->id;
+                    $user = User::findOne($user_id);
+                    Yii::$app->supportMailer->htmlLayout = "layouts/order";
+                    Yii::$app->supportMailer->compose('wallet-deposit', [
+                        'deposit' => $card->amount,
+                        'user' => $user
+                    ])->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' support'])
+                        ->setTo($user->email)
+                        ->setSubject('Payment Completed')
+                        ->send();
 
                     unset($session['user_id']);
                     $session->close();
