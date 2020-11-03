@@ -367,7 +367,7 @@ class WalletController extends Controller
                 $card = new CardPayments();
                 $card->amount = $amount;
                 $card->transaction_token = $token;
-                $card->transaction_ref = 'client#'.$session['user_id'];
+                $card->transaction_ref = 'client#' . $session['user_id'];
                 $card->status = 'pending';
                 $card->user_id = $session['user_id'];
                 $card->save();
@@ -387,52 +387,58 @@ class WalletController extends Controller
 
     public function actionCardCallback()
     {
-        $request = Yii::$app->request;
+        $request = Yii::$app->request->get();
         $session = Yii::$app->session;
-        if ($request->get('TransactionToken')){
-            //get the trans by token
-            $card = CardPayments::findOne(['transaction_token'=>$request->get('TransactionToken')]);
-            if ($card){
-                $connection = Yii::$app->db;
-                $transaction = $connection->beginTransaction();
-                try {
-                    $card->status = 'approved';
-                    $card->save();
+        if ($request['TransactionToken']) {
+            $card = CardPayments::findOne(['transaction_token' => $request['TransactionToken']]);
+            if ($card) {
+                if ($request['CompanyRef'] == $card->transaction_ref) {
+                    //get the trans by token
+                    $connection = Yii::$app->db;
+                    $transaction = $connection->beginTransaction();
+                    try {
+                        $card->status = 'approved';
+                        $card->save();
 
-                    //send confirmation email
-//                    $user_id = Yii::$app->user->id;
-//                    $user = User::findOne($user_id);
-//                    Yii::$app->supportMailer->htmlLayout = "layouts/order";
-//                    Yii::$app->supportMailer->compose('wallet-deposit', [
-//                        'deposit' => $card->amount,
-//                        'user' => $user
-//                    ])->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' support'])
-//                        ->setTo($user->email)
-//                        ->setSubject('Payment Completed')
-//                        ->send();
-                    //set amount to deposit table
-                    $wallet = new Wallet();
-                    $wallet->deposit = $card->amount;
-                    $wallet->customer_id =$session['user_id'];
-                    $wallet->narrative = 'Deposit via Card';
-                    $wallet->save();
+                        //send confirmation email
+                        $user_id = Yii::$app->user->id;
+                        $user = User::findOne($user_id);
+                        Yii::$app->supportMailer->htmlLayout = "layouts/order";
+                        Yii::$app->supportMailer->compose('wallet-deposit', [
+                            'deposit' => $card->amount,
+                            'user' => $user
+                        ])->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' support'])
+                            ->setTo($user->email)
+                            ->setSubject('Payment Completed')
+                            ->send();
 
-                    $transaction->commit();
-                } catch (Exception $e) {
-                    $transaction->rollBack();
-                    throw new $e;
+                        //set amount to deposit table
+                        $wallet = new Wallet();
+                        $wallet->deposit = $card->amount;
+                        $wallet->customer_id = $session['user_id'];
+                        $wallet->narrative = 'Deposit via Card';
+                        $wallet->save();
+
+                        $transaction->commit();
+                    } catch (Exception $e) {
+                        $transaction->rollBack();
+                        throw new $e;
+                    }
+
+                    unset($session['user_id']);
+                    $session->close();
+                    Yii::$app->session->setFlash('success', 'Payment was successful');
+                    return $this->redirect(['/wallet/index']);
+
+                } else {
+                    Yii::$app->session->setFlash('danger', 'There was an error verifying the payment. transaction reference mismatch');
+                    return $this->redirect(['/wallet/index']);
                 }
-
-                unset($session['user_id']);
-                $session->close();
-                Yii::$app->session->setFlash('success', 'Payment was successful');
-                return $this->redirect(['/wallet/index']);
-
-            }else{
+            } else {
                 Yii::$app->session->setFlash('danger', 'There was an error verifying the payment. no card payment found');
                 return $this->redirect(['/wallet/index']);
             }
-        }else{
+        } else {
             Yii::$app->session->setFlash('danger', 'There was an error verifying the payment. token not received');
             return $this->redirect(['/wallet/index']);
         }
