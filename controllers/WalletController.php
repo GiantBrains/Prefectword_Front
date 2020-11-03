@@ -398,16 +398,16 @@ class WalletController extends Controller
                     $card->save();
 
                     //send confirmation email
-                    $user_id = Yii::$app->user->id;
-                    $user = User::findOne($user_id);
-                    Yii::$app->supportMailer->htmlLayout = "layouts/order";
-                    Yii::$app->supportMailer->compose('wallet-deposit', [
-                        'deposit' => $card->amount,
-                        'user' => $user
-                    ])->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' support'])
-                        ->setTo($user->email)
-                        ->setSubject('Payment Completed')
-                        ->send();
+//                    $user_id = Yii::$app->user->id;
+//                    $user = User::findOne($user_id);
+//                    Yii::$app->supportMailer->htmlLayout = "layouts/order";
+//                    Yii::$app->supportMailer->compose('wallet-deposit', [
+//                        'deposit' => $card->amount,
+//                        'user' => $user
+//                    ])->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' support'])
+//                        ->setTo($user->email)
+//                        ->setSubject('Payment Completed')
+//                        ->send();
                     //set amount to deposit table
                     $wallet = new Wallet();
                     $wallet->deposit = $card->amount;
