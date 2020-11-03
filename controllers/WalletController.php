@@ -339,10 +339,10 @@ class WalletController extends Controller
                                     <Request>createToken</Request>
                                     <Transaction>
                                     <PaymentAmount>' . $amount . '</PaymentAmount>
-                                    <PaymentCurrency>USD</PaymentCurrency>
+                                    <PaymentCurrency>KES</PaymentCurrency>
                                     <CompanyRef>client#' . $session['user_id'] . '</CompanyRef>
-                                    <RedirectURL>https://verifiedprofessors.com/wallet/card-payment</RedirectURL>
-                                    <BackURL>https://verifiedprofessors.com/wallet/card-callback</BackURL>
+                                    <RedirectURL>https://verifiedprofessors.com/wallet/card-callback</RedirectURL>
+                                    <BackURL>https://verifiedprofessors.com/wallet/index</BackURL>
                                     <CompanyRefUnique>0</CompanyRefUnique>
                                     <PTL>5</PTL>
                                     </Transaction>
