@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row" style="height: auto; min-height: 200px; border: solid; border-color: darkgrey; padding-top: 10px; border-width: thin;">
         <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top: 20px;overflow-x:auto;">
             <div class="row">
-                <div class="col-md-4 col-sm-4 col-xs-12"
+                <div class="col-md-5 col-sm-5 col-xs-12"
                 <form action="<?= Yii::$app->request->baseUrl?>/wallet/withdraw-request">
                     <div class="input-group">
                         <span class="input-group-addon">$</span>

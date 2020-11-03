@@ -102,7 +102,16 @@ $this->registerJs($datetime);
             $cancel_msg = null;
         }
         ?>
-        <h1><?= Html::encode($this->title) ?></h1>
+        <div class="row">
+        <h1 style="float: left; margin-left:10px"><?= Html::encode($this->title) ?></h1>
+        <ul id="navigation" style="float: right" class="text-center">
+                    <p style="margin-bottom: -20px">Accepted payment methods</p>
+                    <li><img src="<?= Yii::$app->request->baseUrl?>/images/payment/visa.png"  width="70px" height="70px"  data-rjs="<?= Yii::$app->request->baseUrl?>/images/payment/visa.png" alt="Visa" class="pm visa"></li>
+                    <li style="margin-left: 10px"><img src="<?= Yii::$app->request->baseUrl?>/images/payment/paypal.png" width="70px" height="70px" data-rjs="<?= Yii::$app->request->baseUrl?>/images/payment/paypal.png" alt="PayPal" class="pm paypal"></li>
+                    <li style="margin-left: 10px"><img src="<?= Yii::$app->request->baseUrl?>/images/payment/american-express.png" width="60px" height="50px" data-rjs="<?= Yii::$app->request->baseUrl?>/images/payment/american-express.png" alt="MasterCard" class="pm mc"></li>
+                    <li style="margin-left: 10px"><img src="<?= Yii::$app->request->baseUrl?>/images/payment/mastercard.png" width="60px" height="60px" data-rjs="<?= Yii::$app->request->baseUrl?>/images/payment/mastercard.png" alt="MasterCard" class="pm mc"></li>
+                </ul>
+        </div>
         <p class="hidden-sm hidden-md hidden-lg">
             <?php
             $cancancel= $model->active == 1 || $model->available == 1;
@@ -194,6 +203,7 @@ $this->registerJs($datetime);
                     echo '';
                 }
                 ?>
+               <a href="<?= Yii::$app->request->baseUrl?>/wallet/index"><button type="button" class="btn btn-primary">Pay With CARD</button></a>
             </p>
         </ul>
         <div class="hidden-xs">
