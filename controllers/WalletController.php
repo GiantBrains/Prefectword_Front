@@ -7,6 +7,7 @@ use app\models\User;
 use app\models\Withdraw;
 use \app\components\Notification;
 use Yii;
+use linslin\yii2\curl;
 use app\models\Paypal;
 use PayPal\Api\Amount;
 use PayPal\Api\Details;
@@ -334,12 +335,12 @@ class WalletController extends Controller
                 http_build_query(array(
                         '<?xml version="1.0" encoding="utf-8"?>
                     <API3G>
-                        <CompanyToken>9F416C11-127B-4DE2-AC7F-D5710E4C5E0A</CompanyToken>
+                        <CompanyToken>' . env('COMPANY_TOKEN') . '</CompanyToken>
                         <Request>createToken</Request>
                         <Transaction>
-                        <PaymentAmount>'.$amount.'</PaymentAmount>
+                        <PaymentAmount>' . $amount . '</PaymentAmount>
                         <PaymentCurrency>USD</PaymentCurrency>
-                        <CompanyRef>client#'.$session['user_id'].'</CompanyRef>
+                        <CompanyRef>client#' . $session['user_id'] . '</CompanyRef>
                         <RedirectURL>https://verifiedprofessors.com/wallet/card-callback</RedirectURL>
                         <BackURL>https://verifiedprofessors.com/wallet/index </BackURL>
                         <CompanyRefUnique>Deposit from Card Payment</CompanyRefUnique>
@@ -347,7 +348,7 @@ class WalletController extends Controller
                         </Transaction>
                         <Services>
                           <Service>
-                            <ServiceType>3854</ServiceType>
+                            <ServiceType>' . env('SERVICE_TYPE') . '</ServiceType>
                             <ServiceDescription>Test Product</ServiceDescription>
                             <ServiceDate>2013/12/20 19:00</ServiceDate>
                           </Service>
@@ -359,11 +360,18 @@ class WalletController extends Controller
             ])
                 ->post(env('TOKEN_URL'));
             \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-            return print_r($response);
+            if ($response['API3G']['Result'] == '0000') {
+                $token = $response['API3G']['TransToken'];
+                $paymentUrl = env('PAYMENT_URL') . $token;
+                return $this->redirect($paymentUrl);
+            } else {
+                return print_r($response);
+            }
         }
     }
 
-    public function actionCardCallback(){
+    public function actionCardCallback()
+    {
         Yii::$app->session->setFlash('success', 'Payment was successful');
         return $this->redirect(['/wallet/index']);
     }
