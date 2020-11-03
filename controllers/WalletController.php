@@ -3,15 +3,13 @@
 namespace app\controllers;
 
 use app\models\CardPayments;
-use app\models\Company;
 use app\models\Order;
-use app\models\SalaryAdvance;
-use app\models\Transactions;
 use app\models\User;
 use app\models\Withdraw;
 use \app\components\Notification;
 use Carbon\Carbon;
 use Exception;
+use Throwable;
 use Yii;
 use linslin\yii2\curl;
 use app\models\Paypal;
@@ -383,6 +381,10 @@ class WalletController extends Controller
         }
     }
 
+    /**
+     * @throws Exception
+     */
+
     public function actionCardCallback()
     {
         $request = Yii::$app->request;
@@ -418,10 +420,7 @@ class WalletController extends Controller
                     $transaction->commit();
                 } catch (Exception $e) {
                     $transaction->rollBack();
-                    throw $e;
-                } catch (Throwable $e) {
-                    $transaction->rollBack();
-                    throw $e;
+                    throw new $e;
                 }
 
                 unset($session['user_id']);
