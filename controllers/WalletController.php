@@ -6,6 +6,7 @@ use app\models\Order;
 use app\models\User;
 use app\models\Withdraw;
 use \app\components\Notification;
+use Carbon\Carbon;
 use Yii;
 use linslin\yii2\curl;
 use app\models\Paypal;
@@ -326,46 +327,44 @@ class WalletController extends Controller
             $session = Yii::$app->session;
             $session->open();
             $session['user_id'] = Yii::$app->user->getId();
+            $date = Carbon::now()->format('yy/m/d H:i');
 
             //Init curl
             $curl = new curl\Curl();
             //post http://example.com/
             $response = $curl->setRawPostData(
-                CURLOPT_POSTFIELDS,
-                http_build_query(array(
-                        '<?xml version="1.0" encoding="utf-8"?>
-                    <API3G>
-                        <CompanyToken>' . env('COMPANY_TOKEN') . '</CompanyToken>
-                        <Request>createToken</Request>
-                        <Transaction>
-                        <PaymentAmount>' . $amount . '</PaymentAmount>
-                        <PaymentCurrency>USD</PaymentCurrency>
-                        <CompanyRef>client#' . $session['user_id'] . '</CompanyRef>
-                        <RedirectURL>https://verifiedprofessors.com/wallet/card-callback</RedirectURL>
-                        <BackURL>https://verifiedprofessors.com/wallet/index </BackURL>
-                        <CompanyRefUnique>Deposit from Card Payment</CompanyRefUnique>
-                        <PTL>5</PTL>
-                        </Transaction>
-                        <Services>
-                          <Service>
-                            <ServiceType>' . env('SERVICE_TYPE') . '</ServiceType>
-                            <ServiceDescription>Test Product</ServiceDescription>
-                            <ServiceDate>2013/12/20 19:00</ServiceDate>
-                          </Service>
-                        </Services>
-                    </API3G>'
-                    )
-                ))->setHeaders([
-                'Content-Type' => 'application/xml',
-            ])
-                ->post(env('TOKEN_URL'));
-            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-            if ($response['API3G']['Result'] == '0000') {
-                $token = $response['API3G']['TransToken'];
+                '<?xml version="1.0" encoding="utf-8"?>
+                                <API3G>
+                                    <CompanyToken>' . env('COMPANY_TOKEN') . '</CompanyToken>
+                                    <Request>createToken</Request>
+                                    <Transaction>
+                                    <PaymentAmount>' . $amount . '</PaymentAmount>
+                                    <PaymentCurrency>USD</PaymentCurrency>
+                                    <CompanyRef>client#' . $session['user_id'] . '</CompanyRef>
+                                    <RedirectURL>https://verifiedprofessors.com/wallet/card-payment</RedirectURL>
+                                    <BackURL>https://verifiedprofessors.com/wallet/card-callback</BackURL>
+                                    <CompanyRefUnique>0</CompanyRefUnique>
+                                    <PTL>5</PTL>
+                                    </Transaction>
+                                    <Services>
+                                      <Service>
+                                        <ServiceType>' . env('SERVICE_TYPE') . '</ServiceType>
+                                        <ServiceDescription>Test Product</ServiceDescription>
+                                        <ServiceDate>' . $date . '</ServiceDate>
+                                      </Service>
+                                    </Services>
+                                </API3G>'
+            )->setHeaders([
+                'Content-Type' => 'application/xml'
+            ])->post(env('TOKEN_URL'));
+            $array = json_decode(json_encode((array)simplexml_load_string($response)), true);
+            if (isset($array['Result']) && $array['Result'] == '000') {
+                $token = $array['TransToken'];
                 $paymentUrl = env('PAYMENT_URL') . $token;
                 return $this->redirect($paymentUrl);
             } else {
-                return print_r($response);
+                Yii::$app->session->setFlash('danger', 'Unable to process the payment. Please contact us for help.');
+                return $this->redirect(['/wallet/index']);
             }
         }
     }
