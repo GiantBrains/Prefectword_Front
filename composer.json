@@ -53,7 +53,8 @@
     "himiklab/yii2-recaptcha-widget": "*",
     "joni-jones/yii2-2checkout": "*",
     "consik/yii2-websocket": "^1.0",
-    "yiithings/yii2-dotenv": "*"
+    "yiithings/yii2-dotenv": "*",
+    "linslin/yii2-curl": "*"
   },
   "require-dev": {
     "yiisoft/yii2-debug": "~2.0.0",
