@@ -46,7 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         </span>
                     </div><!-- /input-group -->
                     </form><br/><br/><br/>
-                    <form action="<?= Yii::$app->request->baseUrl?>/wallet/deposit">
+                    <form action="<?= Yii::$app->request->baseUrl?>/wallet/card-payment">
                     <div class="input-group">
                         <span style="background-color: #3D715B; color: white;" class="input-group-addon">$</span>
                         <input type="number" required name="amount" class="form-control" value="" placeholder="Enter amount...">
