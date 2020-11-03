@@ -38,7 +38,7 @@ $this->registerMetaTag([
                 using our services.
                 The best part about all this is that the services are at a low price as compared to other websites that
                 try to offer the same services.</p>
-            <strong>Our services include but not limited to the following types of papers:</strong>
+            <p><strong>Our services include but not limited to the following types of papers:</strong></p>
             <ol>
                 <li>Term Papers</li>
                 <li>Essays</li>
@@ -53,7 +53,7 @@ $this->registerMetaTag([
                 <li>Editing and Proofreading</li>
                 <li>Statistical projects</li>
             </ol>
-            Try us today, and we promise quality work. Get the maximum value for your money with verified professors.
+            <p>Try us today, and we promise quality work. Get the maximum value for your money with verified professors.</p>
         </div>
     </div>
 </div>
