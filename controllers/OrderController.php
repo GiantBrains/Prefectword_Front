@@ -277,22 +277,31 @@ class OrderController extends Controller
         Order::getLogoName();
         $model = Order::find()->where(['ordernumber' => $oid])->one();
         if (Yii::$app->user->id == $model->created_by) {
-            //deduct payment
-            Order::getBalance();
-            if ($model->amount > Order::getBalance()) {
-                Yii::$app->session->setFlash('balance', 'The balance in your wallet is less than the amount you want to pay. Please reload your wallet.');
-                return $this->redirect(['view', 'oid' => $oid]);
-            } else {
-                $withdraw = new Wallet();
-                $withdraw->order_id = $oid;
-                $withdraw->withdraw = $model->amount;
-                $withdraw->narrative = 'reserve for order #' . $oid . '';
-                $withdraw->customer_id = Yii::$app->user->id;
-                $withdraw->save();
+            $connection = \Yii::$app->db;
+            $transaction = $connection->beginTransaction();
+            try {
+                //deduct payment
+                Order::getBalance();
+                if ($model->amount > Order::getBalance()) {
+                    Yii::$app->session->setFlash('balance', 'The balance in your wallet is less than the amount you want to pay. Please reload your wallet.');
+                    return $this->redirect(['view', 'oid' => $oid]);
+                } else {
+                    $withdraw = new Wallet();
+                    $withdraw->order_id = $oid;
+                    $withdraw->withdraw = $model->amount;
+                    $withdraw->narrative = 'reserve for order #' . $oid . '';
+                    $withdraw->customer_id = Yii::$app->user->id;
+                    $withdraw->save();
+                }
+                $model->paid = 1;
+                $model->available = 1;
+                $model->save();
+
+                $transaction->commit();
+            } catch (\Exception $e) {
+                $transaction->rollBack();
+                throw new   $e;
             }
-            $model->paid = 1;
-            $model->available = 1;
-            $model->save();
             Yii::$app->session->setFlash('reserved', 'The payment has been reserved. 
         Your order will be submitted within the deadline and you will have the chance to review the order before releasing the funds.');
             return $this->redirect(['view', 'oid' => $oid]);
@@ -310,47 +319,56 @@ class OrderController extends Controller
         $supaorder = Order::find()->where(['ordernumber' => $oid])->one();
         if (Yii::$app->user->id == $supaorder->created_by) {
 
-            $writter = Order::find()->where(['ordernumber' => $oid])->one();
-            if ($message->load(Yii::$app->request->post())) {
-                $message->order_number = $oid;
-                $message->sender_id = Yii::$app->user->id;
-                if ($supaorder->written_by == null) {
-                    $message->receiver_id = 919;
-                } else {
-                    $message->receiver_id = $supaorder->written_by;
+            $connection = \Yii::$app->db;
+            $transaction = $connection->beginTransaction();
+            try {
+                $writter = Order::find()->where(['ordernumber' => $oid])->one();
+                if ($message->load(Yii::$app->request->post())) {
+                    $message->order_number = $oid;
+                    $message->sender_id = Yii::$app->user->id;
+                    if ($supaorder->written_by == null) {
+                        $message->receiver_id = 919;
+                    } else {
+                        $message->receiver_id = $supaorder->written_by;
+                    }
+
+                    $message->status = 0;
+                    $message->save();
+                    // $message was just created by the logged in user, and sent to $recipient_id
+                    Notification::warning(Notification::KEY_NEW_MESSAGE, $message->receiver_id, $message->id);
+
+                    $notifys = \app\models\Notification::find()->where(['key_id' => $message->id])->all();
+                    foreach ($notifys as $notify) {
+                        $notify->order_number = $oid;
+                        $notify->save();
+                    }
+
+                    return $this->redirect(['messages', 'oid' => $oid]);
+                }
+                Order::getOrdersCount();
+                Order::getBalance();
+                $model = $this->findModelByNumber($oid);
+                $messages = Message::find()->where(['order_number' => $oid])->one();
+                $searchModel = new MessageSearch();
+                $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+                $dataProvider->query->andFilterWhere(['sender_id' => Yii::$app->user->id])->orFilterWhere(['receiver_id' => Yii::$app->user->id]);
+                $mymessages = Message::find()->where(['order_number' => $oid])->andFilterWhere(['receiver_id' => Yii::$app->user->id])->all();
+                foreach ($mymessages as $mymessage) {
+                    if ($mymessage->status == 0) {
+                        $mymessage->status = 1;
+                        $mymessage->save();
+                    }
+                }
+                $notifications = \app\models\Notification::find()->where(['order_number' => $oid])->andWhere(['seen' => 0,])->andFilterWhere(['user_id' => Yii::$app->user->id])->all();
+                foreach ($notifications as $notification) {
+                    $notification->seen = 1;
+                    $notification->save();
                 }
 
-                $message->status = 0;
-                $message->save();
-                // $message was just created by the logged in user, and sent to $recipient_id
-                Notification::warning(Notification::KEY_NEW_MESSAGE, $message->receiver_id, $message->id);
-
-                $notifys = \app\models\Notification::find()->where(['key_id' => $message->id])->all();
-                foreach ($notifys as $notify) {
-                    $notify->order_number = $oid;
-                    $notify->save();
-                }
-
-                return $this->redirect(['messages', 'oid' => $oid]);
-            }
-            Order::getOrdersCount();
-            Order::getBalance();
-            $model = $this->findModelByNumber($oid);
-            $messages = Message::find()->where(['order_number' => $oid])->one();
-            $searchModel = new MessageSearch();
-            $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-            $dataProvider->query->andFilterWhere(['sender_id' => Yii::$app->user->id])->orFilterWhere(['receiver_id' => Yii::$app->user->id]);
-            $mymessages = Message::find()->where(['order_number' => $oid])->andFilterWhere(['receiver_id' => Yii::$app->user->id])->all();
-            foreach ($mymessages as $mymessage) {
-                if ($mymessage->status == 0) {
-                    $mymessage->status = 1;
-                    $mymessage->save();
-                }
-            }
-            $notifications = \app\models\Notification::find()->where(['order_number' => $oid])->andWhere(['seen' => 0,])->andFilterWhere(['user_id' => Yii::$app->user->id])->all();
-            foreach ($notifications as $notification) {
-                $notification->seen = 1;
-                $notification->save();
+                $transaction->commit();
+            } catch (\Exception $e) {
+                $transaction->rollBack();
+                throw new   $e;
             }
             return $this->render('messages', [
                 'searchModel' => $searchModel,
@@ -470,30 +488,40 @@ class OrderController extends Controller
             $orderid = Uniqueid::find()->where(['id' => 1])->one();
             $orderid->orderid = $orderid->orderid + 1;
             $model->ordernumber = $orderid->orderid;
-            $orderid->save();
-            $model->save();
-            unset($session['service_id']);
-            unset($session['type_id']);
-            unset($session['urgency_id']);
-            unset($session['pages_id']);
-            unset($session['level_id']);
-            //            Notification::success(Notification::KEY_NEW_ORDER, 1, $model->id);
-            Notification::success(Notification::KEY_NEW_ORDER, 919, $model->id);
-            $notifys = \app\models\Notification::find()->where(['key_id' => $model->id, 'seen' => 0])->all();
-            foreach ($notifys as $notify) {
-                $notify->order_number = $model->ordernumber;
-                $notify->save();
+
+            $connection = \Yii::$app->db;
+            $transaction = $connection->beginTransaction();
+            try {
+                $orderid->save();
+                $model->save();
+
+                unset($session['service_id']);
+                unset($session['type_id']);
+                unset($session['urgency_id']);
+                unset($session['pages_id']);
+                unset($session['level_id']);
+                //            Notification::success(Notification::KEY_NEW_ORDER, 1, $model->id);
+                Notification::success(Notification::KEY_NEW_ORDER, 919, $model->id);
+                $notifys = \app\models\Notification::find()->where(['key_id' => $model->id, 'seen' => 0])->all();
+                foreach ($notifys as $notify) {
+                    $notify->order_number = $model->ordernumber;
+                    $notify->save();
+                }
+                //send email to client
+                $user = User::findOne($model->created_by);
+                Yii::$app->supportMailer->htmlLayout = "layouts/order";
+                Yii::$app->supportMailer->compose('order-create', [
+                    'model' => $model,
+                    'user' => $user
+                ])->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' support'])
+                    ->setTo($user->email)
+                    ->setSubject('Order ' . $model->ordernumber . ' created')
+                    ->send();
+                $transaction->commit();
+            } catch (\Exception $e) {
+                $transaction->rollBack();
+                throw new   $e;
             }
-            //send email to client
-            $user = User::findOne($model->created_by);
-            Yii::$app->supportMailer->htmlLayout = "layouts/order";
-            Yii::$app->supportMailer->compose('order-create', [
-                'model' => $model,
-                'user' => $user
-            ])->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' support'])
-                ->setTo($user->email)
-                ->setSubject('Order ' . $model->ordernumber . ' created')
-                ->send();
             //redirect  to view order
             return $this->redirect(['attached', 'oid' => $model->ordernumber]);
         }
@@ -540,16 +568,24 @@ class OrderController extends Controller
         $order = Order::find()->where(['ordernumber' => $oid])->one();
         if (Yii::$app->user->id == $order->created_by) {
             if ($model->load(Yii::$app->request->post())) {
-                $order->revision = 1;
-                $order->completed = 0;
-                $order->save();
-                $model->order_number = $oid;
-                $model->save();
+                $connection = \Yii::$app->db;
+                $transaction = $connection->beginTransaction();
+                try {
+                    $order->revision = 1;
+                    $order->completed = 0;
+                    $order->save();
+                    $model->order_number = $oid;
+                    $model->save();
 
-                Notification::warning(Notification::KEY_ORDER_REVISION, $order->written_by, $model->id);
-                $notify = \app\models\Notification::find()->where(['key_id' => $model->id])->andWhere(['seen' => 0])->one();
-                $notify->order_number = $oid;
-                $notify->save();
+                    Notification::warning(Notification::KEY_ORDER_REVISION, $order->written_by, $model->id);
+                    $notify = \app\models\Notification::find()->where(['key_id' => $model->id])->andWhere(['seen' => 0])->one();
+                    $notify->order_number = $oid;
+                    $notify->save();
+                    $transaction->commit();
+                } catch (\Exception $e) {
+                    $transaction->rollBack();
+                    throw new   $e;
+                }
                 Yii::$app->session->setFlash('revision-sent', 'You have successfully made a revision request. Thank you');
                 return $this->redirect(['order/download-review', 'oid' => $oid]);
             } else {
@@ -586,17 +622,25 @@ class OrderController extends Controller
         $order = Order::find()->where(['ordernumber' => $oid])->one();
         if (Yii::$app->user->id == $order->created_by) {
             if ($rating->load(Yii::$app->request->post())) {
-                //save the status of the order
-                $order->completed = 0;
-                $order->active = 0;
-                $order->revision = 0;
-                $order->approved = 1;
-                $order->save();
+                $connection = \Yii::$app->db;
+                $transaction = $connection->beginTransaction();
+                try {
+                    //save the status of the order
+                    $order->completed = 0;
+                    $order->active = 0;
+                    $order->revision = 0;
+                    $order->approved = 1;
+                    $order->save();
 
-                //Save the rating of the order
-                $rating->order_number = $oid;
-                $rating->client_id = Yii::$app->user->id;
-                $rating->save();
+                    //Save the rating of the order
+                    $rating->order_number = $oid;
+                    $rating->client_id = Yii::$app->user->id;
+                    $rating->save();
+                    $transaction->commit();
+                } catch (\Exception $e) {
+                    $transaction->rollBack();
+                    throw new   $e;
+                }
                 Notification::success(Notification::KEY_ORDER_APPROVED, $order->written_by, $order->id);
                 $supernote = \app\models\Notification::find()->where(['key' => 'order_approved'])->andWhere(['key_id' => $order->id])->one();
                 if (empty($supernote)) {
@@ -620,23 +664,31 @@ class OrderController extends Controller
         if (Yii::$app->user->id == $order->created_by) {
             $reject = new Reject();
             if ($reject->load(Yii::$app->request->post())) {
-                //save new order status
-                $order->rejected = 1;
-                $order->completed = 0;
-                $order->active = 0;
-                $order->revision = 0;
-                $order->save();
+                $connection = \Yii::$app->db;
+                $transaction = $connection->beginTransaction();
+                try {
+                    //save new order status
+                    $order->rejected = 1;
+                    $order->completed = 0;
+                    $order->active = 0;
+                    $order->revision = 0;
+                    $order->save();
 
-                //save the reason for rejecting
-                $reject->order_number = $oid;
-                $reject->save();
+                    //save the reason for rejecting
+                    $reject->order_number = $oid;
+                    $reject->save();
 
-                Notification::warning(Notification::KEY_ORDER_REJECTED, $order->written_by, $order->id);
-                $supernote = \app\models\Notification::find()->where(['key' => 'order_rejected'])->andWhere(['key_id' => $order->id])->one();
-                if (empty($supernote)) {
-                    $notify = \app\models\Notification::find()->where(['key_id' => $order->id])->andWhere(['seen' => 0])->one();
-                    $notify->order_number = $oid;
-                    $notify->save();
+                    Notification::warning(Notification::KEY_ORDER_REJECTED, $order->written_by, $order->id);
+                    $supernote = \app\models\Notification::find()->where(['key' => 'order_rejected'])->andWhere(['key_id' => $order->id])->one();
+                    if (empty($supernote)) {
+                        $notify = \app\models\Notification::find()->where(['key_id' => $order->id])->andWhere(['seen' => 0])->one();
+                        $notify->order_number = $oid;
+                        $notify->save();
+                    }
+                    $transaction->commit();
+                } catch (\Exception $e) {
+                    $transaction->rollBack();
+                    throw new   $e;
                 }
                 return $this->redirect(['order/download-review', 'oid' => $oid]);
             }
@@ -902,15 +954,24 @@ class OrderController extends Controller
         $order = $this->findModelByNumber($oid);
         if (Yii::$app->user->id == $order->created_by) {
             if ($cancel->load(Yii::$app->request->post())) {
-                //update order
-                $order->cancelled = 1;
-                $order->active = 0;
-                $order->available = 0;
-                $order->save();
+                $connection = \Yii::$app->db;
+                $transaction = $connection->beginTransaction();
+                try {
+                    //update order
+                    $order->cancelled = 1;
+                    $order->active = 0;
+                    $order->available = 0;
+                    $order->save();
 
-                //save reason for cancel
-                $cancel->order_number = $oid;
-                $cancel->save();
+                    //save reason for cancel
+                    $cancel->order_number = $oid;
+                    $cancel->save();
+
+                    $transaction->commit();
+                } catch (\Exception $e) {
+                    $transaction->rollBack();
+                    throw new   $e;
+                }
                 return $this->redirect(['order/view', 'oid' => $oid]);
             }
         } else {

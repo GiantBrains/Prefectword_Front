@@ -119,7 +119,7 @@ class SiteController extends Controller
         $command1 = Yii::$app->db->createCommand('SELECT SUM(value) FROM rating');
         $totalrating = $command1->queryScalar();
         $count = Rating::find()->count();
-        $count == 0 ? $count = 1: $count;
+        $count == 0 ? $count = 1 : $count;
         Yii::$app->view->params['count'] = $count;
         $avgrating = $totalrating / $count;
         Yii::$app->view->params['avgrating'] = $avgrating;
@@ -249,19 +249,27 @@ class SiteController extends Controller
                         $orderid = Uniqueid::find()->where(['id' => 1])->one();
                         $orderid->orderid = $orderid->orderid + 1;
                         $model->ordernumber = $orderid->orderid;
-                        $orderid->save();
-                        $model->save();
-                        unset($session['service_id']);
-                        unset($session['type_id']);
-                        unset($session['urgency_id']);
-                        unset($session['pages_id']);
-                        unset($session['level_id']);
+                        $connection = \Yii::$app->db;
+                        $transaction = $connection->beginTransaction();
+                        try {
+                            $orderid->save();
+                            $model->save();
+                            unset($session['service_id']);
+                            unset($session['type_id']);
+                            unset($session['urgency_id']);
+                            unset($session['pages_id']);
+                            unset($session['level_id']);
 //                    Notification::success(Notification::KEY_NEW_ORDER, 1, $model->id);
-                        Notification::success(Notification::KEY_NEW_ORDER, 7, $model->id);
-                        $notifys = \app\models\Notification::find()->where(['key_id' => $model->id, 'seen' => 0])->all();
-                        foreach ($notifys as $notify) {
-                            $notify->order_number = $model->ordernumber;
-                            $notify->save();
+                            Notification::success(Notification::KEY_NEW_ORDER, 919, $model->id);
+                            $notifys = \app\models\Notification::find()->where(['key_id' => $model->id, 'seen' => 0])->all();
+                            foreach ($notifys as $notify) {
+                                $notify->order_number = $model->ordernumber;
+                                $notify->save();
+                            }
+                            $transaction->commit();
+                        } catch (\Exception $e) {
+                            $transaction->rollBack();
+                            throw new   $e;
                         }
                     } else {
                         Yii::$app->session->setFlash('danger', 'The order was not created. Please include all the order details.');
@@ -276,21 +284,29 @@ class SiteController extends Controller
                     $orderid = Uniqueid::find()->where(['id' => 1])->one();
                     $orderid->orderid = $orderid->orderid + 1;
                     $model->ordernumber = $orderid->orderid;
-                    $orderid->save();
-                    $model->save();
-                    unset($session['service_id']);
-                    unset($session['type_id']);
-                    unset($session['urgency_id']);
-                    unset($session['pages_id']);
-                    unset($session['level_id']);
+                    $connection = \Yii::$app->db;
+                    $transaction = $connection->beginTransaction();
+                    try {
+                        $orderid->save();
+                        $model->save();
+                        unset($session['service_id']);
+                        unset($session['type_id']);
+                        unset($session['urgency_id']);
+                        unset($session['pages_id']);
+                        unset($session['level_id']);
 //            Notification::success(Notification::KEY_NEW_ORDER, 1, $model->id);
-                    Notification::success(Notification::KEY_NEW_ORDER, 7, $model->id);
-                    $notifys = \app\models\Notification::find()->where(['key_id' => $model->id, 'seen' => 0])->all();
-                    foreach ($notifys as $notify) {
-                        $notify->order_number = $model->ordernumber;
-                        $notify->save();
-                    }
+                        Notification::success(Notification::KEY_NEW_ORDER, 919, $model->id);
+                        $notifys = \app\models\Notification::find()->where(['key_id' => $model->id, 'seen' => 0])->all();
+                        foreach ($notifys as $notify) {
+                            $notify->order_number = $model->ordernumber;
+                            $notify->save();
+                        }
 
+                        $transaction->commit();
+                    } catch (\Exception $e) {
+                        $transaction->rollBack();
+                        throw new   $e;
+                    }
                     return $this->redirect(['order/view', 'oid' => $model->ordernumber]);
 
                 } else {

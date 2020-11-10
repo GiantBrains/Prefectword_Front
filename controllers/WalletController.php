@@ -111,19 +111,27 @@ class WalletController extends Controller
             $balance = $totaldeposit - $totalwithdrawal;
             if ($balance > 0 && $balance >= $amount) {
 
-                // send the request
-                $withdraw = new Withdraw();
-                $withdraw->user_id = Yii::$app->user->id;
-                $withdraw->status = 0;
-                $withdraw->uniqueid = date('His');
-                $withdraw->amount = $amount;
-                $withdraw->save();
+                $connection = Yii::$app->db;
+                $transaction = $connection->beginTransaction();
+                try {
+                    // send the request
+                    $withdraw = new Withdraw();
+                    $withdraw->user_id = Yii::$app->user->id;
+                    $withdraw->status = 0;
+                    $withdraw->uniqueid = date('His');
+                    $withdraw->amount = $amount;
+                    $withdraw->save();
 
-                Notification::warning(Notification::KEY_WITHDRAWAL_REQUEST, 7, $withdraw->id);
-                $notify = \app\models\Notification::find()->where(['key_id' => $withdraw->id])->andWhere(['seen' => 0])->one();
-                $notify->order_number = $withdraw->user_id;
-                $notify->save();
+                    Notification::warning(Notification::KEY_WITHDRAWAL_REQUEST, 7, $withdraw->id);
+                    $notify = \app\models\Notification::find()->where(['key_id' => $withdraw->id])->andWhere(['seen' => 0])->one();
+                    $notify->order_number = $withdraw->user_id;
+                    $notify->save();
 
+                    $transaction->commit();
+                } catch (\Exception $e) {
+                    $transaction->rollBack();
+                    throw new   $e;
+                }
                 Yii::$app->session->setFlash('success', 'The withdrawal request has been sent and will be approved within 2 days. Thank you');
                 return $this->redirect(['wallet/withdraw']);
             } else {
@@ -462,10 +470,27 @@ class WalletController extends Controller
                 $execute->setPayerId($payerid);
                 try {
                     $payment->execute($execute, $apiContext);
-                    //Update the payment status
-                    $customer = Paypal::find()->where(['payment_id' => $paypal->payment_id])->one();
-                    $customer->complete = 1;
-                    $customer->save();
+                    $connection = Yii::$app->db;
+                    $transaction = $connection->beginTransaction();
+                    try {
+                        //Update the payment status
+                        $customer = Paypal::find()->where(['payment_id' => $paypal->payment_id])->one();
+                        $customer->complete = 1;
+                        $customer->save();
+
+                        //set amount to deposit table
+                        $wallet = new Wallet();
+                        $wallet->deposit = $customer->amount_paid;
+                        $wallet->customer_id = Yii::$app->user->id;
+                        $wallet->narrative = 'Deposit via Paypal';
+                        $wallet->save();
+
+                        $transaction->commit();
+                    } catch (\Exception $e) {
+                        $transaction->rollBack();
+                        throw new   $e;
+                    }
+
                     //send confirmation email
                     $user_id = Yii::$app->user->id;
                     $user = User::findOne($user_id);
@@ -477,13 +502,6 @@ class WalletController extends Controller
                         ->setTo($user->email)
                         ->setSubject('Payment Completed')
                         ->send();
-                    //set amount to deposit table
-                    $wallet = new Wallet();
-                    $wallet->deposit = $customer->amount_paid;
-                    $wallet->customer_id = Yii::$app->user->id;
-                    $wallet->narrative = 'Deposit via Paypal';
-                    $wallet->save();
-
                     //unset the hash
                     unset($session['paypal_hash']);
                     unset($session['user_id']);
@@ -629,11 +647,26 @@ class WalletController extends Controller
                 $execute->setPayerId($payerid);
                 try {
                     $payment->execute($execute, $apiContext);
-                    //Update the payment status
-                    $customer = Paypal::find()->where(['payment_id' => $paypal2->payment_id])->one();
-                    $customer->complete = 1;
-                    $customer->order_number = $session['oid'];
-                    $customer->save();
+                    $connection = Yii::$app->db;
+                    $transaction = $connection->beginTransaction();
+                    try {
+                        //Update the payment status
+                        $customer = Paypal::find()->where(['payment_id' => $paypal2->payment_id])->one();
+                        $customer->complete = 1;
+                        $customer->order_number = $session['oid'];
+                        $customer->save();
+
+                        //mark the ordr as paid
+                        $model = Order::find()->where(['ordernumber' => $session['oid']])->one();
+                        $model->paid = 1;
+                        $model->available = 1;
+                        $model->save();
+
+                        $transaction->commit();
+                    } catch (\Exception $e) {
+                        $transaction->rollBack();
+                        throw new   $e;
+                    }
                     //send confirmation email
                     $user_id = Yii::$app->user->id;
                     $user = User::findOne($user_id);
@@ -646,11 +679,6 @@ class WalletController extends Controller
                         ->setTo($user->email)
                         ->setSubject('Payment Completed')
                         ->send();
-                    //mark the ordr as paid
-                    $model = Order::find()->where(['ordernumber' => $session['oid']])->one();
-                    $model->paid = 1;
-                    $model->available = 1;
-                    $model->save();
                     //unset the hash
                     unset($session['oid']);
                     unset($session['paypal_hash2']);
@@ -674,7 +702,8 @@ class WalletController extends Controller
         return null;
     }
 
-    public function actionOrderCancel($success)
+    public
+    function actionOrderCancel($success)
     {
         $session = Yii::$app->session;
         Yii::$app->session->setFlash('notpaid', 'The deposit was not successful.');
@@ -687,7 +716,8 @@ class WalletController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionUpdate($id)
+    public
+    function actionUpdate($id)
     {
         $model = $this->findModel($id);
 
@@ -706,7 +736,8 @@ class WalletController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionDelete($id)
+    public
+    function actionDelete($id)
     {
         $this->findModel($id)->delete();
 
@@ -714,7 +745,8 @@ class WalletController extends Controller
     }
 
 
-    public function apiContext()
+    public
+    function apiContext()
     {
         // After Step 1
         $apiContext = new ApiContext(
@@ -743,7 +775,8 @@ class WalletController extends Controller
      * @return Wallet the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
+    protected
+    function findModel($id)
     {
         if (($model = Wallet::findOne($id)) !== null) {
             return $model;
