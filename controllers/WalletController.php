@@ -341,18 +341,18 @@ class WalletController extends Controller
                                     <CompanyToken>' . env('COMPANY_TOKEN') . '</CompanyToken>
                                     <Request>createToken</Request>
                                     <Transaction>
-                                    <PaymentAmount>' . $amount . '</PaymentAmount>
-                                    <PaymentCurrency>KES</PaymentCurrency>
-                                    <CompanyRef>client_' . $session['user_id'] . '</CompanyRef>
-                                    <RedirectURL>https://verifiedprofessors.com/wallet/card-callback</RedirectURL>
-                                    <BackURL>https://verifiedprofessors.com/wallet/index</BackURL>
-                                    <CompanyRefUnique>0</CompanyRefUnique>
-                                    <PTL>5</PTL>
+                                        <PaymentAmount>' . $amount . '</PaymentAmount>
+                                        <PaymentCurrency>USD</PaymentCurrency>
+                                        <CompanyRef>client_' . $session['user_id'] . '</CompanyRef>
+                                        <RedirectURL>https://verifiedprofessors.com/wallet/card-callback</RedirectURL>
+                                        <BackURL>https://verifiedprofessors.com/wallet/index</BackURL>
+                                        <CompanyRefUnique>0</CompanyRefUnique>
+                                        <PTL>5</PTL>
                                     </Transaction>
                                     <Services>
                                       <Service>
                                         <ServiceType>' . env('SERVICE_TYPE') . '</ServiceType>
-                                        <ServiceDescription>Test Product</ServiceDescription>
+                                        <ServiceDescription>Reserve cash for my orders</ServiceDescription>
                                         <ServiceDate>' . $date . '</ServiceDate>
                                       </Service>
                                     </Services>
