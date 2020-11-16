@@ -543,13 +543,6 @@ class WalletController extends Controller
                         $model->available = 1;
                         $model->save();
 
-                        //set amount to deposit table
-                        $wallet = new Wallet();
-                        $wallet->deposit = $card->amount;
-                        $wallet->customer_id = $session['user_id2'];
-                        $wallet->narrative = 'Reserve for order ' . $session['oid'];
-                        $wallet->save();
-
                         $transaction->commit();
                     } catch (Exception $e) {
                         $transaction->rollBack();
