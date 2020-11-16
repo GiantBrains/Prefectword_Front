@@ -386,6 +386,9 @@ class WalletController extends Controller
                 Yii::$app->session->setFlash('danger', 'Unable to process the payment. Please contact us for help.');
                 return $this->redirect(['/wallet/index']);
             }
+        }else{
+            Yii::$app->session->setFlash('danger', 'The payment amount must be numeric.');
+            return $this->redirect(['/wallet/index']);
         }
     }
 
@@ -434,6 +437,132 @@ class WalletController extends Controller
                         ->send();
 
                     unset($session['user_id']);
+                    $session->close();
+                    Yii::$app->session->setFlash('success', 'Payment was successful');
+                    return $this->redirect(['/wallet/index']);
+
+                } else {
+                    Yii::$app->session->setFlash('danger', 'There was an error verifying the payment. transaction reference mismatch');
+                    return $this->redirect(['/wallet/index']);
+                }
+            } else {
+                Yii::$app->session->setFlash('danger', 'There was an error verifying the payment. no card payment found');
+                return $this->redirect(['/wallet/index']);
+            }
+        } else {
+            Yii::$app->session->setFlash('danger', 'There was an error verifying the payment. token not received');
+            return $this->redirect(['/wallet/index']);
+        }
+    }
+
+    public function actionOrderCardReserve($oid, $amount)
+    {
+        if (is_numeric($amount)) {
+            // process paypal transaction
+            $session = Yii::$app->session;
+            $session->open();
+            $session['oid'] = $oid;
+            $session['user_id2'] = Yii::$app->user->getId();
+            $date = Carbon::now()->format('yy/m/d H:i');
+
+            //Init curl
+            $curl = new curl\Curl();
+            //post http://example.com/
+            $response = $curl->setRawPostData(
+                '<?xml version="1.0" encoding="utf-8"?>
+                                <API3G>
+                                    <CompanyToken>' . env('COMPANY_TOKEN') . '</CompanyToken>
+                                    <Request>createToken</Request>
+                                    <Transaction>
+                                        <PaymentAmount>' . $amount . '</PaymentAmount>
+                                        <PaymentCurrency>USD</PaymentCurrency>
+                                        <CompanyRef>' . $session['oid'] . '</CompanyRef>
+                                        <RedirectURL>https://verifiedprofessors.com/wallet/order-card-callback</RedirectURL>
+                                        <BackURL>https://verifiedprofessors.com/wallet/index</BackURL>
+                                        <CompanyRefUnique>0</CompanyRefUnique>
+                                        <PTL>5</PTL>
+                                    </Transaction>
+                                    <Services>
+                                      <Service>
+                                        <ServiceType>' . env('SERVICE_TYPE') . '</ServiceType>
+                                        <ServiceDescription>Reserve cash for my orders</ServiceDescription>
+                                        <ServiceDate>' . $date . '</ServiceDate>
+                                      </Service>
+                                    </Services>
+                                </API3G>'
+            )->setHeaders([
+                'Content-Type' => 'application/xml'
+            ])->post(env('TOKEN_URL'));
+            $array = json_decode(json_encode((array)simplexml_load_string($response)), true);
+            if (isset($array['Result']) && $array['Result'] == '000') {
+                $token = $array['TransToken'];
+                //save transaction in the database
+                $card = new CardPayments();
+                $card->amount = $amount;
+                $card->transaction_token = $token;
+                $card->transaction_ref = $session['oid'];
+                $card->status = 'pending';
+                $card->user_id = $session['user_id2'];
+                $card->save();
+
+                $paymentUrl = env('PAYMENT_URL') . $token;
+                return $this->redirect($paymentUrl);
+            } else {
+                Yii::$app->session->setFlash('danger', 'Unable to process the payment. Please contact us for help.');
+                return $this->redirect(['/wallet/index']);
+            }
+        }else{
+            Yii::$app->session->setFlash('danger', 'The payment amount must be numeric');
+            return $this->redirect(['/wallet/index']);
+        }
+    }
+
+    /**
+     * @throws Exception
+     */
+
+    public function actionOrderCardCallback()
+    {
+        $request = Yii::$app->request->get();
+        $session = Yii::$app->session;
+        if ($request['TransID']) {
+            $card = CardPayments::findOne(['transaction_token' => $request['TransID']]);
+            if ($card) {
+                if ($request['PnrID'] == $card->transaction_ref) {
+                    //get the trans by token
+                    $connection = Yii::$app->db;
+                    $transaction = $connection->beginTransaction();
+                    try {
+                        $card->status = 'approved';
+                        $card->save();
+
+                        //set amount to deposit table
+                        $wallet = new Wallet();
+                        $wallet->deposit = $card->amount;
+                        $wallet->customer_id = $session['user_id2'];
+                        $wallet->narrative = 'Reserve for order '.$session['oid'];
+                        $wallet->save();
+
+                        $transaction->commit();
+                    } catch (Exception $e) {
+                        $transaction->rollBack();
+                        throw new $e;
+                    }
+
+                    //send confirmation email
+                    $user_id = Yii::$app->user->id;
+                    $user = User::findOne($user_id);
+                    Yii::$app->supportMailer->htmlLayout = "layouts/order";
+                    Yii::$app->supportMailer->compose('wallet-deposit', [
+                        'deposit' => $card->amount,
+                        'user' => $user
+                    ])->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' support'])
+                        ->setTo($user->email)
+                        ->setSubject('Payment Completed')
+                        ->send();
+
+                    unset($session['user_id2']);
+                    unset($session['oid']);
                     $session->close();
                     Yii::$app->session->setFlash('success', 'Payment was successful');
                     return $this->redirect(['/wallet/index']);
