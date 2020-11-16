@@ -478,7 +478,7 @@ class WalletController extends Controller
                                         <PaymentCurrency>USD</PaymentCurrency>
                                         <CompanyRef>' . $session['oid'] . '</CompanyRef>
                                         <RedirectURL>https://verifiedprofessors.com/wallet/order-card-callback</RedirectURL>
-                                        <BackURL>https://verifiedprofessors.com/wallet/index</BackURL>
+                                        <BackURL>https://verifiedprofessors.com/order/view??oid='.$session['oid'].'</BackURL>
                                         <CompanyRefUnique>0</CompanyRefUnique>
                                         <PTL>5</PTL>
                                     </Transaction>
