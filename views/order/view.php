@@ -203,7 +203,7 @@ $this->registerJs($datetime);
                     echo '';
                 }
                 ?>
-               <a href="<?= Yii::$app->request->baseUrl?>/wallet/order-card-reserve?oid=<?=$model->oder_number?>&amount=<?=$model->amount?>"><button type="button" class="btn btn-primary">Pay With CARD</button></a>
+               <a href="<?= Yii::$app->request->baseUrl?>/wallet/order-card-reserve?oid=<?=$model->ordernumber?>&amount=<?=$model->amount?>"><button type="button" class="btn btn-primary">Pay With CARD</button></a>
             </p>
         </ul>
         <div class="hidden-xs">
