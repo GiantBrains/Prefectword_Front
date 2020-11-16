@@ -47,10 +47,10 @@ class WalletController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['create', 'index', 'view', 'update', 'deposit', 'paypal', 'transactions', 'withdraw', 'card-payment', 'card-callback'],
+                'only' => ['create', 'index', 'view', 'update', 'deposit', 'paypal', 'transactions', 'withdraw', 'card-payment', 'card-callback', 'order-card-reserve', 'order-card-callback'],
                 'rules' => [
                     [
-                        'actions' => ['create', 'index', 'view', 'update', 'deposit', 'paypal', 'transactions', 'withdraw', 'card-payment', 'card-callback'],
+                        'actions' => ['create', 'index', 'view', 'update', 'deposit', 'paypal', 'transactions', 'withdraw', 'card-payment', 'card-callback', 'order-card-reserve', 'order-card-callback'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -386,7 +386,7 @@ class WalletController extends Controller
                 Yii::$app->session->setFlash('danger', 'Unable to process the payment. Please contact us for help.');
                 return $this->redirect(['/wallet/index']);
             }
-        }else{
+        } else {
             Yii::$app->session->setFlash('danger', 'The payment amount must be numeric.');
             return $this->redirect(['/wallet/index']);
         }
@@ -511,7 +511,7 @@ class WalletController extends Controller
                 Yii::$app->session->setFlash('danger', 'Unable to process the payment. Please contact us for help.');
                 return $this->redirect(['/wallet/index']);
             }
-        }else{
+        } else {
             Yii::$app->session->setFlash('danger', 'The payment amount must be numeric');
             return $this->redirect(['/wallet/index']);
         }
@@ -540,7 +540,7 @@ class WalletController extends Controller
                         $wallet = new Wallet();
                         $wallet->deposit = $card->amount;
                         $wallet->customer_id = $session['user_id2'];
-                        $wallet->narrative = 'Reserve for order '.$session['oid'];
+                        $wallet->narrative = 'Reserve for order ' . $session['oid'];
                         $wallet->save();
 
                         $transaction->commit();
