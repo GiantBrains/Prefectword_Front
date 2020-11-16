@@ -537,6 +537,12 @@ class WalletController extends Controller
                         $card->status = 'approved';
                         $card->save();
 
+                        //mark the order as paid
+                        $model = Order::find()->where(['ordernumber' => $session['oid']])->one();
+                        $model->paid = 1;
+                        $model->available = 1;
+                        $model->save();
+
                         //set amount to deposit table
                         $wallet = new Wallet();
                         $wallet->deposit = $card->amount;
