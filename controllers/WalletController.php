@@ -478,7 +478,7 @@ class WalletController extends Controller
                                         <PaymentCurrency>USD</PaymentCurrency>
                                         <CompanyRef>' . $session['oid'] . '</CompanyRef>
                                         <RedirectURL>https://verifiedprofessors.com/wallet/order-card-callback</RedirectURL>
-                                        <BackURL>https://verifiedprofessors.com/wallet/index</BackURL>
+                                        <BackURL>https://verifiedprofessors.com/order/view?oid=' . $session['oid'] . '</BackURL>
                                         <CompanyRefUnique>0</CompanyRefUnique>
                                         <PTL>5</PTL>
                                     </Transaction>
@@ -525,6 +525,7 @@ class WalletController extends Controller
     {
         $request = Yii::$app->request->get();
         $session = Yii::$app->session;
+        $oid = $session['oid'];
         if ($request['TransID']) {
             $card = CardPayments::findOne(['transaction_token' => $request['TransID']]);
             if ($card) {
@@ -536,12 +537,11 @@ class WalletController extends Controller
                         $card->status = 'approved';
                         $card->save();
 
-                        //set amount to deposit table
-                        $wallet = new Wallet();
-                        $wallet->deposit = $card->amount;
-                        $wallet->customer_id = $session['user_id2'];
-                        $wallet->narrative = 'Reserve for order ' . $session['oid'];
-                        $wallet->save();
+                        //mark the order as paid
+                        $model = Order::find()->where(['ordernumber' => $session['oid']])->one();
+                        $model->paid = 1;
+                        $model->available = 1;
+                        $model->save();
 
                         $transaction->commit();
                     } catch (Exception $e) {
@@ -565,19 +565,19 @@ class WalletController extends Controller
                     unset($session['oid']);
                     $session->close();
                     Yii::$app->session->setFlash('success', 'Payment was successful');
-                    return $this->redirect(['/wallet/index']);
+                    return $this->redirect(['/order/view', 'oid' => $oid]);
 
                 } else {
                     Yii::$app->session->setFlash('danger', 'There was an error verifying the payment. transaction reference mismatch');
-                    return $this->redirect(['/wallet/index']);
+                    return $this->redirect(['/order/view', 'oid' => $oid]);
                 }
             } else {
                 Yii::$app->session->setFlash('danger', 'There was an error verifying the payment. no card payment found');
-                return $this->redirect(['/wallet/index']);
+                return $this->redirect(['/order/view', 'oid' => $oid]);
             }
         } else {
             Yii::$app->session->setFlash('danger', 'There was an error verifying the payment. token not received');
-            return $this->redirect(['/wallet/index']);
+            return $this->redirect(['/order/view', 'oid' => $oid]);
         }
     }
 
