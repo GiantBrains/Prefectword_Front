@@ -203,8 +203,12 @@ $this->registerJs($datetime);
                     echo '';
                 }
                 ?>
-               <a href="<?= Yii::$app->request->baseUrl?>/wallet/order-card-reserve?oid=<?=$model->ordernumber?>&amount=<?=$model->amount?>"><button type="button" class="btn btn-primary">Pay With CARD</button></a>
-            </p>
+                <?php
+                if ($model->paid == 0){
+                    echo '<a href="'.Yii::$app->request->baseUrl.'/wallet/order-card-reserve?oid='.$model->ordernumber.'&amount='.$model->amount.'"><button type="button" class="btn btn-primary">Pay With CARD</button></a>';
+                }
+                ?>
+         </p>
         </ul>
         <div class="hidden-xs">
         <?= \kartik\detail\DetailView::widget([
