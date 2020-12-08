@@ -10,6 +10,7 @@ use app\models\Paypal;
 use app\models\Rating;
 use app\models\Reject;
 use app\models\Revision;
+use app\models\Settings;
 use app\models\Uploaded;
 use app\models\User;
 use app\models\Wallet;
@@ -434,6 +435,7 @@ class OrderController extends Controller
         Order::getLogoName();
         Order::getOrdersCount();
         Order::getBalance();
+        $settings = Settings::findOne(1);
         $session = Yii::$app->session;
         $model = new Order();
         if ($model->load(Yii::$app->request->post())) {
@@ -459,12 +461,12 @@ class OrderController extends Controller
             $spacing = Spacing::getOrderSpacing($model->spacing_id);
 
             // Promocode
-            if ($model->promocode == Yii::$app->params['couponcode']) {
-                $promo = Yii::$app->params['couponamt'];
-            } else if ($model->promocode == Yii::$app->params['code2']) {
-                $promo = Yii::$app->params['code2amt'];
-            } else if ($model->promocode == Yii::$app->params['code3']) {
-                $promo = Yii::$app->params['code3amt'];
+            if ($model->promocode == $settings->coupon1) {
+                $promo = (1 - ($settings->coupon_value1 / 100));
+            } else if ($model->promocode == $settings->coupon2) {
+                $promo = (1 - ($settings->coupon_value2 / 100));
+            } else if ($model->promocode == $settings->coupon3) {
+                $promo = (1 - ($settings->coupon_value3 / 100));
             } else {
                 $promo = 1;
             }
@@ -527,6 +529,7 @@ class OrderController extends Controller
         }
         return $this->render('create', [
             'model' => $model,
+            'settings' => $settings
         ]);
     }
 

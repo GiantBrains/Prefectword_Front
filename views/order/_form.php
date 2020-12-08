@@ -1,22 +1,24 @@
 <?php
+
 use yii\helpers\Html;
 use dosamigos\ckeditor\CKEditor;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Order */
+/* @var $settings app\models\Settings */
 /* @var $form yii\widgets\ActiveForm */
 
-$couponcode = Yii::$app->params['couponcode'];
-$couponamt = Yii::$app->params['couponamt'];
+$couponcode = $settings->coupon1;
+$couponamt = (1 - ($settings->coupon_value1 / 100));
 
 //25% discount
-$code2 = Yii::$app->params['code2'];
-$code2amt = Yii::$app->params['code2amt'];
+$code2 = $settings->coupon2;
+$code2amt = (1 - ($settings->coupon_value2 / 100));
 
 //50% discount
-$code3 = Yii::$app->params['code3'];
-$code3amt = Yii::$app->params['code3amt'];
+$code3 = $settings->coupon3;
+$code3amt = (1 - ($settings->coupon_value3 / 100));
 
 $calculate = <<<JS
   $(document).ready(function(){
@@ -853,29 +855,34 @@ $this->registerJs($calculate);
 ?>
 <div class="row">
     <div class="hidden-lg hidden-md hidden-sm col-xs-4">
-        <?php  echo '<div class="dropdown">
+        <?php echo '<div class="dropdown">
                               <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">Menu
                               <span class="caret"></span></button>
                               <ul class="dropdown-menu">
-                                <li><a href="'.Yii::$app->request->baseUrl.'/order/index"><i class="fa fa-dashboard" aria-hidden="true"></i> Dashboard</a></li>
-                                <li class="active"><a href="'.Yii::$app->request->baseUrl.'/order/create"><i class="fa fa-plus " aria-hidden="true"></i> Place Order</a></li>
-                                <li><a href="'.Yii::$app->request->baseUrl.'/order/pending"><i class="fa fa-list " aria-hidden="true"></i> Pending ('.$this->params['pending_count'].')</a></li>
-                                 <li><a href="'.Yii::$app->request->baseUrl.'/order/available"><i class="fa fa-clock-o" aria-hidden="true"></i> Waiting to be assigned ('.$this->params['available_count'].')</a></li>
-                                <li><a href="'.Yii::$app->request->baseUrl.'/order/active"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i> In Progress ('.$this->params['active_count'].')</a></li>
-                                <li><a href="'.Yii::$app->request->baseUrl.'/order/cancelled"><i class="fa fa-close" aria-hidden="true"></i> Cancelled ('.$this->params['cancel_count'].')</a></li>
-                                <li><a href="'.Yii::$app->request->baseUrl.'/order/revision"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Revision ('.$this->params['revision_count'].')</a></li>
-                                <li><a href="'.Yii::$app->request->baseUrl.'/order/completed"><i class="fa fa-trophy " aria-hidden="true"></i> Completed ('.$this->params['completed_count'].')</a></li>
-                                <li><a href="'.Yii::$app->request->baseUrl.'/order/approved"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Approved ('.$this->params['approved_count'].')</a></li>
-                                <li><a href="'.Yii::$app->request->baseUrl.'/order/rejected"><i class="fa fa-thumbs-down " aria-hidden="true"></i> Rejected ('.$this->params['rejected_count'].')</a></li>
+                                <li><a href="' . Yii::$app->request->baseUrl . '/order/index"><i class="fa fa-dashboard" aria-hidden="true"></i> Dashboard</a></li>
+                                <li class="active"><a href="' . Yii::$app->request->baseUrl . '/order/create"><i class="fa fa-plus " aria-hidden="true"></i> Place Order</a></li>
+                                <li><a href="' . Yii::$app->request->baseUrl . '/order/pending"><i class="fa fa-list " aria-hidden="true"></i> Pending (' . $this->params['pending_count'] . ')</a></li>
+                                 <li><a href="' . Yii::$app->request->baseUrl . '/order/available"><i class="fa fa-clock-o" aria-hidden="true"></i> Waiting to be assigned (' . $this->params['available_count'] . ')</a></li>
+                                <li><a href="' . Yii::$app->request->baseUrl . '/order/active"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i> In Progress (' . $this->params['active_count'] . ')</a></li>
+                                <li><a href="' . Yii::$app->request->baseUrl . '/order/cancelled"><i class="fa fa-close" aria-hidden="true"></i> Cancelled (' . $this->params['cancel_count'] . ')</a></li>
+                                <li><a href="' . Yii::$app->request->baseUrl . '/order/revision"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Revision (' . $this->params['revision_count'] . ')</a></li>
+                                <li><a href="' . Yii::$app->request->baseUrl . '/order/completed"><i class="fa fa-trophy " aria-hidden="true"></i> Completed (' . $this->params['completed_count'] . ')</a></li>
+                                <li><a href="' . Yii::$app->request->baseUrl . '/order/approved"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Approved (' . $this->params['approved_count'] . ')</a></li>
+                                <li><a href="' . Yii::$app->request->baseUrl . '/order/rejected"><i class="fa fa-thumbs-down " aria-hidden="true"></i> Rejected (' . $this->params['rejected_count'] . ')</a></li>
                               </ul>
                             </div>';
         ?>
     </div>
     <div class="col-md-12 col-sm-12 col-xs-8">
-    <h4 style="font-size: 25px; text-align: center" class="essay-font">Price: <input class="tcost" style="border: none; width: 100px; font-size: 25px" type="text" id="min-amount" value="$0.00" readonly="readonly"></h4>
+        <h4 style="font-size: 25px; text-align: center" class="essay-font">Price: <input class="tcost"
+                                                                                         style="border: none; width: 100px; font-size: 25px"
+                                                                                         type="text" id="min-amount"
+                                                                                         value="$0.00"
+                                                                                         readonly="readonly"></h4>
     </div>
 </div>
-<div class="row" style="padding-right: 15px; padding-top: 15px; border-radius: 10px; padding-left: 15px; background-color: #D1F2EB;">
+<div class="row"
+     style="padding-right: 15px; padding-top: 15px; border-radius: 10px; padding-left: 15px; background-color: #D1F2EB;">
     <div class="order-form">
         <?php $form = ActiveForm::begin();
         $session = Yii::$app->session;
@@ -884,38 +891,38 @@ $this->registerJs($calculate);
         <div class="row">
             <div class="col-md-4">
                 <?= $form->field($model, 'service_id')->label('Service')->dropDownList(\app\models\Service::getServices(),
-                    ['prompt'=> '...select Service....', 'id'=>'service-id']) ?>
+                    ['prompt' => '...select Service....', 'id' => 'service-id']) ?>
 
                 <?= $form->field($model, 'type_id')->label('Type of Paper')->dropDownList(\app\models\Type::getTypes(),
-                    ['prompt'=> '...select Type....', 'id'=>'type-id']) ?>
+                    ['prompt' => '...select Type....', 'id' => 'type-id']) ?>
 
                 <?= $form->field($model, 'urgency_id')->label('Urgency')->dropDownList(\app\models\Urgency::getUrgency(), [
-                        'prompt'=> '...select urgency....', 'id'=>'urgency-id']) ?>
+                    'prompt' => '...select urgency....', 'id' => 'urgency-id']) ?>
 
                 <?= $form->field($model, 'spacing_id')->label('Spacing')->dropDownList(\app\models\Spacing::getSpacings(), [
-                   'prompt'=> '...select Spacing....', 'id'=>'spacing-id']) ?>
+                    'prompt' => '...select Spacing....', 'id' => 'spacing-id']) ?>
 
                 <?= $form->field($model, 'pages_id')->widget(\kartik\depdrop\DepDrop::classname(), [
-                    'data' =>\app\models\Pages::getThepages($model->spacing_id),
-                    'options'=>['prompt'=>'---Select pages----'],
-                    'pluginOptions'=>[
-                        'depends'=>['spacing-id'],
-                        'placeholder'=>'--select pages...',
-                        'url'=>\yii\helpers\Url::to(['/order/subcat'])
+                    'data' => \app\models\Pages::getThepages($model->spacing_id),
+                    'options' => ['prompt' => '---Select pages----'],
+                    'pluginOptions' => [
+                        'depends' => ['spacing-id'],
+                        'placeholder' => '--select pages...',
+                        'url' => \yii\helpers\Url::to(['/order/subcat'])
                     ]
                 ]) ?>
 
                 <?= $form->field($model, 'level_id')->label('Level')->dropDownList(\app\models\Level::getLevels(), [
-                   'prompt'=> '...select Level....', 'id'=>'level-id']) ?>
+                    'prompt' => '...select Level....', 'id' => 'level-id']) ?>
 
                 <?= $form->field($model, 'subject_id')->label('Subject')->dropDownList(\app\models\Subject::getSubjects(), [
-                    'options' => [19 => ['Selected'=>'selected'], 'prompt'=> '...select subject....', 'id'=>'subject-id']]) ?>
+                    'options' => [19 => ['Selected' => 'selected'], 'prompt' => '...select subject....', 'id' => 'subject-id']]) ?>
 
                 <?= $form->field($model, 'style_id')->label('Styles')->dropDownList(\app\models\Style::getStyles(), [
-                    'options' => [1 => ['Selected'=>'selected'], 'prompt'=> '...select Style....', 'id'=>'style-id']]) ?>
+                    'options' => [1 => ['Selected' => 'selected'], 'prompt' => '...select Style....', 'id' => 'style-id']]) ?>
 
                 <?= $form->field($model, 'sources_id')->label('Sources')->dropDownList(\app\models\Sources::getSources(), [
-                    'options' => [3 => ['Selected'=>'selected'], 'prompt'=> '...select Sources....', 'id'=>'sources-id']]) ?>
+                    'options' => [3 => ['Selected' => 'selected'], 'prompt' => '...select Sources....', 'id' => 'sources-id']]) ?>
                 <!---->
                 <!--    --><?php //echo $form->field($model, 'pagesummary')->textInput() ?>
                 <!---->
@@ -923,12 +930,14 @@ $this->registerJs($calculate);
                 <!---->
                 <!--    --><?php //eho $form->field($model, 'initialdraft')->textInput() ?>
                 <?= $form->field($model, 'language_id')->label('Language')->dropDownList(\app\models\Language::getLanguages(), [
-                    'options' => [1 => ['Selected'=>'selected'], 'prompt'=> '...select Language....', 'id'=>'language-id']]) ?>
+                    'options' => [1 => ['Selected' => 'selected'], 'prompt' => '...select Language....', 'id' => 'language-id']]) ?>
             </div>
             <div class="col-md-8">
-                <div class="row" style="background-color: #dff0d8; height: 95px; border-radius: 5px; margin-left: 0; margin-right: 0">
+                <div class="row"
+                     style="background-color: #dff0d8; height: 95px; border-radius: 5px; margin-left: 0; margin-right: 0">
                     <div class="col-md-10">
-                        <p style="font-size: 16px; text-align: center; margin-top: 5px">Enter the promo code to get discount!</p>
+                        <p style="font-size: 16px; text-align: center; margin-top: 5px">Enter the promo code to get
+                            discount!</p>
                         <div class="input-group">
                             <input id="coupon-code" type="text" class="form-control" placeholder="Enter Promo code...">
                             <span class="input-group-btn">
@@ -938,14 +947,14 @@ $this->registerJs($calculate);
                         <p id="coupon-status"></p>
                     </div>
                 </div>
-                <?= $form->field($model, 'promocode')->label(false)->textInput(['maxlength' => true, 'type'=>'hidden']) ?>
+                <?= $form->field($model, 'promocode')->label(false)->textInput(['maxlength' => true, 'type' => 'hidden']) ?>
                 <?= $form->field($model, 'topic')->textInput(['maxlength' => true]) ?>
 
                 <?= $form->field($model, 'instructions')->widget(CKEditor::className(), [
                     'preset' => 'custom',
-                    'options'=>['rows'=>18],
+                    'options' => ['rows' => 18],
                     'clientOptions' => [
-                        'height'=>  340,
+                        'height' => 340,
                         'toolbar' => [
                             [
                                 'name' => 'row1',
@@ -968,18 +977,18 @@ $this->registerJs($calculate);
                                     'NewPage', 'Print', 'Templates', '-',
                                     'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-',
                                     'Undo', 'Redo', '-',
-                                    'Find', 'SelectAll', 'Format', 'Font', 'FontSize','styles','colors', 'tools', 'others'
+                                    'Find', 'SelectAll', 'Format', 'Font', 'FontSize', 'styles', 'colors', 'tools', 'others'
                                 ],
                             ],
                         ],
                     ],
                 ]) ?>
 
-<!--                            --><?php //echo $form->field($model, 'instructions')->widget(CKEditor::className(), [
-//                                'options' => ['rows' => 22],
-//                                'preset' => 'basic',
-//                                'clientOptions' => ['height' => 420]
-//                            ]) ?>
+                <!--                            --><?php //echo $form->field($model, 'instructions')->widget(CKEditor::className(), [
+                //                                'options' => ['rows' => 22],
+                //                                'preset' => 'basic',
+                //                                'clientOptions' => ['height' => 420]
+                //                            ]) ?>
 
                 <!--    --><?php //echo $form->field($model, 'qualitycheck')->textInput() ?>
 
@@ -991,7 +1000,7 @@ $this->registerJs($calculate);
             </div>
         </div>
         <div class="form-group">
-        <p>In the next page prepare the file or files to be uploaded.</p>
+            <p>In the next page prepare the file or files to be uploaded.</p>
             <?= Html::submitButton('Next <i class="fa fa-arrow-right" aria-hidden="true"></i>', ['class' => 'btn btn-info']) ?>
         </div>
 

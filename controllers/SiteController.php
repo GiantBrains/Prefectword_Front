@@ -13,6 +13,7 @@ use app\models\PasswordResetRequestForm;
 use app\models\Rating;
 use app\models\ResetPasswordForm;
 use app\models\Service;
+use app\models\Settings;
 use app\models\SignupForm;
 use app\models\Spacing;
 use app\models\Type;
@@ -109,6 +110,7 @@ class SiteController extends Controller
     function actionIndex()
     {
         $signup = new SignupForm();
+        $settings = Settings::findOne(1);
         $model = new Order();
         $fmodel = new Frontorder();
         $ratingCount = Rating::find()->count();
@@ -126,6 +128,7 @@ class SiteController extends Controller
         return $this->render('index', [
             'fmodel' => $fmodel,
             'model' => $model,
+            'settings'=>$settings,
             'signup' => $signup,
             'clientCount' => $clients,
             'ratings' => $ratings,
