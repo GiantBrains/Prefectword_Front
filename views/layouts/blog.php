@@ -131,7 +131,7 @@ AppAsset::register($this);
         'encodeLabels' => false,
     ]);
     $menuItem [] = ['label' => '<a style="margin-top: -30px"><img src="' . Yii::$app->request->baseUrl . '/images/mail.png" width="25px"> &nbsp;support@verifiedprofessors.com</a>'];
-    $menuItem [] = ['label' => '<a style="margin-top: -30px"><img width="25px" src="' . Yii::$app->request->baseUrl . '/images/kenya.png"> &nbsp;+18062173470</a>'];
+    $menuItem [] = ['label' => '<a style="margin-top: -30px"><img width="25px" src="' . Yii::$app->request->baseUrl . '/images/united-states.png"> &nbsp;+18062173470</a>'];
     $menuItem [] = ['label' => 'How it Works', 'url' => ['/how_it_works'],
         'active' => $this->context->route == 'site/how_it_works'
     ];
