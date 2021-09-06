@@ -27,6 +27,19 @@ $val = 'Africa/Nairobi';
 
 $myscript = <<< JS
   $(document).ready(function(){
+      $('#frontorderform').submit(function(e){
+      var form = this;
+      e.preventDefault();
+      // Check Passwords are the same
+      if( $('#password').val()==$('#confirm_password').val() ) {
+          // Submit Form
+          form.submit();
+      } else {
+          // Complain bitterly
+          alert('Password Mismatch');
+          return false;
+      }
+  });
       	$('.numbers-with-commas').counterUp({
         delay: 10, // the delay time in ms
         time: 1000 // the speed time in ms
@@ -666,124 +679,154 @@ $this->registerJs($myscript);
                         paper starting at $8 per page.
                     </h3><br>
                     <div class="row">
-                    <div class="col-md-6 col-xs-12">
-                        <button  class="btn btn-info btn-lg essay-font" style="color: white">
-                        Order Now
-                        </button>
-                    </div>
-                    <div class="col-md-6 col-xs-12">
-                        <h3 style="color:#1695a4; margin-left: -40px; margin-top: -5px"><strong>100% Plagiarism-Free Essays.</strong></h3>
-                    </div>
+                        <div class="col-md-6 col-xs-12">
+                            <button class="btn btn-info btn-lg essay-font" style="color: white">
+                                Order Now
+                            </button>
+                        </div>
+                        <div class="col-md-6 col-xs-12">
+                            <h3 style="color:#1695a4; margin-left: -40px; margin-top: -5px"><strong>100% Plagiarism-Free
+                                    Essays.</strong></h3>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-6 col-xs-12">
 
-                    <?php $form = ActiveForm::begin(['layout' => 'horizontal',
-                        'action' => Url::to(['frontorder/details']),
-                        'fieldConfig' => [
-                            'template' => "{label}\n{beginWrapper}\n{input}\n{hint}\n{error}\n{endWrapper}",
-                            'horizontalCssClasses' => [
-                                'label' => 'col-sm-4',
-                                'wrapper' => 'col-sm-8',
-                                'error' => '',
-                                'hint' => '',
-                            ],
+                <?php $form = ActiveForm::begin(['layout' => 'horizontal',
+                    'action' => Url::to(['frontorder/details']),
+                    'id' => 'frontorderform',
+                    'fieldConfig' => [
+                        'template' => "{label}\n{beginWrapper}\n{input}\n{hint}\n{error}\n{endWrapper}",
+                        'horizontalCssClasses' => [
+                            'label' => 'col-sm-4',
+                            'wrapper' => 'col-sm-8',
+                            'error' => '',
+                            'hint' => '',
                         ],
-                    ]);
-                    ?>
-                    <div class="row">
-                        <div class="col-md-5">
+                    ],
+                ]);
+                ?>
+                <div class="row">
+                    <div class="col-md-1">
 
-                        </div>
-                        <div class="col-md-7 col-sm-7 col-xs-12"
-                             style="background-color: white; opacity: 0.8; border-radius: 10px; color:black">
-                            <h3><strong>Calculate the Price</strong></h3>
-                            <?= $form->field($fmodel, 'service_id', [
-                                'template' => '<div style="font-family: \'Open Sans\', sans-serif; ">{label}</div> <div style=" padding: 0 5px 0 5px;" class="row"><div class="col-sm-7" style="font-family: \'Open Sans\', sans-serif;" >{input}{error}{hint}</div></div>'
-                            ])->label('Service')->dropDownList(\app\models\Service::getServices(),
-                                ['options' => [1 => ['Selected' => 'selected'], 'prompt' => '...select Service....', 'id' => 'service-id']]) ?>
+                    </div>
+                    <div class="col-md-11 col-sm-11 col-xs-12"
+                         style="background-color: white; opacity: 0.8; border-radius: 10px; color:black">
+                        <h3><strong>
+                                <center>Calculate the Price</center>
+                            </strong></h3>
+                        <diV class="row">
+                            <div class="col-sm-7 col-md-7">
+                                <?= $form->field($fmodel, 'service_id', [
+                                    'template' => '<div style="font-family: \'Open Sans\', sans-serif; ">{label}</div> <div style=" padding: 0 5px 0 5px;" class="row"><div class="col-sm-7" style="font-family: \'Open Sans\', sans-serif;" >{input}{error}{hint}</div></div>'
+                                ])->label('Service')->dropDownList(\app\models\Service::getServices(),
+                                    ['options' => [1 => ['Selected' => 'selected'], 'prompt' => '...select Service....', 'id' => 'service-id']]) ?>
 
-                            <?= $form->field($fmodel, 'type_id', [
-                                'template' => '<div style="font-family: \'Open Sans\', sans-serif; margin-top: -10px">{label}</div> <div style=" padding: 0 5px 0 5px;"  class="row"><div class="col-sm-7" style="font-family: \'Open Sans\', sans-serif;" >{input}{error}{hint}</div></div>'
-                            ])->label('Paper Type')->dropDownList(\app\models\Type::getTypes(),
-                                ['options' => [20 => ['Selected' => 'selected'], 'prompt' => '...select Type....', 'id' => 'type-id']]) ?>
+                                <?= $form->field($fmodel, 'type_id', [
+                                    'template' => '<div style="font-family: \'Open Sans\', sans-serif; margin-top: -10px">{label}</div> <div style=" padding: 0 5px 0 5px;"  class="row"><div class="col-sm-7" style="font-family: \'Open Sans\', sans-serif;" >{input}{error}{hint}</div></div>'
+                                ])->label('Paper Type')->dropDownList(\app\models\Type::getTypes(),
+                                    ['options' => [20 => ['Selected' => 'selected'], 'prompt' => '...select Type....', 'id' => 'type-id']]) ?>
 
-                            <?= $form->field($fmodel, 'urgency_id', [
-                                'template' => '<div style="font-family: \'Open Sans\', sans-serif; margin-top: -10px">{label}</div> <div style=" padding: 0 5px 0 5px;"  class="row"><div class="col-sm-7" style="font-family: \'Open Sans\', sans-serif;" >{input}{error}{hint}</div></div>'
-                            ])->label('Urgency')->dropDownList(\app\models\Urgency::getUrgency(), [
-                                'options' => [12 => ['Selected' => 'selected'], 'prompt' => '...select Deadline....', 'id' => 'urgency-id']]) ?>
+                                <?= $form->field($fmodel, 'urgency_id', [
+                                    'template' => '<div style="font-family: \'Open Sans\', sans-serif; margin-top: -10px">{label}</div> <div style=" padding: 0 5px 0 5px;"  class="row"><div class="col-sm-7" style="font-family: \'Open Sans\', sans-serif;" >{input}{error}{hint}</div></div>'
+                                ])->label('Urgency')->dropDownList(\app\models\Urgency::getUrgency(), [
+                                    'options' => [12 => ['Selected' => 'selected'], 'prompt' => '...select Deadline....', 'id' => 'urgency-id']]) ?>
 
-                            <?= $form->field($fmodel, 'pages_id', [
-                                'template' => '<div style="font-family: \'Open Sans\', sans-serif; margin-top: -10px">{label}</div> <div style="padding: 0 5px 0 5px;" class="row"><div class="col-sm-7" style="font-family: \'Open Sans\', sans-serif;" >{input}{error}{hint}</div></div>'
-                            ])->label('Pages')->dropDownList(\app\models\Pages::getPages(), [
-                                'options' => [1 => ['Selected' => 'selected'], 'prompt' => '...select Pages....', 'id' => 'pages-id']]) ?>
+                                <?= $form->field($fmodel, 'pages_id', [
+                                    'template' => '<div style="font-family: \'Open Sans\', sans-serif; margin-top: -10px">{label}</div> <div style="padding: 0 5px 0 5px;" class="row"><div class="col-sm-7" style="font-family: \'Open Sans\', sans-serif;" >{input}{error}{hint}</div></div>'
+                                ])->label('Pages')->dropDownList(\app\models\Pages::getPages(), [
+                                    'options' => [1 => ['Selected' => 'selected'], 'prompt' => '...select Pages....', 'id' => 'pages-id']]) ?>
 
-                            <?= $form->field($fmodel, 'level_id', [
-                                'template' => '<div style="font-family: \'Open Sans\', sans-serif; margin-top: -10px">{label}</div> <div style="padding: 0 5px 0 5px;" class="row"><div  class="col-sm-7" style="font-family: \'Open Sans\', sans-serif;" >{input}{error}{hint}</div></div>'
-                            ])->label('Level')->dropDownList(\app\models\Level::getLevels(), [
-                                'options' => [1 => ['Selected' => 'selected'], 'prompt' => '...select Level....', 'id' => 'level-id']]) ?>
-                            <div class="form-group" style="margin-left: 40px">
-                                <h3 style="margin-top: -10px;" class="essay-font">Price:&nbsp;&nbsp;&nbsp;&nbsp;<img src="<?= Yii::$app->request->baseUrl ?>/images/fire.png"
-                                                                                                                     width="30px"><input class="tcost"
-                                                                                                       style="border: none; width: 100px"
-                                                                                                       type="text"
-                                                                                                       id="min-amount"
-                                                                                                       value="$8.00"
-                                                                                                       readonly="readonly">
-                                </h3>
+                                <?= $form->field($fmodel, 'level_id', [
+                                    'template' => '<div style="font-family: \'Open Sans\', sans-serif; margin-top: -10px">{label}</div> <div style="padding: 0 5px 0 5px;" class="row"><div  class="col-sm-7" style="font-family: \'Open Sans\', sans-serif;" >{input}{error}{hint}</div></div>'
+                                ])->label('Level')->dropDownList(\app\models\Level::getLevels(), [
+                                    'options' => [1 => ['Selected' => 'selected'], 'prompt' => '...select Level....', 'id' => 'level-id']]) ?>
+                                <div class="form-group" style="margin-left: 40px">
+                                    <h3 style="margin-top: -10px;" class="essay-font">Price:&nbsp;&nbsp;&nbsp;&nbsp;<img
+                                                src="<?= Yii::$app->request->baseUrl ?>/images/fire.png"
+                                                width="30px"><input class="tcost"
+                                                                    style="border: none; width: 100px"
+                                                                    type="text"
+                                                                    id="min-amount"
+                                                                    value="$8.00"
+                                                                    readonly="readonly">
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="col-md-5 col-sm-5">
+                                <label for="username">Username</label>
+                                <input name="username" type="text" required id="username" class="form-control" value="">
+                                <label for="email">Email</label>
+                                <input name="email" required type="email" id="email" class="form-control" value="">
+                                <label for="password">Password</label>
+                                <input name="password" required type="password" id="password" class="form-control" value="">
+                                <label for="confirm_password">Confirm Password</label>
+                                <input name="confirm_password" type="password" required id="confirm_password" class="form-control"
+                                       value="">
                             </div>
                             <div class="form-group" style="margin-left: 10px; margin-right: 10px">
                                 <?= Html::submitButton('Continue', ['class' => 'btn btn-lg btn-block btn-info', 'style' => 'font-family: \'Open Sans\', sans-serif; margin-bottom: 20px;']) ?>
                             </div>
-                        </div>
+                        </diV>
                     </div>
-                    <?php ActiveForm::end(); ?>
+                </div>
+                <?php ActiveForm::end(); ?>
             </div>
         </div>
     </div>
 </div>
 <div class="body-container essay-font" style="height: auto; margin-bottom: 20px; background-color: #f0f2f6">
-        <div class="container">
-            <h2 class="essay-font" style="font-weight:bolder; text-align: center;">HOW IT WORKS</h2>
+    <div class="container">
+        <h2 class="essay-font" style="font-weight:bolder; text-align: center;">HOW IT WORKS</h2>
         <center>
             <div class="col-md-3 col-sm-3 col-xs-12">
-                    <div class="row">
-                        <div class="col-md-8 essay-font hidden-xs">
-                            <button style="border-radius: 30px;font-weight: bolder;  background-color: #71D8EC; font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;" type="button" class="btn btn-lg essay-font">
-                                PLACE ORDER
-                            </button>
-                            <p style="vertical-align: middle">Place your order</p>
-                        </div>
-                        <div class="hidden-md hidden-lg hidden-sm">
-                        <button style="border-radius: 30px; background-color: #71D8EC; font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;" type="button" class="btn btn-lg essay-font">
-                            PLACE ORDER
+                <div class="row">
+                    <div class="col-md-8 essay-font hidden-xs">
+                        <button style="border-radius: 30px;font-weight: bolder;  background-color: #71D8EC; font-family: "
+                                Lato
+                        ", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;"
+                        type="button" class="btn btn-lg essay-font">
+                        PLACE ORDER
+                        </button>
+                        <p style="vertical-align: middle">Place your order</p>
+                    </div>
+                    <div class="hidden-md hidden-lg hidden-sm">
+                        <button style="border-radius: 30px; background-color: #71D8EC; font-family: " Lato
+                        ", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;"
+                        type="button" class="btn btn-lg essay-font">
+                        PLACE ORDER
                         </button>
                         <p class="hidden-md hidden-lg hidden-sm">PLACE YOUR ORDER</p>
-                        </div>
-                        <div class="col-md-4 col-sm-2 col-xs-12">
-                            <i style="line-height: 90px; vertical-align: middle;color: #1e7e34"
-                               class="fa fa-arrow-right fa-3x hidden-xs" aria-hidden="true"></i>
-                            <i class="fa fa-arrow-down text-success fa-3x hidden-md hidden-lg hidden-sm "
-                               aria-hidden="true"></i>
-                        </div>
                     </div>
+                    <div class="col-md-4 col-sm-2 col-xs-12">
+                        <i style="line-height: 90px; vertical-align: middle;color: #1e7e34"
+                           class="fa fa-arrow-right fa-3x hidden-xs" aria-hidden="true"></i>
+                        <i class="fa fa-arrow-down text-success fa-3x hidden-md hidden-lg hidden-sm "
+                           aria-hidden="true"></i>
+                    </div>
+                </div>
             </div>
         </center>
         <center>
             <div class="col-md-3 col-sm-3 col-xs-12">
                 <div class="row">
                     <div class="col-md-8 essay-font hidden-xs">
-                        <button style="border-radius: 30px; font-weight: bolder; background-color: #71D8EC; font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;" type="button" class="btn btn-lg essay-font">
-                            PREPARATION
+                        <button style="border-radius: 30px; font-weight: bolder; background-color: #71D8EC; font-family: "
+                                Lato
+                        ", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;"
+                        type="button" class="btn btn-lg essay-font">
+                        PREPARATION
                         </button>
                         <p style="vertical-align: middle">The writer prepares sources for your work</p>
                     </div>
                     <div class="hidden-md hidden-lg hidden-sm">
-                    <button style="border-radius: 30px; background-color: #71D8EC; font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;" type="button" class="btn btn-lg essay-font">
+                        <button style="border-radius: 30px; background-color: #71D8EC; font-family: " Lato
+                        ", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;"
+                        type="button" class="btn btn-lg essay-font">
                         PREPARATION
-                    </button>
-                    <p class="hidden-md hidden-lg hidden-sm">The writer prepares sources for your work</p>
+                        </button>
+                        <p class="hidden-md hidden-lg hidden-sm">The writer prepares sources for your work</p>
                     </div>
                     <div class="col-md-4 col-sm-2 col-xs-12">
                         <i style="line-height: 90px; vertical-align: middle;color: #1e7e34"
@@ -797,16 +840,20 @@ $this->registerJs($myscript);
             <div class="col-md-3 col-sm-3 col-xs-12">
                 <div class="row">
                     <div class="col-md-8 essay-font hidden-xs">
-                        <button style="border-radius: 30px;font-weight: bolder; background-color: #71D8EC; font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;" type="button" class="btn btn-lg essay-font">
-                            COMPLETION
+                        <button style="border-radius: 30px;font-weight: bolder; background-color: #71D8EC; font-family: "
+                                Lato
+                        ", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;"
+                        type="button" class="btn btn-lg essay-font">
+                        COMPLETION
                         </button>
                         <p style="vertical-align: middle">The writer completes your paper</p>
                     </div>
                     <div class="hidden-md hidden-lg hidden-sm">
-                    <button style="border-radius: 30px; background-color: #71D8EC; background-color: #71D8EC; font-family: 'Philosopher', sans-serif;" type="button" class="btn btn-lg essay-font">
-                        COMPLETION
-                    </button>
-                    <p class="hidden-md hidden-lg hidden-sm">The writer completes your paper</p>
+                        <button style="border-radius: 30px; background-color: #71D8EC; background-color: #71D8EC; font-family: 'Philosopher', sans-serif;"
+                                type="button" class="btn btn-lg essay-font">
+                            COMPLETION
+                        </button>
+                        <p class="hidden-md hidden-lg hidden-sm">The writer completes your paper</p>
                     </div>
                     <div class="col-md-4 col-sm-2 col-xs-12">
                         <i style="line-height: 90px; vertical-align: middle;color: #1e7e34"
@@ -821,20 +868,25 @@ $this->registerJs($myscript);
             <div class="col-md-3 col-sm-3 col-xs-12">
                 <div class="row">
                     <div class="col-md-8 essay-font hidden-xs">
-                        <button style="border-radius: 30px; font-weight: bolder; background-color: #71D8EC; font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;" type="button" class="btn btn-lg essay-font">
-                            POLISHING
+                        <button style="border-radius: 30px; font-weight: bolder; background-color: #71D8EC; font-family: "
+                                Lato
+                        ", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;"
+                        type="button" class="btn btn-lg essay-font">
+                        POLISHING
                         </button>
                         <p style="vertical-align: middle">The writer polishes your paper</p>
                     </div>
                     <div class="hidden-md hidden-lg hidden-sm">
-                    <button style="border-radius: 30px; background-color: #71D8EC; font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;" type="button" class="btn btn-lg essay-font">
+                        <button style="border-radius: 30px; background-color: #71D8EC; font-family: " Lato
+                        ", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;"
+                        type="button" class="btn btn-lg essay-font">
                         POLISHING
-                    </button>
-                    <p>The writer polishes your paper</p>
+                        </button>
+                        <p>The writer polishes your paper</p>
                     </div>
                     <div class="col-md-4 col-sm-2 col-xs-12">
                         <i style="margin-bottom: 80px; vertical-align: middle;color: #1e7e34"
-                        class="fa fa-check-circle fa-5x hidden-xs" aria-hidden="true"></i></i>
+                           class="fa fa-check-circle fa-5x hidden-xs" aria-hidden="true"></i></i>
                         <i class="fa fa-arrow-down fa-3x text-success hidden-md hidden-lg hidden-sm "
                            aria-hidden="true"></i>
                         <h3 class="hidden-md hidden-lg hidden-sm">You Receive your Work</h3>
@@ -845,144 +897,163 @@ $this->registerJs($myscript);
     </div>
 </div>
 
-<div class="body-container essay-font" style="background-color: white; font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;line-height: 2.0">
-        <div class="container">
-            <div class="col-md-4 col-sm-4">
-                <h2><strong>Moneyback Guarantee</strong></h2>
-                <p>We are a company that values our image and credibility.
-                    Excellent customer experience and satisfaction are our primary goal and we work hard to achieve it.
-                    We refund back your money in case you are not satisfied with the service offered.
+<div class="body-container essay-font" style="background-color: white; font-family: "
+     Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;line-height: 2.0">
+<div class="container">
+    <div class="col-md-4 col-sm-4">
+        <h2><strong>Moneyback Guarantee</strong></h2>
+        <p>We are a company that values our image and credibility.
+            Excellent customer experience and satisfaction are our primary goal and we work hard to achieve it.
+            We refund back your money in case you are not satisfied with the service offered.
 
-                    We allow you to reserve the payment for your writer until you receive the paper and confirm that it meets your expectations.
-                    You are free to cancel your order and still get back your money. Please remember to read our <a href="<?= Url::to(['site/terms_and_conditions']) ?>">Terms and Conditions.</a></p>
-                <center><img src="<?= Yii::$app->request->baseUrl ?>/images/page/money-back-guarantee2.png"
-                             width="222px"></center>
-                <center><a href="<?= Url::to(['site/guarantee']) ?>">
-                        <button style="color: white; border-radius: 30px; background-color: #1695a4" type="button" class="btn btn-lg essay-font">
-                            Money back guarantee
-                        </button>
-                    </a></center>
-                <br>
-            </div>
-            <div class="col-md-8 col-sm-4">
-                <center><h2 style="font-weight: bolder">Who we are</h2></center>
-                <p>Verified Professors is a reliable partner for professional freelance writers with experience in
-                    students papers to provide high quality papers for our clients. We have an open reviews section
-                    where our customers give us feedback on their experience with us. It is easy to judge yourself
-                    from the reviews how satisfied our clients are with the service. You do not have to spend
-                    sleepless nights thinking of how you will improve your grade. Let us do it essay for you while
-                    you do other duties.
-                </p>
-                <center><h2><strong>24/7 Customer Support</strong></h2><br>
-                    <p>With a team of experienced writers from native English speaking countries, we promise to
-                        deliver quality work to you on time. Our writers highly qualified and available 24/7 to
-                        handle projects regardless of the deadline or the difficulty. We guarantee 0% plagiarism
-                        in all papers, ensure all papers are written from scratch and penalize any writer who tries
-                        to deliver plagiarized writing to you. All revisions are free until you are 100% satisfied
-                        with your paper.</p>
-                    <h1 style="font-size: 100px; color: #3D715B"><strong>98.9%</strong></h1>
+            We allow you to reserve the payment for your writer until you receive the paper and confirm that it meets
+            your expectations.
+            You are free to cancel your order and still get back your money. Please remember to read our <a
+                    href="<?= Url::to(['site/terms_and_conditions']) ?>">Terms and Conditions.</a></p>
+        <center><img src="<?= Yii::$app->request->baseUrl ?>/images/page/money-back-guarantee2.png"
+                     width="222px"></center>
+        <center><a href="<?= Url::to(['site/guarantee']) ?>">
+                <button style="color: white; border-radius: 30px; background-color: #1695a4" type="button"
+                        class="btn btn-lg essay-font">
+                    Money back guarantee
+                </button>
+            </a></center>
+        <br>
+    </div>
+    <div class="col-md-8 col-sm-4">
+        <center><h2 style="font-weight: bolder">Who we are</h2></center>
+        <p>Verified Professors is a reliable partner for professional freelance writers with experience in
+            students papers to provide high quality papers for our clients. We have an open reviews section
+            where our customers give us feedback on their experience with us. It is easy to judge yourself
+            from the reviews how satisfied our clients are with the service. You do not have to spend
+            sleepless nights thinking of how you will improve your grade. Let us do it essay for you while
+            you do other duties.
+        </p>
+        <center><h2><strong>24/7 Customer Support</strong></h2><br>
+            <p>With a team of experienced writers from native English speaking countries, we promise to
+                deliver quality work to you on time. Our writers highly qualified and available 24/7 to
+                handle projects regardless of the deadline or the difficulty. We guarantee 0% plagiarism
+                in all papers, ensure all papers are written from scratch and penalize any writer who tries
+                to deliver plagiarized writing to you. All revisions are free until you are 100% satisfied
+                with your paper.</p>
+            <h1 style="font-size: 100px; color: #3D715B"><strong>98.9%</strong></h1>
+        </center>
+
+        <h1
+    </div>
+</div>
+</div>
+
+<div class="body-container essay-font hidden-xs"
+     style="background-color: whitesmoke;padding-bottom: 20px; padding-top: 20px;">
+    <center>
+        <h1><strong>Professional Essay Writers Team</strong></h1>
+        <p class="col-sm-6 col-sm-offset-3">At Verified Professors, we employ a large team of skilled writers. Their
+            rating is based on previous
+            customer reviews and rates.
+            Before you hire a writer, you can familiarize yourself with his track record in detail.
+        </p>
+    </center>
+    <div class="container" style="z-index: 100;">
+        <div class="col-sm-3">
+            <div style="background-color: white; opacity: 0.8; border-radius: 10px; color: black; padding-bottom: 20px">
+                <center>
+                    <img src="<?= Yii::$app->request->baseUrl ?>/images/olivia.jpg" width="50px"
+                         style="margin-top: 20px; border-radius: 50px">
+                    <h3>Tutor Olivia Fendi</h3>
+                    <p>Professional Academic Writer.</p>
+                    <img src="<?= Yii::$app->request->baseUrl ?>/images/rating.png" width="100px"
+                         style="margin-top: -10px">
+                    <hr>
+                    <div class="col-sm-4 writters writters-items">720<br>ORDERS</div>
+                    <div class="col-sm-4 writters writters-items">100%<br>SUCCESS</div>
+                    <div class="col-sm-4 writters">5.0<br>RATING</div>
                 </center>
+            </div>
+        </div>
 
-                <h1
+        <div class="col-sm-3">
+            <div style="background-color: white; opacity: 0.8; padding-bottom: 20px; border-radius: 10px; color: black">
+                <center>
+                    <img src="<?= Yii::$app->request->baseUrl ?>/images/img2" width="50px"
+                         style="margin-top: 20px; border-radius: 50px">
+                    <h3>Tutor Meghan Jones</h3>
+                    <p>Astute, honest and hardworking writer.</p>
+                    <img src="<?= Yii::$app->request->baseUrl ?>/images/rating.png" width="100px"
+                         style="margin-top: -10px">
+                    <hr>
+                    <div class="col-sm-4 writters writters-items">622<br>ORDERS</div>
+                    <div class="col-sm-4 writters writters-items">100%<br>SUCCESS</div>
+                    <div class="col-sm-4 writters">5.0<br>RATING</div>
+                </center>
+            </div>
+        </div>
+
+        <div class="col-sm-3">
+            <div style="background-color: white; opacity: 0.8;padding-bottom: 20px; border-radius: 10px; color: black">
+                <center>
+                    <img src="<?= Yii::$app->request->baseUrl ?>/images/img3" width="50px"
+                         style="margin-top: 20px; border-radius: 50px">
+                    <h3>Tutor Steve Darron</h3>
+                    <p>I provide quality work guaranteed to give you an exemplary grade.</p>
+                    <img src="<?= Yii::$app->request->baseUrl ?>/images/rating.png" width="100px"
+                         style="margin-top: -10px">
+                    <hr>
+                    <div class="col-sm-4 writters writters-items">418<br>ORDERS</div>
+                    <div class="col-sm-4 writters writters-items">100%<br>SUCCESS</div>
+                    <div class="col-sm-4 writters">5.0<br>RATING</div>
+                </center>
+            </div>
+        </div>
+
+        <div class="col-sm-3">
+            <div style="background-color: white; opacity: 0.8; border-radius: 10px;padding-bottom: 20px; color: black">
+                <center>
+                    <img src="<?= Yii::$app->request->baseUrl ?>/images/img4" width="50px"
+                         style="margin-top: 20px; border-radius: 50px">
+                    <h3>Prof. Raymond M.</h3>
+                    <p>A client-oriented professional academic and research writer.</p>
+                    <img src="<?= Yii::$app->request->baseUrl ?>/images/rating.png" width="100px"
+                         style="margin-top: -10px">
+                    <hr>
+                    <div class="col-sm-4 writters writters-items">630<br>ORDERS</div>
+                    <div class="col-sm-4 writters writters-items">100%<br>SUCCESS</div>
+                    <div class="col-sm-4 writters">5.0<br>RATING</div>
+                </center>
             </div>
         </div>
     </div>
-
-    <div class="body-container essay-font hidden-xs" style="background-color: whitesmoke;padding-bottom: 20px; padding-top: 20px;">
-        <center>
-            <h1><strong>Professional Essay Writers Team</strong></h1>
-            <p class="col-sm-6 col-sm-offset-3">At Verified Professors, we employ a large team of skilled writers. Their rating is based on previous
-                customer reviews and rates.
-                Before you hire a writer, you can familiarize yourself with his track record in detail.
-            </p>
-        </center>
-        <div class="container" style="z-index: 100;">
-                <div class="col-sm-3">
-                <div style="background-color: white; opacity: 0.8; border-radius: 10px; color: black; padding-bottom: 20px">
-                    <center>
-                    <img src="<?= Yii::$app->request->baseUrl ?>/images/olivia.jpg" width="50px" style="margin-top: 20px; border-radius: 50px">
-                    <h3>Tutor Olivia Fendi</h3>
-                    <p>Professional Academic Writer.</p>
-                    <img src="<?= Yii::$app->request->baseUrl ?>/images/rating.png" width="100px" style="margin-top: -10px">
-                    <hr>
-                        <div class="col-sm-4 writters writters-items">720<br>ORDERS</div>
-                        <div class="col-sm-4 writters writters-items">100%<br>SUCCESS</div>
-                        <div class="col-sm-4 writters">5.0<br>RATING</div>
-                    </center>
-                </div>
-                </div>
-
-                <div class="col-sm-3">
-                    <div style="background-color: white; opacity: 0.8; padding-bottom: 20px; border-radius: 10px; color: black">
-                        <center>
-                            <img src="<?= Yii::$app->request->baseUrl ?>/images/img2" width="50px" style="margin-top: 20px; border-radius: 50px">
-                            <h3>Tutor Meghan Jones</h3>
-                            <p>Astute, honest and hardworking writer.</p>
-                            <img src="<?= Yii::$app->request->baseUrl ?>/images/rating.png" width="100px" style="margin-top: -10px">
-                            <hr>
-                            <div class="col-sm-4 writters writters-items">622<br>ORDERS</div>
-                            <div class="col-sm-4 writters writters-items">100%<br>SUCCESS</div>
-                            <div class="col-sm-4 writters">5.0<br>RATING</div>
-                        </center>
-                    </div>
-                </div>
-
-                <div class="col-sm-3">
-                    <div style="background-color: white; opacity: 0.8;padding-bottom: 20px; border-radius: 10px; color: black">
-                        <center>
-                            <img src="<?= Yii::$app->request->baseUrl ?>/images/img3" width="50px" style="margin-top: 20px; border-radius: 50px">
-                            <h3>Tutor Steve Darron</h3>
-                            <p>I provide quality work guaranteed to give you an exemplary grade.</p>
-                            <img src="<?= Yii::$app->request->baseUrl ?>/images/rating.png" width="100px" style="margin-top: -10px">
-                            <hr>
-                            <div class="col-sm-4 writters writters-items">418<br>ORDERS</div>
-                            <div class="col-sm-4 writters writters-items">100%<br>SUCCESS</div>
-                            <div class="col-sm-4 writters">5.0<br>RATING</div>
-                        </center>
-                    </div>
-                </div>
-
-                <div class="col-sm-3">
-                    <div style="background-color: white; opacity: 0.8; border-radius: 10px;padding-bottom: 20px; color: black">
-                        <center>
-                            <img src="<?= Yii::$app->request->baseUrl ?>/images/img4" width="50px" style="margin-top: 20px; border-radius: 50px">
-                            <h3>Prof. Raymond M.</h3>
-                            <p>A client-oriented professional academic and research writer.</p>
-                            <img src="<?= Yii::$app->request->baseUrl ?>/images/rating.png" width="100px" style="margin-top: -10px">
-                            <hr>
-                            <div class="col-sm-4 writters writters-items">630<br>ORDERS</div>
-                            <div class="col-sm-4 writters writters-items">100%<br>SUCCESS</div>
-                            <div class="col-sm-4 writters">5.0<br>RATING</div>
-                        </center>
-                    </div>
-                </div>
-    </div>
 </div>
-
 
 
 <div class="body-container essay-font" style="background-color: #3D715B">
     <div class="container">
         <div class="row" style="height: auto; color: #69D9F4;margin-top: 10px">
             <div class="col-md-3 col-sm-3 col-xs-12 numbers-items">
-                <center><img width="80px" style="border-radius: 60px" src="<?= Yii::$app->request->baseUrl ?>/images/slides/approved.png"></center>
+                <center><img width="80px" style="border-radius: 60px"
+                             src="<?= Yii::$app->request->baseUrl ?>/images/slides/approved.png"></center>
                 <h1 class="numbers-with-commas"
                     style="color:white; font-size: 60px; font-weight: 900; text-align: center"><?= number_format(floatval($allorders), 0, '.', ',') ?></h1>
                 <h5 style="color:white; text-align: center">COMPLETED ORDERS</h5>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-12 numbers-items">
-                <center><img width="80px" style="border-radius: 60px" src="<?= Yii::$app->request->baseUrl ?>/images/slides/tick.png"></center>
-                <h1 class="numbers-with-commas" style="color:white; font-size: 60px; font-weight: 900; text-align: center"><?= number_format(floatval($clientCount), 0, '.', ',') ?></h1>
+                <center><img width="80px" style="border-radius: 60px"
+                             src="<?= Yii::$app->request->baseUrl ?>/images/slides/tick.png"></center>
+                <h1 class="numbers-with-commas"
+                    style="color:white; font-size: 60px; font-weight: 900; text-align: center"><?= number_format(floatval($clientCount), 0, '.', ',') ?></h1>
                 <h5 style="color:white; text-align: center">SATISFIED CLIENTS</h5>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-12 numbers-items">
-                <center><img width="80px" style="border-radius: 60px" src="<?= Yii::$app->request->baseUrl ?>/images/slides/satisfied.png"></center>
+                <center><img width="80px" style="border-radius: 60px"
+                             src="<?= Yii::$app->request->baseUrl ?>/images/slides/satisfied.png"></center>
                 <h1 style="color:white; font-size: 60px; font-weight: 900; text-align: center">98.64<sup>%</sup></h1>
                 <h5 style="color:white; text-align: center;">POSITIVE FEEDBACKS</h5>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-12 numbers-items">
-                <center><img width="80px" style="border-radius: 60px" src="<?= Yii::$app->request->baseUrl ?>/images/slides/rep.jpg"></center>
-                <h1 class="numbers-with-commas" style="color:white; font-size: 60px; font-weight: 900; text-align: center">8</h1>
+                <center><img width="80px" style="border-radius: 60px"
+                             src="<?= Yii::$app->request->baseUrl ?>/images/slides/rep.jpg"></center>
+                <h1 class="numbers-with-commas"
+                    style="color:white; font-size: 60px; font-weight: 900; text-align: center">8</h1>
                 <h5 style="color:white; text-align: center">SUPPORT REPRESENTATIVES</h5>
             </div>
         </div>
@@ -990,164 +1061,178 @@ $this->registerJs($myscript);
 </div>
 
 <div class="body-container essay-font hidden-xs" style="background-color: whitesmoke;">
-            <div class="container">
-            <div class="row" style="height: auto; margin-bottom: 20px;">
-                <h2 style="font-weight:bolder; text-align: center; color: black;font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;">WHY CHOOSE US</h2>
-                <div class="col-md-4 col-sm-4 col-xs-12">
-                    <div class="col-md-2 col-sm-4 col-xs-12">
-                        <img width="70px" style="margin-left:20px; border-radius: 30px; margin-top:10px;"
-                             src="<?= Yii::$app->request->baseUrl ?>/images/slides/sms.png">
-                    </div>
-                    <div class="col-md-10 col-sm-10 col-xs-12">
-                        <ul style="list-style: none; color: black;">
-                            <li>
-                                <h4 style="color: #4DD1F4; font-weight: bolder">QUALITY</h4>
-                                <p>You get an original and high-quality paper based on extensive research.
-                                    The completed work will be correctly formatted, referenced and tailored to your level of study.</p>
-                            </li>
-                        </ul>
-                    </div>
+    <div class="container">
+        <div class="row" style="height: auto; margin-bottom: 20px;">
+            <h2 style="font-weight:bolder; text-align: center; color: black;font-family: " Lato", -apple-system,
+            BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;">WHY CHOOSE US</h2>
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="col-md-2 col-sm-4 col-xs-12">
+                    <img width="70px" style="margin-left:20px; border-radius: 30px; margin-top:10px;"
+                         src="<?= Yii::$app->request->baseUrl ?>/images/slides/sms.png">
                 </div>
-                <div class="col-md-4 col-sm-4 col-xs-12">
-                    <div class="col-md-2 col-sm-4 col-xs-12">
+                <div class="col-md-10 col-sm-10 col-xs-12">
+                    <ul style="list-style: none; color: black;">
+                        <li>
+                            <h4 style="color: #4DD1F4; font-weight: bolder">QUALITY</h4>
+                            <p>You get an original and high-quality paper based on extensive research.
+                                The completed work will be correctly formatted, referenced and tailored to your level of
+                                study.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="col-md-2 col-sm-4 col-xs-12">
                     <center><img width="65px" style="margin-left:20px; border-radius: 30px; margin-top:10px;"
                                  src="<?= Yii::$app->request->baseUrl ?>/images/slides/format.png"></center>
-                    </div>
-                    <div class="col-md-10 col-sm-10 col-xs-12">
-                        <ul style="list-style: none;color: black;">
+                </div>
+                <div class="col-md-10 col-sm-10 col-xs-12">
+                    <ul style="list-style: none;color: black;">
                         <li>
                             <h4 style="color: #4DD1F4; font-weight: bolder">ON-TIME DELIVERY</h4>
                             <p>We strive to deliver quality custom written papers before the deadline.
-                                That's why you don't have to worry about missing the deadline for submitting your assignment.</p>
+                                That's why you don't have to worry about missing the deadline for submitting your
+                                assignment.</p>
                         </li>
                     </ul>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-4 col-xs-12">
-                    <div class="col-md-2 col-sm-4 col-xs-12">
-                    <center><img width="80px" style="margin-left:20px; border-radius: 30px; margin-top:10px;"
-                                 src="<?= Yii::$app->request->baseUrl ?>/images/slides/confidential.jpg"></center>
-                    </div>
-                    <div class="col-md-10 col-sm-10 col-xs-12">
-                        <ul style="list-style: none; color: black;">
-                        <li>
-                            <h4 style="color: #4DD1F4; font-weight: bolder">CONFIDENTIALITY</h4>
-                            <p>We value your privacy. We do not disclose your personal information to any third party without your consent.
-                                Your payment data is also safely handled as you process the payment through a secured and verified payment processor.</p>
-                        </li>
-                    </ul>
-                    </div>
                 </div>
             </div>
-            <div class="row" style="height: auto; margin-bottom: 20px; color: #46b8da;">
-                <div class="col-md-4 col-sm-4 col-xs-12">
-                    <div class="col-md-2 col-sm-4 col-xs-12">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="col-md-2 col-sm-4 col-xs-12">
+                    <center><img width="80px" style="margin-left:20px; border-radius: 30px; margin-top:10px;"
+                                 src="<?= Yii::$app->request->baseUrl ?>/images/slides/confidential.jpg"></center>
+                </div>
+                <div class="col-md-10 col-sm-10 col-xs-12">
+                    <ul style="list-style: none; color: black;">
+                        <li>
+                            <h4 style="color: #4DD1F4; font-weight: bolder">CONFIDENTIALITY</h4>
+                            <p>We value your privacy. We do not disclose your personal information to any third party
+                                without your consent.
+                                Your payment data is also safely handled as you process the payment through a secured
+                                and verified payment processor.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="height: auto; margin-bottom: 20px; color: #46b8da;">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="col-md-2 col-sm-4 col-xs-12">
                     <center><img width="65px" style="margin-left:20px; border-radius: 60px; margin-top:10px;"
                                  src="<?= Yii::$app->request->baseUrl ?>/images/slides/pdf.png"></center>
-                    </div>
-                    <div class="col-md-10 col-sm-10 col-xs-12">
-                        <ul style="list-style: none;color: black;">
+                </div>
+                <div class="col-md-10 col-sm-10 col-xs-12">
+                    <ul style="list-style: none;color: black;">
                         <li>
                             <h4 style="color: #4DD1F4; font-weight: bolder">24/7 SUPPORT</h4>
-                            <p>From answering simple questions to solving any possible issues, we're always here to help you in chat and on the phone.
+                            <p>From answering simple questions to solving any possible issues, we're always here to help
+                                you in chat and on the phone.
                                 We've got you covered at any time, day or night.</p>
                         </li>
                     </ul>
-                    </div>
                 </div>
-                <div class="col-md-4 col-sm-4 col-xs-12">
-                    <div class="col-md-2 col-sm-4 col-xs-12">
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="col-md-2 col-sm-4 col-xs-12">
                     <center><img width="68px" style="margin-left:20px; border-radius: 30px; margin-top:10px;"
                                  src="<?= Yii::$app->request->baseUrl ?>/images/slides/original.png"></center>
-                    </div>
-                    <div class="col-md-10 col-sm-10 col-xs-12">
-                        <ul style="list-style: none; color: black;">
+                </div>
+                <div class="col-md-10 col-sm-10 col-xs-12">
+                    <ul style="list-style: none; color: black;">
                         <li>
                             <h4 style="color: #4DD1F4; font-weight: bolder">ORIGINALITY</h4>
                             <p>Every single order we deliver is written from scratch according to your instructions.
-                                We have zero tolerance for plagiarism, so all completed papers are unique and checked for plagiarism using a leading plagiarism detector.</p>
+                                We have zero tolerance for plagiarism, so all completed papers are unique and checked
+                                for plagiarism using a leading plagiarism detector.</p>
                         </li>
                     </ul>
-                    </div>
                 </div>
-                <div class="col-md-4 col-sm-4 col-xs-12">
-                    <div class="col-md-2 col-sm-4 col-xs-12">
-                    <center><img width="70px" style="color:cadetblue; margin-left:20px; border-radius: 30px; margin-top:10px;"
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="col-md-2 col-sm-4 col-xs-12">
+                    <center><img width="70px"
+                                 style="color:cadetblue; margin-left:20px; border-radius: 30px; margin-top:10px;"
                                  src="<?= Yii::$app->request->baseUrl ?>/images/slides/revision.png"></center>
-                    </div>
-                    <div class="col-md-10 col-sm-10 col-xs-12">
-                        <ul style="list-style: none; color: black; none;">
+                </div>
+                <div class="col-md-10 col-sm-10 col-xs-12">
+                    <ul style="list-style: none; color: black; none;">
                         <li>
                             <h4 style="color: #4DD1F4; font-weight: bolder">FREE REVISIONS</h4>
-                            <p>You can ask to revise your paper as many times as you need until you're completely satisfied with the result.
+                            <p>You can ask to revise your paper as many times as you need until you're completely
+                                satisfied with the result.
                                 Provide notes about what needs to be changed, and we'll change it right away.</p>
                         </li>
                     </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="body-container essay-font" style="background-color: #CCE4F7;">
+    <div class="container">
+        <div class="home-slider">
+            <div class="slide1" style="min-height: 400px">
+                <h1 style="text-align: center;font-weight: bolder">What our customers say</h1>
+                <h4 style="text-align: center;font-weight: bolder; color: black">Avg rating for all
+                    reviews: <?= number_format(floatval($avgrating), 1, '.', ',') ?> / 5</h4>
+                <div class="col-sm-6 col-sm-offset-3 col-xs-12">
+                    <div style="border-radius:10px; background-color: rgba(255,255,255,.8); padding: 20px 20px 20px 40px; margin-top: 30px;">
+                        <center>
+                            <h3><strong>Order# 14636</strong></h3><br>
+                            <img src="<?= Yii::$app->request->baseUrl ?>/images/rating.png" width="100px"
+                                 style="margin-bottom: 10px">
+                            <p style="font-size: large">"These guys have been saving me big time.
+                                Third time placing an order with them and they delivered quality work as always. Thanks
+                                guys.
+                                Highly recommend!!"</p>
+                            <h4><strong>Completed: 20 minutes ago</strong></h4>
+                        </center>
+                    </div>
+                </div>
+            </div>
+            <div class="slide2" style="background-color: #CCE4F7; min-height: 400px">
+                <h1 style="text-align: center;font-weight: bolder">What our customers say</h1>
+                <h4 style="text-align: center; color: black; font-weight: bolder">Avg rating for all
+                    reviews: <?= number_format(floatval($avgrating), 1, '.', ',') ?> / 5</h4>
+                <div class="col-sm-6 col-sm-offset-3 col-xs-12">
+                    <div style="border-radius:10px; background-color:rgba(255,255,255,.8); padding: 20px 20px 20px 40px; margin-top: 30px;">
+                        <center>
+                            <h3><strong>Order# 14637</strong></h3><br>
+                            <img src="<?= Yii::$app->request->baseUrl ?>/images/rating1.png" width="100px"
+                                 style="margin-bottom: 10px">
+                            <p style="font-size: large">
+                                "You never disappoint. You did an AMAZING work within a very short time. It looked so
+                                easy for you.
+                                Will definitely keep using your services."
+                            </p>
+                            <h4><strong>Completed: 2 hours and 30 minutes ago</strong></h4>
+                        </center>
+                    </div>
+                </div>
+            </div>
+            <div class="slide3" style="background-color: #CCE4F7; min-height: 400px">
+                <h1 style="text-align: center;font-weight: bolder">What our customers say</h1>
+                <h4 style="text-align: center; font-weight: bolder; color: black">Avg rating for all
+                    reviews: <?= number_format(floatval($avgrating), 1, '.', ',') ?> / 5</h4>
+                <div class="col-sm-6 col-sm-offset-3 col-xs-12">
+                    <div style="border-radius:10px; background: rgba(255,255,255,.8); padding: 20px 20px 20px 40px; margin-top: 30px;">
+                        <center>
+                            <h3><strong>Order# 14638</strong></h3><br>
+                            <img src="<?= Yii::$app->request->baseUrl ?>/images/rating.png" width="100px"
+                                 style="margin-bottom: 10px">
+                            <p style="font-size: large">At Verified Professors we are very cheap
+                                as compared those other sites I have visited. The quality of work is high.
+                                I recommend this site."
+                            </p>
+
+                            <h4><strong>Completed: 3 hours and 18 minutes ago</strong></h4>
+                        </center>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-<div class="body-container essay-font" style="background-color: #CCE4F7;">
-    <div class="container">
-<div class="home-slider">
-    <div class="slide1" style="min-height: 400px">
-        <h1 style="text-align: center;font-weight: bolder">What our customers say</h1>
-        <h4 style="text-align: center;font-weight: bolder; color: black">Avg rating for all
-                    reviews: <?= number_format(floatval($avgrating), 1, '.', ',') ?> / 5</h4>
-        <div class="col-sm-6 col-sm-offset-3 col-xs-12">
-            <div style="border-radius:10px; background-color: rgba(255,255,255,.8); padding: 20px 20px 20px 40px; margin-top: 30px;">
-                <center>
-                    <h3><strong>Order# 14636</strong></h3><br>
-                    <img src="<?= Yii::$app->request->baseUrl ?>/images/rating.png" width="100px" style="margin-bottom: 10px">
-                    <p style="font-size: large">"These guys have been saving me big time.
-                        Third time placing an order with them and they delivered quality work as always. Thanks guys.
-                        Highly recommend!!"</p>
-                    <h4><strong>Completed: 20 minutes ago</strong></h4>
-                </center>
-            </div>
-        </div>
-    </div>
-    <div class="slide2" style="background-color: #CCE4F7; min-height: 400px">
-        <h1 style="text-align: center;font-weight: bolder">What our customers say</h1>
-        <h4 style="text-align: center; color: black; font-weight: bolder">Avg rating for all
-                    reviews: <?= number_format(floatval($avgrating), 1, '.', ',') ?> / 5</h4>
-        <div class="col-sm-6 col-sm-offset-3 col-xs-12">
-            <div style="border-radius:10px; background-color:rgba(255,255,255,.8); padding: 20px 20px 20px 40px; margin-top: 30px;">
-                <center>
-                    <h3><strong>Order# 14637</strong></h3><br>
-                    <img src="<?= Yii::$app->request->baseUrl ?>/images/rating1.png" width="100px" style="margin-bottom: 10px">
-                    <p style="font-size: large">
-                    "You never disappoint. You did an AMAZING work within a very short time. It looked so easy for you.
-                    Will definitely keep using your services."
-                    </p>
-                    <h4><strong>Completed: 2 hours and 30 minutes ago</strong></h4>
-                </center>
-            </div>
-        </div>
-    </div>
-    <div class="slide3" style="background-color: #CCE4F7; min-height: 400px">
-        <h1 style="text-align: center;font-weight: bolder">What our customers say</h1>
-        <h4 style="text-align: center; font-weight: bolder; color: black">Avg rating for all
-                    reviews: <?= number_format(floatval($avgrating), 1, '.', ',') ?> / 5</h4>
-        <div class="col-sm-6 col-sm-offset-3 col-xs-12">
-            <div style="border-radius:10px; background: rgba(255,255,255,.8); padding: 20px 20px 20px 40px; margin-top: 30px;">
-                <center>
-                    <h3><strong>Order# 14638</strong></h3><br>
-                    <img src="<?= Yii::$app->request->baseUrl ?>/images/rating.png" width="100px" style="margin-bottom: 10px">
-                    <p style="font-size: large">At Verified Professors we are very cheap
-                        as compared those other sites I have visited. The quality of work is high.
-                        I recommend this site."
-                    </p>
-            
-                    <h4><strong>Completed: 3 hours and 18 minutes ago</strong></h4>
-                </center>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
 </div>
 
 </div>
