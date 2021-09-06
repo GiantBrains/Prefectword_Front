@@ -163,7 +163,7 @@ class FrontorderController extends Controller
 
             if (Yii::$app->user->login($identity)) {
                 Yii::info('reached here');
-                return $this->redirect(['/order/create']);
+                return $this->redirect(['order/create']);
             }
         }
         return $this->redirect(['site']);
