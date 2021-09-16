@@ -53,7 +53,7 @@ $this->registerMetaTag([
                 <li>Editing and Proofreading</li>
                 <li>Statistical projects</li>
             </ol>
-            <p>Try us today, and we promise quality work. Get the maximum value for your money with verified professors.</p>
+            <p>Try us today, and we promise quality work. Get the maximum value for your money with Prefectword.</p>
         </div>
     </div>
 </div>

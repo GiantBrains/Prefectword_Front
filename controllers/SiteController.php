@@ -6,6 +6,7 @@ use app\models\Article;
 use app\models\Auth;
 use app\models\AuthHandler;
 use app\models\ChangePassword;
+use app\models\File;
 use app\models\Level;
 use app\models\Order;
 use app\models\Pages;
@@ -112,7 +113,7 @@ class SiteController extends Controller
         $signup = new SignupForm();
         $settings = Settings::findOne(1);
         $model = new Order();
-        $fmodel = new Frontorder();
+        $file = new File();
         $ratingCount = Rating::find()->count();
         $timezone = Yii::$app->timezone->name;
         $allorders = Uniqueid::findOne(1);
@@ -126,11 +127,11 @@ class SiteController extends Controller
         $avgrating = $totalrating / $count;
         Yii::$app->view->params['avgrating'] = $avgrating;
         return $this->render('index', [
-            'fmodel' => $fmodel,
             'model' => $model,
-            'settings'=>$settings,
+            'settings' => $settings,
             'signup' => $signup,
             'clientCount' => $clients,
+            'file' => $file,
             'ratings' => $ratings,
             'allorders' => $allorders->orderid,
             'timezone' => $timezone,

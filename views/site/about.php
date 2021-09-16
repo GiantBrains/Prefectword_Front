@@ -25,7 +25,7 @@ $this->registerMetaTag([
     <h1 class="text-success" style="text-align: center;"><?= Html::encode($this->title) ?></h1>
     <div class="site-about">
         <div class="col-md-8 col-md-offset-2">
-            <p>Verified Professors is a reliable partner for experienced freelance writers in
+            <p>Prefectword is a reliable partner for experienced freelance writers in
                 academic papers who provide high quality papers for our students. We have an open reviews section
                 where our clients rate and give feedback on the service and their experience with us. It is easy to
                 judge for yourself

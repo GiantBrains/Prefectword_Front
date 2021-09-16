@@ -73,7 +73,7 @@ class Order extends \yii\db\ActiveRecord
     {
         return [
             [['service_id', 'cancelled', 'ordernumber', 'created_by', 'written_by', 'edited_by', 'type_id', 'urgency_id', 'spacing_id', 'pages_id', 'level_id', 'subject_id', 'style_id', 'sources_id', 'language_id', 'pagesummary', 'plagreport', 'initialdraft', 'qualitycheck', 'topwriter'], 'integer'],
-            [['topic', 'instructions','phone', 'spacing_id', 'pages_id', 'service_id', 'type_id', 'urgency_id', 'level_id', 'subject_id', 'style_id', 'sources_id',], 'required'],
+            [['topic', 'instructions','spacing_id', 'pages_id', 'service_id', 'type_id', 'urgency_id', 'level_id', 'subject_id', 'style_id', 'sources_id',], 'required'],
             [['instructions'], 'string'],
             [['created_at'], 'safe'],
             [['active', 'paid', 'completed', 'disputed', 'approved', 'rejected', 'editing', 'revision', 'available', 'confirmed',], 'boolean'],

@@ -11,7 +11,7 @@
 
 <p style="text-transform: capitalize">Dear <?= $user->username ?>,</p>
 
-<p>You have reserved $<?= $deposit ?>for order <?= $ordernumber ?> . please view your <a href="https://verifiedprofessors.com/order/view?oid=<?= $ordernumber?>">Order Page</a> to see the instructions.</p>
+<p>You have reserved $<?= $deposit ?>for order <?= $ordernumber ?> . please view your <a href="https://prefectword.com/order/view?oid=<?= $ordernumber?>">Order Page</a> to see the instructions.</p>
 
 <p>Best Regards,</p>
 

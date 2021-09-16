@@ -11,7 +11,7 @@
 
 <p style="text-transform: capitalize">Dear <?= $user->username ?>,</p>
 
-<p>You have reserved $<?= $deposit ?> in your wallet. please visit your <a href="https://verifiedprofessors.com/wallet/index">wallet</a> to see the transaction.</p>
+<p>You have reserved $<?= $deposit ?> in your wallet. please visit your <a href="https://prefectword.com/wallet/index">wallet</a> to see the transaction.</p>
 
 <p>Best Regards,</p>
 

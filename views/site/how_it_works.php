@@ -32,7 +32,7 @@ $this->registerMetaTag([
         <div class="col-md-6 col-md-offset-3">
             <center>
                 <h2 style="color: #3D715B;font-weight: bolder">STEP 1:</h2>
-                <p>New to Verified Professors? Quickly Sign Up for an account now and start discovering.</p>
+                <p>New to Prefectword? Quickly Sign Up for an account now and start discovering.</p>
                     <a href="<?=Yii::$app->request->baseUrl ?>/order">
                         <button style="color: black; border-radius: 30px;font-family: 'Philosopher', sans-serif; background-color: #71D8EC" type="button" class="btn btn-lg essay-font">
                             Sign Up

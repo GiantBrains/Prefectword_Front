@@ -38,6 +38,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
 {
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
+
     /**
      * @inheritdoc
      */
@@ -52,8 +53,8 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['email', 'username','password_hash', 'auth_key'], 'required'],
-            [['status','country_id', 'site_code'], 'integer'],
+            [['email', 'username', 'password_hash', 'auth_key'], 'required'],
+            [['status', 'country_id', 'site_code'], 'integer'],
             [['blocked_at', 'access_token', 'confirmed_at', 'created_at', 'updated_at'], 'safe'],
             [['email'], 'string', 'max' => 150],
             [['email'], 'unique'],
@@ -77,8 +78,8 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             'email' => 'Email',
             'username' => 'Username',
             'phone' => 'Phone',
-            'access_token'=>'Access Token',
-            'site_code'=>'Site Code',
+            'access_token' => 'Access Token',
+            'site_code' => 'Site Code',
             'password_hash' => 'Password',
             'auth_key' => 'Auth Key',
             'password_reset_token' => 'Password Reset Token',
@@ -103,10 +104,11 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
         return new UserQuery(get_called_class());
     }
 
-    public static function generateRandomPassword($length = 6) {
+    public static function generateRandomPassword($length = 6)
+    {
         $characters = 'abcdefghijklmnopqrstuvwxyz'
-            .'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-            .'0123456789!@#$%^&*()';
+            . 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+            . '0123456789!@#$%^&*()';
         $charactersLength = strlen($characters);
         $randomString = '';
         for ($i = 0; $i < $length; $i++) {
@@ -137,24 +139,24 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     {
         $attributes = $client->getUserAttributes();
         $data = [];
-        if ($client->getId()== 'facebook'){
-            $data['email']= ArrayHelper::getValue($attributes, 'email');
-            $data['id']= ArrayHelper::getValue($attributes, 'id');
-            $data['username']= ArrayHelper::getValue($attributes, 'name');;
+        if ($client->getId() == 'facebook') {
+            $data['email'] = ArrayHelper::getValue($attributes, 'email');
+            $data['id'] = ArrayHelper::getValue($attributes, 'id');
+            $data['username'] = ArrayHelper::getValue($attributes, 'name');;
 
-        } elseif ($client->getId()== 'twitter'){
-            $data['email']= ArrayHelper::getValue($attributes, 'email');
-            $data['id']= ArrayHelper::getValue($attributes, 'id');
-            $data['first_name']= ArrayHelper::getValue($attributes, 'first_name');
-            $data['last_name']= ArrayHelper::getValue($attributes, 'last_name');
-            $data['username']= $data['first_name'];
+        } elseif ($client->getId() == 'twitter') {
+            $data['email'] = ArrayHelper::getValue($attributes, 'email');
+            $data['id'] = ArrayHelper::getValue($attributes, 'id');
+            $data['first_name'] = ArrayHelper::getValue($attributes, 'first_name');
+            $data['last_name'] = ArrayHelper::getValue($attributes, 'last_name');
+            $data['username'] = $data['first_name'];
 
-        }elseif ($client->getId() == 'google'){
+        } elseif ($client->getId() == 'google') {
             $data['email'] = $attributes['emails'][0]['value'];
-            $data['id']= ArrayHelper::getValue($attributes, 'id');
+            $data['id'] = ArrayHelper::getValue($attributes, 'id');
             $data['last_name'] = !empty($attributes['name']['familyName']) ? $attributes['name']['familyName'] : null;
             $data['first_name'] = !empty($attributes['name']['givenName']) ? $attributes['name']['givenName'] : null;
-            $data['username']= $data['first_name'];
+            $data['username'] = $data['first_name'];
         }
 
         return $data;
@@ -189,24 +191,26 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
         return $token;
     }
 
-    public static function getSiteName(){
+    public static function getSiteName()
+    {
         $user = User::findOne(Yii::$app->user->id);
         $siteCode = $user->site_code;
-        if ($siteCode == 1){
-            $name = '<strong style="color: #5bc0de; font-size: 20px; border-color: #71D8EC;">Verified</strong><strong style="color: #3D715B; font-size: 20px;">Professors</strong>';
-        }else{
+        if ($siteCode == 1) {
+            $name = '<strong style="color: #5bc0de; font-size: 20px; border-color: #71D8EC;">Prefect</strong><strong style="color: #3D715B; font-size: 20px;">Word</strong>';
+        } else {
             $name = '<strong style="font-size: 20px;"></strong>';
         }
         return $name;
 
     }
 
-    public static function getSiteLogo(){
+    public static function getSiteLogo()
+    {
         $user = User::findOne(Yii::$app->user->id);
         $siteCode = $user->site_code;
-        if ($siteCode == 1){
+        if ($siteCode == 1) {
             $logo = 'images/logo.png';
-        }else{
+        } else {
             $logo = 'images/logo2.png';
         }
         return $logo;
@@ -222,13 +226,14 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
 
     public static function getUserAssignment($user_id)
     {
-        $q="SELECT user_id from auth_assignment where user_id=".$user_id."";
+        $q = "SELECT user_id from auth_assignment where user_id=" . $user_id . "";
         $result = Yii::$app->db->createCommand($q)->queryScalar();
         return $result;
     }
 
-    public static function getAllUsers(){
-        $q="SELECT * from user";
+    public static function getAllUsers()
+    {
+        $q = "SELECT * from user";
         $result = Yii::$app->db->createCommand($q)->queryScalar();
         return $result;
     }
@@ -253,6 +258,11 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     public static function findByEmail($email)
     {
         return static::findOne(['email' => $email, 'status' => self::STATUS_ACTIVE]);
+    }
+
+    public static function findByUsername($username)
+    {
+        return static::findOne(['username' => $username, 'status' => self::STATUS_ACTIVE]);
     }
 
     /**
@@ -331,19 +341,22 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             'status' => self::STATUS_ACTIVE,
         ]);
     }
+
     public static function isPasswordResetTokenValid($token)
     {
         if (empty($token)) {
             return false;
         }
-        $timestamp = (int) substr($token, strrpos($token, '_') + 1);
+        $timestamp = (int)substr($token, strrpos($token, '_') + 1);
         $expire = Yii::$app->params['user.passwordResetTokenExpire'];
         return $timestamp + $expire >= time();
     }
+
     public function generatePasswordResetToken()
     {
         $this->password_reset_token = Yii::$app->security->generateRandomString() . '_' . time();
     }
+
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;

@@ -8,8 +8,8 @@ use dosamigos\ckeditor\CKEditor;
 
 /* @var $this yii\web\View */
 
-$this->title = 'Verified Professors - Online Academic Essay Writing Service. Get Cheap Homework Help from Professional and Reliable Essay Writers.';
-$description = "Verified Professors - Online Academic Essay Writing Service. Get Cheap Homework Help from Professional and Reliable Essay Writers";
+$this->title = 'Prefectword - Online Academic Essay Writing Service. Get Cheap Homework Help from Professional and Reliable Essay Writers.';
+$description = "Prefectword - Online Academic Essay Writing Service. Get Cheap Homework Help from Professional and Reliable Essay Writers";
 $title = $this->title;
 $this->registerMetaTag([
     'name' => 'description',
@@ -27,7 +27,109 @@ $val = 'Africa/Nairobi';
 
 $myscript = <<< JS
   $(document).ready(function(){
-      $('#frontorderform').submit(function(e){
+      
+      var currentTab = 0; // Current tab is set to be the first tab (0)
+showTab(currentTab); // Display the current tab
+
+function showTab(n) {
+  // This function will display the specified tab of the form ...
+  var x = document.getElementsByClassName("tablot");
+  x[n].style.display = "block";
+  // ... and fix the Previous/Next buttons:
+  if (n == 0) {
+    document.getElementById("prevBtn").style.display = "none";
+  } else {
+    document.getElementById("prevBtn").style.display = "inline";
+  }
+  if (n == (x.length - 1)) {
+    document.getElementById("nextBtn").innerHTML = "Submit";
+    document.getElementById("nextBtn").className = "";
+    document.getElementById("nextBtn").className = "btn btn-success";
+  } else {
+   document.getElementById("payment-redirect").style.display = "none";
+    document.getElementById("nextBtn").innerHTML = "Next";
+    document.getElementById("nextBtn").className = "";
+    document.getElementById("nextBtn").className = "btn btn-primary";
+  }
+  // ... and run a function that displays the correct step indicator:
+  fixStepIndicator(n)
+}
+
+$('#prevBtn').on('click', function(event){
+    n = -1
+  // This function will figure out which tab to display
+  var x = document.getElementsByClassName("tablot");
+  // Exit the function if any field in the current tab is invalid:
+  if (n == 1 && !validateForm()) return false;
+  // Hide the current tab:
+  x[currentTab].style.display = "none";
+  // Increase or decrease the current tab by 1:
+  currentTab = currentTab + n;
+  // if you have reached the end of the form... :
+  if (currentTab >= x.length) {
+    //...the form gets submitted:
+    document.getElementById("regForm").submit();
+    return false;
+  }
+  // Otherwise, display the correct tab:
+  showTab(currentTab);
+})
+
+$('#nextBtn').on('click', function(event){
+    n = 1
+  // This function will figure out which tab to display
+  var x = document.getElementsByClassName("tablot");
+  // Exit the function if any field in the current tab is invalid:
+  if (n == 1 && !validateForm()) return false;
+  // Hide the current tab:
+  x[currentTab].style.display = "none";
+  // Increase or decrease the current tab by 1:
+  currentTab = currentTab + n;
+  // if you have reached the end of the form... :
+  if (currentTab >= x.length) {
+    //...the form gets submitted:
+    document.getElementById("regForm").submit();
+    document.getElementById("payment-redirect").style.display = "block";
+    return false;
+  }
+  // Otherwise, display the correct tab:
+  showTab(currentTab);
+});
+
+function validateForm() {
+  // This function deals with validation of the form fields
+  var x, y, i, valid = true;
+  x = document.getElementsByClassName("tablot");
+  y = x[currentTab].getElementsByTagName("input");
+  // A loop that checks every input field in the current tab:
+  for (i = 0; i < y.length; i++) {
+    // If a field is empty...
+    if (y[i].value == "" && y[i].name != "File[attached][]" && y[i].className != "file-caption-name") {
+      // add an "invalid" class to the field:
+      y[i].className += " invalid";
+      // and set the current valid status to false:
+      valid = false;
+    }
+  }
+  // If the valid status is true, mark the step as finished and valid:
+  if (valid) {
+    document.getElementsByClassName("step")[currentTab].className += " finish";
+  }
+  return valid; // return the valid status
+}
+
+function fixStepIndicator(n) {
+  // This function removes the "active" class of all steps...
+  var i, x = document.getElementsByClassName("step");
+  for (i = 0; i < x.length; i++) {
+    x[i].className = x[i].className.replace(" active", "");
+  }
+  //... and adds the "active" class to the current step:
+  x[n].className += " active";
+}
+  $('div.setup-panel div a.btn-primary').trigger('click');
+
+      $('#regForm').submit(function(e){
       var form = this;
       e.preventDefault();
       // Check Passwords are the same
@@ -51,7 +153,8 @@ $myscript = <<< JS
             var myurgency = 1;
             var mypages = 1;
             var mylevel = 1;
-        $('#frontorder-service_id').change('focusin', function(){
+            var myspacing = 1;
+        $('#order-service_id').change('focusin', function(){
             order_service = parseInt($(this).val());
             
             if(order_service===1){
@@ -61,9 +164,21 @@ $myscript = <<< JS
             }else if(order_service===3){
                 myservice = 5;
             }
-            $('#min-amount').val('$'+(myservice*mytype*myurgency*mypages*mylevel).toFixed(2));
+            $('.min-amount').val('$'+(myservice*mytype*myurgency*mypages*mylevel**myspacing).toFixed(2));
         });
-        $("#frontorder-type_id").change('focusin', function(){
+        
+        $('#order-spacing_id').change('focusin', function(){
+            order_spacing = parseInt($(this).val());
+            
+            if(order_spacing===1){
+                myspacing = 1;
+            }else if(order_spacing===2){
+                myspacing = 2;
+                }
+            $('.min-amount').val('$'+(myservice*mytype*myurgency*mypages*mylevel*myspacing).toFixed(2));
+        });
+        
+        $("#order-type_id").change('focusin', function(){
                typeoforder = parseInt($(this).val());
                  if(typeoforder===1){
                 mytype = 1.2;
@@ -148,9 +263,9 @@ $myscript = <<< JS
                  }else if (typeoforder===45){
                  mytype = 1.2;      
                  }                                                       
-                $('#min-amount').val('$'+(myservice*mytype*myurgency*mypages*mylevel).toFixed(2));
+                $('.min-amount').val('$'+(myservice*mytype*myurgency*mypages*mylevel**myspacing).toFixed(2));
         });
-        $("#frontorder-urgency_id").change('focusin', function(){
+        $("#order-urgency_id").change('focusin', function(){
                 order_urgency = parseInt($(this).val());
                 
                 if(order_urgency===1){
@@ -184,9 +299,9 @@ $myscript = <<< JS
                }else if (order_urgency===15){
                  myurgency = 1.0;      
                 }
-                $('#min-amount').val('$'+(myservice*mytype*myurgency*mypages*mylevel).toFixed(2));
+                $('.min-amount').val('$'+(myservice*mytype*myurgency*mypages*mylevel*myspacing).toFixed(2));
         });
-         $('#frontorder-pages_id').change('focusin', function(){
+         $('#order-pages_id').change('focusin', function(){
                 order_pages = parseInt($(this).val());
                 if(order_pages===1){
                     mypages = 1;
@@ -590,9 +705,9 @@ $myscript = <<< JS
                     mypages=200*0.85;
                }
                
-                $('#min-amount').val('$'+(myservice*mytype*myurgency*mypages*mylevel).toFixed(2));
+                $('.min-amount').val('$'+(myservice*mytype*myurgency*mypages*mylevel*myspacing).toFixed(2));
         });
-          $('#frontorder-level_id').change('focusin', function(){
+          $('#order-level_id').change('focusin', function(){
                 order_level = parseInt($(this).val());
                 
                 if(order_level===1){
@@ -604,7 +719,7 @@ $myscript = <<< JS
                  }else if(order_level===5){
                     mylevel= 1.5;
                 }
-                $('#min-amount').val('$'+(myservice*mytype*myurgency*mypages*mylevel).toFixed(2));
+                $('.min-amount').val('$'+(myservice*mytype*myurgency*mypages*mylevel*myspacing).toFixed(2));
         });
     });
 
@@ -626,22 +741,22 @@ $this->registerJs($myscript);
 ?>
 
 <?php $this->beginBlock('block5'); ?>
-<meta property="og:site_name" content="Verified Professors">
+<meta property="og:site_name" content="Prefectword">
 <meta property="og:type" content="Education">
 <meta property="og:title" content="<?= $title ?>">
 <meta property="og:description" content="<?= $description ?>">
 <meta property="og:image" content="https://www.doctorateessays.com/images/proccess/home_page.png">
-<meta property="og:url" content="https://www.verifiedprofessors.com">
+<meta property="og:url" content="https://www.prefectword.com">
 <meta property="og:locale" content="en_UK">
 <meta property="og:locale:alternate" content="en_US">
 <!-- Twitter -->
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:site" content="@verifiedprofessors"/>
+<meta name="twitter:site" content="@prefectword"/>
 <!--                <meta name="twitter:creator" content="@tonigitz" />-->
 <meta name="twitter:title" content="<?= $title ?>">
 <meta name="twitter:description" content="<?= $description ?>">
 <meta name="twitter:image" content="https://www.doctorateessays.com/images/proccess/home_page.png">
-<meta name="twitter:url" content="https://www.verifiedprofessors.com">
+<meta name="twitter:url" content="https://www.prefectword.com">
 <link href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Philosopher:ital@1&display=swap" rel="stylesheet">
@@ -695,7 +810,8 @@ $this->registerJs($myscript);
 
                 <?php $form = ActiveForm::begin(['layout' => 'horizontal',
                     'action' => Url::to(['frontorder/details']),
-                    'id' => 'frontorderform',
+                    'id' => 'regForm',
+                    'options' => ['enctype' => 'multipart/form-data'],
                     'fieldConfig' => [
                         'template' => "{label}\n{beginWrapper}\n{input}\n{hint}\n{error}\n{endWrapper}",
                         'horizontalCssClasses' => [
@@ -713,62 +829,142 @@ $this->registerJs($myscript);
                     </div>
                     <div class="col-md-11 col-sm-11 col-xs-12"
                          style="background-color: white; opacity: 0.8; border-radius: 10px; color:black">
-                        <h3><strong>
-                                <center>Calculate the Price</center>
-                            </strong></h3>
-                        <diV class="row">
-                            <div class="col-sm-7 col-md-7">
-                                <?= $form->field($fmodel, 'service_id', [
-                                    'template' => '<div style="font-family: \'Open Sans\', sans-serif; ">{label}</div> <div style=" padding: 0 5px 0 5px;" class="row"><div class="col-sm-7" style="font-family: \'Open Sans\', sans-serif;" >{input}{error}{hint}</div></div>'
-                                ])->label('Service')->dropDownList(\app\models\Service::getServices(),
-                                    ['options' => [1 => ['Selected' => 'selected'], 'prompt' => '...select Service....', 'id' => 'service-id']]) ?>
+                        <!-- One "tab" for each step in the form: -->
+                        <div class="tablot">
+                            <h3 style="background: white"><strong>
+                                    <center>Calculate the Price</center>
+                                </strong></h3>
+                            :
+                            <?php echo $form->field($model, 'service_id', [
+                                'template' => '<div style="font-family: \'Open Sans\', sans-serif; ">{label}</div> <div style=" padding: 0 5px 0 5px;" class="row"><div class="col-sm-7" style="font-family: \'Open Sans\', sans-serif;" >{input}{error}{hint}</div></div>'
+                            ])->label('Service')->dropDownList(\app\models\Service::getServices(),
+                                ['options' => [1 => ['Selected' => 'selected'], 'prompt' => '...select Service....', 'id' => 'service-id']]) ?>
 
-                                <?= $form->field($fmodel, 'type_id', [
-                                    'template' => '<div style="font-family: \'Open Sans\', sans-serif; margin-top: -10px">{label}</div> <div style=" padding: 0 5px 0 5px;"  class="row"><div class="col-sm-7" style="font-family: \'Open Sans\', sans-serif;" >{input}{error}{hint}</div></div>'
-                                ])->label('Paper Type')->dropDownList(\app\models\Type::getTypes(),
-                                    ['options' => [20 => ['Selected' => 'selected'], 'prompt' => '...select Type....', 'id' => 'type-id']]) ?>
+                            <?php echo $form->field($model, 'type_id', [
+                                'template' => '<div style="font-family: \'Open Sans\', sans-serif; margin-top: -10px">{label}</div> <div style=" padding: 0 5px 0 5px;"  class="row"><div class="col-sm-7" style="font-family: \'Open Sans\', sans-serif;" >{input}{error}{hint}</div></div>'
+                            ])->label('Paper Type')->dropDownList(\app\models\Type::getTypes(),
+                                ['options' => [20 => ['Selected' => 'selected'], 'prompt' => '...select Type....', 'id' => 'type-id']]) ?>
 
-                                <?= $form->field($fmodel, 'urgency_id', [
-                                    'template' => '<div style="font-family: \'Open Sans\', sans-serif; margin-top: -10px">{label}</div> <div style=" padding: 0 5px 0 5px;"  class="row"><div class="col-sm-7" style="font-family: \'Open Sans\', sans-serif;" >{input}{error}{hint}</div></div>'
-                                ])->label('Urgency')->dropDownList(\app\models\Urgency::getUrgency(), [
-                                    'options' => [12 => ['Selected' => 'selected'], 'prompt' => '...select Deadline....', 'id' => 'urgency-id']]) ?>
+                            <?php echo $form->field($model, 'urgency_id', [
+                                'template' => '<div style="font-family: \'Open Sans\', sans-serif; margin-top: -10px">{label}</div> <div style=" padding: 0 5px 0 5px;"  class="row"><div class="col-sm-7" style="font-family: \'Open Sans\', sans-serif;" >{input}{error}{hint}</div></div>'
+                            ])->label('Urgency')->dropDownList(\app\models\Urgency::getUrgency(), [
+                                'options' => [12 => ['Selected' => 'selected'], 'prompt' => '...select Deadline....', 'id' => 'urgency-id']]) ?>
 
-                                <?= $form->field($fmodel, 'pages_id', [
-                                    'template' => '<div style="font-family: \'Open Sans\', sans-serif; margin-top: -10px">{label}</div> <div style="padding: 0 5px 0 5px;" class="row"><div class="col-sm-7" style="font-family: \'Open Sans\', sans-serif;" >{input}{error}{hint}</div></div>'
-                                ])->label('Pages')->dropDownList(\app\models\Pages::getPages(), [
-                                    'options' => [1 => ['Selected' => 'selected'], 'prompt' => '...select Pages....', 'id' => 'pages-id']]) ?>
+                            <?php echo $form->field($model, 'pages_id', [
+                                'template' => '<div style="font-family: \'Open Sans\', sans-serif; margin-top: -10px">{label}</div> <div style="padding: 0 5px 0 5px;" class="row"><div class="col-sm-7" style="font-family: \'Open Sans\', sans-serif;" >{input}{error}{hint}</div></div>'
+                            ])->label('Pages')->dropDownList(\app\models\Pages::getPages(), [
+                                'options' => [1 => ['Selected' => 'selected'], 'prompt' => '...select Pages....', 'id' => 'pages-id']]) ?>
 
-                                <?= $form->field($fmodel, 'level_id', [
-                                    'template' => '<div style="font-family: \'Open Sans\', sans-serif; margin-top: -10px">{label}</div> <div style="padding: 0 5px 0 5px;" class="row"><div  class="col-sm-7" style="font-family: \'Open Sans\', sans-serif;" >{input}{error}{hint}</div></div>'
-                                ])->label('Level')->dropDownList(\app\models\Level::getLevels(), [
-                                    'options' => [1 => ['Selected' => 'selected'], 'prompt' => '...select Level....', 'id' => 'level-id']]) ?>
-                                <div class="form-group" style="margin-left: 40px">
-                                    <h3 style="margin-top: -10px;" class="essay-font">Price:&nbsp;&nbsp;&nbsp;&nbsp;<img
-                                                src="<?= Yii::$app->request->baseUrl ?>/images/fire.png"
-                                                width="30px"><input class="tcost"
-                                                                    style="border: none; width: 100px"
-                                                                    type="text"
-                                                                    id="min-amount"
-                                                                    value="$8.00"
-                                                                    readonly="readonly">
-                                    </h3>
+                            <?php echo $form->field($model, 'level_id', [
+                                'template' => '<div style="font-family: \'Open Sans\', sans-serif; margin-top: -10px">{label}</div> <div style="padding: 0 5px 0 5px;" class="row"><div  class="col-sm-7" style="font-family: \'Open Sans\', sans-serif;" >{input}{error}{hint}</div></div>'
+                            ])->label('Level')->dropDownList(\app\models\Level::getLevels(), [
+                                'options' => [1 => ['Selected' => 'selected'], 'prompt' => '...select Level....', 'id' => 'level-id']]) ?>
+
+                            <h3 style="margin-top: -10px;" class="essay-font">Price:&nbsp;&nbsp;&nbsp;&nbsp;<img
+                                        src="
+                                                <?php echo Yii::$app->request->baseUrl ?>/images/fire.png"
+                                        width="30px"><input class="tcost min-amount"
+                                                            style="border: none; width: 100px"
+                                                            type="text"
+                                                            value="$8.00"
+                                                            readonly="readonly">
+                            </h3>
+                        </div>
+
+                        <div class="tablot">
+                            <h3 style="background: white"><strong>
+                                    <center>Extra Info</center>
+                                </strong></h3>
+                            <?php echo $form->field($model, 'spacing_id', [
+                                'template' => '<div style="font-family: \'Open Sans\', sans-serif; margin-top: -10px">{label}</div> <div style="padding: 0 5px 0 5px;" class="row"><div  class="col-sm-7" style="font-family: \'Open Sans\', sans-serif;" >{input}{error}{hint}</div></div>'
+                            ])->label('Spacing')->dropDownList(\app\models\Spacing::getSpacings(), [
+                                'options' => [1 => ['Selected' => 'selected'], 'prompt' => '...select Spacing....', 'id' => 'spacing-id']]) ?>
+                            <?php echo $form->field($model, 'subject_id', [
+                                'template' => '<div style="font-family: \'Open Sans\', sans-serif; margin-top: -10px">{label}</div> <div style="padding: 0 5px 0 5px;" class="row"><div  class="col-sm-7" style="font-family: \'Open Sans\', sans-serif;" >{input}{error}{hint}</div></div>'
+                            ])->label('Subjects')->dropDownList(\app\models\Subject::getSubjects(), [
+                                'options' => [1 => ['Selected' => 'selected'], 'prompt' => '...select Subject....', 'id' => 'subject-id']]) ?>
+                            <?php echo $form->field($model, 'style_id', [
+                                'template' => '<div style="font-family: \'Open Sans\', sans-serif; margin-top: -10px">{label}</div> <div style="padding: 0 5px 0 5px;" class="row"><div  class="col-sm-7" style="font-family: \'Open Sans\', sans-serif;" >{input}{error}{hint}</div></div>'
+                            ])->label('Style')->dropDownList(\app\models\Style::getStyles(), [
+                                'options' => [1 => ['Selected' => 'selected'], 'prompt' => '...select Style....', 'id' => 'style-id']]) ?>
+                            <?php echo $form->field($model, 'sources_id', [
+                                'template' => '<div style="font-family: \'Open Sans\', sans-serif; margin-top: -10px">{label}</div> <div style="padding: 0 5px 0 5px;" class="row"><div  class="col-sm-7" style="font-family: \'Open Sans\', sans-serif;" >{input}{error}{hint}</div></div>'
+                            ])->label('Source')->dropDownList(\app\models\Sources::getSources(), [
+                                'options' => [1 => ['Selected' => 'selected'], 'prompt' => '...select Source....', 'id' => 'source-id']]) ?>
+                            <?php echo $form->field($model, 'language_id', [
+                                'template' => '<div style="font-family: \'Open Sans\', sans-serif; margin-top: -10px">{label}</div> <div style="padding: 0 5px 0 5px;" class="row"><div  class="col-sm-7" style="font-family: \'Open Sans\', sans-serif;" >{input}{error}{hint}</div></div>'
+                            ])->label('Language')->dropDownList(\app\models\Language::getLanguages(), [
+                                'options' => [1 => ['Selected' => 'selected'], 'prompt' => '...select Language....', 'id' => 'language-id']]) ?>
+                            <?= $form->field($file, 'attached[]')->widget(\kartik\file\FileInput::classname(), [
+                                'options' => ['multiple' => true, 'accept' => 'image/*, text/*, application/*, multipart/*'],
+                                'name' => 'file[]',
+                                'pluginOptions' => ['previewFileType' => 'any',
+                                    'showPreview' => false,
+                                    'showCaption' => true,
+                                    'showRemove' => true,
+                                    'showUpload' => false,
+                                    'hideThumbnailContent' => 'true',
+                                    'browseLabel' => 'Browse Files',
+                                    'browseClass' => 'btn btn-info',
+                                    'uploadClass' => 'btn btn-info',
+                                    'removeClass' => 'btn btn-danger',
+                                    'removeIcon' => '<i class="glyphicon glyphicon-trash"></i> ',
+                                    'maxFileCount' => 10]
+                            ])->label(false); ?>
+                            <h3 style="margin-top: -10px;" class="essay-font">Price:&nbsp;&nbsp;&nbsp;&nbsp;<img
+                                        src="
+                                                <?php echo Yii::$app->request->baseUrl ?>/images/fire.png"
+                                        width="30px"><input class="tcost min-amount"
+                                                            style="border: none; width: 100px"
+                                                            type="text"
+                                                            value="$8.00"
+                                                            readonly="readonly">
+                            </h3>
+                        </div>
+
+                        <div class="tablot">
+                            <h3 style="background: white"><strong>
+                                    <center>Order Instructions</center>
+                                </strong></h3>
+                            <?php echo $form->field($model, 'topic')->textInput(['maxlength' => true]) ?>
+
+                            <?php echo $form->field($model, 'instructions')->textarea(['rows' => '10']) ?>
+                        </div>
+                        <div class="tablot">
+                            <h3 style="background: white"><strong>
+                                    <center>Personal Info</center>
+                                </strong></h3>
+                            <?= $form->field($signup, 'email')->textInput() ?>
+                            <?= $form->field($signup, 'username')->textInput() ?>
+                            <?= $form->field($signup, 'password')->passwordInput() ?>
+                            <?= $form->field($signup, 'password_repeat')->label('Confirm Password')->passwordInput() ?>
+                            <!--                        <center>-->
+                            <!--                            --><?php //echo $form->field($signup, 'reCaptcha')->label("")->widget(
+                            //                                \himiklab\yii2\recaptcha\ReCaptcha2::className()
+                            //                            ) ?>
+                            <!--                        </center>-->
+                        </div>
+                        <br>
+                        <div style="overflow:auto;">
+                            <div style="float:right;">
+                                <div id="payment-redirect" style="display: none">
+                                    <h3>Redirecting to payment....</h3>
+                                    <br>
                                 </div>
+                                <button class="btn btn-default" type="button" id="prevBtn">Previous</button>
+                                <button class="btn btn-primary" type="button" id="nextBtn">Next</button>
                             </div>
-                            <div class="col-md-5 col-sm-5">
-                                <label for="username">Username</label>
-                                <input name="username" type="text" required id="username" class="form-control" value="">
-                                <label for="email">Email</label>
-                                <input name="email" required type="email" id="email" class="form-control" value="">
-                                <label for="password">Password</label>
-                                <input name="password" required type="password" id="password" class="form-control" value="">
-                                <label for="confirm_password">Confirm Password</label>
-                                <input name="confirm_password" type="password" required id="confirm_password" class="form-control"
-                                       value="">
-                            </div>
-                            <div class="form-group" style="margin-left: 10px; margin-right: 10px">
-                                <?= Html::submitButton('Continue', ['class' => 'btn btn-lg btn-block btn-info', 'style' => 'font-family: \'Open Sans\', sans-serif; margin-bottom: 20px;']) ?>
-                            </div>
-                        </diV>
+                        </div>
+                        <!-- Circles which indicates the steps of the form: -->
+                        <div style="text-align:center;margin-top:10px;">
+                            <span class="step"></span>
+                            <span class="step"></span>
+                            <span class="step"></span>
+                            <span class="step"></span>
+                        </div>
+                        <!--                            <div class="form-group" style="margin-left: 10px; margin-right: 10px">-->
+                        <!--                                --><?php //echo Html::submitButton('Continue', ['class' => 'btn btn-lg btn-block btn-info', 'style' => 'font-family: \'Open Sans\', sans-serif; margin-bottom: 20px;']) ?>
+                        <!--                            </div>-->
                     </div>
                 </div>
                 <?php ActiveForm::end(); ?>
@@ -898,7 +1094,8 @@ $this->registerJs($myscript);
 </div>
 
 <div class="body-container essay-font" style="background-color: white; font-family: "
-     Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;line-height: 2.0">
+     Lato
+", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;line-height: 2.0">
 <div class="container">
     <div class="col-md-4 col-sm-4">
         <h2><strong>Moneyback Guarantee</strong></h2>
@@ -906,7 +1103,8 @@ $this->registerJs($myscript);
             Excellent customer experience and satisfaction are our primary goal and we work hard to achieve it.
             We refund back your money in case you are not satisfied with the service offered.
 
-            We allow you to reserve the payment for your writer until you receive the paper and confirm that it meets
+            We allow you to reserve the payment for your writer until you receive the paper and confirm that it
+            meets
             your expectations.
             You are free to cancel your order and still get back your money. Please remember to read our <a
                     href="<?= Url::to(['site/terms_and_conditions']) ?>">Terms and Conditions.</a></p>
@@ -922,7 +1120,7 @@ $this->registerJs($myscript);
     </div>
     <div class="col-md-8 col-sm-4">
         <center><h2 style="font-weight: bolder">Who we are</h2></center>
-        <p>Verified Professors is a reliable partner for professional freelance writers with experience in
+        <p>Prefectword is a reliable partner for professional freelance writers with experience in
             students papers to provide high quality papers for our clients. We have an open reviews section
             where our customers give us feedback on their experience with us. It is easy to judge yourself
             from the reviews how satisfied our clients are with the service. You do not have to spend
@@ -948,7 +1146,7 @@ $this->registerJs($myscript);
      style="background-color: whitesmoke;padding-bottom: 20px; padding-top: 20px;">
     <center>
         <h1><strong>Professional Essay Writers Team</strong></h1>
-        <p class="col-sm-6 col-sm-offset-3">At Verified Professors, we employ a large team of skilled writers. Their
+        <p class="col-sm-6 col-sm-offset-3">At Prefectword, we employ a large team of skilled writers. Their
             rating is based on previous
             customer reviews and rates.
             Before you hire a writer, you can familiarize yourself with his track record in detail.
@@ -1221,7 +1419,7 @@ $this->registerJs($myscript);
                             <h3><strong>Order# 14638</strong></h3><br>
                             <img src="<?= Yii::$app->request->baseUrl ?>/images/rating.png" width="100px"
                                  style="margin-bottom: 10px">
-                            <p style="font-size: large">At Verified Professors we are very cheap
+                            <p style="font-size: large">At Prefectword we are very cheap
                                 as compared those other sites I have visited. The quality of work is high.
                                 I recommend this site."
                             </p>

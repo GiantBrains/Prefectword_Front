@@ -13,6 +13,6 @@ class Autoredirect extends \yii\base\BaseObject implements \yii\queue\JobInterfa
 
     public function execute($queue)
     {
-        http_redirect('https://doctorateessays.com/order/here?oid='.$this->oid.'');
+        http_redirect('https://prefectword.com/order/here?oid='.$this->oid.'');
     }
 }

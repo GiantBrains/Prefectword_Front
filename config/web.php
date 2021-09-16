@@ -5,7 +5,7 @@ $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'basic',
-    'name' => 'Verified Professors',
+    'name' => 'Prefectword',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log', 'timezone'],
     'aliases' => [
@@ -72,8 +72,8 @@ $config = [
 
         'reCaptcha' => [
             'class' => 'himiklab\yii2\recaptcha\ReCaptchaConfig',
-            'siteKeyV2' => '6LfTUNQZAAAAAAWHZyo7NJZSoCgbTuOAjvEVOUz4',
-            'secretV2' => '6LfTUNQZAAAAANcFmM2_ZRj3_LSFcOzDN8A_tBJi',
+            'siteKeyV2' => '6LdMM1kcAAAAANG0jdsl_Y9UlWp5XM5W84Q0oqLh',
+            'secretV2' => '6LdMM1kcAAAAALSt9rhMLxsTfolYBij8R61vnyxC',
             'siteKeyV3' => '6LfluM8ZAAAAAAkNa-hkj4Nt9O6yD9T5zqBs0Sc-',
             'secretV3' => '6LfluM8ZAAAAAH_4A49Ak3Hrt0vAsgocAvhQuz6P',
         ],
@@ -101,7 +101,7 @@ $config = [
                     'class' => 'dektrium\user\clients\Google',
                     'clientId' => '711908005593-p1k7t6ui5ret3fc1gvecie9vdc0keklu.apps.googleusercontent.com',
                     'clientSecret' => 'RRqo8l0UrWvUWgoWVmKegqsW',
-                    'returnUrl' => 'https://verifiedprofessors.com/site/auth?authclient=google'
+                    'returnUrl' => 'https://perfectword.com/site/auth?authclient=google'
                 ],
 //                'twitter' => [
 //                    'class' => 'dektrium\user\clients\Twitter',
@@ -147,8 +147,8 @@ $config = [
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
                 'host' => 'smtp.zoho.com',
-                'username' => 'no-reply@verifiedprofessors.com',
-                'password' => 'VN@_8994',
+                'username' => 'info@nokiakenya.co.ke',
+                'password' => 'Hp28188685',
                 'port' => '465',
                 'encryption' => 'ssl',
             ],
@@ -160,8 +160,8 @@ $config = [
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
                 'host' => 'smtp.zoho.com',
-                'username' => 'admin@verifiedprofessors.com',
-                'password' => 'verifiedprofessors8994',
+                'username' => 'info@nokiakenya.co.ke',
+                'password' => 'Hp28188685',
                 'port' => '465',
                 'encryption' => 'ssl',
             ],
@@ -173,8 +173,8 @@ $config = [
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
                 'host' => 'smtp.zoho.com',
-                'username' => 'olivia@verifiedprofessors.com',
-                'password' => 'VO@_8994',
+                'username' => 'info@nokiakenya.co.ke',
+                'password' => 'Hp28188685',
                 'port' => '465',
                 'encryption' => 'ssl',
             ],
@@ -186,8 +186,8 @@ $config = [
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
                 'host' => 'smtp.zoho.com',
-                'username' => 'support@verifiedprofessors.com',
-                'password' => 'VS@_8994',
+                'username' => 'info@nokiakenya.co.ke',
+                'password' => 'Hp28188685',
                 'port' => '465',
                 'encryption' => 'ssl',
             ],

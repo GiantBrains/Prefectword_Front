@@ -20,9 +20,9 @@
 <p>Download drafts and the completed paper</p>
 <p>Release the payment to the writer and rate the quality of the writing.</p>
 
-<p>Note: it is completely secure and confidential to use the verifiedprofessors.com freelance board as long as you do not share your personal information with other users.</p>
+<p>Note: it is completely secure and confidential to use the prefectword.com freelance board as long as you do not share your personal information with other users.</p>
 
-Please go to the <a href="https://verifiedprofessors.com/order/view?oid=<?= $model->ordernumber ?>">Order Page</a> to proceed.
+Please go to the <a href="https://prefectword.com/order/view?oid=<?= $model->ordernumber ?>">Order Page</a> to proceed.
 
 
 <p>Best Regards,</p>
