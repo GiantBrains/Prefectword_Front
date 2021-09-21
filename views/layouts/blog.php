@@ -55,17 +55,17 @@ AppAsset::register($this);
         };
     </script>
     <!--Start of Tawk.to Script-->
-    <script type="text/javascript">
-        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-        (function () {
-            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-            s1.async = true;
-            s1.src = 'https://embed.tawk.to/5f6cbb5bf0e7167d001375c3/default';
-            s1.charset = 'UTF-8';
-            s1.setAttribute('crossorigin', '*');
-            s0.parentNode.insertBefore(s1, s0);
-        })();
-    </script>
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/613b07bbd326717cb680b719/1ff79cdau';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
     <!--End of Tawk.to Script-->
 </head>
 <body>
@@ -74,8 +74,7 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => Html::img('@web/images/logo.png', ['style' => 'display:inline-block; height:32px;', 'alt' => Yii::$app->name]) . ' <strong style="color: #71D8EC; font-size: 20px;">Verified</strong><strong style="color: #3D715B; font-size: 20px;">Professors</strong>',
-//        'brandLabel' => Html::img('@web/images/logo.png', ['style'=>'display:inline-block; height:32px;', 'alt'=>Yii::$app->name]). ' <strong style="color: #F5C34F ; font-size: 20px;">Verified</strong><strong style="color: #A2110A; font-size: 20px;">Professors</strong>',
+        'brandLabel' => Html::img('@web/images/logo.png', ['style' => 'display:inline-block; height:32px;', 'alt' => Yii::$app->name]) . ' <strong style="color: #1695a4  ; font-size: 20px;">Prefect</strong><strong style="color: #3D715B; font-size: 20px;">Word</strong>',
         'brandUrl' => Yii::$app->request->baseUrl . '/',
         'options' => [
             'class' => 'navbar navbar-default1 navbar-fixed-top',
@@ -130,7 +129,7 @@ AppAsset::register($this);
         'items' => $menuItems,
         'encodeLabels' => false,
     ]);
-    $menuItem [] = ['label' => '<a style="margin-top: -30px"><img src="' . Yii::$app->request->baseUrl . '/images/mail.png" width="25px"> &nbsp;support@verifiedprofessors.com</a>'];
+    $menuItem [] = ['label' => '<a style="margin-top: -30px"><img src="' . Yii::$app->request->baseUrl . '/images/mail.png" width="25px"> &nbsp;support@prefectword.com</a>'];
     $menuItem [] = ['label' => '<a style="margin-top: -30px"><img width="25px" src="' . Yii::$app->request->baseUrl . '/images/united-states.png"> &nbsp;+18062173470</a>'];
     $menuItem [] = ['label' => 'How it Works', 'url' => ['/how_it_works'],
         'active' => $this->context->route == 'site/how_it_works'
@@ -167,7 +166,7 @@ AppAsset::register($this);
             <div class="col-md-4">
                 <ul class="articles footer-link essay-font">
                     <li><a style="text-decoration: none; font-size: 20px; font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;" <i class="fa fa-envelope-o fa-3x"
-                                                                              aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;support@verifiedprofessors.com</a>
+                                                                              aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;support@prefectword.com</a>
                     </li>
                     <br>
                     <li><a style="text-decoration: none; font-size: 20px; font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;" <i class="fa fa-phone fa-3x" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;+18062173470</a></li>
@@ -220,11 +219,11 @@ AppAsset::register($this);
     <br><br>
     <center>
     <span style="color: #a1a9b3;" class="rating-desc" itemscope="" itemtype="http://schema.org/Product">
-     <span style="display: none" itemprop="name">Verified Profesors</span>
+     <span style="display: none" itemprop="name">Prefectword</span>
      <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating"> Rated <span
                  itemprop="ratingValue"><?= number_format(floatval($this->params['avgrating']), 1, '.', ',') ?></span> / 5 based on <span
                  itemprop="reviewCount"><?= number_format(floatval(11238 + $this->params['count']), 0, '.', ',') ?></span> Reviews. | <a
-                 style="color: #a1a9b3;" class="ratings" href="https://www.verifiedprofessors.com/site/reviews">All Reviews</a> </span>
+                 style="color: #a1a9b3;" class="ratings" href="https://www.prefectword.com/site/reviews">All Reviews</a> </span>
     </span>
     </center>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>

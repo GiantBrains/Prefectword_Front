@@ -8,8 +8,8 @@ use dosamigos\ckeditor\CKEditor;
 
 /* @var $this yii\web\View */
 
-$this->title = 'Verified Professors - Online Academic Essay Writing Service. Get Cheap Homework Help from Professional and Reliable Essay Writers.';
-$description = "Verified Professors - Online Academic Essay Writing Service. Get Cheap Homework Help from Professional and Reliable Essay Writers";
+$this->title = 'Prefectword - Online Academic Essay Writing Service. Get Cheap Homework Help from Professional and Reliable Essay Writers.';
+$description = "Prefectword - Online Academic Essay Writing Service. Get Cheap Homework Help from Professional and Reliable Essay Writers";
 $title = $this->title;
 $this->registerMetaTag([
     'name' => 'description',
@@ -741,22 +741,22 @@ $this->registerJs($myscript);
 ?>
 
 <?php $this->beginBlock('block5'); ?>
-<meta property="og:site_name" content="Verified Professors">
+<meta property="og:site_name" content="Prefectword">
 <meta property="og:type" content="Education">
 <meta property="og:title" content="<?= $title ?>">
 <meta property="og:description" content="<?= $description ?>">
 <meta property="og:image" content="https://www.doctorateessays.com/images/proccess/home_page.png">
-<meta property="og:url" content="https://www.verifiedprofessors.com">
+<meta property="og:url" content="https://www.prefectword.com">
 <meta property="og:locale" content="en_UK">
 <meta property="og:locale:alternate" content="en_US">
 <!-- Twitter -->
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:site" content="@verifiedprofessors"/>
+<meta name="twitter:site" content="@prefectword"/>
 <!--                <meta name="twitter:creator" content="@tonigitz" />-->
 <meta name="twitter:title" content="<?= $title ?>">
 <meta name="twitter:description" content="<?= $description ?>">
 <meta name="twitter:image" content="https://www.doctorateessays.com/images/proccess/home_page.png">
-<meta name="twitter:url" content="https://www.verifiedprofessors.com">
+<meta name="twitter:url" content="https://www.prefectword.com">
 <link href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Philosopher:ital@1&display=swap" rel="stylesheet">
@@ -1120,7 +1120,7 @@ $this->registerJs($myscript);
     </div>
     <div class="col-md-8 col-sm-4">
         <center><h2 style="font-weight: bolder">Who we are</h2></center>
-        <p>Verified Professors is a reliable partner for professional freelance writers with experience in
+        <p>Prefectword is a reliable partner for professional freelance writers with experience in
             students papers to provide high quality papers for our clients. We have an open reviews section
             where our customers give us feedback on their experience with us. It is easy to judge yourself
             from the reviews how satisfied our clients are with the service. You do not have to spend
@@ -1146,7 +1146,7 @@ $this->registerJs($myscript);
      style="background-color: whitesmoke;padding-bottom: 20px; padding-top: 20px;">
     <center>
         <h1><strong>Professional Essay Writers Team</strong></h1>
-        <p class="col-sm-6 col-sm-offset-3">At Verified Professors, we employ a large team of skilled writers. Their
+        <p class="col-sm-6 col-sm-offset-3">At Prefectword, we employ a large team of skilled writers. Their
             rating is based on previous
             customer reviews and rates.
             Before you hire a writer, you can familiarize yourself with his track record in detail.
@@ -1419,7 +1419,7 @@ $this->registerJs($myscript);
                             <h3><strong>Order# 14638</strong></h3><br>
                             <img src="<?= Yii::$app->request->baseUrl ?>/images/rating.png" width="100px"
                                  style="margin-bottom: 10px">
-                            <p style="font-size: large">At Verified Professors we are very cheap
+                            <p style="font-size: large">At Prefectword we are very cheap
                                 as compared those other sites I have visited. The quality of work is high.
                                 I recommend this site."
                             </p>

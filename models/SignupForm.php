@@ -89,7 +89,7 @@ class SignupForm extends Model
                 'user' => $user
             ])->setFrom([Yii::$app->params['noreplyEmail'] => Yii::$app->name . ' Accounts Manager'])
                 ->setTo($user->email)
-                ->setSubject('Welcome to VerifiedProfessors.com!')
+                ->setSubject('Welcome to Prefectword.com!')
                 ->send();
 
             return $user;

@@ -59,7 +59,7 @@ $this->registerMetaTag([
                     However, we allow customers to bring back some claims at our own discretion, especially in cases
                     where the writer has plagiarized the work.
                     All types of refund requests are processed within 24 hours after requesting, except on weekends.
-                    The refunds are made to your <a href="<?= Yii::$app->request->baseUrl ?>/">www.verifiedprofessors.com</a>
+                    The refunds are made to your <a href="<?= Yii::$app->request->baseUrl ?>/">www.prefectword.com</a>
                     wallet.
                 </li>
                 <li>If a customer deposits money in their wallet and wishes to withdraw it without creating an order,

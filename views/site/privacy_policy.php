@@ -20,7 +20,7 @@ $this->registerMetaTag([
     <h1 class="text-success" style="text-align: center;"><?= \yii\helpers\Html::encode($this->title) ?></h1>
     <div class="site-privacy">
         <div class="col-md-8 col-md-offset-2">
-            <<p>At Verified professors.com, we value the privacy and the confidentiality of every customer visiting our
+            <<p>At Prefectword, we value the privacy and the confidentiality of every customer visiting our
                 site very much.
                 As such, we recommend that every user reads through these policies from time to time before using our
                 services.</p>

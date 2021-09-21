@@ -42,17 +42,17 @@ AppAsset::register($this);
         gtag('config', 'UA-115152658-1');
     </script>
     <!--Start of Tawk.to Script-->
-    <script type="text/javascript">
-        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-        (function () {
-            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-            s1.async = true;
-            s1.src = 'https://embed.tawk.to/5f6cbb5bf0e7167d001375c3/default';
-            s1.charset = 'UTF-8';
-            s1.setAttribute('crossorigin', '*');
-            s0.parentNode.insertBefore(s1, s0);
-        })();
-    </script>
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/613b07bbd326717cb680b719/1ff79cdau';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
     <!--End of Tawk.to Script-->
 </head>
 <body>
@@ -61,7 +61,7 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => Html::img('@web/' . $this->params['logo'] . '', ['style' => 'display:inline-block; height:32px;', 'alt' => Yii::$app->name]) . ' ' . $this->params['name'] . '',
+        'brandLabel' => Html::img('@web/images/logo.png', ['style' => 'display:inline-block; height:32px;', 'alt' => Yii::$app->name]) . ' <strong style="color: #1695a4  ; font-size: 20px;">Prefect</strong><strong style="color: #3D715B; font-size: 20px;">Word</strong>',
         'brandUrl' => Yii::$app->request->baseUrl . '/order/index',
         'options' => [
             'class' => 'navbar navbar-default2 navbar-fixed-top',

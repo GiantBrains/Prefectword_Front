@@ -25,11 +25,11 @@ $this->registerMetaTag([
             <h3>Terms and Conditions of use</h3>
             <p>By placing an order with us, you agree that you have read and ready to abide by the following Terms and
                 Conditions
-                of this website-verifiedprofessors.com In case you are not willing to abide by any of the listed terms
+                of this website-prefectword.com In case you are not willing to abide by any of the listed terms
                 and conditions,
                 kindly do not consider using our services.</p>
             <h3> Brief Definitions</h3>
-            <p>“Us”, “We”, “Our site,” “Company”, “This site”, “website” refers verifiedprofessors.com. “You,”
+            <p>“Us”, “We”, “Our site,” “Company”, “This site”, “website” refers prefectword.com. “You,”
                 “customer,” “consumer,” “your”
                 refers to anyone who willingly uses our services at any given time by either placing an order,
                 bidding on an order, giving any information regarding an order or making payment for an order “Order”
@@ -39,15 +39,15 @@ $this->registerMetaTag([
                 This must be done online through our site. “Products” refers to the final original papers or essays
                 written by our writers,
                 strictly following the instructions given by the customers and delivered to the consumers on time.</p>
-            <h3>The services we deliver at verifiedprofessors.com</h3>
-            <p>At verifiedprofessors.com, we give an opportunity to our consumers to place orders, communicate to each
+            <h3>The services we deliver at prefectword.com</h3>
+            <p>At prefectword.com, we give an opportunity to our consumers to place orders, communicate to each
                 other,
                 work on orders, deliver the products and finally do payment transfer for the products already delivered
                 to them.</p>
             <p>Before a consumer can use any of our services, they must first create an account with us before
                 proceeding.
                 We always make the identity of our consumers anonymous at all times and as such, sharing any personal
-                information that might uniquely identify you as a consumer is highly prohibited. verifiedprofessors.com
+                information that might uniquely identify you as a consumer is highly prohibited. prefectword.com
                 reserves the right to close any access to your account whenever there is enough reason to do so
                 especially
                 if you use abusive language to other consumers, share your personal information and contacts to other
@@ -95,7 +95,7 @@ $this->registerMetaTag([
 
             <h3>Copyright</h3>
             <p>Our freelance writers write all products from scratch and therefore is 100% original. As such,
-                verifiedprofessors.com
+                prefectword.com
                 reserves all the copyright regarding the products. The consumers of our products are prohibited from
                 using them for commercial use.
                 The consumers are under no circumstance allowed to share, alter, transfer, publish, or distribute
@@ -107,7 +107,7 @@ $this->registerMetaTag([
                 Anyone found using the products from this company without written and signed consent will be sued or
                 charged
                 under civil or criminal penal code.</p>
-            <p>As stated earlier, verifiedprofessors.com does not condone academic cheating in any way.
+            <p>As stated earlier, prefectword.com does not condone academic cheating in any way.
                 As such, all products and contents delivered to our customers are for their own personal use.
                 Sharing of the products and contents from our site is highly prohibited. The writers and the customers
                 are
@@ -124,7 +124,7 @@ $this->registerMetaTag([
                 support team immediately and they will take the necessary action against such a writer. Any attempt by
                 our
                 writers to submit a plagiarized paper will result in ruthless actions against them.
-                verifiedprofessors.com is
+                prefectword.com is
                 committed to delivering 100% unique work to its customers, and as a freelance writer, you must be ready
                 to do the same.
                 The company has the exclusive right to heavily fine and cancel any contract with anyone who tried to
@@ -132,14 +132,14 @@ $this->registerMetaTag([
                 plagiarized work to our customers. Any consumer who tries to use the content delivered to them for any
                 commercial use will also see their cooperation with our company automatically disqualified.
                 We will not condone such behavior and therefore will not offer such customers our services.</p>
-            <p>At verifiedprofessors.com, we do not condone academic cheating and dishonesty in any way.
+            <p>At prefectword.com, we do not condone academic cheating and dishonesty in any way.
                 As such, we do not allow our customers to include their names in our products and later
                 submit it to their lecturers or any other interested parties for grading. Such action is academic
                 cheating as the consumer will have plagiarized our work. Our products and contents can only be
                 used as a guide to do your own research and not as your final work.</p>
-            <h3>Links on verifiedprofessors.com</h3>
+            <h3>Links on prefectword.com</h3>
             <p>This site might have links to other external websites. However, we would like to notify our customers and
-                consumers that verifiedprofessors.com does not control those sites and therefore does not have any
+                consumers that prefectword.com does not control those sites and therefore does not have any
                 control over its content.
                 We cannot guarantee the consumers visiting those sites that they abide by our Terms and Conditions.
                 Any consumer visiting those sites must do so at their own risk as it is required on your order form.</p>
