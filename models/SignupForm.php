@@ -16,7 +16,6 @@ class SignupForm extends Model
     public $phone;
     public $username;
     public $password_repeat;
-    public $reCaptcha;
 
     /**
      * @inheritdoc
@@ -36,13 +35,11 @@ class SignupForm extends Model
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
             ['password_repeat', 'required'],
-            ['password_repeat', 'compare', 'compareAttribute'=>'password', 'message'=>"Passwords don't match" ],
+            ['password_repeat', 'compare', 'compareAttribute' => 'password', 'message' => "Passwords don't match"],
             ['phone', 'trim'],
             ['phone', 'unique', 'targetClass' => '\app\models\User', 'message' => '{value} has already been taken.'],
             ['phone', 'string', 'max' => 13],
             ['country', 'integer'],
-            [['reCaptcha'], \himiklab\yii2\recaptcha\ReCaptchaValidator2::className(),
-                'uncheckedMessage' => 'Please confirm that you are not a bot.'],
         ];
     }
 
@@ -66,7 +63,11 @@ class SignupForm extends Model
         if (!$this->validate()) {
             return null;
 
-        }elseif ($this->validate()){
+        } elseif ($this->validate()) {
+
+//            $userExist = User::findByEmail($this->email);
+//            $userExist = User::findByUsername($this->username);
+//
             $user = new User();
             $user->username = $this->username;
             $user->country_id = $this->country;
@@ -85,7 +86,7 @@ class SignupForm extends Model
 
             Yii::$app->mailer->htmlLayout = "layouts/order";
             Yii::$app->mailer->compose('account-create', [
-                'user'=> $user
+                'user' => $user
             ])->setFrom([Yii::$app->params['noreplyEmail'] => Yii::$app->name . ' Accounts Manager'])
                 ->setTo($user->email)
                 ->setSubject('Welcome to VerifiedProfessors.com!')
