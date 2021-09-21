@@ -1,14 +1,14 @@
 <?php
 
 return [
-    'adminEmail' => 'info@nokiakenya.co.ke',
-    'noreplyEmail' => 'info@nokiakenya.co.ke',
+    'adminEmail' => 'support@prefectword.com',
+    'noreplyEmail' => 'support@prefectword.com',
     'supportEssay' => 'Prefectword Support',
-    'supportEmail' => 'info@nokiakenya.co.ke',
-    'successUrl' => "http://18.194.174.121/wallet/paypal",
-    'cancelUrl' => "http://18.194.174.121/wallet/cancel?success=false",
-    'successUrl2' => "http://18.194.174.121/wallet/pay",
-    'cancelUrl2' => "http://18.194.174.121/wallet/order-cancel?success=false",
+    'supportEmail' => 'support@prefectword.com',
+    'successUrl' => "https://prefectword.com/wallet/paypal",
+    'cancelUrl' => "https://prefectword.com/wallet/cancel?success=false",
+    'successUrl2' => "https://prefectword.com/wallet/pay",
+    'cancelUrl2' => "https://prefectword.com/wallet/order-cancel?success=false",
     'clientId' => 'AdSg_U4OrBLg_OQGZnhNaJub30g2T38ScrdOkmQM-87zZxnFhOv5DARPZwvf10ytoH9PiMHxA2enjImn',
     'clientSecret' => 'EEnNVx0bnwn7prNXixMNKv6xC0jkW0oPzdDWMffx3x4UdHww1HOHzqFSnMMfoRnaAaIidDTnxqk7bCFh',
     'mode' => 'live',
@@ -20,8 +20,9 @@ return [
     'code3amt' => 0.5,
     'user.passwordResetTokenExpire' => 3600,
     'user.rememberMeDuration' => 3600,
-    '1' => 'http://18.194.174.121',
-    '2' => 'http://18.194.174.121',
+    '1' => 'https://prefectword.com',
+    '2' => 'https://prefectword.com',
     'recaptcha_api_key' => '6LfluM8ZAAAAAAkNa-hkj4Nt9O6yD9T5zqBs0Sc-',
     'recaptcha_api_secret' => '6LfluM8ZAAAAAH_4A49Ak3Hrt0vAsgocAvhQuz6P'
 ];
+

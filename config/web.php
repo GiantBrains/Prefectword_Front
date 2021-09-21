@@ -38,7 +38,7 @@ $config = [
 
             // the global settings for the twitter plugins widget
             'twitter' => [
-                'screenName' => 'doctorateessays'
+                'screenName' => 'prefectword'
             ],
         ],
         'notifications' => [
@@ -80,7 +80,7 @@ $config = [
         // other default components here..
         'jwt' => [
             'class' => \sizeg\jwt\Jwt::className(),
-            'key' => 'doctorateessayswriting',
+            'key' => 'prefectword',
             'jwtValidationData' => [
                 'class' => \sizeg\jwt\JwtValidationData::className(),
             ],
@@ -101,7 +101,7 @@ $config = [
                     'class' => 'dektrium\user\clients\Google',
                     'clientId' => '711908005593-p1k7t6ui5ret3fc1gvecie9vdc0keklu.apps.googleusercontent.com',
                     'clientSecret' => 'RRqo8l0UrWvUWgoWVmKegqsW',
-                    'returnUrl' => 'https://perfectword.com/site/auth?authclient=google'
+                    'returnUrl' => 'https://prefectword.com/site/auth?authclient=google'
                 ],
 //                'twitter' => [
 //                    'class' => 'dektrium\user\clients\Twitter',
@@ -146,9 +146,9 @@ $config = [
             'useFileTransport' => false,
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
-                'host' => 'smtp.zoho.com',
-                'username' => 'info@nokiakenya.co.ke',
-                'password' => 'Hp28188685',
+                'host' => 'smtp.gmail.com',
+                'username' => 'support@prefectword.com',
+                'password' => 'X7jm=>Aj2021',
                 'port' => '465',
                 'encryption' => 'ssl',
             ],
@@ -159,9 +159,9 @@ $config = [
             'useFileTransport' => false,
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
-                'host' => 'smtp.zoho.com',
-                'username' => 'info@nokiakenya.co.ke',
-                'password' => 'Hp28188685',
+                'host' => 'smtp.gmail.com',
+                'username' => 'support@prefectword.com',
+                'password' => 'X7jm=>Aj2021',
                 'port' => '465',
                 'encryption' => 'ssl',
             ],
@@ -172,9 +172,9 @@ $config = [
             'useFileTransport' => false,
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
-                'host' => 'smtp.zoho.com',
-                'username' => 'info@nokiakenya.co.ke',
-                'password' => 'Hp28188685',
+                'host' => 'smtp.gmail.com',
+                'username' => 'support@prefectword.com',
+                'password' => 'X7jm=>Aj2021',
                 'port' => '465',
                 'encryption' => 'ssl',
             ],
@@ -185,9 +185,9 @@ $config = [
             'useFileTransport' => false,
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
-                'host' => 'smtp.zoho.com',
-                'username' => 'info@nokiakenya.co.ke',
-                'password' => 'Hp28188685',
+                'host' => 'smtp.gmail.com',
+                'username' => 'support@prefectword.com',
+                'password' => 'X7jm=>Aj2021',
                 'port' => '465',
                 'encryption' => 'ssl',
             ],
