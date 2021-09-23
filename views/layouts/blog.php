@@ -130,7 +130,7 @@ s0.parentNode.insertBefore(s1,s0);
         'encodeLabels' => false,
     ]);
     $menuItem [] = ['label' => '<a style="margin-top: -30px"><img src="' . Yii::$app->request->baseUrl . '/images/mail.png" width="25px"> &nbsp;support@prefectword.com</a>'];
-    $menuItem [] = ['label' => '<a style="margin-top: -30px"><img width="25px" src="' . Yii::$app->request->baseUrl . '/images/united-states.png"> &nbsp;+18062173470</a>'];
+    $menuItem [] = ['label' => '<a style="margin-top: -30px"><img width="25px" src="' . Yii::$app->request->baseUrl . '/images/united-states.png"> &nbsp;+442034889391</a>'];
     $menuItem [] = ['label' => 'How it Works', 'url' => ['/how_it_works'],
         'active' => $this->context->route == 'site/how_it_works'
     ];
@@ -169,7 +169,7 @@ s0.parentNode.insertBefore(s1,s0);
                                                                               aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;support@prefectword.com</a>
                     </li>
                     <br>
-                    <li><a style="text-decoration: none; font-size: 20px; font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;" <i class="fa fa-phone fa-3x" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;+18062173470</a></li>
+                    <li><a style="text-decoration: none; font-size: 20px; font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;" <i class="fa fa-phone fa-3x" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;+442034889391</a></li>
 <!--                     <li><a style="text-decoration: none; font-size: 20px; font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;" <i class="fa fa-map-marker fa-3x" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;Jeda Plaza, Lumumba Drive <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;off Kamiti Road</a></li> -->
                 </ul>
                 <ul id="navigation" class="text-center hidden-xs">

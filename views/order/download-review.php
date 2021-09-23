@@ -85,7 +85,7 @@ $this->title = 'Download & Review';
                 </div>
            
                 <div class="col-md-4 col-sm-4 col-xs-12" style="margin-top: 10px;">
-                     <button class="btn btn-success" data-toggle="modal" data-target="#fundsModal">Release Funds</button>
+                     <button class="btn btn-success" data-toggle="modal" data-target="#fundsModal">Accept Order</button>
                 </div>
             
                 <div class="col-md-4 col-sm-4 col-xs-12" style="margin-top: 10px; margin-bottom: 10px">
@@ -143,7 +143,7 @@ $this->title = 'Download & Review';
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" style="text-align: center" id="myModalLabel">Review Order #<?=$model->ordernumber?> to release funds</h4>
+                <h4 class="modal-title" style="text-align: center" id="myModalLabel">Review Order #<?=$model->ordernumber?> </h4>
             </div>
             <div class="modal-body">
                 <div class="row" style="padding: 10px">
