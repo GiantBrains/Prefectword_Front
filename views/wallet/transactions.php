@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="row">
     <ul class="nav nav-tabs" style="margin-bottom: 5px">
         <li role="presentation" class="<?= $active1?>"><a href="<?= Yii::$app->request->baseUrl?>/wallet/index"><strong>Deposit</strong></a></li>
-        <li role="presentation" class="<?= $active3?>"><a href="<?=  Yii::$app->request->baseUrl?>/wallet/withdraw"><strong>Withdraw Requests</strong></a></li>
+        <!-- <li role="presentation" class="<?= $active3?>"><a href="<?=  Yii::$app->request->baseUrl?>/wallet/withdraw"><strong>Withdraw Requests</strong></a></li> -->
         <li role="presentation" class="<?=$active2?>"><a href="<?=Yii::$app->request->baseUrl ?>/wallet/transactions"><strong>Transactions</strong></a></li>
     </ul>
 </div>
@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <tr>
                         <th style="background-color: #3D715B">Description</th>
                         <th style="background-color: #3D715B">Deposit</th>
-                        <th style="background-color: #3D715B">Withdrawals</th>
+                         <!-- <th style="background-color: #3D715B">Withdrawals</th> -->
                         <th style="background-color: #3D715B">Date</th>
                     </tr>
                     <?php
@@ -46,7 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <tr style="background-color: #e6f5ff">
                         <td><strong>Totals</strong></td>
                         <td><strong>$<?= number_format(floatval($totaldeposit), 2, '.', ',') ?></strong></td>
-                        <td><strong>$<?= number_format(floatval($totalwithdrawal), 2, '.', ',') ?></strong></td>
+                        <!-- <td><strong>$<?= number_format(floatval($totalwithdrawal), 2, '.', ',') ?></strong></td> -->
                     </tr>
                 </table>
             </div>

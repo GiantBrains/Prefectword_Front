@@ -198,15 +198,6 @@ s0.parentNode.insertBefore(s1,s0);
                             </button>
                         </a>
                     </div>
-                    <div class="wrapper row">
-                        <a style="display: block; margin-top: 15px"
-                           href="<?= Yii::$app->request->baseUrl ?>/wallet/withdraw">
-                            <button style="width: 120px" class="btn btn-md btn-info <?= $this->params['withdraw'] ?>">
-                                <span class="glyphicon glyphicon-export" style="font-size: 20px"
-                                      aria-hidden="true"></span> &nbsp; Withdraw
-                            </button>
-                        </a>
-                    </div>
                 </div>
             </div>
             <div class="col-md-10">

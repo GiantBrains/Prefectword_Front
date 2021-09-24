@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="row">
     <ul class="nav nav-tabs" style="margin-bottom: 5px">
         <li role="presentation" class="<?=$active1?>"><a href="<?= Yii::$app->request->baseUrl?>/wallet/index"><strong>Deposit</strong></a></li>
-        <li role="presentation" class="<?= $active3?>"><a href="<?=  Yii::$app->request->baseUrl?>/wallet/withdraw"><strong>Withdraw Requests</strong></a></li>
+      <!-- <li role="presentation" class="<?= $active3?>"><a href="<?=  Yii::$app->request->baseUrl?>/wallet/withdraw"><strong>Withdraw Requests</strong></a></li> -->
         <li role="presentation" class="<?= $active2?>"><a href="<?=Yii::$app->request->baseUrl ?>/wallet/transactions"><strong>Transactions</strong></a></li>
     </ul>
 </div>
@@ -46,21 +46,21 @@ $this->params['breadcrumbs'][] = $this->title;
                         </span>
                     </div><!-- /input-group -->
                     </form><br/><br/><br/>
-                    <form action="<?= Yii::$app->request->baseUrl?>/wallet/card-payment">
+                    <!-- <form action="<?= Yii::$app->request->baseUrl?>/wallet/card-payment">
                     <div class="input-group">
                         <span style="background-color: #3D715B; color: white;" class="input-group-addon">$</span>
                         <input type="number" required name="amount" class="form-control" value="" placeholder="Enter amount...">
                         <span class="input-group-btn">
                          <input  class="btn btn-default form-control" style="color: midnightblue;background-color: #D1F2EB; font-weight: 900;" type="submit" value="CARD">
                         </span>
-                    </div><!-- /input-group -->
-                    </form><br/>
+                    </div>
+                    </form> -->
                    <ul id="navigation" class="text-center">
                     <p style="margin-bottom: -20px">Accepted payment methods</p>
                     <li><img src="<?= Yii::$app->request->baseUrl?>/images/payment/visa.png"  width="70px" height="70px"  data-rjs="<?= Yii::$app->request->baseUrl?>/images/payment/visa.png" alt="Visa" class="pm visa"></li>
                     <li style="margin-left: 10px"><img src="<?= Yii::$app->request->baseUrl?>/images/payment/paypal.png" width="70px" height="70px" data-rjs="<?= Yii::$app->request->baseUrl?>/images/payment/paypal.png" alt="PayPal" class="pm paypal"></li>
                     <li style="margin-left: 10px"><img src="<?= Yii::$app->request->baseUrl?>/images/payment/american-express.png" width="60px" height="50px" data-rjs="<?= Yii::$app->request->baseUrl?>/images/payment/american-express.png" alt="MasterCard" class="pm mc"></li>
-                    <li style="margin-left: 10px"><img src="<?= Yii::$app->request->baseUrl?>/images/payment/mastercard.png" width="60px" height="60px" data-rjs="<?= Yii::$app->request->baseUrl?>/images/payment/mastercard.png" alt="MasterCard" class="pm mc"></li>
+                    <li style="margin-left: 10px"><img src="<?= Yii::$app->request->baseUrl?>/images/payment/mastercard.png" width="60px" height="60px" data-rjs="<?= Yii::$app->request->baseUrl?>/images/payment/mastercard.png" alt="MasterCard" class="pm mc"></li> 
                 </ul>
                 </div><!-- /.col-lg-6 -->
         </div><!-- /.row -->
