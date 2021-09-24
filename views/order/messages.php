@@ -116,7 +116,7 @@ $this->registerJs($messages);
                             ' . $form->field($message, 'message')->textarea(['rows' => 2])->label(false) . '
                         </div>
                         <div class="col-md-2 col-sm-10 col-xs-4" style="margin-top: 5px">
-                            ' . Html::submitButton('Send', ['class' => 'btn btn-info btn-lg', 'id' => 'send-message']) . '
+                            ' . Html::submitButton('Send', ['class' => 'btn btn-primary btn-lg', 'id' => 'send-message']) . '
                         </div>
                     </div>';
                     \kartik\form\ActiveForm::end();
