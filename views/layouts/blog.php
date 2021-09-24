@@ -130,7 +130,7 @@ s0.parentNode.insertBefore(s1,s0);
         'encodeLabels' => false,
     ]);
     $menuItem [] = ['label' => '<a style="margin-top: -30px"><img src="' . Yii::$app->request->baseUrl . '/images/mail.png" width="25px"> &nbsp;support@prefectword.com</a>'];
-    $menuItem [] = ['label' => '<a style="margin-top: -30px"><img width="25px" src="' . Yii::$app->request->baseUrl . '/images/united-states.png"> &nbsp;+442034889391</a>'];
+    $menuItem [] = ['label' => '<a style="margin-top: -30px"><img width="25px" src="' . Yii::$app->request->baseUrl . '/images/united-kingdom.png"> &nbsp;+442034889391</a>'];
     $menuItem [] = ['label' => 'How it Works', 'url' => ['/how_it_works'],
         'active' => $this->context->route == 'site/how_it_works'
     ];

@@ -28,10 +28,6 @@ $this->title = 'Sign Up';
                                 </div></center>
 
                         <div class="col-md-12">
-                            <?= yii\authclient\widgets\AuthChoice::widget([
-                                'baseAuthUrl' => ['site/auth'],
-                                'popupMode' => false,
-                            ]) ?>
                         </div>
                     </div>
                     <?php ActiveForm::end(); ?>

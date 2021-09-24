@@ -31,10 +31,6 @@ $this->title = 'Login';
                         <?= Html::a('SignUp', ['site/signup'], ['class' => 'btn btn-block btn-success', 'name' => 'signup-button']) ?>
                     </div>
                 </div>
-                <?= yii\authclient\widgets\AuthChoice::widget([
-                    'baseAuthUrl' => ['site/auth'],
-                    'popupMode' => false,
-                ]) ?>
                 <center>
                 <div style="color:black; margin-top: 20px; margin-bottom: 10px">
                     Forgot password ? <br><?= Html::a('reset it', ['site/request-password-reset'], ['class'=>'btn btn-warning']) ?>.
