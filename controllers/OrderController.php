@@ -320,57 +320,56 @@ class OrderController extends Controller
         $supaorder = Order::find()->where(['ordernumber' => $oid])->one();
         if (Yii::$app->user->id == $supaorder->created_by) {
 
-            $connection = \Yii::$app->db;
-            $transaction = $connection->beginTransaction();
-            try {
-                $writter = Order::find()->where(['ordernumber' => $oid])->one();
-                if ($message->load(Yii::$app->request->post())) {
-                    $message->order_number = $oid;
-                    $message->sender_id = Yii::$app->user->id;
-                    if ($supaorder->written_by == null) {
-                        $message->receiver_id = 919;
-                    } else {
-                        $message->receiver_id = $supaorder->written_by;
-                    }
-
-                    $message->status = 0;
-                    $message->save();
-                    // $message was just created by the logged in user, and sent to $recipient_id
-                    Notification::warning(Notification::KEY_NEW_MESSAGE, $message->receiver_id, $message->id);
-
-                    $notifys = \app\models\Notification::find()->where(['key_id' => $message->id])->all();
-                    foreach ($notifys as $notify) {
-                        $notify->order_number = $oid;
-                        $notify->save();
-                    }
-
-                    return $this->redirect(['messages', 'oid' => $oid]);
-                }
-                Order::getOrdersCount();
-                Order::getBalance();
-                $model = $this->findModelByNumber($oid);
-                $messages = Message::find()->where(['order_number' => $oid])->one();
-                $searchModel = new MessageSearch();
-                $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-                $dataProvider->query->andFilterWhere(['sender_id' => Yii::$app->user->id])->orFilterWhere(['receiver_id' => Yii::$app->user->id]);
-                $mymessages = Message::find()->where(['order_number' => $oid])->andFilterWhere(['receiver_id' => Yii::$app->user->id])->all();
-                foreach ($mymessages as $mymessage) {
-                    if ($mymessage->status == 0) {
-                        $mymessage->status = 1;
-                        $mymessage->save();
-                    }
-                }
-                $notifications = \app\models\Notification::find()->where(['order_number' => $oid])->andWhere(['seen' => 0,])->andFilterWhere(['user_id' => Yii::$app->user->id])->all();
-                foreach ($notifications as $notification) {
-                    $notification->seen = 1;
-                    $notification->save();
+//            $connection = \Yii::$app->db;
+//            $transaction = $connection->beginTransaction();
+//            try {
+            $writter = Order::find()->where(['ordernumber' => $oid])->one();
+            if ($message->load(Yii::$app->request->post())) {
+                $message->order_number = $oid;
+                $message->sender_id = Yii::$app->user->id;
+                if ($supaorder->written_by == null) {
+                    $message->receiver_id = intval(env('NOTIFICATION_USER_ID'));
+                } else {
+                    $message->receiver_id = $supaorder->written_by;
                 }
 
-                $transaction->commit();
-            } catch (\Exception $e) {
-                $transaction->rollBack();
-                throw new   $e;
+                $message->status = false;
+                $message->save(false);
+                // $message was just created by the logged in user, and sent to $recipient_id
+                Notification::warning(Notification::KEY_NEW_MESSAGE, $message->receiver_id, $message->id);
+                $notifys = \app\models\Notification::find()->where(['key_id' => $message->id])->all();
+                foreach ($notifys as $notify) {
+                    $notify->order_number = $oid;
+                    $notify->save();
+                }
+
+                return $this->redirect(['messages', 'oid' => $oid]);
             }
+            Order::getOrdersCount();
+            Order::getBalance();
+            $model = $this->findModelByNumber($oid);
+            $messages = Message::find()->where(['order_number' => $oid])->one();
+            $searchModel = new MessageSearch();
+            $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+            $dataProvider->query->andFilterWhere(['sender_id' => Yii::$app->user->id])->orFilterWhere(['receiver_id' => Yii::$app->user->id]);
+            $mymessages = Message::find()->where(['order_number' => $oid])->andFilterWhere(['receiver_id' => Yii::$app->user->id])->all();
+            foreach ($mymessages as $mymessage) {
+                if ($mymessage->status == false) {
+                    $mymessage->status = true;
+                    $mymessage->save(false);
+                }
+            }
+            $notifications = \app\models\Notification::find()->where(['order_number' => $oid])->andWhere(['seen' => false])->andFilterWhere(['user_id' => Yii::$app->user->id])->all();
+            foreach ($notifications as $notification) {
+                $notification->seen = true;
+                $notification->save(false);
+            }
+
+//                $transaction->commit();
+//            } catch (\Exception $e) {
+//                $transaction->rollBack();
+//                throw new   $e;
+//            }
             return $this->render('messages', [
                 'searchModel' => $searchModel,
                 'order_messages' => $order_messages,
@@ -503,7 +502,7 @@ class OrderController extends Controller
                 unset($session['pages_id']);
                 unset($session['level_id']);
                 //            Notification::success(Notification::KEY_NEW_ORDER, 1, $model->id);
-                Notification::success(Notification::KEY_NEW_ORDER, 919, $model->id);
+                Notification::success(Notification::KEY_NEW_ORDER, intval(env('NOTIFICATION_USER_ID')), $model->id);
                 $notifys = \app\models\Notification::find()->where(['key_id' => $model->id, 'seen' => 0])->all();
                 foreach ($notifys as $notify) {
                     $notify->order_number = $model->ordernumber;
