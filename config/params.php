@@ -1,10 +1,10 @@
 <?php
 
 return [
-    'adminEmail' => 'info@nokiakenya.co.ke',
-    'noreplyEmail' => 'info@nokiakenya.co.ke',
+    'adminEmail' => 'sales@nokiakenya.co.ke',
+    'noreplyEmail' => 'sales@nokiakenya.co.ke',
     'supportEssay' => 'Prefectword Support',
-    'supportEmail' => 'info@nokiakenya.co.ke',
+    'supportEmail' => 'sales@nokiakenya.co.ke',
     'successUrl' => "https://prefectword.com/wallet/paypal",
     'cancelUrl' => "https://prefectword.com/wallet/cancel?success=false",
     'successUrl2' => "https://prefectword.com/wallet/pay",
@@ -22,7 +22,7 @@ return [
     'user.rememberMeDuration' => 3600,
     '1' => 'https://prefectword.com',
     '2' => 'https://prefectword.com',
-    'recaptcha_api_key' => '6LfluM8ZAAAAAAkNa-hkj4Nt9O6yD9T5zqBs0Sc-',
-    'recaptcha_api_secret' => '6LfluM8ZAAAAAH_4A49Ak3Hrt0vAsgocAvhQuz6P'
+    'recaptcha_api_key' => '6LdMM1kcAAAAANG0jdsl_Y9UlWp5XM5W84Q0oqLh',
+    'recaptcha_api_secret' => '6LdMM1kcAAAAALSt9rhMLxsTfolYBij8R61vnyxC'
 ];
 

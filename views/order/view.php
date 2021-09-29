@@ -211,7 +211,7 @@ $this->registerJs($datetime);
                 ?>
                 <?php
                 if ($model->paid === 0) {
-               echo '<a href="'.\yii\helpers\Url::to(['/wallet/order-card-reserve', 'oid'=>$model->ordernumber, 'amount'=>$model->amount]).'"><button type="button" class="btn btn-primary">Pay With CARD</button></a>';
+               //echo '<a href="'.\yii\helpers\Url::to(['/wallet/order-card-reserve', 'oid'=>$model->ordernumber, 'amount'=>$model->amount]).'"><button type="button" class="btn btn-primary">Pay With CARD</button></a>';
                 }else{
                     echo '';
                 }
