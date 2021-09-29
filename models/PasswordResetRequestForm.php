@@ -53,13 +53,20 @@ class PasswordResetRequestForm extends Model
             }
         }
 
-        return Yii::$app->supportMailer->compose(
-            ['html' => 'passwordResetToken-html', 'text' => 'passwordResetToken-text'],
-            ['user' => $user]
-        )->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' support'])
-            ->setTo($this->email)
-            ->setSubject('Password reset for ' . Yii::$app->name)
-            ->send();
+
+        try {
+            Yii::$app->supportMailer->compose(
+                ['html' => 'passwordResetToken-html', 'text' => 'passwordResetToken-text'],
+                ['user' => $user]
+            )->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' support'])
+                ->setTo($this->email)
+                ->setSubject('Password reset for ' . Yii::$app->name)
+                ->send();
+        } catch (\Swift_TransportException $e) {
+            Yii::info($e);
+        }
+
+        return true;
     }
 
 }

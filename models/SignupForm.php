@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use Swift_TransportException;
 use Yii;
 use yii\base\Model;
 
@@ -84,13 +85,16 @@ class SignupForm extends Model
             $clientRole = $auth->getRole('client');
             $auth->assign($clientRole, $user->getId());
 
-            Yii::$app->mailer->htmlLayout = "layouts/order";
-            Yii::$app->mailer->compose('account-create', [
-                'user' => $user
-            ])->setFrom([Yii::$app->params['noreplyEmail'] => Yii::$app->name . ' Accounts Manager'])
-                ->setTo($user->email)
-                ->setSubject('Welcome to Prefectword.com!')
-                ->send();
+            try {
+                Yii::$app->mailer->htmlLayout = "layouts/order";
+                Yii::$app->mailer->compose('account-create', ['user' => $user])
+                    ->setFrom([Yii::$app->params['noreplyEmail'] => Yii::$app->name . ' Accounts Manager'])
+                    ->setTo($user->email)
+                    ->setSubject('Welcome to Prefectword.com!')
+                    ->send();
+            } catch (\Swift_TransportException $e) {
+                Yii::info($e);
+            }
 
             return $user;
         }

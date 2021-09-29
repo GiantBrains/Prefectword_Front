@@ -427,15 +427,19 @@ class WalletController extends Controller
                     //send confirmation email
                     $user_id = Yii::$app->user->id;
                     $user = User::findOne($user_id);
-                    Yii::$app->supportMailer->htmlLayout = "layouts/order";
-                    Yii::$app->supportMailer->compose('wallet-deposit', [
-                        'deposit' => $card->amount,
-                        'user' => $user
-                    ])->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' support'])
-                        ->setTo($user->email)
-                        ->setSubject('Payment Completed')
-                        ->send();
+                    try {
+                        Yii::$app->supportMailer->htmlLayout = "layouts/order";
+                        Yii::$app->supportMailer->compose('wallet-deposit', [
+                            'deposit' => $card->amount,
+                            'user' => $user
+                        ])->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' support'])
+                            ->setTo($user->email)
+                            ->setSubject('Payment Completed')
+                            ->send();
 
+                    } catch (\Swift_TransportException $e) {
+                        Yii::info($e);
+                    }
                     unset($session['user_id']);
                     $session->close();
                     Yii::$app->session->setFlash('success', 'Payment was successful');
@@ -552,14 +556,18 @@ class WalletController extends Controller
                     //send confirmation email
                     $user_id = Yii::$app->user->id;
                     $user = User::findOne($user_id);
-                    Yii::$app->supportMailer->htmlLayout = "layouts/order";
-                    Yii::$app->supportMailer->compose('wallet-deposit', [
-                        'deposit' => $card->amount,
-                        'user' => $user
-                    ])->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' support'])
-                        ->setTo($user->email)
-                        ->setSubject('Payment Completed')
-                        ->send();
+                    try {
+                        Yii::$app->supportMailer->htmlLayout = "layouts/order";
+                        Yii::$app->supportMailer->compose('wallet-deposit', [
+                            'deposit' => $card->amount,
+                            'user' => $user
+                        ])->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' support'])
+                            ->setTo($user->email)
+                            ->setSubject('Payment Completed')
+                            ->send();
+                    } catch (\Swift_TransportException $e) {
+                        Yii::info($e);
+                    }
 
                     unset($session['user_id2']);
                     unset($session['oid']);
@@ -623,14 +631,18 @@ class WalletController extends Controller
                     //send confirmation email
                     $user_id = Yii::$app->user->id;
                     $user = User::findOne($user_id);
-                    Yii::$app->supportMailer->htmlLayout = "layouts/order";
-                    Yii::$app->supportMailer->compose('wallet-deposit', [
-                        'deposit' => $customer->amount_paid,
-                        'user' => $user
-                    ])->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' support'])
-                        ->setTo($user->email)
-                        ->setSubject('Payment Completed')
-                        ->send();
+                    try {
+                        Yii::$app->supportMailer->htmlLayout = "layouts/order";
+                        Yii::$app->supportMailer->compose('wallet-deposit', [
+                            'deposit' => $customer->amount_paid,
+                            'user' => $user
+                        ])->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' support'])
+                            ->setTo($user->email)
+                            ->setSubject('Payment Completed')
+                            ->send();
+                    } catch (\Swift_TransportException $e) {
+                        Yii::info($e);
+                    }
                     //unset the hash
                     unset($session['paypal_hash']);
                     unset($session['user_id']);
@@ -799,15 +811,19 @@ class WalletController extends Controller
                     //send confirmation email
                     $user_id = Yii::$app->user->id;
                     $user = User::findOne($user_id);
-                    Yii::$app->supportMailer->htmlLayout = "layouts/order";
-                    Yii::$app->supportMailer->compose('wallet-deposit', [
-                        'deposit' => $customer->amount_paid,
-                        'ordernumber' => $session['oid'],
-                        'user' => $user
-                    ])->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' support'])
-                        ->setTo($user->email)
-                        ->setSubject('Payment Completed')
-                        ->send();
+                    try {
+                        Yii::$app->supportMailer->htmlLayout = "layouts/order";
+                        Yii::$app->supportMailer->compose('wallet-deposit', [
+                            'deposit' => $customer->amount_paid,
+                            'ordernumber' => $session['oid'],
+                            'user' => $user
+                        ])->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' support'])
+                            ->setTo($user->email)
+                            ->setSubject('Payment Completed')
+                            ->send();
+                    } catch (\Swift_TransportException $e) {
+                        Yii::info($e);
+                    }
                     //unset the hash
                     unset($session['oid']);
                     unset($session['paypal_hash2']);
