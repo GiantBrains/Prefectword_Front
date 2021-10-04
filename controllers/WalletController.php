@@ -896,8 +896,8 @@ class WalletController extends Controller
         // After Step 1
         $apiContext = new ApiContext(
             new OAuthTokenCredential(
-                Yii::$app->params['clientId'],     // ClientID
-                Yii::$app->params['clientSecret']      // ClientSecret
+                env('PAYPAL_CLIENT_ID'),     // ClientID
+                env('PAYPAL_CLIENT_SECRET')      // ClientSecret
             )
         );
         $apiContext->setConfig(
