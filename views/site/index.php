@@ -860,10 +860,7 @@ $this->registerJs($myscript);
                             ])->label('Level')->dropDownList(\app\models\Level::getLevels(), [
                                 'options' => [1 => ['Selected' => 'selected'], 'prompt' => '...select Level....', 'id' => 'level-id']]) ?>
 
-                            <h3 style="margin-top: -10px;" class="essay-font">Price:&nbsp;&nbsp;&nbsp;&nbsp;<img
-                                        src="
-                                                <?php echo Yii::$app->request->baseUrl ?>/images/fire.png"
-                                        width="30px"><input class="tcost min-amount"
+                            <h3 style="margin-top: -10px;" class="essay-font">Price:&nbsp;&nbsp;&nbsp;&nbsp;<input class="tcost min-amount"
                                                             style="border: none; width: 100px"
                                                             type="text"
                                                             value="$8.00"
@@ -911,10 +908,7 @@ $this->registerJs($myscript);
                                     'removeIcon' => '<i class="glyphicon glyphicon-trash"></i> ',
                                     'maxFileCount' => 10]
                             ])->label(false); ?>
-                            <h3 style="margin-top: -10px;" class="essay-font">Price:&nbsp;&nbsp;&nbsp;&nbsp;<img
-                                        src="
-                                                <?php echo Yii::$app->request->baseUrl ?>/images/fire.png"
-                                        width="30px"><input class="tcost min-amount"
+                            <h3 style="margin-top: -10px;" class="essay-font">Price:&nbsp;&nbsp;&nbsp;&nbsp;<input class="tcost min-amount"
                                                             style="border: none; width: 100px"
                                                             type="text"
                                                             value="$8.00"

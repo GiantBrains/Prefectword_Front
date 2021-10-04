@@ -1,10 +1,10 @@
 <?php
 
 return [
-    'adminEmail' => 'sales@nokiakenya.co.ke',
-    'noreplyEmail' => 'sales@nokiakenya.co.ke',
+    'adminEmail' => 'support@prefectword.com',
+    'noreplyEmail' => 'support@prefectword.com',
     'supportEssay' => 'Prefectword Support',
-    'supportEmail' => 'sales@nokiakenya.co.ke',
+    'supportEmail' => 'support@prefectword.com',
     'successUrl' => "https://prefectword.com/wallet/paypal",
     'cancelUrl' => "https://prefectword.com/wallet/cancel?success=false",
     'successUrl2' => "https://prefectword.com/wallet/pay",
