@@ -177,7 +177,6 @@ class FrontorderController extends Controller
 
                             if (isset($_FILES)) {
                                 //save files if any
-                                $user = Yii::$app->user->id;
                                 $myFile = new File();;
                                 $myFile->attached = UploadedFile::getInstances($myFile, 'attached');
                                 $directory = Yii::getAlias('@app/web/images/order') . DIRECTORY_SEPARATOR;
@@ -187,7 +186,7 @@ class FrontorderController extends Controller
                                 foreach ($myFile->attached as $key => $file) {
                                     $file->saveAs($directory . $file->baseName . '-' . date('His') . '.' . $file->extension); //Upload files to server
                                     $sfile = new File();
-                                    $sfile->user_id = $user;
+                                    $sfile->user_id = $user->id;
                                     $sfile->order_id = $model->id;
                                     $sfile->attached = $file->size;
                                     $sfile->file_date = date('His');
@@ -199,16 +198,16 @@ class FrontorderController extends Controller
                                     }
                                 }
                             }
-//                            try {
-//                                Yii::$app->supportMailer->htmlLayout = "layouts/order";
-//                                Yii::$app->supportMailer->compose('order-create', ['model' => $model, 'user' => $user])
-//                                    ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' support'])
-//                                    ->setTo($user->email)
-//                                    ->setSubject('Order ' . $model->ordernumber . ' created')
-//                                    ->send();
-//                            } catch (\Swift_TransportException $e) {
-//                                Yii::info($e);
-//                            }
+                            try {
+                                Yii::$app->supportMailer->htmlLayout = "layouts/order";
+                                Yii::$app->supportMailer->compose('order-create', ['model' => $model, 'user' => $user])
+                                    ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' support'])
+                                    ->setTo($user->email)
+                                    ->setSubject('Order ' . $model->ordernumber . ' created')
+                                    ->send();
+                            } catch (\Swift_TransportException $e) {
+                                Yii::info($e);
+                            }
                             $transaction->commit();
                         } catch (\Exception $e) {
                             $transaction->rollBack();
