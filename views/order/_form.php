@@ -23,13 +23,16 @@ $code3amt = (1 - ($settings->coupon_value3 / 100));
 $calculate = <<<JS
   $(document).ready(function(){
          moment().format('MMMM Do YYYY, h:mm:ss a');
-            var service = 8;
-            var type = 1;
-            var urgency = 1;
-            var pages = 1;
-            var level = 1;
-            var spacing = 1;
+           //Default Values for the calculator
+            var service = 8; //writing
+            var type = 1.2; // essay
+            var urgency = 1.1; //10 days
+            var pages = 1; // 1 Page
+            var level = 1; // High school
+            var spacing = 1; // Double spaced
             var coupon = 1;
+            
+             $('.min-amount').val('$'+(service*type*urgency*pages*level*spacing).toFixed(2));
              $('#spacing-id').change('focusin', function(){
             order_spacing = parseInt($(this).val());
             
