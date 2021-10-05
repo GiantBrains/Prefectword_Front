@@ -10,6 +10,7 @@ return [
     'successUrl2' => "https://prefectword.com/wallet/pay",
     'cancelUrl2' => "https://prefectword.com/wallet/order-cancel?success=false",
     'mode' => 'live',
+
     'couponcode' => 'PHDESSAYS',
     'couponamt' => 0.9,
     'code2' => 'ESSAY25',

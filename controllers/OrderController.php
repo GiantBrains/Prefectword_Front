@@ -1072,8 +1072,8 @@ class OrderController extends Controller
         // After Step 1
         $apiContext = new ApiContext(
             new OAuthTokenCredential(
-                'AZet_dAnrF5HdED8ffxi6rBrHya9IerPQzFpZnfY4hqHIa0zl8ekKq9LyMTNLTZJTFZXt1xLD17M3Dph',     // ClientID
-                'ENWVtcPHt28veqXfiWxyCGdiyuP_l3ExsL2M9Cj2606RDhhCjazHBfdKkznx7a_YMa7Zqpavxc1ob84Y'      // ClientSecret
+                env('PAYPAL_CLIENT_ID'),     // ClientID
+                env('PAYPAL_CLIENT_SECRET')      // ClientSecret
             )
         );
         return $apiContext;

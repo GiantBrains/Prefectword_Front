@@ -104,29 +104,8 @@ class Pages extends \yii\db\ActiveRecord
             case 1:
                 $pages = 1;
             break;
-            case 2:
-                $pages = 2 * 0.95;
-            break;
-            case 3:
-                $pages = 3 * 0.95;
-            break;
-            case 4:
-                $pages = 4 * 0.95;
-            break;
-            case 5:
-                $pages = 5 * 0.95;
-            break;
-            case 6:
-                $pages = 6 * 0.925;
-            break;
-            case 7:
-                $pages = 7 * 0.925;
-            break;
-            case 8:
-                $pages = 8 * 0.925;
-            break;
-            case 9:
-                $pages = 9 * 0.925;
+            case $pages_id > 1 && $pages_id < 10:
+                $pages = $pages_id * 0.95;
             break;
             case 10:
                 $pages = 10 * 0.9;

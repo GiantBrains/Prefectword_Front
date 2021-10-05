@@ -306,21 +306,21 @@ function fixStepIndicator(n) {
                 if(order_pages===1){
                     mypages = 1;
                 }else if(order_pages===2){
-                    mypages=2*0.95;
+                    pages=2*0.95;
                 }else if(order_pages===3){
-                    mypages= 3*0.95;
+                    pages= 3*0.95;
                  }else if(order_pages===4){
-                    mypages=4*0.95;
+                    pages=4*0.95;
                 }else if(order_pages===5){
-                    mypages= 5*0.95;
+                    pages= 5*0.95;
                  }else if(order_pages===6){
-                    mypages=6*0.925;
+                    pages=6*0.925;
                 }else if(order_pages===7){
-                    mypages= 7*0.925;
+                    pages= 7*0.925;
                 }else if(order_pages===8){
-                    mypages=8*0.925;
+                    pages=8*0.925;
                 }else if(order_pages===9){
-                    mypages= 9*0.925;
+                    pages= 9*0.925;
                  }else if(order_pages===10){
                     mypages=10*0.9;
                 }else if(order_pages===11){

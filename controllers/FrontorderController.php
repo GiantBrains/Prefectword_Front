@@ -199,16 +199,16 @@ class FrontorderController extends Controller
                                     }
                                 }
                             }
-                            try {
-                                Yii::$app->supportMailer->htmlLayout = "layouts/order";
-                                Yii::$app->supportMailer->compose('order-create', ['model' => $model, 'user' => $user])
-                                    ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' support'])
-                                    ->setTo($user->email)
-                                    ->setSubject('Order ' . $model->ordernumber . ' created')
-                                    ->send();
-                            } catch (\Swift_TransportException $e) {
-                                Yii::info($e);
-                            }
+//                            try {
+//                                Yii::$app->supportMailer->htmlLayout = "layouts/order";
+//                                Yii::$app->supportMailer->compose('order-create', ['model' => $model, 'user' => $user])
+//                                    ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' support'])
+//                                    ->setTo($user->email)
+//                                    ->setSubject('Order ' . $model->ordernumber . ' created')
+//                                    ->send();
+//                            } catch (\Swift_TransportException $e) {
+//                                Yii::info($e);
+//                            }
                             $transaction->commit();
                         } catch (\Exception $e) {
                             $transaction->rollBack();
