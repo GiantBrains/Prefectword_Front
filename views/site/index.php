@@ -150,12 +150,13 @@ function fixStepIndicator(n) {
          moment().format('MMMM Do YYYY, h:mm:ss a');
          //Default Values for the calculator
             var service = 8; //writing
-            var type = 1.2; // essay
+            var type = 2.9; // essay
             var urgency = 1.1; //10 days
             var pages = 1; // 1 Page
             var level = 1; // High school
             var spacing = 1; // Double spaced
             $('.min-amount').val('$'+(service*type*urgency*pages*level*spacing).toFixed(2));
+            
         $('#order-service_id').change('focusin', function(){
             order_service = parseInt($(this).val());
            if(order_service===1){
@@ -218,7 +219,7 @@ function fixStepIndicator(n) {
                  }else if (typeoforder===18){
                  type = 1.2;      
                  }else if (typeoforder===20){
-                 type = 1.2;      
+                 type = 2.9;      
                  }else if (typeoforder===22){
                  type = 2.0;      
                  }else if (typeoforder===23){

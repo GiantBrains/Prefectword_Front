@@ -25,7 +25,7 @@ $calculate = <<<JS
          moment().format('MMMM Do YYYY, h:mm:ss a');
            //Default Values for the calculator
             var service = 8; //writing
-            var type = 1.2; // essay
+            var type = 2.9; // essay
             var urgency = 1.1; //10 days
             var pages = 1; // 1 Page
             var level = 1; // High school
@@ -146,7 +146,7 @@ $calculate = <<<JS
                  }else if (typeoforder===18){
                  type = 1.2;      
                  }else if (typeoforder===20){
-                 type = 1.2;      
+                 type = 2.9;      
                  }else if (typeoforder===22){
                  type = 2.0;      
                  }else if (typeoforder===23){

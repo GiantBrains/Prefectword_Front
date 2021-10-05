@@ -139,7 +139,7 @@ class Type extends \yii\db\ActiveRecord
                 $type = 1.2;
             break;
             case 20:
-                $type = 1.2;
+                $type = 2.9;
             break;
             case 22:
                 $type = 2.0;
